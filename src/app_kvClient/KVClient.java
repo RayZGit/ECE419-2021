@@ -80,8 +80,8 @@ public class KVClient implements IKVClient, Runnable {
                     System.out.println("Put failed: Invalid arguments number");
                 } else {
                     try {
-                        KVMessage message = KVClientServer.put(tokens[1], tokens[2]);
-                        handleServerResponse(message);
+                        KVClientServer.put(tokens[1], tokens[2]);
+                        handleServerResponse(KVClientServer.receiveMessage());
                     } catch (Exception e) {
                         System.out.println("Put failed: Server failed to insert the tuple.");
                         logger.error("Put failed: Server failed to insert the tuple.");

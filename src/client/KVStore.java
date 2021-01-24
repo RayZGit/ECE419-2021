@@ -3,23 +3,22 @@ package client;
 import org.apache.log4j.Logger;
 import shared.messages.KVBasicMessage;
 import shared.messages.KVMessage;
-import shared.messages.KVMsgProtocol;
+import shared.KVMsgProtocol;
+import shared.messages.TextMessage;
 
 import java.io.*;
 import java.net.Socket;
 
-public class KVStore implements KVCommInterface {
+public class KVStore extends KVMsgProtocol implements KVCommInterface {
 	/**
 	 * Initialize KVStore with address and port of KVServer
 	 * @param address the address of the KVServer
 	 * @param port the port of the KVServer
 	 */
-	private final Logger logger = Logger.getRootLogger();
 	private final String address;
 	private final int port;
 	private Socket socket;
-	private InputStream inputStream;
-	private OutputStream outputStream;
+
 
 
 	public KVStore(String address, int port) {
@@ -65,17 +64,16 @@ public class KVStore implements KVCommInterface {
 	public KVMessage put(String key, String value) throws Exception {
 		// TODO Auto-generated method stub
 		KVBasicMessage request = new KVBasicMessage(key, value, KVMessage.StatusType.PUT);
-		outputStream.write(KVMsgProtocol.encode(request));
-		byte[] buffer = new byte[]
-		return KVMsgProtocol.decode(buffer);
+		sendMessage(request);
+		return receiveMessage();
 	}
 
 	@Override
 	public KVMessage get(String key) throws Exception {
 		// TODO Auto-generated method stub
 		KVBasicMessage request = new KVBasicMessage(key, null, KVMessage.StatusType.GET);
-		outputStream.write(KVMsgProtocol.encode(request));
-		return (KVBasicMessage) inputStream.read();
+		sendMessage(request);
+		return receiveMessage();
 	}
 
 }

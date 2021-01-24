@@ -31,11 +31,6 @@ public interface KVMessage {
 	 * response types and error types associated to the message.
 	 */
 	public StatusType getStatus();
-
-	/**
-	 * @return a string that is used to identify response explanation
-	 */
-	public String getMessages();
 	
 }
 
