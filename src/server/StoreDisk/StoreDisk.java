@@ -13,7 +13,6 @@ public class StoreDisk implements IStoreDisk {
     private File storage;
     private String resourceDir = "./src/resources/";;
     private String filename;
-    private String currentDir = "./src/resources";
 
 
 
@@ -124,7 +123,7 @@ public class StoreDisk implements IStoreDisk {
     @Override
     public boolean contain(String key) {
         String value = get(key);
-        if(value.isEmpty()){
+        if(value == null){
             return false;
         }
         return true;
