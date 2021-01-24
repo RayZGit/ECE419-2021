@@ -4,7 +4,6 @@ import org.apache.log4j.Logger;
 import shared.messages.KVBasicMessage;
 import shared.messages.KVMessage;
 import shared.KVMsgProtocol;
-import shared.messages.TextMessage;
 
 import java.io.*;
 import java.net.Socket;

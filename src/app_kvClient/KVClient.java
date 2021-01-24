@@ -29,7 +29,6 @@ public class KVClient implements IKVClient, Runnable {
         while (running) {
             input = new BufferedReader(new InputStreamReader(System.in));
             System.out.print(PROMPT);
-
             try {
                 String cmdLine = input.readLine();
                 this.handleCommand(cmdLine);
@@ -90,12 +89,17 @@ public class KVClient implements IKVClient, Runnable {
                 }
                 break;
             case "put":
-                if (tokens.length != 3){
+                if (tokens.length != 3 && tokens.length != 2){
                     System.out.println("Put failed: Invalid arguments number");
                 } else {
                     try {
-                        KVClientServer.put(tokens[1], tokens[2]);
-                        handleServerResponse(KVClientServer.receiveMessage());
+                        KVMessage message;
+                        if (tokens.length == 3) {
+                            message = KVClientServer.put(tokens[1], tokens[2]);
+                        } else {
+                            message = KVClientServer.put(tokens[1], "null");
+                        }
+                        handleServerResponse(message);
                     } catch (Exception e) {
                         System.out.println("Put failed: Server failed to insert the tuple.");
                         logger.error("Put failed: Server failed to insert the tuple.");
