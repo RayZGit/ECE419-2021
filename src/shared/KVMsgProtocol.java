@@ -17,6 +17,7 @@ public abstract class KVMsgProtocol {
     public void sendMessage(KVMessage message) throws Exception{
         outputStream.write(KVMsgProtocol.encode(message).getMsgBytes());
         outputStream.flush();
+        logger.info("Send message:\t '" + KVMsgProtocol.encode(message).getMsg() + "'");
     }
 
     public KVMessage receiveMessage() throws Exception{
