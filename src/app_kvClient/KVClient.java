@@ -11,13 +11,14 @@ import shared.messages.KVMessage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.UnknownHostException;
 
 public class KVClient implements IKVClient, Runnable {
 
     private static Logger logger = Logger.getRootLogger();
     private static final String PROMPT = "EchoClient> ";
     private BufferedReader input;
+    private final int LEN_KEY = 20;
+    private final int LEN_VALUE = 120 * 1024;
 
     private KVStore KVClientServer;
     private boolean running;
@@ -92,6 +93,14 @@ public class KVClient implements IKVClient, Runnable {
                 if (tokens.length != 3 && tokens.length != 2){
                     System.out.println("Put failed: Invalid arguments number");
                 } else {
+                    if (tokens[1].length() > LEN_KEY) {
+                        System.out.println("Put failed: Key too long");
+                        break;
+                    }
+                    if (tokens[2].length() > LEN_VALUE) {
+                        System.out.println("Put failed: value too long");
+                        break;
+                    }
                     try {
                         KVMessage message;
                         if (tokens.length == 3) {
@@ -110,6 +119,10 @@ public class KVClient implements IKVClient, Runnable {
                 if (tokens.length != 2){
                     System.out.println("Get failed: Invalid arguments number");
                 } else {
+                    if (tokens[1].length() > LEN_KEY) {
+                        System.out.println("Get failed: Key too long");
+                        break;
+                    }
                     try {
                         KVMessage message = KVClientServer.get(tokens[1]);
                         handleServerResponse(message);
