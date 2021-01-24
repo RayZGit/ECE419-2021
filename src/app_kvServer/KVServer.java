@@ -103,15 +103,15 @@ public class KVServer implements IKVServer, Runnable {
 			while(isRunning()){
 				try {
 					Socket client = serverSocket.accept();
-					KVServerClientConnection connection =
-							new KVServerClientConnection(client);
+					KVServerConnection connection =
+							new KVServerConnection(client);
 					new Thread(connection).start();
 
-					logger.info("Connected to "
+					logger.info("<Server> Connected to "
 							+ client.getInetAddress().getHostName()
 							+  " on port " + client.getPort());
 				} catch (IOException e) {
-					logger.error("Error! " +
+					logger.error("<Server> Error! " +
 							"Unable to establish connection. \n", e);
 				}
 			}
@@ -121,32 +121,45 @@ public class KVServer implements IKVServer, Runnable {
 	}
 
 	private boolean isRunning() {
-		return this.isRunning();
+		return running;
 	}
 
 	@Override
 	public void kill(){
-
+		running = false;
+		try {
+			serverSocket.close();
+		} catch (IOException e) {
+			System.out.println("<Server> Error! " + "Unable to close socket on port: " + port);
+			logger.error("<Server> Error! " +
+					"Unable to close socket on port: " + port, e);
+		}
 	}
 
 	@Override
 	public void close(){
 		kill();
+		clearCache();
 	}
 
 
 	private boolean initializeServer() {
-		logger.info("Initialize server ...");
+		System.out.println("Initialize server");
+		logger.info("<Server> Initialize server ...");
 		try {
 			serverSocket = new ServerSocket(port);
-			logger.info("Server listening on port: "
+			System.out.println("Server listening on port: "
+					+ serverSocket.getLocalPort());
+			logger.info("<Server> Server listening on port: "
 					+ serverSocket.getLocalPort());
 			return true;
 
 		} catch (IOException e) {
-			logger.error("Error! Cannot open server socket:");
+			System.out.println("Error! Cannot open server socket:");
+			logger.error("<Server> Error! Cannot open server socket:");
 			if(e instanceof BindException){
-				logger.error("Port " + port + " is already bound!");
+				System.out.println("Port " + port + " is already bound!");
+				logger.error("<Server> Port " + port + " is already bound!");
 			}
 			return false;
 		}
@@ -160,7 +173,7 @@ public class KVServer implements IKVServer, Runnable {
 		System.out.println("Start Server");
 		try {
 			new LogSetup("logs/server.log", Level.ALL);
-			if(args.length != 1) {
+			if(args.length < 1) {
 				System.out.println("Error! Invalid number of arguments!");
 				System.out.println("Usage: Server <port>!");
 			} else {
@@ -168,7 +181,6 @@ public class KVServer implements IKVServer, Runnable {
 				int catchSize = Integer.parseInt(args[1]);
 				String strategy = args[2];
 				new Thread(new KVServer(portNumber, catchSize, strategy)).start();
-//				new Server(port).start();
 			}
 		} catch (IOException e) {
 			System.out.println("Error! Unable to initialize logger!");
@@ -179,8 +191,8 @@ public class KVServer implements IKVServer, Runnable {
 			System.out.println("Usage: Server <port>!");
 			System.exit(1);
 		} catch (IllegalArgumentException iae) {
-			//TODO strategy name of catching
-			System.out.println("Error! Invalid argument <strategy>! Not one of [TODO] ");
+			System.out.println("Error! Invalid argument <strategy>! Not one of [None | LRU | LFU | FIFO] ");
+			System.exit(1);
 		}
 	}
 }
