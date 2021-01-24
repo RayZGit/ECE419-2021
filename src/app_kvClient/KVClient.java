@@ -162,39 +162,39 @@ public class KVClient implements IKVClient, Runnable {
 
     private void handleServerResponse(KVMessage response){
         switch (response.getStatus()) {
-            case GET_ERROR -> {
+            case GET_ERROR:
                 System.out.println("Get failed: " + response.getKey() + " was invalid");
                 logger.warn("Get failed: " + response.getKey() + " was invalid");
-            }
-            case GET_SUCCESS -> {
+                break;
+            case GET_SUCCESS:
                 System.out.println(response.getValue());
                 logger.info("Get succeed: (" + response.getKey() + ","
                         + response.getValue() + ")");
-            }
-            case PUT_SUCCESS -> {
+                break;
+            case PUT_SUCCESS:
                 System.out.println("Put succeed");
                 logger.info("Put succeed" + response.getKey() + ","
                         + response.getValue() + ")");
-            }
-            case PUT_UPDATE -> {
+                break;
+            case PUT_UPDATE:
                 System.out.println("Update succeed");
                 logger.info("Update succeed" + response.getKey() + ","
                         + response.getValue() + ")");
-            }
-            case PUT_ERROR -> {
+                break;
+            case PUT_ERROR:
                 System.out.println("Put failed: (" + response.getKey()
                         + ", " + response.getValue() + ") was invalid");
                 logger.warn("Put failed: (" + response.getKey()
                         + ", " + response.getValue() + ") was invalid");
-            }
-            case DELETE_SUCCESS -> {
+                break;
+            case DELETE_SUCCESS:
                 System.out.println("Delete succeed");
                 logger.info("Delete succeed: " + response.getKey());
-            }
-            case DELETE_ERROR -> {
+                break;
+            case DELETE_ERROR:
                 System.out.println("Delete failed: " + response.getKey() + " was invalid");
                 logger.warn("Delete failed: " + response.getKey() + " was invalid");
-            }
+                break;
         }
     }
 
