@@ -1,6 +1,7 @@
 package app_kvClient;
 
 import client.KVStore;
+import logger.LogSetup;
 import org.apache.log4j.Logger;
 import org.apache.log4j.Level;
 
@@ -9,6 +10,7 @@ import shared.messages.KVMessage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.UnknownHostException;
 
 public class KVClient implements IKVClient, Runnable {
@@ -24,6 +26,18 @@ public class KVClient implements IKVClient, Runnable {
     public void run(){
         // TODO Auto-generated method stub
         running = true;
+        while (running) {
+            input = new BufferedReader(new InputStreamReader(System.in));
+            System.out.print(PROMPT);
+
+            try {
+                String cmdLine = input.readLine();
+                this.handleCommand(cmdLine);
+            } catch (IOException e) {
+                running = false;
+                System.out.println("CLI does not respond - Application terminated ");
+            }
+        }
     }
     @Override
     public void newConnection(String hostname, int port) throws Exception{
@@ -109,7 +123,11 @@ public class KVClient implements IKVClient, Runnable {
                 }
                 break;
             case "help":
-                handleHelp();
+                if (tokens.length != 1){
+                    System.out.println("Help: Invalid arguments number");
+                } else {
+                    handleHelp();
+                }
                 break;
             case "quit":
                 running = false;
@@ -184,31 +202,42 @@ public class KVClient implements IKVClient, Runnable {
             return;
         }
         System.out.println("Set log level to " + level);
-        logger.info("Set log level to " + level);
     }
 
     private void handleHelp() {
         StringBuilder sb = new StringBuilder();
-        sb.append(PROMPT).append("ECHO CLIENT HELP (Usage):\n");
+        sb.append(PROMPT).append("Key-Value Service HELP (Usage):\n");
         sb.append(PROMPT);
         sb.append("::::::::::::::::::::::::::::::::");
         sb.append("::::::::::::::::::::::::::::::::\n");
         sb.append(PROMPT).append("connect <host> <port>");
         sb.append("\t establishes a connection to a server\n");
-        sb.append(PROMPT).append("send <text message>");
-        sb.append("\t\t sends a text message to the server \n");
         sb.append(PROMPT).append("disconnect");
         sb.append("\t\t\t disconnects from the server \n");
-
+        sb.append(PROMPT).append("put <key> <value>");
+        sb.append("\t Inserts a key-value pair into the storage server data structures.\n" +
+                "Updates (overwrites) the current value with the given value if the " +
+                "server already contains the specified key.\n" +
+                "Deletes the entry for the given key if <value> equals null (\"\").\n");
         sb.append(PROMPT).append("logLevel");
         sb.append("\t\t\t changes the logLevel \n");
         sb.append(PROMPT).append("\t\t\t\t ");
         sb.append("ALL | DEBUG | INFO | WARN | ERROR | FATAL | OFF \n");
-
         sb.append(PROMPT).append("quit ");
         sb.append("\t\t\t exits the program");
         System.out.println(sb.toString());
     }
 
+    public static void main(String[] args) {
+        try {
+            new LogSetup("logs/client.log", Level.OFF);
+            KVClient app = new KVClient();
+            app.run();
+        } catch (IOException e) {
+            System.out.println("Error! Unable to initialize logger!");
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
 
 }

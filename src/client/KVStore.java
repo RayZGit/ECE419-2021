@@ -20,7 +20,6 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 	private Socket socket;
 
 
-
 	public KVStore(String address, int port) {
 		// TODO Auto-generated method stub
 		this.address = address;
