@@ -3,9 +3,10 @@ package shared.messages;
 import java.io.Serializable;
 
 public class KVBasicMessage implements KVMessage, Serializable {
-    String key;
-    String value;
-    StatusType status;
+    private String key;
+    private String value;
+    private StatusType status;
+    private String text;
 
     public KVBasicMessage(String key, String value, StatusType status) {
         this.key = key;
@@ -13,8 +14,13 @@ public class KVBasicMessage implements KVMessage, Serializable {
         this.status = status;
     }
 
+
     public KVBasicMessage(String key, String value, String status) {
         this(key, value, StatusType.valueOf(status));
+    }
+
+    public KVBasicMessage(String text) {
+        this.text = text;
     }
 
     @Override
@@ -31,4 +37,7 @@ public class KVBasicMessage implements KVMessage, Serializable {
     public StatusType getStatus() {
         return status;
     }
+
+    @Override
+    public String getMessages() { return text;}
 }
