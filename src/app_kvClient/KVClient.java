@@ -106,7 +106,7 @@ public class KVClient implements IKVClient, Runnable {
                             }
                             message = KVClientServer.put(tokens[1], tokens[2]);
                         } else {
-                            message = KVClientServer.put(tokens[1], "null");
+                            message = KVClientServer.delete(tokens[1]);
                         }
                         handleServerResponse(message);
                     } catch (Exception e) {
