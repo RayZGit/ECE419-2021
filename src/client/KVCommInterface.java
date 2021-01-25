@@ -42,4 +42,18 @@ public interface KVCommInterface {
 	 *             KV server).
 	 */
 	public KVMessage get(String key) throws Exception;
+
+	/**
+	 * Delete the KV pairs for a given key from the KVServer.
+	 *
+	 * @param key
+	 *            the key that identifies the value.
+	 *
+	 * @return a message that confirms the insertion of the tuple or an error.
+	 *
+	 * @throws Exception
+	 *             if put command cannot be executed (e.g. not connected to any
+	 *             KV server).
+	 */
+	public KVMessage delete(String key) throws Exception;
 }
