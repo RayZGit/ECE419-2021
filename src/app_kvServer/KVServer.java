@@ -1,5 +1,16 @@
 package app_kvServer;
 
+
+import logger.LogSetup;
+import server.Cache.ICache;
+import server.StoreDisk.IStoreDisk;
+import server.StoreDisk.StoreDisk;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+
 import logger.LogSetup;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -30,11 +41,21 @@ public class KVServer implements IKVServer, Runnable {
 	 *           currently not contained in the cache. Options are "FIFO", "LRU",
 	 *           and "LFU".
 	 */
+
+	private int cacheSize;
+
+	private ICache cache;
+	private IStoreDisk storeDisk;
+
 	public KVServer(int port, int cacheSize, String strategy) {
 		// TODO Auto-generated method stub
+		this.cacheSize = cacheSize;
+		this.storeDisk = new StoreDisk(String.valueOf(port));
+
 		this.port = port;
 		this.catchSize = cacheSize;
 		this.strategy = CacheStrategy.valueOf(strategy);
+		this.storeDisk = new StoreDisk(String.valueOf(port+".txt"));
 	}
 
 	@Override
@@ -63,26 +84,30 @@ public class KVServer implements IKVServer, Runnable {
 
 	@Override
 	public boolean inStorage(String key){
-		// TODO Auto-generated method stub
+		return storeDisk.contain(key);
+	}
+
+	@Override
+    public boolean inCache(String key){
+		// TODO stub
 		return false;
 	}
 
 	@Override
-	public boolean inCache(String key){
-		// TODO Auto-generated method stub
-		return false;
+    public String getKV(String key) throws Exception{
+		if(key == null){
+			return null;
+		}
+		return storeDisk.get(key);
 	}
 
 	@Override
-	public String getKV(String key) throws Exception{
-		// TODO Auto-generated method stub
-		return "";
+    public void putKV(String key, String value) throws Exception {
+		if (key != null) {
+			storeDisk.put(key, value);
+		}
 	}
 
-	@Override
-	public void putKV(String key, String value) throws Exception{
-		// TODO Auto-generated method stub
-	}
 
 	@Override
 	public void clearCache(){
@@ -90,8 +115,8 @@ public class KVServer implements IKVServer, Runnable {
 	}
 
 	@Override
-	public void clearStorage(){
-		// TODO Auto-generated method stub
+    public void clearStorage(){
+			storeDisk.dump();
 	}
 
 	@Override
