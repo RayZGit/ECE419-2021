@@ -31,7 +31,21 @@ public interface KVMessage {
 	 * response types and error types associated to the message.
 	 */
 	public StatusType getStatus();
-	
+
+	/**
+	 set the key
+	 */
+	public void setKey(String key);
+
+	/**
+	 set the value
+	 */
+	public void setValue(String value);
+
+	/**
+	set the status
+	*/
+	public void setStatus(StatusType status);
 }
 
 

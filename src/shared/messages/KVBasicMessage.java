@@ -13,8 +13,10 @@ public class KVBasicMessage implements KVMessage, Serializable {
         this.status = status;
     }
 
-    public KVBasicMessage(String key, String value, String status) {
-        this(key, value, StatusType.valueOf(status));
+    public KVBasicMessage() {
+        this.key = null;
+        this.value = null;
+        this.status = null;
     }
 
     @Override
@@ -30,5 +32,20 @@ public class KVBasicMessage implements KVMessage, Serializable {
     @Override
     public StatusType getStatus() {
         return status;
+    }
+
+    @Override
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    @Override
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    @Override
+    public void setStatus(StatusType status) {
+        this.status = status;
     }
 }
