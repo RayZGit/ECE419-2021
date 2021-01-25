@@ -113,15 +113,14 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
 
             case DELETE: {
                 response.setValue(request.getValue());
-                boolean keyExist = kvServer.inCache(requestKey) || kvServer.inStorage(requestKey);
+                boolean keyExist = kvServer.inCache(request.getKey()) || kvServer.inStorage(request.getKey());
 
                 if (keyExist) {
                     try {
                         kvServer.delete(request.getKey());
                         response.setStatus(KVMessage.StatusType.DELETE_SUCCESS);
                         System.out.println("Delete succeed");
-                        logger.info("<Server> Delete succeed" + requestKey + ","
-                                + requestValue + ")");
+                        logger.info("<Server> Delete succeed. Key:(" + request.getKey() + ")");
                     } catch (Exception e) {
                         response.setStatus(KVMessage.StatusType.DELETE_ERROR);
                         System.out.println("Delete failed: (" + request.getKey()

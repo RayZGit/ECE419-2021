@@ -33,7 +33,6 @@ public abstract class KVMsgProtocol {
             /* read next char from stream */
             read = (byte) inputStream.read();
         }
-
         /* build final String */
         TextMessage textMessage = new TextMessage(bufferBytes);
         logger.info("Receive message:\t '" + textMessage.getMsg().trim() + "'");
