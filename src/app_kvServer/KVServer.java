@@ -108,7 +108,6 @@ public class KVServer implements IKVServer, Runnable {
 		}
 	}
 
-
 	@Override
 	public void clearCache(){
 		// TODO Auto-generated method stub
@@ -129,7 +128,7 @@ public class KVServer implements IKVServer, Runnable {
 				try {
 					Socket client = serverSocket.accept();
 					KVServerConnection connection =
-							new KVServerConnection(client);
+							new KVServerConnection(client, this);
 					new Thread(connection).start();
 
 					logger.info("<Server> Connected to "
@@ -198,9 +197,9 @@ public class KVServer implements IKVServer, Runnable {
 		System.out.println("Start Server");
 		try {
 			new LogSetup("logs/server.log", Level.ALL);
-			if(args.length < 1) {
+			if(args.length < 3) {
 				System.out.println("Error! Invalid number of arguments!");
-				System.out.println("Usage: Server <port>!");
+				System.out.println("Usage: Server <port> <cache size> <strategy>!");
 			} else {
 				int portNumber = Integer.parseInt(args[0]);
 				int catchSize = Integer.parseInt(args[1]);

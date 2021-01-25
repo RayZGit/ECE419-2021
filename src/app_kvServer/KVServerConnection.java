@@ -18,9 +18,10 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
 
     private Socket clientSocket;
 
-    public KVServerConnection(Socket client) {
+    public KVServerConnection(Socket client, IKVServer kvServer) {
         this.clientSocket = client;
         this.isOpen = true;
+        this.kvServer = kvServer;
     }
 
     @Override
@@ -35,10 +36,10 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
                 try {
                     KVMessage request = receiveMsg();
                     System.out.println("!!!!!!!!!!!!Received before handle client request!!!!!!!!!!!!!!");
-//                    KVMessage response = handleClientRequest(request);
-//                    sendMsg(response);
-                    KVMessage testResponse = testHandleRequest(request);
-                    sendMsg(testResponse);
+                    KVMessage response = handleClientRequest(request);
+                    sendMsg(response);
+//                    KVMessage testResponse = testHandleRequest(request);
+//                    sendMsg(testResponse);
                     /* connection either terminated by the client or lost due to
                      * network problems*/
                 } catch (Exception e) {
@@ -67,14 +68,14 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
         }
     }
 
-    public KVMessage testHandleRequest(KVMessage request) {
-        KVMessage response = new KVBasicMessage();
-        response.setKey("ServerKey");
-        response.setValue("ServerValue");
-        response.setStatus(KVMessage.StatusType.PUT_SUCCESS);
-//        response.setStatus(KVMessage.StatusType.GET_ERROR);
-        return response;
-    }
+//    public KVMessage testHandleRequest(KVMessage request) {
+//        KVMessage response = new KVBasicMessage();
+//        response.setKey("ServerKey");
+//        response.setValue("ServerValue");
+//        response.setStatus(KVMessage.StatusType.PUT_SUCCESS);
+////        response.setStatus(KVMessage.StatusType.GET_ERROR);
+//        return response;
+//    }
     /**
      * handle the request, <get, put>
      * @return true or false if the action success or failed
@@ -84,6 +85,7 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
         response.setKey(request.getKey());
         switch (request.getStatus()) {
             case GET: {
+                System.out.println("In put");
                 Exception exception = null;
                 String value = null;
                 try {
@@ -109,8 +111,36 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
                 break;
             }
 
+            case DELETE: {
+                response.setValue(request.getValue());
+                boolean keyExist = kvServer.inCache(requestKey) || kvServer.inStorage(requestKey);
+
+                if (keyExist) {
+                    try {
+                        kvServer.delete(request.getKey());
+                        response.setStatus(KVMessage.StatusType.DELETE_SUCCESS);
+                        System.out.println("Delete succeed");
+                        logger.info("<Server> Delete succeed" + requestKey + ","
+                                + requestValue + ")");
+                    } catch (Exception e) {
+                        response.setStatus(KVMessage.StatusType.DELETE_ERROR);
+                        System.out.println("Delete failed: (" + request.getKey()
+                                + ", " + request.getValue() + ") was invalid");
+                        logger.error("<Server> Delete failed: (" + request.getKey()
+                                + ", " + request.getValue() + ") was invalid");
+                        break;
+                    }
+                    break;
+                } else{
+                    response.setStatus(KVMessage.StatusType.DELETE_SUCCESS);
+                    System.out.println("Delete failed: Key(" + request.getKey()  + ") does not exist,");
+                    logger.error("Delete failed: Key(" + request.getKey()  + ") does not exist,");
+                }
+                break;
+            }
+
             case PUT: {
-                Exception exception = null;
+                System.out.println("In put 1");
                 response.setValue(request.getValue());
                 String requestKey = request.getKey();
                 String requestValue = request.getValue();
@@ -126,33 +156,20 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
                     break;
                 }
 
+                System.out.println("In put 2");
                 boolean keyExist = kvServer.inCache(requestKey) || kvServer.inStorage(requestKey);
                 try {
                     kvServer.putKV(requestKey, requestValue);
                 } catch (Exception e) {
-                    if (requestValue.equals("null")) {
-                        response.setStatus(KVMessage.StatusType.DELETE_ERROR);
-                        System.out.println("Delete failed: (" + requestKey
-                                + ", " + requestValue + ") was invalid");
-                        logger.error("<Server> Delete failed: (" + requestKey
-                                + ", " + requestValue + ") was invalid");
-                    } else {
-                        response.setStatus(KVMessage.StatusType.PUT_ERROR);
-                        System.out.println("Put failed: (" + requestKey
-                                + ", " + requestValue + ") was invalid");
-                        logger.error("<Server> Put failed: (" + requestKey
-                                + ", " + requestValue + ") was invalid");
-                    }
+                    response.setStatus(KVMessage.StatusType.PUT_ERROR);
+                    System.out.println("Put failed: (" + requestKey
+                            + ", " + requestValue + ") was invalid");
+                    logger.error("<Server> Put failed: (" + requestKey
+                            + ", " + requestValue + ") was invalid");
                     break;
                 }
 
-
-                if (requestValue.equals("null")) {
-                    response.setStatus(KVMessage.StatusType.DELETE_SUCCESS);
-                    System.out.println("Delete succeed");
-                    logger.info("<Server> Delete succeed" + requestKey + ","
-                            + requestValue + ")");
-                } else if (keyExist) {
+                if (keyExist) {
                     response.setStatus(KVMessage.StatusType.PUT_UPDATE);
                     System.out.println("Update succeed");
                     logger.info("<Server> Delete succeed" + requestKey + ","
