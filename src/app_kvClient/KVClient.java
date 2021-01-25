@@ -15,7 +15,7 @@ import java.io.InputStreamReader;
 public class KVClient implements IKVClient, Runnable {
 
     private static Logger logger = Logger.getRootLogger();
-    private static final String PROMPT = "EchoClient> ";
+    private static final String PROMPT = "KVService> ";
     private BufferedReader input;
     private final int LEN_KEY = 20;
     private final int LEN_VALUE = 120 * 1024;
@@ -247,7 +247,7 @@ public class KVClient implements IKVClient, Runnable {
 
     public static void main(String[] args) {
         try {
-            new LogSetup("logs/client.log", Level.OFF);
+            new LogSetup("logs/client.log", Level.ALL);
             KVClient app = new KVClient();
             app.run();
         } catch (IOException e) {
