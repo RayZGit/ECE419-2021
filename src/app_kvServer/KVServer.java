@@ -1,5 +1,9 @@
 package app_kvServer;
 
+import server.Cache.ICache;
+import server.StoreDisk.IStoreDisk;
+import server.StoreDisk.StoreDisk;
+
 public class KVServer implements IKVServer {
 	/**
 	 * Start KV Server at given port
@@ -11,8 +15,18 @@ public class KVServer implements IKVServer {
 	 *           currently not contained in the cache. Options are "FIFO", "LRU",
 	 *           and "LFU".
 	 */
+
+	private CacheStrategy strategy;
+	private int cacheSize;
+
+	private ICache cache;
+	private IStoreDisk storeDisk;
+
 	public KVServer(int port, int cacheSize, String strategy) {
 		// TODO Auto-generated method stub
+		this.cacheSize = cacheSize;
+		this.storeDisk = new StoreDisk(String.valueOf(port));
+
 	}
 	
 	@Override
@@ -47,19 +61,23 @@ public class KVServer implements IKVServer {
 
 	@Override
     public boolean inCache(String key){
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
     public String getKV(String key) throws Exception{
-		// TODO Auto-generated method stub
-		return "";
+		if(key == null){
+			return null;
+		}
+		return storeDisk.get(key);
 	}
 
 	@Override
     public void putKV(String key, String value) throws Exception{
-		// TODO Auto-generated method stub
+		if(key != null){
+			storeDisk.put(key,value);
+		}
+
 	}
 
 	@Override
@@ -69,7 +87,7 @@ public class KVServer implements IKVServer {
 
 	@Override
     public void clearStorage(){
-		// TODO Auto-generated method stub
+		storeDisk.dump();
 	}
 
 	@Override
