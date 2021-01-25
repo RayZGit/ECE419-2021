@@ -34,8 +34,11 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
             while(isOpen) {
                 try {
                     KVMessage request = receiveMsg();
-                    KVMessage response = handleClientRequest(request);
-                    sendMsg(response);
+                    System.out.println("!!!!!!!!!!!!Received before handle client request!!!!!!!!!!!!!!");
+//                    KVMessage response = handleClientRequest(request);
+//                    sendMsg(response);
+                    KVMessage testResponse = testHandleRequest(request);
+                    sendMsg(testResponse);
                     /* connection either terminated by the client or lost due to
                      * network problems*/
                 } catch (Exception e) {
@@ -64,7 +67,14 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
         }
     }
 
-
+    public KVMessage testHandleRequest(KVMessage request) {
+        KVMessage response = new KVBasicMessage();
+        response.setKey("ServerKey");
+        response.setValue("ServerValue");
+        response.setStatus(KVMessage.StatusType.PUT_SUCCESS);
+//        response.setStatus(KVMessage.StatusType.GET_ERROR);
+        return response;
+    }
     /**
      * handle the request, <get, put>
      * @return true or false if the action success or failed
@@ -165,8 +175,14 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
         logger.info("<Server> RECEIVE from \t<"
                 + clientSocket.getInetAddress().getHostAddress() + ":"
                 + clientSocket.getPort() + ">: "
-                + "key: " + request.getKey() +"|"
-                + "value: " + request.getValue() + "|"
+                + "key: " + request.getKey() +" | "
+                + "value: " + request.getValue() + " | "
+                + "status: " + request.getStatus());
+        System.out.println("<Server> RECEIVE from \t<"
+                + clientSocket.getInetAddress().getHostAddress() + ":"
+                + clientSocket.getPort() + ">: "
+                + "key: " + request.getKey() +" | "
+                + "value: " + request.getValue() + " | "
                 + "status: " + request.getStatus());
         return request;
     }
@@ -176,8 +192,14 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
         logger.info("<Server> SEND \t<"
                 + clientSocket.getInetAddress().getHostAddress() + ":"
                 + clientSocket.getPort() + ">: "
-                + "key: " + messages.getKey() +"|"
-                + "value: " + messages.getValue() + "|"
+                + "key: " + messages.getKey() +"| "
+                + "value: " + messages.getValue() + "| "
+                + "status: " + messages.getStatus());
+        System.out.println("<Server> SEND \t<"
+                + clientSocket.getInetAddress().getHostAddress() + ":"
+                + clientSocket.getPort() + ">: "
+                + "key: " + messages.getKey() +"| "
+                + "value: " + messages.getValue() + "| "
                 + "status: " + messages.getStatus());
     }
 }
