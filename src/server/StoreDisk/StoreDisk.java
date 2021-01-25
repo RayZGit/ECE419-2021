@@ -60,7 +60,7 @@ public class StoreDisk implements IStoreDisk {
         }
 
     }
-    private void dump(){
+    public void dump(){
         storage.delete();
         storage = new File(resourceDir+this.filename);
         try {
@@ -129,17 +129,21 @@ public class StoreDisk implements IStoreDisk {
         return true;
     }
 
-    public static void main(String args[]){
-        StoreDisk sd = new StoreDisk("testing.txt");
-        sd.put("K2","v2");
-        sd.put("K2","v");
-        sd.put("K1","v1");
-        sd.put("K3","v3");
-        String t = sd.get("K2");
-        System.out.println(t);
-        System.out.println(sd.get("K3"));
-        sd.dump();
-        System.out.println(sd.get("K3"));
-
-    }
+//    public static void main(String args[]){
+//        StoreDisk sd = new StoreDisk("testing.txt");
+//        sd.put("K2","v2");
+//        sd.put("K2","v");
+//        sd.put("K1","v1");
+//        sd.put("K3","v3");
+//        String t = sd.get("K2");
+//        System.out.println(t);
+//        System.out.println(sd.get("K3"));
+//        sd.dump();
+//        sd.put("K2","v2");
+//        sd.put("K2","v");
+//        sd.put("K1","v1");
+//        sd.put("K3","v3");
+//        System.out.println(sd.get("K2"));
+//
+//    }
 }
