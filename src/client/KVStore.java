@@ -74,4 +74,11 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 		return receiveMessage();
 	}
 
+	@Override
+	public KVMessage delete(String key) throws Exception {
+		KVBasicMessage request = new KVBasicMessage(key, null, KVMessage.StatusType.DELETE);
+		sendMessage(request);
+		return receiveMessage();
+	}
+
 }

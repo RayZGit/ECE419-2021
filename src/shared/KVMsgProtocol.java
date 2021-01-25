@@ -36,7 +36,7 @@ public abstract class KVMsgProtocol {
 
         /* build final String */
         TextMessage textMessage = new TextMessage(bufferBytes);
-        logger.info("Receive message:\t '" + textMessage.getMsg() + "'");
+        logger.info("Receive message:\t '" + textMessage.getMsg().trim() + "'");
         return KVMsgProtocol.decode(textMessage);
     }
 

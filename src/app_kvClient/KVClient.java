@@ -97,16 +97,16 @@ public class KVClient implements IKVClient, Runnable {
                         System.out.println("Put failed: Key too long");
                         break;
                     }
-                    if (tokens[2].length() > LEN_VALUE) {
-                        System.out.println("Put failed: value too long");
-                        break;
-                    }
                     try {
                         KVMessage message;
                         if (tokens.length == 3) {
+                            if (tokens[2].length() > LEN_VALUE) {
+                                System.out.println("Put failed: value too long");
+                                break;
+                            }
                             message = KVClientServer.put(tokens[1], tokens[2]);
                         } else {
-                            message = KVClientServer.put(tokens[1], "null");
+                            message = KVClientServer.delete(tokens[1]);
                         }
                         handleServerResponse(message);
                     } catch (Exception e) {
