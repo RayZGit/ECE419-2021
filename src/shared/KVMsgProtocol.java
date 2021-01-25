@@ -1,9 +1,10 @@
 package shared;
 
 import org.apache.log4j.Logger;
+import shared.messages.TextMessage;
 import shared.messages.KVBasicMessage;
 import shared.messages.KVMessage;
-import shared.messages.TextMessage;
+
 
 import java.io.InputStream;
 import java.io.OutputStream;

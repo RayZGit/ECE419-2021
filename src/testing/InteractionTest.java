@@ -88,7 +88,8 @@ public class InteractionTest extends TestCase {
 
 		try {
 			kvClient.put(key, value);
-			response = kvClient.put(key, "null");
+			response = kvClient.delete(key);
+//			response = kvClient.put(key, "null");
 			
 		} catch (Exception e) {
 			ex = e;

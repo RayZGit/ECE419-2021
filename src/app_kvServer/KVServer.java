@@ -50,7 +50,6 @@ public class KVServer implements IKVServer, Runnable {
 	public KVServer(int port, int cacheSize, String strategy) {
 		// TODO Auto-generated method stub
 		this.cacheSize = cacheSize;
-		this.storeDisk = new StoreDisk(String.valueOf(port));
 
 		this.port = port;
 		this.catchSize = cacheSize;
