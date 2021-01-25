@@ -100,12 +100,12 @@ public class KVClient implements IKVClient, Runnable {
                     try {
                         KVMessage message;
                         if (tokens.length == 3) {
-                            message = KVClientServer.put(tokens[1], tokens[2]);
-                        } else {
                             if (tokens[2].length() > LEN_VALUE) {
                                 System.out.println("Put failed: value too long");
                                 break;
                             }
+                            message = KVClientServer.put(tokens[1], tokens[2]);
+                        } else {
                             message = KVClientServer.put(tokens[1], "null");
                         }
                         handleServerResponse(message);
