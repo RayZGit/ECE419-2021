@@ -55,7 +55,7 @@ public class KVServer implements IKVServer, Runnable {
 		this.port = port;
 		this.catchSize = cacheSize;
 		this.strategy = CacheStrategy.valueOf(strategy);
-		this.storeDisk = new StoreDisk(String.valueOf(port+".txt"));
+		this.storeDisk = new StoreDisk(String.valueOf(port)+".txt");
 	}
 
 	@Override
@@ -114,6 +114,7 @@ public class KVServer implements IKVServer, Runnable {
 		// TODO Auto-generated method stub
 	}
 
+
 	@Override
     public void clearStorage(){
 			storeDisk.dump();
@@ -165,6 +166,10 @@ public class KVServer implements IKVServer, Runnable {
 	public void close(){
 		kill();
 		clearCache();
+	}
+
+	public void delete(String key) throws Exception{
+		storeDisk.delete(key, null);
 	}
 
 

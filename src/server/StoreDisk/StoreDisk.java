@@ -17,33 +17,34 @@ public class StoreDisk implements IStoreDisk {
 
 
     public StoreDisk(String filename){
-//        LOG.info(CLASS_NAME+"Initiate the persistent storage for "+filename);
+        LOG.info(CLASS_NAME+"Initiate the persistent storage for "+filename);
         System.out.println(CLASS_NAME+"Initiate the persistent storage for "+filename);
 
-        this.filename = filename;
+         this.filename = filename;
          this.storage = new File(resourceDir+this.filename);
         try {
             if(this.storage.createNewFile()){
-//                LOG.info(CLASS_NAME+"File successfully created");
+                LOG.info(CLASS_NAME+"File successfully created");
             }else{
-//                LOG.info(CLASS_NAME+"File already existed");
+                LOG.info(CLASS_NAME+"File already existed");
             }
         } catch (IOException e) {
-//            LOG.error(CLASS_NAME+"Error for creating file",e);
+            LOG.error(CLASS_NAME+"Error for creating file",e);
         }
 
     }
-    private void delete(String key, String value){
+    public void delete(String key, String value)throws Exception{
         File newFile = new File(resourceDir+"temp_"+filename);
         try {
             BufferedReader reader = new BufferedReader(new FileReader(storage));
             BufferedWriter writer = new BufferedWriter(new FileWriter(newFile));
 
-            String lineToRemove = key+":"+value;
+            String lineToRemove = key;
             String line;
             while((line = reader.readLine())!= null){
                 line = line.trim();
-                if(line.equals(lineToRemove)) continue;
+                String[] lineArray = line.split(":");
+                if(lineArray[0].equals(lineToRemove)) continue;
                 writer.write(line+System.lineSeparator());
             }
             writer.close();
@@ -56,7 +57,8 @@ public class StoreDisk implements IStoreDisk {
             this.storage = new File(resourceDir+this.filename);
 
         } catch (IOException e) {
-//            LOG.error(CLASS_NAME+"Error for deleting file",e);
+            LOG.error(CLASS_NAME+"Error for deleting file",e);
+            throw new Exception(CLASS_NAME+"Error for deleting file");
         }
 
     }
@@ -66,13 +68,13 @@ public class StoreDisk implements IStoreDisk {
         try {
             storage.createNewFile();
         } catch (IOException e) {
-//            LOG.error(CLASS_NAME+"Error for creating file during dumping",e);
+            LOG.error(CLASS_NAME+"Error for creating file during dumping",e);
         }
     }
 
 
     @Override
-    public void put(String key, String value) {
+    public void put(String key, String value)throws Exception {
         String orgValue = get(key);
         if(orgValue != null){
             delete(key,orgValue);
@@ -83,7 +85,8 @@ public class StoreDisk implements IStoreDisk {
             fw.close();
 
         } catch (IOException e) {
-//            LOG.error(CLASS_NAME+"Error for put a new KV pair",e);
+            LOG.error(CLASS_NAME+"Error for put a new KV pair",e);
+            throw new Exception(CLASS_NAME+"Error for iterating  file");
         }
 
 
@@ -91,7 +94,7 @@ public class StoreDisk implements IStoreDisk {
     }
 
     @Override
-    public String get(String key) {
+    public String get(String key) throws Exception{
         String value = null;
         try {
             Scanner scanner = new Scanner(this.storage);
@@ -99,12 +102,12 @@ public class StoreDisk implements IStoreDisk {
                 String line = scanner.nextLine();
                 line = line.trim();
                 if(line.isEmpty()){
-//                    LOG.info(CLASS_NAME+"File already existed");
+                    LOG.info(CLASS_NAME+"File already existed");
                     continue;
                 }
                 String[] lineArray = line.split(":");
                 if (lineArray.length != 2){
-//                    LOG.info(CLASS_NAME+"Invalid found of the line");
+                    LOG.info(CLASS_NAME+"Invalid found of the line");
                     break;
                 }
 //                System.out.println(lineArray[0]);
@@ -115,14 +118,20 @@ public class StoreDisk implements IStoreDisk {
             }
             scanner.close();
         } catch (FileNotFoundException e) {
-//            LOG.error(CLASS_NAME+"Error for iterating  file",e);
+            LOG.error(CLASS_NAME+"Error for iterating  file",e);
+            throw new Exception(CLASS_NAME+"Error for iterating  file");
         }
         return value;
     }
 
     @Override
     public boolean contain(String key) {
-        String value = get(key);
+        String value = null;
+        try {
+            value = get(key);
+        } catch (Exception e) {
+            LOG.error(CLASS_NAME+"Error for contain function",e);
+        }
         if(value == null){
             return false;
         }

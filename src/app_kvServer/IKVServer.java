@@ -86,4 +86,6 @@ public interface IKVServer {
      * Gracefully stop the server, can perform any additional actions
      */
     public void close();
+
+    public void delete(String key) throws Exception;
 }
