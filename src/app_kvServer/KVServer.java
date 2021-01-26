@@ -2,7 +2,10 @@ package app_kvServer;
 
 
 import logger.LogSetup;
+import server.Cache.FIFOCache;
 import server.Cache.ICache;
+import server.Cache.LFUCache;
+import server.Cache.LRUCache;
 import server.StoreDisk.IStoreDisk;
 import server.StoreDisk.StoreDisk;
 
@@ -54,6 +57,17 @@ public class KVServer implements IKVServer, Runnable {
 		this.port = port;
 		this.catchSize = cacheSize;
 		this.strategy = CacheStrategy.valueOf(strategy);
+		switch (this.strategy) {
+			case FIFO:
+				this.cache = new FIFOCache(cacheSize);
+				break;
+			case LRU:
+				this.cache = new LRUCache(cacheSize);
+				break;
+			case LFU:
+				this.cache = new LFUCache(cacheSize);
+		}
+
 		this.storeDisk = new StoreDisk(String.valueOf(port)+".txt");
 	}
 
@@ -88,8 +102,7 @@ public class KVServer implements IKVServer, Runnable {
 
 	@Override
     public boolean inCache(String key){
-		// TODO stub
-		return false;
+		return cache.contain(key);
 	}
 
 	@Override
