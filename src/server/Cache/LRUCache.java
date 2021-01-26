@@ -1,31 +1,42 @@
 package server.Cache;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 
-public class LRUCache implements ICache{
+/**
+ * https://www.programmersought.com/article/6678892876/
+ * */
 
-    private LinkedHashMap<String, String> cache;
-    LRUCache(int capacity){
-        cache = new LinkedHashMap<>(capacity);
+public class LRUCache extends Cache{
+    private final float loadFactor = (float) 0.75;
+    public LRUCache(int capacity){
+        super(capacity);
+        this.hashmap = new LinkedHashMap<String, String>(capacity, loadFactor, true){
+            @Override
+            protected boolean removeEldestEntry(Map.Entry<String, String> eldest) {
+                return size() > getCacheSize();
+            }
+        };
     }
 
-    @Override
-    public void put(String key, String value) {
-        cache.put(key, value);
-    }
 
-    @Override
-    public String get(String key) {
-        return cache.getOrDefault(key, null);
-    }
-
-    @Override
-    public boolean contain(String key) {
-        return cache.containsKey(key);
-    }
-
-    @Override
-    public void dump(String key) {
-        cache.clear();
-    }
+//    @Override
+//    public void put(String key, String value) {
+//        cache.put(key, value);
+//    }
+//
+//    @Override
+//    public String get(String key) {
+//        return cache.getOrDefault(key, null);
+//    }
+//
+//    @Override
+//    public boolean contain(String key) {
+//        return cache.containsKey(key);
+//    }
+//
+//    @Override
+//    public void dump(String key) {
+//        cache.clear();
+//    }
 }

@@ -139,7 +139,7 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
             }
 
             case PUT: {
-                System.out.println("In put 1");
+//                System.out.println("In put 1");
                 response.setValue(request.getValue());
                 String requestKey = request.getKey();
                 String requestValue = request.getValue();
@@ -155,7 +155,7 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
                     break;
                 }
 
-                System.out.println("In put 2");
+//                System.out.println("In put 2");
                 boolean keyExist = kvServer.inCache(requestKey) || kvServer.inStorage(requestKey);
                 try {
                     kvServer.putKV(requestKey, requestValue);
@@ -171,12 +171,12 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
                 if (keyExist) {
                     response.setStatus(KVMessage.StatusType.PUT_UPDATE);
                     System.out.println("Update succeed");
-                    logger.info("<Server> Delete succeed" + requestKey + ","
+                    logger.info("<Server> Update succeed" + requestKey + ","
                             + requestValue + ")");
                 } else {
                     response.setStatus(KVMessage.StatusType.PUT_SUCCESS);
                     System.out.println("Put succeed");
-                    logger.info("<Server> Delete succeed" + requestKey + ","
+                    logger.info("<Server> Put succeed" + requestKey + ","
                             + requestValue + ")");
                 }
                 break;

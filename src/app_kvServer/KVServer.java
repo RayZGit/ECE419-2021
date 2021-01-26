@@ -219,7 +219,7 @@ public class KVServer implements IKVServer, Runnable {
 			System.out.println("Usage: Server <port>!");
 			System.exit(1);
 		} catch (IllegalArgumentException iae) {
-			System.out.println("Error! Invalid argument <strategy>! Not one of [None | LRU | LFU | FIFO] ");
+			System.out.println("Error! Invalid argument <strategy>! Should be one of [None | LRU | LFU | FIFO] ");
 			System.exit(1);
 		} catch (Exception e) {
 			System.out.println("Error! Invalid argument number!");
