@@ -2,10 +2,7 @@ package app_kvServer;
 
 
 import logger.LogSetup;
-import server.Cache.FIFOCache;
-import server.Cache.ICache;
-import server.Cache.LFUCache;
-import server.Cache.LRUCache;
+import server.Cache.*;
 import server.StoreDisk.IStoreDisk;
 import server.StoreDisk.StoreDisk;
 
@@ -66,9 +63,14 @@ public class KVServer implements IKVServer, Runnable {
 				break;
 			case LFU:
 				this.cache = new LFUCache(cacheSize, this);
+				break;
+			case None:
+				this.cache = new Cache(cacheSize,this);
+				break;
 		}
 
 		this.storeDisk = new StoreDisk(String.valueOf(port)+".txt");
+//		this.storeDisk = new StoreDisk("DataDisk"+".txt");
 	}
 
 	@Override
