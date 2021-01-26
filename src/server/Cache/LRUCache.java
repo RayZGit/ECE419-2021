@@ -1,5 +1,7 @@
 package server.Cache;
 
+import app_kvServer.IKVServer;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -9,11 +11,13 @@ import java.util.Map;
 
 public class LRUCache extends Cache{
     private final float loadFactor = (float) 0.75;
-    public LRUCache(int capacity){
-        super(capacity);
+    public LRUCache(int capacity, IKVServer kvServer){
+        super(capacity, kvServer);
         this.hashmap = new LinkedHashMap<String, String>(capacity, loadFactor, true){
             @Override
             protected boolean removeEldestEntry(Map.Entry<String, String> eldest) {
+                //TODO: write eldest to disk before remove the node
+                //TODO: check if disk exist, if yes, then continue, if not, write to disk
                 return size() > getCacheSize();
             }
         };

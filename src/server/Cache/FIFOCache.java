@@ -1,5 +1,7 @@
 package server.Cache;
 
+import app_kvServer.IKVServer;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -15,11 +17,13 @@ public class FIFOCache extends Cache{
      * The first inserted element is placed in the head of the linked list,
      * and the linked list is maintained in the manner of tail insertion.
      * */
-    public FIFOCache(int cacheSize) {
-        super(cacheSize);
+    public FIFOCache(int cacheSize, IKVServer kvServer) {
+        super(cacheSize, kvServer);
         this.hashmap = new LinkedHashMap<String, String>(cacheSize, loadFactor, false){
             @Override
             protected boolean removeEldestEntry(Map.Entry<String, String> eldest) {
+                //TODO: write eldest to disk before remove the node
+                //TODO: check if disk exist, if yes, then continue, if not, write to disk
                 return size() > getCacheSize();
             }
         };

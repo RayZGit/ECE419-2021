@@ -1,15 +1,20 @@
 package server.Cache;
 
+import app_kvServer.IKVServer;
+
 import javax.swing.*;
 import java.util.Map;
 
 public class Cache implements ICache {
     private int cacheSize;
 
+    private IKVServer kvServer;
+
     protected Map<String, String> hashmap;
 
-    public Cache(int cacheSize) {
+    public Cache(int cacheSize, IKVServer kvServer) {
         this.cacheSize = cacheSize;
+        this.kvServer = kvServer;
     }
 
     @Override
