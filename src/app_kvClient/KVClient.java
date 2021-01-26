@@ -17,8 +17,6 @@ public class KVClient implements IKVClient, Runnable {
     private static Logger logger = Logger.getRootLogger();
     private static final String PROMPT = "KVService> ";
     private BufferedReader input;
-    private final int LEN_KEY = 20;
-    private final int LEN_VALUE = 120 * 1024;
 
     private KVStore KVClientServer;
     private boolean running;
@@ -93,25 +91,16 @@ public class KVClient implements IKVClient, Runnable {
                 if (tokens.length != 3 && tokens.length != 2){
                     System.out.println("Put failed: Invalid arguments number");
                 } else {
-                    if (tokens[1].length() > LEN_KEY) {
-                        System.out.println("Put failed: Key too long");
-                        break;
-                    }
                     try {
                         KVMessage message;
                         if (tokens.length == 3) {
-                            if (tokens[2].length() > LEN_VALUE) {
-                                System.out.println("Put failed: value too long");
-                                break;
-                            }
                             message = KVClientServer.put(tokens[1], tokens[2]);
                         } else {
                             message = KVClientServer.delete(tokens[1]);
                         }
                         handleServerResponse(message);
                     } catch (Exception e) {
-                        System.out.println("Put failed: Server failed to insert the tuple.");
-                        logger.error("Put failed: Server failed to insert the tuple.");
+                        e.printStackTrace();
                     }
                 }
                 break;
@@ -119,16 +108,11 @@ public class KVClient implements IKVClient, Runnable {
                 if (tokens.length != 2){
                     System.out.println("Get failed: Invalid arguments number");
                 } else {
-                    if (tokens[1].length() > LEN_KEY) {
-                        System.out.println("Get failed: Key too long");
-                        break;
-                    }
                     try {
                         KVMessage message = KVClientServer.get(tokens[1]);
                         handleServerResponse(message);
                     } catch (Exception e) {
-                        System.out.println("Get failed: Server failed to get the tuple.");
-                        logger.error("Get failed: Server failed to get the tuple.");
+                        e.printStackTrace();
                     }
                 }
                 break;

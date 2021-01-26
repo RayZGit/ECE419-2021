@@ -17,6 +17,8 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 	private final String address;
 	private final int port;
 	private Socket socket;
+	private final int LEN_KEY = 20;
+	private final int LEN_VALUE = 120 * 1024;
 
 
 	public KVStore(String address, int port) {
@@ -61,6 +63,12 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 	@Override
 	public KVMessage put(String key, String value) throws Exception {
 		// TODO Auto-generated method stub
+		if (key.length() > LEN_KEY) {
+			throw new Exception("Put failed: Key too long");
+		}
+		if (value.length() > LEN_VALUE) {
+			throw new Exception("Put failed: Value too long");
+		}
 		KVBasicMessage request = new KVBasicMessage(key, value, KVMessage.StatusType.PUT);
 		sendMessage(request);
 		return receiveMessage();
@@ -69,6 +77,9 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 	@Override
 	public KVMessage get(String key) throws Exception {
 		// TODO Auto-generated method stub
+		if (key.length() > LEN_KEY) {
+			throw new Exception("Get failed: Key too long");
+		}
 		KVBasicMessage request = new KVBasicMessage(key, null, KVMessage.StatusType.GET);
 		sendMessage(request);
 		return receiveMessage();
@@ -76,6 +87,9 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 
 	@Override
 	public KVMessage delete(String key) throws Exception {
+		if (key.length() > LEN_KEY) {
+			throw new Exception("Put failed: Key too long");
+		}
 		KVBasicMessage request = new KVBasicMessage(key, null, KVMessage.StatusType.DELETE);
 		sendMessage(request);
 		return receiveMessage();
