@@ -114,7 +114,8 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
             case DELETE: {
                 response.setValue(request.getValue());
                 boolean keyExist = kvServer.inCache(request.getKey()) || kvServer.inStorage(request.getKey());
-
+                System.out.println("Delete fk!!!!!!!!!!!!!!!!!!!!!!!!!");
+                System.out.println("keyExist is " + keyExist);
                 if (keyExist) {
                     try {
                         kvServer.delete(request.getKey());
@@ -131,7 +132,7 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
                     }
                     break;
                 } else{
-                    response.setStatus(KVMessage.StatusType.DELETE_SUCCESS);
+                    response.setStatus(KVMessage.StatusType.DELETE_ERROR);
                     System.out.println("Delete failed: Key(" + request.getKey()  + ") does not exist,");
                     logger.error("Delete failed: Key(" + request.getKey()  + ") does not exist,");
                 }
@@ -139,7 +140,7 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
             }
 
             case PUT: {
-//                System.out.println("In put 1");
+                System.out.println("In put 1");
                 response.setValue(request.getValue());
                 String requestKey = request.getKey();
                 String requestValue = request.getValue();
@@ -155,7 +156,7 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
                     break;
                 }
 
-//                System.out.println("In put 2");
+                System.out.println("In put 2");
                 boolean keyExist = kvServer.inCache(requestKey) || kvServer.inStorage(requestKey);
                 try {
                     kvServer.putKV(requestKey, requestValue);

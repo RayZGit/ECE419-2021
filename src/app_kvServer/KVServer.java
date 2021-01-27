@@ -68,9 +68,9 @@ public class KVServer implements IKVServer, Runnable {
 //				this.cache = new Cache(cacheSize,this);
 //				break;
 		}
-
-		this.storeDisk = new StoreDisk(String.valueOf(port)+".txt");
-		this.cache = new LRUCache(this.cacheSize,this);
+		
+//		this.storeDisk = new StoreDisk(String.valueOf(port)+".txt");
+		this.storeDisk = new StoreDisk("DataDisk"+".txt");
 	}
 
 	@Override
@@ -104,7 +104,10 @@ public class KVServer implements IKVServer, Runnable {
 
 	@Override
     public boolean inCache(String key){
-		return cache.contain(key);
+		if (cache != null){
+			return cache.contain(key);
+		}
+		return false;
 	}
 
 	@Override

@@ -157,12 +157,12 @@ public class KVClient implements IKVClient, Runnable {
                 break;
             case PUT_SUCCESS:
                 System.out.println("Put succeed");
-                logger.info("Put succeed" + response.getKey() + ","
+                logger.info("Put succeed: (" + response.getKey() + ","
                         + response.getValue() + ")");
                 break;
             case PUT_UPDATE:
                 System.out.println("Update succeed");
-                logger.info("Update succeed" + response.getKey() + ","
+                logger.info("Update succeed: (" + response.getKey() + ","
                         + response.getValue() + ")");
                 break;
             case PUT_ERROR:
