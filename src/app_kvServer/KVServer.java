@@ -124,8 +124,9 @@ public class KVServer implements IKVServer, Runnable {
 
 	@Override
     public synchronized void putKV(String key, String value) throws Exception {
-		if (key != null) {
-			storeDisk.put(key, value);
+		if (key == null) { return; }
+		if(cache.contain(key)){
+
 		}
 		if(cache != null){
 			cache.put(key, value);

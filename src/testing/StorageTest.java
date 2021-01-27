@@ -43,8 +43,8 @@ public class StorageTest extends TestCase {
 
     @Test
     public void testPut2() {
-        String key = "你好";
-        String value = "你也好";
+        String key = "你好么";
+        String value = "我很好";
         KVMessage response = null;
         Exception ex = null;
 
@@ -81,7 +81,7 @@ public class StorageTest extends TestCase {
 
     @Test
     public void testGet1() {
-        String key = "你好";
+        String key = "你好呀";
         String value = "你也好";
         KVMessage response = null;
         Exception ex = null;

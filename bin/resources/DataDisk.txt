@@ -1,0 +1,8 @@
+updateTestValue:updated
+foo2:bar2
+foo:bar
+你好:안녕하십니까
+你好呀:你也好
+你好么:我很好
+k1:k2
+你:他
