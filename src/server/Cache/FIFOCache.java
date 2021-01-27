@@ -2,6 +2,7 @@ package server.Cache;
 
 import app_kvServer.IKVServer;
 import org.apache.log4j.Logger;
+import server.StoreDisk.IStoreDisk;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -19,8 +20,8 @@ public class FIFOCache extends Cache{
      * The first inserted element is placed in the head of the linked list,
      * and the linked list is maintained in the manner of tail insertion.
      * */
-    public FIFOCache(int cacheSize, IKVServer kvServer) {
-        super(cacheSize, kvServer);
+    public FIFOCache(int cacheSize, IKVServer kvServer, IStoreDisk storage) {
+        super(cacheSize, kvServer,storage);
         this.hashmap = new LinkedHashMap<String, String>(cacheSize, loadFactor, false){
             @Override
             protected boolean removeEldestEntry(Map.Entry<String, String> eldest) {

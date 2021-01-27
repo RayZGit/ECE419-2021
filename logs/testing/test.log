@@ -235,3 +235,14 @@
 2021-01-27 10:08:19,160 ERROR [Thread-10] root: <Server> Error! Connection lost <kubernetes.docker.internal: 49714>
 2021-01-27 10:08:19,167 ERROR [Thread-11] root: <Server> Error! Connection lost <kubernetes.docker.internal: 49715>
 2021-01-27 10:08:19,174 ERROR [Thread-12] root: <Server> Error! Connection lost <kubernetes.docker.internal: 49716>
+2021-01-27 11:22:29,269 ERROR [Thread-2] root: <Server> Error! Connection lost <kubernetes.docker.internal: 58969>
+2021-01-27 11:22:29,276 ERROR [Thread-3] root: <Server> Error! Connection lost <kubernetes.docker.internal: 58970>
+2021-01-27 11:22:29,282 ERROR [Thread-4] root: <Server> Error! Connection lost <kubernetes.docker.internal: 58971>
+2021-01-27 11:22:29,287 ERROR [Thread-5] root: <Server> Error! Connection lost <kubernetes.docker.internal: 58972>
+2021-01-27 11:22:29,291 ERROR [Thread-6] root: <Server> Error! Connection lost <kubernetes.docker.internal: 58973>
+2021-01-27 11:22:29,293 ERROR [Thread-7] root: <Server> Error! Connection lost <kubernetes.docker.internal: 58974>
+2021-01-27 11:22:29,316 ERROR [Thread-8] root: <Server> Error! Connection lost <kubernetes.docker.internal: 58975>
+2021-01-27 11:22:29,327 ERROR [Thread-9] root: <Server> Error! Connection lost <kubernetes.docker.internal: 58976>
+2021-01-27 11:22:29,336 ERROR [Thread-10] root: <Server> Error! Connection lost <kubernetes.docker.internal: 58977>
+2021-01-27 11:22:29,341 ERROR [Thread-11] root: <Server> Error! Connection lost <kubernetes.docker.internal: 58978>
+2021-01-27 11:22:29,346 ERROR [Thread-12] root: <Server> Error! Connection lost <kubernetes.docker.internal: 58979>

@@ -1,7 +1,9 @@
 package server.Cache;
 
 import app_kvServer.IKVServer;
+import app_kvServer.KVServer;
 import org.apache.log4j.Logger;
+import server.StoreDisk.IStoreDisk;
 
 import javax.swing.*;
 import java.util.Map;
@@ -10,12 +12,15 @@ public class Cache implements ICache {
     private int cacheSize;
 
     private IKVServer kvServer;
+    private IStoreDisk storage;
 
     protected Map<String, String> hashmap;
 
-    public Cache(int cacheSize, IKVServer kvServer) {
+
+    public Cache(int cacheSize, IKVServer kvServer, IStoreDisk storage) {
         this.cacheSize = cacheSize;
         this.kvServer = kvServer;
+        this.storage = storage;
     }
 
     @Override
@@ -39,8 +44,17 @@ public class Cache implements ICache {
     }
 
     @Override
-    public void cleanCache() {
-        hashmap.clear();
+    public void cleanCache() { hashmap.clear(); }
+
+    @Override
+    public  void writeCacheToDisk(){
+        for (Map.Entry<String,String> entry : hashmap.entrySet()) {
+            try {
+                storage.put(entry.getKey(),entry.getValue());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override

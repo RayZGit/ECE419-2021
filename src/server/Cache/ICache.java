@@ -8,4 +8,5 @@ public interface ICache {
     public void cleanCache();
     public void setCacheSize(int size);
     public int getCacheSize();
+    public void writeCacheToDisk();
 }

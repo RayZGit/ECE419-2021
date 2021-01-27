@@ -54,24 +54,25 @@ public class KVServer implements IKVServer, Runnable {
 		this.port = port;
 		this.catchSize = cacheSize;
 		this.strategy = CacheStrategy.valueOf(strategy);
+		this.storeDisk = new StoreDisk("DataDisk"+".txt");
 		switch (this.strategy) {
 			case FIFO:
 				System.out.println("IN FIFO");
-				this.cache = new FIFOCache(cacheSize, this);
+				this.cache = new FIFOCache(cacheSize, this, storeDisk);
 				break;
 			case LRU:
 				System.out.println("IN LRU");
-				this.cache = new LRUCache(cacheSize, this);
+				this.cache = new LRUCache(cacheSize, this, storeDisk);
 				break;
 			case LFU:
 				System.out.println("IN LFU");
-				this.cache = new LFUCache(cacheSize, this);
+				this.cache = new LFUCache(cacheSize, this, storeDisk);
 				break;
 //			case None:
 //				this.cache = new Cache(cacheSize,this);
 //				break;
 		}
-		this.storeDisk = new StoreDisk("DataDisk"+".txt");
+
 	}
 
 	@Override
@@ -113,24 +114,29 @@ public class KVServer implements IKVServer, Runnable {
 
 	@Override
     public synchronized String getKV(String key) throws Exception{
-		if(key == null){
-			return null;
+		if(key == null){ return null; }
+		if(cache == null){
+			return storeDisk.get(key);
 		}
-		if(cache != null){
+		if(cache.contain(key)){
 			return cache.get(key);
 		}
-		return storeDisk.get(key);
+		String val = storeDisk.get(key); // possible return nullptr
+		if(val != null){
+			cache.put(key,val);
+		}
+		return val;// possible return nullptr
 	}
 
 	@Override
     public synchronized void putKV(String key, String value) throws Exception {
 		if (key == null) { return; }
-		if(cache.contain(key)){
+		if(cache == null){
+			storeDisk.put(key, value);
+			return;
+		}
+		cache.put(key, value);
 
-		}
-		if(cache != null){
-			cache.put(key, value);
-		}
 	}
 
 	@Override
@@ -141,7 +147,7 @@ public class KVServer implements IKVServer, Runnable {
 
 	@Override
     public void clearStorage(){
-			storeDisk.dump();
+		storeDisk.dump();
 	}
 
 	@Override

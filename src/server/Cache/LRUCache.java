@@ -2,6 +2,7 @@ package server.Cache;
 
 import app_kvServer.IKVServer;
 import org.apache.log4j.Logger;
+import server.StoreDisk.IStoreDisk;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -15,8 +16,8 @@ public class LRUCache extends Cache{
     private final float loadFactor = (float) 0.75;
     private static Logger logger = Logger.getRootLogger();
 
-    public LRUCache(int capacity, IKVServer kvServer){
-        super(capacity, kvServer);
+    public LRUCache(int capacity, IKVServer kvServer, IStoreDisk storage){
+        super(capacity, kvServer,storage);
         this.hashmap = new LinkedHashMap<String, String>(capacity, loadFactor, true){
             @Override
             protected boolean removeEldestEntry(Map.Entry<String, String> eldest) {
