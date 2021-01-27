@@ -60,9 +60,9 @@ public class StorageTest extends TestCase {
 
     @Test
     public void testUpdate() {
-        String key = "updateTestValue";
-        String initialValue = "initial";
-        String updatedValue = "updated";
+        String key = "你";
+        String initialValue = "我";
+        String updatedValue = "他";
 
         KVMessage response = null;
         Exception ex = null;
@@ -94,7 +94,7 @@ public class StorageTest extends TestCase {
             ex = e;
         }
 
-        assertTrue(ex == null && response.getValue().equals("bar"));
+        assertTrue(ex == null && response.getValue().equals("你也好"));
     }
 
 
