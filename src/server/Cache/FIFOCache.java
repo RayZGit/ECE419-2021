@@ -8,6 +8,7 @@ import java.util.Map;
 public class FIFOCache extends Cache{
     private final float loadFactor = (float) 0.75;
 
+
     /**
      * When parameteraccessOrder = trueWhen, then followAccess order sorts the map, then callget()After the method,
      * the elements of this visit will be moved to the end of the list.
@@ -22,7 +23,7 @@ public class FIFOCache extends Cache{
         this.hashmap = new LinkedHashMap<String, String>(cacheSize, loadFactor, false){
             @Override
             protected boolean removeEldestEntry(Map.Entry<String, String> eldest) {
-                //TODO: write eldest to disk before remove the node
+                //TODO: write eldest to disk before remove the node from cache
                 //TODO: check if disk exist, if yes, then continue, if not, write to disk
                 return size() > getCacheSize();
             }

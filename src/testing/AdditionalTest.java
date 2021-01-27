@@ -71,5 +71,4 @@ public class AdditionalTest extends TestCase {
 		assertEquals("bar", kvMessage.getValue());
 		assertEquals(KVMessage.StatusType.GET, kvMessage.getStatus());
 	}
-
 }
