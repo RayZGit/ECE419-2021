@@ -64,9 +64,9 @@ public class KVServer implements IKVServer, Runnable {
 			case LFU:
 				this.cache = new LFUCache(cacheSize, this);
 				break;
-			case None:
-				this.cache = new Cache(cacheSize,this);
-				break;
+//			case None:
+//				this.cache = new Cache(cacheSize,this);
+//				break;
 		}
 
 		this.storeDisk = new StoreDisk(String.valueOf(port)+".txt");
@@ -108,7 +108,7 @@ public class KVServer implements IKVServer, Runnable {
 	}
 
 	@Override
-    public String getKV(String key) throws Exception{
+    public synchronized String getKV(String key) throws Exception{
 		if(key == null){
 			return null;
 		}
@@ -116,7 +116,7 @@ public class KVServer implements IKVServer, Runnable {
 	}
 
 	@Override
-    public void putKV(String key, String value) throws Exception {
+    public synchronized void putKV(String key, String value) throws Exception {
 		if (key != null) {
 			storeDisk.put(key, value);
 		}
