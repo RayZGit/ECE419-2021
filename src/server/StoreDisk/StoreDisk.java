@@ -88,9 +88,6 @@ public class StoreDisk implements IStoreDisk {
             LOG.error(CLASS_NAME+"Error for put a new KV pair",e);
             throw new Exception(CLASS_NAME+"Error for iterating  file");
         }
-
-
-
     }
 
     @Override

@@ -1,5 +1,9 @@
 package app_kvServer;
 
+import server.Cache.ICache;
+
+import java.util.Map;
+
 public interface IKVServer {
     public enum CacheStrategy {
         None,
@@ -65,6 +69,16 @@ public interface IKVServer {
      * Clear the local cache of the server
      */
     public void clearCache();
+
+    /**
+     * Write the local cache of the server to the disk
+     */
+    public void writeCacheToDisk();
+
+    /**
+     * Getter the local cache of the server
+     */
+    public Map<String, String> getCache();
 
     /**
      * Clear the storage of the server

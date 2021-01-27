@@ -35,21 +35,27 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
             while(isOpen) {
                 try {
                     KVMessage request = receiveMsg();
-                    System.out.println("!!!!!!!!!!!!Received before handle client request!!!!!!!!!!!!!!");
+//                    System.out.println("!!!!!!!!!!!!Received before handle client request!!!!!!!!!!!!!!");
                     KVMessage response = handleClientRequest(request);
                     sendMsg(response);
-//                    KVMessage testResponse = testHandleRequest(request);
-//                    sendMsg(testResponse);
                     /* connection either terminated by the client or lost due to
                      * network problems*/
                 } catch (Exception e) {
-//                    e.printStackTrace();
+                    System.out.println("<Server> Write cache data to disk!");
+                    logger.info("<Server>  Write cache data to disk!");
+
+                    System.out.println("Cache size is: " + kvServer.getCacheSize());
+                    kvServer.writeCacheToDisk();
+//                    kvServer.clearCache();
+                    System.out.println("Cache size is: " + kvServer.getCacheSize());
+
                     System.out.println("Error! Connection lost!\n");
                     logger.error("<Server> Error! Connection lost <"
                             + this.clientSocket.getInetAddress().getHostName()
                             +  ": " + this.clientSocket.getPort() + ">");
                     isOpen = false;
                 }
+
             }
 
         } catch (IOException ioe) {
@@ -68,14 +74,6 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
         }
     }
 
-//    public KVMessage testHandleRequest(KVMessage request) {
-//        KVMessage response = new KVBasicMessage();
-//        response.setKey("ServerKey");
-//        response.setValue("ServerValue");
-//        response.setStatus(KVMessage.StatusType.PUT_SUCCESS);
-////        response.setStatus(KVMessage.StatusType.GET_ERROR);
-//        return response;
-//    }
     /**
      * handle the request, <get, put>
      * @return true or false if the action success or failed
@@ -85,7 +83,6 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
         response.setKey(request.getKey());
         switch (request.getStatus()) {
             case GET: {
-                System.out.println("In put");
                 Exception exception = null;
                 String value = null;
                 try {
@@ -114,7 +111,7 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
             case DELETE: {
                 response.setValue(request.getValue());
                 boolean keyExist = kvServer.inCache(request.getKey()) || kvServer.inStorage(request.getKey());
-                System.out.println("Delete fk!!!!!!!!!!!!!!!!!!!!!!!!!");
+//                System.out.println("Delete fk!!!!!!!!!!!!!!!!!!!!!!!!!");
                 System.out.println("keyExist is " + keyExist);
                 if (keyExist) {
                     try {
@@ -140,7 +137,7 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
             }
 
             case PUT: {
-                System.out.println("In put 1");
+//                System.out.println("In put 1");
                 response.setValue(request.getValue());
                 String requestKey = request.getKey();
                 String requestValue = request.getValue();
@@ -156,7 +153,7 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
                     break;
                 }
 
-                System.out.println("In put 2");
+//                System.out.println("In put 2");
                 boolean keyExist = kvServer.inCache(requestKey) || kvServer.inStorage(requestKey);
                 try {
                     kvServer.putKV(requestKey, requestValue);
@@ -183,6 +180,8 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
                 break;
             }
         }
+
+        System.out.println("Current cache has node#: " + kvServer.getCacheSize() + " ||| " + kvServer.getCache());
         return  response;
     }
 

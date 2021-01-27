@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.net.BindException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Map;
 
 public class KVServer implements IKVServer, Runnable {
 
@@ -58,15 +59,15 @@ public class KVServer implements IKVServer, Runnable {
 		switch (this.strategy) {
 			case FIFO:
 				System.out.println("IN FIFO");
-				this.cache = new FIFOCache(cacheSize, this, storeDisk);
+				this.cache = new FIFOCache(cacheSize, storeDisk);
 				break;
 			case LRU:
 				System.out.println("IN LRU");
-				this.cache = new LRUCache(cacheSize, this, storeDisk);
+				this.cache = new LRUCache(cacheSize, storeDisk);
 				break;
 			case LFU:
 				System.out.println("IN LFU");
-				this.cache = new LFUCache(cacheSize, this, storeDisk);
+				this.cache = new LFUCache(cacheSize, storeDisk);
 				break;
 //			case None:
 //				this.cache = new Cache(cacheSize,this);
@@ -96,7 +97,10 @@ public class KVServer implements IKVServer, Runnable {
 
 	@Override
 	public int getCacheSize(){
-		return catchSize;
+		if (cache == null) {
+			return 0;
+		}
+		return cache.getCurrentCacheSize();
 	}
 
 	@Override
@@ -141,9 +145,20 @@ public class KVServer implements IKVServer, Runnable {
 
 	@Override
 	public void clearCache(){
-		cache.cleanCache();
+		if (cache != null){
+			writeCacheToDisk();
+			cache.cleanCache();
+		}
+	}
+	@Override
+	public void writeCacheToDisk() {
+		cache.writeCacheToDisk();
 	}
 
+	@Override
+	public Map<String, String> getCache() {
+		return cache.getMap();
+	}
 
 	@Override
     public void clearStorage(){
@@ -200,7 +215,9 @@ public class KVServer implements IKVServer, Runnable {
 
 	public void delete(String key) throws Exception{
 		storeDisk.delete(key, null);
-		cache.delete(key);
+		if (cache != null){
+			cache.delete(key);
+		}
 	}
 
 

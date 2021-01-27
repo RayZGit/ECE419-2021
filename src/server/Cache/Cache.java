@@ -11,15 +11,15 @@ import java.util.Map;
 public class Cache implements ICache {
     private int cacheSize;
 
-    private IKVServer kvServer;
+//    private IKVServer kvServer;
     private IStoreDisk storage;
 
     protected Map<String, String> hashmap;
 
 
-    public Cache(int cacheSize, IKVServer kvServer, IStoreDisk storage) {
+    public Cache(int cacheSize, IStoreDisk storage) {
         this.cacheSize = cacheSize;
-        this.kvServer = kvServer;
+//        this.kvServer = kvServer;
         this.storage = storage;
     }
 
@@ -63,7 +63,12 @@ public class Cache implements ICache {
     }
 
     @Override
-    public int getCacheSize() {
-        return cacheSize;
+    public int getCurrentCacheSize() {
+        return hashmap.size();
+    }
+
+    @Override
+    public Map<String, String> getMap(){
+        return hashmap;
     }
 }

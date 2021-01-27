@@ -20,17 +20,17 @@ public class FIFOCache extends Cache{
      * The first inserted element is placed in the head of the linked list,
      * and the linked list is maintained in the manner of tail insertion.
      * */
-    public FIFOCache(int cacheSize, IKVServer kvServer, IStoreDisk storage) {
-        super(cacheSize, kvServer,storage);
+    public FIFOCache(final int cacheSize, final IStoreDisk storage) {
+        super(cacheSize, storage);
         this.hashmap = new LinkedHashMap<String, String>(cacheSize, loadFactor, false){
             @Override
             protected boolean removeEldestEntry(Map.Entry<String, String> eldest) {
                 //TODO: write eldest to disk before remove the node from cache
                 //TODO: check if disk exist, if yes, then continue, if not, write to disk
-                boolean isMaxCapacity = size() > getCacheSize();
+                boolean isMaxCapacity = size() > cacheSize;
                 if (isMaxCapacity) {
                     try {
-                        kvServer.putKV(eldest.getKey(), eldest.getValue());
+                        storage.put(eldest.getKey(), eldest.getValue());
                         System.out.println("<FIFO> (" + eldest.getKey() + eldest.getValue() + ") move eldest KV to disk");
                         logger.info("<FIFO> (" + eldest.getKey() + eldest.getValue() + ") move eldest KV to disk");
                     } catch (Exception e) {
