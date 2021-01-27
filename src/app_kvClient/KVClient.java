@@ -116,7 +116,7 @@ public class KVClient implements IKVClient, Runnable {
                     }
                 }
                 break;
-            case "LogLevel":
+            case "logLevel":
                 if (tokens.length != 2){
                     System.out.println("Set log level failed: Invalid arguments number");
                 } else {
@@ -140,6 +140,7 @@ public class KVClient implements IKVClient, Runnable {
                 break;
             default:
                 System.out.println("Unknown command");
+                handleHelp();
                 break;
         }
     }

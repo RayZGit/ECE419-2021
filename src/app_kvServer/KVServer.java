@@ -56,20 +56,21 @@ public class KVServer implements IKVServer, Runnable {
 		this.strategy = CacheStrategy.valueOf(strategy);
 		switch (this.strategy) {
 			case FIFO:
+				System.out.println("IN FIFO");
 				this.cache = new FIFOCache(cacheSize, this);
 				break;
 			case LRU:
+				System.out.println("IN LRU");
 				this.cache = new LRUCache(cacheSize, this);
 				break;
 			case LFU:
+				System.out.println("IN LFU");
 				this.cache = new LFUCache(cacheSize, this);
 				break;
 //			case None:
 //				this.cache = new Cache(cacheSize,this);
 //				break;
 		}
-		
-//		this.storeDisk = new StoreDisk(String.valueOf(port)+".txt");
 		this.storeDisk = new StoreDisk("DataDisk"+".txt");
 	}
 
