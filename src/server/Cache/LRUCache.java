@@ -1,6 +1,7 @@
 package server.Cache;
 
 import app_kvServer.IKVServer;
+import org.apache.log4j.Logger;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -10,7 +11,10 @@ import java.util.Map;
  * */
 
 public class LRUCache extends Cache{
+
     private final float loadFactor = (float) 0.75;
+    private static Logger logger = Logger.getRootLogger();
+
     public LRUCache(int capacity, IKVServer kvServer){
         super(capacity, kvServer);
         this.hashmap = new LinkedHashMap<String, String>(capacity, loadFactor, true){
@@ -18,29 +22,20 @@ public class LRUCache extends Cache{
             protected boolean removeEldestEntry(Map.Entry<String, String> eldest) {
                 //TODO: write eldest to disk before remove the node
                 //TODO: check if disk exist, if yes, then continue, if not, write to disk
-                return size() > getCacheSize();
+                boolean isMaxCapacity = size() > getCacheSize();
+                if (isMaxCapacity) {
+                    try {
+                        kvServer.putKV(eldest.getKey(), eldest.getValue());
+                        System.out.println("<LRU> (" + eldest.getKey() + eldest.getValue() + ") move eldest KV to disk");
+                        logger.info("<LRU> (" + eldest.getKey() + eldest.getValue() + ") move eldest KV to disk");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        logger.error("<Server> Cache write disk error!");
+                        System.out.println("Cache write disk error!");
+                    }
+                }
+                return isMaxCapacity;
             }
         };
     }
-
-
-//    @Override
-//    public void put(String key, String value) {
-//        cache.put(key, value);
-//    }
-//
-//    @Override
-//    public String get(String key) {
-//        return cache.getOrDefault(key, null);
-//    }
-//
-//    @Override
-//    public boolean contain(String key) {
-//        return cache.containsKey(key);
-//    }
-//
-//    @Override
-//    public void dump(String key) {
-//        cache.clear();
-//    }
 }

@@ -1,6 +1,7 @@
 package server.Cache;
 
 import app_kvServer.IKVServer;
+import org.apache.log4j.Logger;
 
 import javax.swing.*;
 import java.util.Map;
