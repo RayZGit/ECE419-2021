@@ -43,7 +43,6 @@ public class StorageTest extends TestCase {
 
     @Test
     public void testPut2() {
-        kvClient.disconnect();
         String key = "你好";
         String value = "你也好";
         KVMessage response = null;
@@ -81,7 +80,7 @@ public class StorageTest extends TestCase {
 
 
     @Test
-    public void testGet() {
+    public void testGet1() {
         String key = "你好";
         String value = "你也好";
         KVMessage response = null;
@@ -94,7 +93,23 @@ public class StorageTest extends TestCase {
             ex = e;
         }
 
-        assertTrue(ex == null && response.getValue().equals("你也好"));
+        assertTrue(ex == null && response.getValue().equals(value));
+    }
+    @Test
+    public void testGet2() {
+        String key = "你好";
+        String value = "안녕하십니까";
+        KVMessage response = null;
+        Exception ex = null;
+
+        try {
+            kvClient.put(key, value);
+            response = kvClient.get(key);
+        } catch (Exception e) {
+            ex = e;
+        }
+
+        assertTrue(ex == null && response.getValue().equals(value));
     }
 
 
