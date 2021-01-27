@@ -192,6 +192,7 @@ public class KVServer implements IKVServer, Runnable {
 
 	public void delete(String key) throws Exception{
 		storeDisk.delete(key, null);
+		cache.delete(key);
 	}
 
 
