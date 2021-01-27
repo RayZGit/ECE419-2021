@@ -56,21 +56,22 @@ public class KVServer implements IKVServer, Runnable {
 		this.strategy = CacheStrategy.valueOf(strategy);
 		switch (this.strategy) {
 			case FIFO:
+				System.out.println("IN FIFO");
 				this.cache = new FIFOCache(cacheSize, this);
 				break;
 			case LRU:
+				System.out.println("IN LRU");
 				this.cache = new LRUCache(cacheSize, this);
 				break;
 			case LFU:
+				System.out.println("IN LFU");
 				this.cache = new LFUCache(cacheSize, this);
 				break;
 //			case None:
 //				this.cache = new Cache(cacheSize,this);
 //				break;
 		}
-
-		this.storeDisk = new StoreDisk(String.valueOf(port)+".txt");
-//		this.storeDisk = new StoreDisk("DataDisk"+".txt");
+		this.storeDisk = new StoreDisk("DataDisk"+".txt");
 	}
 
 	@Override
@@ -104,13 +105,19 @@ public class KVServer implements IKVServer, Runnable {
 
 	@Override
     public boolean inCache(String key){
-		return cache.contain(key);
+		if (cache != null){
+			return cache.contain(key);
+		}
+		return false;
 	}
 
 	@Override
     public synchronized String getKV(String key) throws Exception{
 		if(key == null){
 			return null;
+		}
+		if(cache != null){
+			return cache.get(key);
 		}
 		return storeDisk.get(key);
 	}
@@ -120,11 +127,14 @@ public class KVServer implements IKVServer, Runnable {
 		if (key != null) {
 			storeDisk.put(key, value);
 		}
+		if(cache != null){
+			cache.put(key, value);
+		}
 	}
 
 	@Override
 	public void clearCache(){
-		// TODO Auto-generated method stub
+		cache.cleanCache();
 	}
 
 
@@ -183,6 +193,7 @@ public class KVServer implements IKVServer, Runnable {
 
 	public void delete(String key) throws Exception{
 		storeDisk.delete(key, null);
+		cache.delete(key);
 	}
 
 

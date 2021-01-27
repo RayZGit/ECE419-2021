@@ -38,11 +38,6 @@ public class Cache implements ICache {
     }
 
     @Override
-    public void dump(String key) {
-        hashmap.clear();
-    }
-
-    @Override
     public void cleanCache() {
         hashmap.clear();
     }

@@ -116,7 +116,7 @@ public class KVClient implements IKVClient, Runnable {
                     }
                 }
                 break;
-            case "LogLevel":
+            case "logLevel":
                 if (tokens.length != 2){
                     System.out.println("Set log level failed: Invalid arguments number");
                 } else {
@@ -140,6 +140,7 @@ public class KVClient implements IKVClient, Runnable {
                 break;
             default:
                 System.out.println("Unknown command");
+                handleHelp();
                 break;
         }
     }
@@ -157,12 +158,12 @@ public class KVClient implements IKVClient, Runnable {
                 break;
             case PUT_SUCCESS:
                 System.out.println("Put succeed");
-                logger.info("Put succeed" + response.getKey() + ","
+                logger.info("Put succeed: (" + response.getKey() + ","
                         + response.getValue() + ")");
                 break;
             case PUT_UPDATE:
                 System.out.println("Update succeed");
-                logger.info("Update succeed" + response.getKey() + ","
+                logger.info("Update succeed: (" + response.getKey() + ","
                         + response.getValue() + ")");
                 break;
             case PUT_ERROR:
