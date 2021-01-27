@@ -70,7 +70,7 @@ public class KVServer implements IKVServer, Runnable {
 		}
 
 		this.storeDisk = new StoreDisk(String.valueOf(port)+".txt");
-//		this.storeDisk = new StoreDisk("DataDisk"+".txt");
+		this.cache = new LRUCache(this.cacheSize,this);
 	}
 
 	@Override
@@ -112,6 +112,9 @@ public class KVServer implements IKVServer, Runnable {
 		if(key == null){
 			return null;
 		}
+		if(cache != null){
+			return cache.get(key);
+		}
 		return storeDisk.get(key);
 	}
 
@@ -120,11 +123,14 @@ public class KVServer implements IKVServer, Runnable {
 		if (key != null) {
 			storeDisk.put(key, value);
 		}
+		if(cache != null){
+			cache.put(key, value);
+		}
 	}
 
 	@Override
 	public void clearCache(){
-		// TODO Auto-generated method stub
+		cache.cleanCache();
 	}
 
 
