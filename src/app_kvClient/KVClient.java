@@ -11,6 +11,7 @@ import shared.messages.KVMessage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class KVClient implements IKVClient, Runnable {
 
@@ -88,13 +89,14 @@ public class KVClient implements IKVClient, Runnable {
                 }
                 break;
             case "put":
-                if (tokens.length != 3 && tokens.length != 2){
+                if (tokens.length < 2){
                     System.out.println("Put failed: Invalid arguments number");
                 } else {
                     try {
                         KVMessage message;
-                        if (tokens.length == 3) {
-                            message = KVClientServer.put(tokens[1], tokens[2]);
+                        if (tokens.length >= 3) {
+                            String value = String.join(" ", Arrays.copyOfRange(tokens, 2, tokens.length));
+                            message = KVClientServer.put(tokens[1], value);
                         } else {
                             message = KVClientServer.delete(tokens[1]);
                         }

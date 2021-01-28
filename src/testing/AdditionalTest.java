@@ -63,12 +63,12 @@ public class AdditionalTest extends TestCase {
 	}
 
 	public void testDecode() {
-		String msg = "GET foo bar";
+		String msg = "PUT foo bar b b b";
 		TextMessage textMessage = new TextMessage(msg);
 		KVMessage kvMessage = KVMsgProtocol.decode(textMessage);
 
 		assertEquals("foo", kvMessage.getKey());
-		assertEquals("bar", kvMessage.getValue());
-		assertEquals(KVMessage.StatusType.GET, kvMessage.getStatus());
+		assertEquals("bar b b b", kvMessage.getValue());
+		assertEquals(KVMessage.StatusType.PUT, kvMessage.getStatus());
 	}
 }

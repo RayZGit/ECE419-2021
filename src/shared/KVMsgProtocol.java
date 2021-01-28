@@ -8,6 +8,7 @@ import shared.messages.KVMessage;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Arrays;
 
 public abstract class KVMsgProtocol {
     public InputStream inputStream;
@@ -51,7 +52,13 @@ public abstract class KVMsgProtocol {
     }
 
     public static KVMessage decode(TextMessage textMessage) {
-        String[] tokens = textMessage.getMsg().split("\\s+");
-        return new KVBasicMessage(tokens[1], tokens[2], KVMessage.StatusType.valueOf(tokens[0]));
+        String[] tokens = textMessage.getMsg().trim().split("\\s+");
+
+        if (tokens.length <= 2) {
+            return new KVBasicMessage(tokens[1], null, KVMessage.StatusType.valueOf(tokens[0]));
+        }
+
+        String value = String.join(" ", Arrays.copyOfRange(tokens, 2, tokens.length));
+        return new KVBasicMessage(tokens[1], value, KVMessage.StatusType.valueOf(tokens[0]));
     }
 }
