@@ -264,9 +264,9 @@ public class KVServer implements IKVServer, Runnable {
 				System.out.println("Usage: Server <port> <cache size> <strategy>!");
 			} else {
 				int portNumber = Integer.parseInt(args[0]);
-				int catchSize = Integer.parseInt(args[1]);
+				int cacheSize = Integer.parseInt(args[1]);
 				String strategy = args[2];
-				new Thread(new KVServer(portNumber, catchSize, strategy)).start();
+				new Thread(new KVServer(portNumber, cacheSize, strategy)).start();
 			}
 		} catch (IOException e) {
 			System.out.println("Error! Unable to initialize logger!");

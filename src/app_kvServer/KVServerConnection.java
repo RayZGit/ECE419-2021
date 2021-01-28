@@ -95,7 +95,7 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
                     response.setValue("");
                     response.setStatus(KVMessage.StatusType.GET_ERROR);
                     System.out.println("Get failed");
-                    logger.info("<Server> Get failed: (key," + response.getKey() + ")");
+                    logger.info("<Server> Get failed: ( key," + response.getKey() + " )");
 
                 } else {
                     response.setValue(value);
@@ -118,7 +118,7 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
                         kvServer.delete(request.getKey());
                         response.setStatus(KVMessage.StatusType.DELETE_SUCCESS);
                         System.out.println("Delete succeed");
-                        logger.info("<Server> Delete succeed. Key:(" + request.getKey() + ")");
+                        logger.info("<Server> Delete succeed. Key: (" + request.getKey() + ")");
                     } catch (Exception e) {
                         response.setStatus(KVMessage.StatusType.DELETE_ERROR);
                         System.out.println("Delete failed: (" + request.getKey()
@@ -130,7 +130,7 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
                     break;
                 } else{
                     response.setStatus(KVMessage.StatusType.DELETE_ERROR);
-                    System.out.println("Delete failed: Key(" + request.getKey()  + ") does not exist,");
+                    System.out.println("Delete failed: Key (" + request.getKey()  + ") does not exist,");
                     logger.error("Delete failed: Key(" + request.getKey()  + ") does not exist,");
                 }
                 break;

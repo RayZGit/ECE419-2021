@@ -58,22 +58,22 @@ public class FIFOCacheTest extends TestCase {
         assertTrue(ex==null);
     }
 
-//    @Test
-//    public void testGetFailed() {
-//        KVMessage response = null;
-//        Exception ex = null;
-//
-//        try {
-//            for (int i = 100; i < 200; i++) {
-//                response = kvClient.get(Integer.toString(i));
-//                assertTrue(response.getStatus() == KVMessage.StatusType.GET_ERROR);
-//            }
-//        } catch (Exception e) {
-//            ex = e;
-//        }
-//        assertTrue(ex==null);
-//    }
-//
+    @Test
+    public void testGetFailed() {
+        KVMessage response = null;
+        Exception ex = null;
+
+        try {
+            for (int i = 100; i < 200; i++) {
+                response = kvClient.get(Integer.toString(i));
+                assertTrue(response.getStatus() == KVMessage.StatusType.GET_ERROR);
+            }
+        } catch (Exception e) {
+            ex = e;
+        }
+        assertTrue(ex==null);
+    }
+
     @Test
     public void testUpdate() {
         KVMessage response = null;
@@ -97,6 +97,7 @@ public class FIFOCacheTest extends TestCase {
 //
 //        try {
 //            for (int i = 0; i < 100; i++) {
+//                kvClient.put(Integer.toString(i), "UPDATE FIFO-" + i);
 //                response = kvClient.delete(Integer.toString(i));
 //                assertTrue(response.getStatus() == KVMessage.StatusType.DELETE_SUCCESS);
 //            }
