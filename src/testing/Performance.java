@@ -77,12 +77,12 @@ public class Performance {
 
 
         long end = System.nanoTime();
-        long timePass = start - end;
-        double latency = (double) (timePass/1000000000) / total;
+        long timePass = end - start;
+        double latency = (double) (timePass/1000000) / total;
         try {
-            FileWriter fw = new FileWriter("resources\\performance.txt", true);
-            fw.write("Highest latency of the operations is: " + highest / 1000000000);
-            fw.write("Average latency is: " + latency + " operations per second.");
+            FileWriter fw = new FileWriter("performance.txt", true);
+            fw.write("Highest latency of the operations is: " + highest / 1000000 + "ms.\n");
+            fw.write("Average latency is: " + latency + " operations per ms. \n");
             fw.close();
 
         } catch (IOException e) {
@@ -142,10 +142,10 @@ public class Performance {
             }
         }
         long end = System.nanoTime();
-        long timePass = start - end;
+        long timePass = end - start;
         double throughput = total * numClient / (double) (timePass/1000000000);
         try {
-            FileWriter fw = new FileWriter("resources\\performance.txt", true);
+            FileWriter fw = new FileWriter("performance.txt", true);
             fw.write("Multi-client throughput is: " + throughput + " operations per second.");
             fw.close();
 
