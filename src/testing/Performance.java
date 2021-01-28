@@ -51,20 +51,32 @@ public class Performance {
         int putVal = rand.nextInt(10000);
         int getKey = rand.nextInt(100);
 
-        long start = System.nanoTime();
+
         long highest = -1;
+        try {
+            client.put(Integer.toString(putkey), Integer.toString(putVal));
+            client.put(Integer.toString(putkey + 1), Integer.toString(putVal));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        long start = System.nanoTime();
 
         for (int i = 0; i < total; i++) {
             try {
+                flag = rand.nextInt(10);
+                putVal = rand.nextInt(10000);
+                getKey = rand.nextInt(100);
                 long temp1 = System.nanoTime();
+
                 if (type == 1) {
-                    if (flag < 5) client.put(Integer.toString(putkey), Integer.toString(putVal));
+                    if (flag < 5) client.put(Integer.toString(generateRandomKey()), Integer.toString(putVal));
                     else client.get(Integer.toString(getKey));
                 } else if (type == 2) {
-                    if (flag < 2) client.put(Integer.toString(putkey), Integer.toString(putVal));
+                    if (flag < 2) client.put(Integer.toString(generateRandomKey()), Integer.toString(putVal));
                     else client.get(Integer.toString(getKey));
                 } else {
-                    if (flag < 8) client.put(Integer.toString(putkey), Integer.toString(putVal));
+                    if (flag < 8) client.put(Integer.toString(generateRandomKey()), Integer.toString(putVal));
                     else client.get(Integer.toString(getKey));
                 }
                 long temp2 = System.nanoTime();
@@ -77,17 +89,25 @@ public class Performance {
 
 
         long end = System.nanoTime();
-        long timePass = start - end;
-        double latency = (double) (timePass/1000000000) / total;
+        long timePass = end - start;
+        double latency = (double) (timePass/1000000) / total;
+        double throughput =  total / (double) (timePass/1000000);
         try {
-            FileWriter fw = new FileWriter("resources\\performance.txt", true);
-            fw.write("Highest latency of the operations is: " + highest / 1000000000);
-            fw.write("Average latency is: " + latency + " operations per second.");
+            FileWriter fw = new FileWriter("performance.txt", true);
+            fw.write("Highest latency of the operations is: " + highest / 1000000 + "ms.\n");
+            fw.write("Average latency is: " + latency + " ms. \n");
+            fw.write("Average throughput is: " + Math.round(throughput * 1000 * 100.0) / 100.0 + " operations per second. \n");
             fw.close();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public int generateRandomKey(){
+        Random rand = new Random();
+        double result = rand.nextGaussian() * 50 + 50;
+        return (int) result;
     }
 
     public void testMultiClientThroughput(int numClient) {
@@ -142,11 +162,11 @@ public class Performance {
             }
         }
         long end = System.nanoTime();
-        long timePass = start - end;
-        double throughput = total * numClient / (double) (timePass/1000000000);
+        long timePass = end - start;
+        double throughput = total * numClient / (double) (timePass/1000000);
         try {
-            FileWriter fw = new FileWriter("resources\\performance.txt", true);
-            fw.write("Multi-client throughput is: " + throughput + " operations per second.");
+            FileWriter fw = new FileWriter("performance.txt", true);
+            fw.write("Multi-client throughput is: " + throughput + " operations per ms.");
             fw.close();
 
         } catch (IOException e) {
@@ -156,22 +176,46 @@ public class Performance {
     }
 
     public static void main(String[] args) {
-        int cacheSize = 200;
+        int cacheSize = 100;
         int port = 50010;
 
-        String cacheStrategy = "FIFO";
+        String cacheStrategy = "None";
         Performance performance = new Performance(port, cacheSize, cacheStrategy, 1000);
         performance.setType(1);
-        System.out.println("Testing 50% put, 50% get: ");
+        try {
+            FileWriter fw = new FileWriter("performance.txt", true);
+            fw.write("Testing with cacheSize: " + cacheSize + "\n");
+            fw.write("Testing with caStrategy: " + cacheStrategy + "\n");
+            fw.write("Testing 50% put, 50% get: \n");
+            fw.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         //performance.testMultiClientThroughput(10);
         performance.testLatency();
         performance.setType(2);
-        System.out.println("Testing 20% put, 80% get: ");
+        try {
+            FileWriter fw = new FileWriter("performance.txt", true);
+            fw.write("Testing 20% put, 80% get: \n");
+            fw.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println();
         //performance.testMultiClientThroughput(10);
-        //performance.testLatency();
+        performance.testLatency();
         performance.setType(3);
-        System.out.println("Testing 80% put, 20% get: ");
+        try {
+            FileWriter fw = new FileWriter("performance.txt", true);
+            fw.write("Testing 80% put, 20% get: \n");
+            fw.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         //performance.testMultiClientThroughput(10);
-        //performance.testLatency();
+        performance.testLatency();
     }
 }
