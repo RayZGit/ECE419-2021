@@ -3,6 +3,7 @@ package testing;
 import client.KVStore;
 import junit.framework.TestCase;
 import org.junit.Test;
+import shared.messages.KVMessage;
 
 import java.time.Clock;
 import java.time.Duration;
@@ -24,16 +25,10 @@ public class ConcurrencyTest extends TestCase {
         } catch (Exception e) {
         }
 
-        Clock timer= Clock.systemUTC();
-
-        Instant start = timer.instant();
-
-
-
         Thread child1 = new Thread(new Runnable() {
             KVStore client;
-            String key = "TestKey-1";
-            String value = "TestValue-2";
+            KVMessage response = null;
+            Exception ex = null;
 
             @Override
             public void run() {
@@ -42,35 +37,21 @@ public class ConcurrencyTest extends TestCase {
                     client.connect();
                 } catch (Exception e) {
                 }
-                for(int i=0;i<2;i++){
-                    Random rand = new Random();
-
-                    int num = rand.nextInt(1000) + 1;
-
+                for (int i = 200; i < 300; i++) {
                     try {
-                        // KVMessage resp= client.put(key + Integer.toString(num), value);
-                        client.put(key + Integer.toString(num),value);
-                        client.get(key + Integer.toString(num));
+                        response = client.put(Integer.toString(i), "FIFO-" + i);
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
                     }
-                    catch (Exception e){
-
-                    }
-
+                    assertTrue(response.getStatus() == KVMessage.StatusType.PUT_SUCCESS);
                 }
-                for(int i=0;i<2;i++){
-                    Random rand = new Random();
-
-                    int num = rand.nextInt(1000) + 1;
-
+                for (int i = 200; i < 300; i++) {
                     try {
-                        client.get(key + Integer.toString(num));
-                        //System.out.println(resp);
-                        client.get(key + Integer.toString(num));
-                        // System.out.println(resp);
-
+                        response = client.get(Integer.toString(i));
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
                     }
-                    catch (Exception e){
-                    }
+                    assertTrue(response.getStatus() == KVMessage.StatusType.GET_SUCCESS);
                 }
             }
         });
@@ -78,8 +59,8 @@ public class ConcurrencyTest extends TestCase {
 
         Thread child2 = new Thread(new Runnable() {
             KVStore client;
-            String key = "TestKey-2";
-            String value = "TestValue-2";
+            KVMessage response = null;
+            Exception ex = null;
 
 
             @Override
@@ -89,36 +70,24 @@ public class ConcurrencyTest extends TestCase {
                     client.connect();
                 } catch (Exception e) {
                 }
-                for(int i=0;i<2;i++){
-                    Random rand = new Random();
-
-                    int num = rand.nextInt(1000) + 1;
-
+                for (int i = 200; i < 300; i++) {
                     try {
-                        client.put(key + Integer.toString(num),value);
-                        client.get(key + Integer.toString(num));
-
+                        response = client.put(Integer.toString(i), "FIFO-" + i+1);
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
                     }
-                    catch (Exception e){
-
-                    }
-
+                    assertTrue(response.getStatus() == KVMessage.StatusType.PUT_UPDATE);
                 }
-                for(int i=0;i<2;i++){
-                    Random rand = new Random();
-
-                    int num = rand.nextInt(1000) + 1;
-
+                for (int i = 200; i < 300; i++) {
                     try {
-                        client.get(key + Integer.toString(num));
-                        client.get(key + Integer.toString(num));
+                        response = client.get(Integer.toString(i));
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
                     }
-                    catch (Exception e){
-                    }
+                    assertTrue(response.getStatus() == KVMessage.StatusType.GET_SUCCESS);
                 }
             }
         });
-
 
         child1.start();
         child2.start();
@@ -133,19 +102,6 @@ public class ConcurrencyTest extends TestCase {
         }catch (Exception e){
             System.out.println("execption in join2:"+e);
         }
-
-        Instant end = timer.instant();
-
-        Duration between = Duration.between(start, end);
-
-        System.out.println("between"+between);
-
-        long seconds = between.getSeconds();
-
-        long absoluteResult = between.abs().toMinutes();
-        System.out.println("seconds"+seconds);
-        System.out.println("absoluteResult"+absoluteResult);
-
     }
 
 }

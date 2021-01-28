@@ -47,7 +47,7 @@ public class Cache implements ICache {
     public void cleanCache() { hashmap.clear(); }
 
     @Override
-    public  void writeCacheToDisk(){
+    public void writeCacheToDisk(){
         for (Map.Entry<String,String> entry : hashmap.entrySet()) {
             try {
                 storage.put(entry.getKey(),entry.getValue());

@@ -181,7 +181,10 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
             }
         }
 
-        System.out.println("Current cache has node#: " + kvServer.getCacheSize() + " ||| " + kvServer.getCache());
+        if (kvServer.getCache() != null) {
+            System.out.println("Current cache has node#: " + kvServer.getCacheSize() + " ||| " + kvServer.getCache());
+        }
+
         return  response;
     }
 

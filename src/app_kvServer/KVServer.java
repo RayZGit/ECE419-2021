@@ -58,22 +58,22 @@ public class KVServer implements IKVServer, Runnable {
 		this.storeDisk = new StoreDisk("DataDisk"+".txt");
 		switch (this.strategy) {
 			case FIFO:
-				System.out.println("IN FIFO");
+				System.out.println("Initialize FIFO");
 				this.cache = new FIFOCache(cacheSize, storeDisk);
 				break;
 			case LRU:
-				System.out.println("IN LRU");
+				System.out.println("Initialize LRU");
 				this.cache = new LRUCache(cacheSize, storeDisk);
 				break;
 			case LFU:
-				System.out.println("IN LFU");
+				System.out.println("Initialize LFU");
 				this.cache = new LFUCache(cacheSize, storeDisk);
 				break;
-//			case None:
-//				this.cache = new Cache(cacheSize,this);
-//				break;
+			case None:
+				System.out.println("Initialize None Cache");
+				this.cache = null;
+				break;
 		}
-
 	}
 
 	@Override
@@ -153,14 +153,19 @@ public class KVServer implements IKVServer, Runnable {
 
 
 	@Override
-	public void writeCacheToDisk() {
-		cache.writeCacheToDisk();
+	public synchronized void writeCacheToDisk() {
+		if (cache != null) {
+			cache.writeCacheToDisk();
+		}
 	}
 
 
 	@Override
 	public Map<String, String> getCache() {
-		return cache.getMap();
+		if (cache != null) {
+			return cache.getMap();
+		}
+		return null;
 	}
 
 	@Override
