@@ -150,6 +150,8 @@ public class KVServer implements IKVServer, Runnable {
 			cache.cleanCache();
 		}
 	}
+
+
 	@Override
 	public void writeCacheToDisk() {
 		cache.writeCacheToDisk();
