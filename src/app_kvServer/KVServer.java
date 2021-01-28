@@ -175,7 +175,7 @@ public class KVServer implements IKVServer, Runnable {
 
 	@Override
 	public void run(){
-		System.out.println("in run function");
+//		System.out.println("in run function");
 		running = initializeServer();
 
 		if(serverSocket != null) {
