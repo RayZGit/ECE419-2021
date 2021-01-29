@@ -145,7 +145,7 @@ public class Performance {
 
     public int generateRandomKey(){
         Random rand = new Random();
-        double result = rand.nextGaussian() * 50 + 50;
+        double result = rand.nextGaussian() * 25 + 50;
         return (int) result;
     }
 
@@ -218,8 +218,8 @@ public class Performance {
         int cacheSize = 100;
         int port = 50010;
 
-        String cacheStrategy = "LRU";
-        Performance performance = new Performance(port, cacheSize, cacheStrategy, 1000);
+        String cacheStrategy = "FIFO";
+        Performance performance = new Performance(port, cacheSize, cacheStrategy, 10000);
         performance.setType(1);
         try {
             FileWriter fw = new FileWriter("performance.txt", true);
