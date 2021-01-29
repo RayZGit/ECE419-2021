@@ -42,6 +42,43 @@ public class StorageTest extends TestCase {
     }
 
     @Test
+    public void testPutSpace1() {
+        String key = "Test-Key-1";
+        String value = "Value space 1";
+        KVMessage response = null;
+        Exception ex = null;
+
+        try {
+            response = kvClient.put(key, value);
+        } catch (Exception e) {
+            ex = e;
+        }
+
+        assertTrue(ex == null && response.getStatus() == StatusType.PUT_SUCCESS);
+    }
+
+    @Test
+    public void testUpdateSpace1() {
+        String key = "updateTestValue";
+        String initialValue = "initial value";
+        String updatedValue = "updated value";
+
+        KVMessage response = null;
+        Exception ex = null;
+
+        try {
+            kvClient.put(key, initialValue);
+            response = kvClient.put(key, updatedValue);
+
+        } catch (Exception e) {
+            ex = e;
+        }
+
+        assertTrue(ex == null && response.getStatus() == StatusType.PUT_UPDATE
+                && response.getValue().equals(updatedValue));
+    }
+
+    @Test
     public void testPut2() {
         String key = "你好么";
         String value = "我很好";

@@ -30,7 +30,7 @@ public class AllTests {
 		clientSuite.addTestSuite(InteractionTest.class);
 		clientSuite.addTestSuite(AdditionalTest.class);
 		clientSuite.addTestSuite(StorageTest.class);
-		clientSuite.addTestSuite(FIFOCacheTest.class);
+//		clientSuite.addTestSuite(FIFOCacheTest.class);
 //		clientSuite.addTestSuite(ConcurrencyTest.class);
 		return clientSuite;
 	}
