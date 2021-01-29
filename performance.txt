@@ -1,0 +1,75 @@
+
+-----------------New Test-----------------
+Testing with cacheSize: 20
+Testing with caStrategy: FIFO
+
+Testing 50% put, 50% get: 
+Highest latency of the operations is: 12ms.
+Average latency is: 2.176 ms. 
+Average latency for put is: 2.1581 ms. 
+Average latency for get is: 2.1823 ms. 
+Average throughput is: 459.56 operations per second. 
+
+Testing 20% put, 80% get: 
+Highest latency of the operations is: 23ms.
+Average latency is: 1.254 ms. 
+Average latency for put is: 1.2834 ms. 
+Average latency for get is: 1.2435 ms. 
+Average throughput is: 797.45 operations per second. 
+
+Testing 80% put, 20% get: 
+Highest latency of the oper1ations is: 12ms.
+Average latency is: 1.229 ms. 
+Average latency for put is: 1.2401 ms. 
+Average latency for get is: 1.1751 ms. 
+Average throughput is: 813.67 operations per second. 
+
+-----------------New Test-----------------
+Testing with cacheSize: 50
+Testing with caStrategy: FIFO
+
+Testing 50% put, 50% get: 
+Highest latency of the operations is: 9ms.
+Average latency is: 1.654 ms. 
+Average latency for put is: 1.7636 ms. 
+Average latency for get is: 1.5366 ms. 
+Average throughput is: 604.59 operations per second. 
+
+Testing 20% put, 80% get: 
+Highest latency of the operations is: 66ms.
+Average latency is: 1.195 ms. 
+Average latency for put is: 1.2345 ms. 
+Average latency for get is: 1.1796 ms. 
+Average throughput is: 836.82 operations per second. 
+
+Testing 80% put, 20% get: 
+Highest latency of the operations is: 30ms.
+Average latency is: 1.03 ms. 
+Average latency for put is: 1.0505 ms. 
+Average latency for get is: 0.9375 ms. 
+Average throughput is: 970.87 operations per second. 
+
+-----------------New Test-----------------
+Testing with cacheSize: 100
+Testing with caStrategy: FIFO
+
+Testing 50% put, 50% get: 
+Highest latency of the operations is: 7ms.
+Average latency is: 1.319 ms. 
+Average latency for put is: 1.3767 ms. 
+Average latency for get is: 1.2535 ms. 
+Average throughput is: 758.15 operations per second. 
+
+Testing 20% put, 80% get: 
+Highest latency of the operations is: 57ms.
+Average latency is: 0.78 ms. 
+Average latency for put is: 0.8737 ms. 
+Average latency for get is: 0.7556 ms. 
+Average throughput is: 1282.05 operations per second. 
+
+Testing 80% put, 20% get: 
+Highest latency of the operations is: 53ms.
+Average latency is: 0.8 ms. 
+Average latency for put is: 0.7713 ms. 
+Average latency for get is: 0.8894 ms. 
+Average throughput is: 1250.0 operations per second. 
