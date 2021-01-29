@@ -215,10 +215,10 @@ public class Performance {
     }
 
     public static void main(String[] args) {
-        int cacheSize = 100;
+        int cacheSize = 0;
         int port = 50010;
 
-        String cacheStrategy = "FIFO";
+        String cacheStrategy = "None";
         Performance performance = new Performance(port, cacheSize, cacheStrategy, 1000);
         performance.setType(1);
         try {

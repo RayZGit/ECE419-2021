@@ -16,13 +16,12 @@ public class ConcurrencyTest extends TestCase {
 
     @Test
     public void testPerf() {
-
-        System.out.println("Start Perf Test:");
         client1 = new KVStore("localhost", 50000);
+
         try {
             client1.connect();
-
         } catch (Exception e) {
+            e.printStackTrace();
         }
 
         Thread child1 = new Thread(new Runnable() {
@@ -61,7 +60,6 @@ public class ConcurrencyTest extends TestCase {
             KVStore client;
             KVMessage response = null;
             Exception ex = null;
-
 
             @Override
             public void run() {
@@ -194,31 +192,31 @@ public class ConcurrencyTest extends TestCase {
         try {
             child1.join();
         }catch (Exception e){
-            System.out.println("execption in join1:"+e);
+            System.out.println("Wrong in join1: " + e);
         }
 
         try {
             child2.join();
         }catch (Exception e){
-            System.out.println("execption in join2:"+e);
+            System.out.println("Wrong in join2: " + e);
         }
 //
 //        try {
 //            child3.join();
 //        }catch (Exception e){
-//            System.out.println("execption in join2:"+e);
+//            System.out.println("Wrong in join3: " + e);
 //        }
 //
 //        try {
 //            child4.join();
 //        }catch (Exception e){
-//            System.out.println("execption in join2:"+e);
+//            System.out.println("Wrong in join4: " + e);
 //        }
 //
 //        try {
 //            child5.join();
 //        }catch (Exception e){
-//            System.out.println("execption in join2:"+e);
+//            System.out.println("Wrong in join5: " + e);
 //        }
     }
 
