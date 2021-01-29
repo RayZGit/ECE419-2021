@@ -177,3 +177,106 @@
 2021-01-27 13:48:51,018 INFO  [main] root: Update succeed: (hong,xu)
 2021-01-27 13:49:02,877 INFO  [main] root: Socket disconnected.
 2021-01-27 13:49:02,877 INFO  [main] root: Disconnected from server
+2021-01-27 20:49:39,905 INFO  [main] root: Connected to: 127.0.0.1 : 8008
+2021-01-27 20:49:39,907 INFO  [main] root: Connected to server
+2021-01-27 20:49:51,097 INFO  [main] root: Send message:	 'PUT 3 33'
+2021-01-27 20:49:51,194 INFO  [main] root: Receive message:	 'PUT_SUCCESS 3 33'
+2021-01-27 20:49:51,207 INFO  [main] root: Put succeed: (3,33)
+2021-01-27 20:50:00,100 INFO  [main] root: Socket disconnected.
+2021-01-27 20:50:00,100 INFO  [main] root: Disconnected
+2021-01-27 21:31:14,708 INFO  [main] root: Connected to: 127.0.0.1 : 8008
+2021-01-27 21:31:14,711 INFO  [main] root: Connected to server
+2021-01-27 21:31:17,696 INFO  [main] root: Send message:	 'GET 1 null'
+2021-01-27 21:31:17,752 INFO  [main] root: Receive message:	 'GET_ERROR 1'
+2021-01-27 21:31:17,754 WARN  [main] root: Get failed: 1 was invalid
+2021-01-27 21:31:25,398 INFO  [main] root: Send message:	 'GET foo2 null'
+2021-01-27 21:31:25,402 INFO  [main] root: Receive message:	 'GET_SUCCESS foo2 bar2'
+2021-01-27 21:31:25,403 INFO  [main] root: Get succeed: (foo2,bar2)
+2021-01-27 21:31:46,854 INFO  [main] root: Send message:	 'GET 3 null'
+2021-01-27 21:31:46,857 INFO  [main] root: Receive message:	 'GET_SUCCESS 3 33'
+2021-01-27 21:31:46,857 INFO  [main] root: Get succeed: (3,33)
+2021-01-27 21:33:48,395 INFO  [main] root: Send message:	 'GET 4 null'
+2021-01-27 21:33:48,398 INFO  [main] root: Receive message:	 'GET_ERROR 4'
+2021-01-27 21:33:48,399 WARN  [main] root: Get failed: 4 was invalid
+2021-01-27 21:34:09,753 INFO  [main] root: Send message:	 'PUT 1 2'
+2021-01-27 21:34:09,757 INFO  [main] root: Receive message:	 'PUT_SUCCESS 1 2'
+2021-01-27 21:34:09,757 INFO  [main] root: Put succeed: (1,2)
+2021-01-27 21:34:19,913 INFO  [main] root: Send message:	 'PUT 2 5'
+2021-01-27 21:34:19,916 INFO  [main] root: Receive message:	 'PUT_SUCCESS 2 5'
+2021-01-27 21:34:19,917 INFO  [main] root: Put succeed: (2,5)
+2021-01-27 21:39:45,023 INFO  [main] root: Connected to: 127.0.0.1 : 8008
+2021-01-27 21:39:45,025 INFO  [main] root: Connected to server
+2021-01-27 21:39:55,429 INFO  [main] root: Send message:	 'PUT key bbb bbb bbb bbb'
+2021-01-27 21:39:55,440 INFO  [main] root: Receive message:	 'PUT_SUCCESS key bbb bbb bbb bbb'
+2021-01-27 21:39:55,446 INFO  [main] root: Put succeed: (key,bbb bbb bbb bbb)
+2021-01-27 21:40:25,488 INFO  [main] root: Send message:	 'PUT a b'
+2021-01-27 21:40:25,491 INFO  [main] root: Receive message:	 'PUT_SUCCESS a b'
+2021-01-27 21:40:25,492 INFO  [main] root: Put succeed: (a,b)
+2021-01-27 21:40:28,183 INFO  [main] root: Send message:	 'PUT b c'
+2021-01-27 21:40:28,186 INFO  [main] root: Receive message:	 'PUT_SUCCESS b c'
+2021-01-27 21:40:28,187 INFO  [main] root: Put succeed: (b,c)
+2021-01-27 21:40:31,449 INFO  [main] root: Send message:	 'PUT c d'
+2021-01-27 21:40:31,452 INFO  [main] root: Receive message:	 'PUT_SUCCESS c d'
+2021-01-27 21:40:31,452 INFO  [main] root: Put succeed: (c,d)
+2021-01-27 21:40:32,851 INFO  [main] root: Send message:	 'PUT d e'
+2021-01-27 21:40:32,854 INFO  [main] root: Receive message:	 'PUT_SUCCESS d e'
+2021-01-27 21:40:32,854 INFO  [main] root: Put succeed: (d,e)
+2021-01-27 21:40:35,085 INFO  [main] root: Send message:	 'PUT e f'
+2021-01-27 21:40:35,088 INFO  [main] root: Receive message:	 'PUT_SUCCESS e f'
+2021-01-27 21:40:35,088 INFO  [main] root: Put succeed: (e,f)
+2021-01-27 21:40:36,774 INFO  [main] root: Send message:	 'PUT f g'
+2021-01-27 21:40:36,779 INFO  [main] root: Receive message:	 'PUT_SUCCESS f g'
+2021-01-27 21:40:36,780 INFO  [main] root: Put succeed: (f,g)
+2021-01-27 21:40:55,475 INFO  [main] root: Send message:	 'PUT g h'
+2021-01-27 21:40:55,480 INFO  [main] root: Receive message:	 'PUT_SUCCESS g h'
+2021-01-27 21:40:55,480 INFO  [main] root: Put succeed: (g,h)
+2021-01-27 21:41:08,780 INFO  [main] root: Send message:	 'PUT h i i i i i i i i i i i i'
+2021-01-27 21:41:08,787 INFO  [main] root: Receive message:	 'PUT_SUCCESS h i i i i i i i i i i i i'
+2021-01-27 21:41:08,787 INFO  [main] root: Put succeed: (h,i i i i i i i i i i i i)
+2021-01-27 21:41:25,151 INFO  [main] root: Send message:	 'GET 2 null'
+2021-01-27 21:41:25,153 INFO  [main] root: Receive message:	 'GET_SUCCESS 2 5'
+2021-01-27 21:41:25,154 INFO  [main] root: Get succeed: (2,5)
+2021-01-27 21:42:04,271 INFO  [main] root: Send message:	 'PUT aa bb'
+2021-01-27 21:42:04,275 INFO  [main] root: Receive message:	 'PUT_SUCCESS aa bb'
+2021-01-27 21:42:04,276 INFO  [main] root: Put succeed: (aa,bb)
+2021-01-27 22:25:49,975 INFO  [main] root: Connected to: 127.0.0.1 : 8008
+2021-01-27 22:25:49,976 INFO  [main] root: Connected to server
+2021-01-27 22:27:07,525 INFO  [main] root: Send message:	 'PUT xxxxxxx yyyyyy'
+2021-01-27 22:28:23,905 INFO  [main] root: Connected to: 127.0.0.1 : 8008
+2021-01-27 22:28:23,906 INFO  [main] root: Connected to server
+2021-01-27 22:28:28,647 INFO  [main] root: Send message:	 'PUT xxxxxxx yyyyyy'
+2021-01-27 22:32:37,072 INFO  [main] root: Connected to: 127.0.0.1 : 8008
+2021-01-27 22:32:37,073 INFO  [main] root: Connected to server
+2021-01-27 22:32:42,657 INFO  [main] root: Send message:	 'GET 1 null'
+2021-01-27 22:32:42,707 INFO  [main] root: Receive message:	 'GET_SUCCESS 1 FIFO-1'
+2021-01-27 22:32:42,709 INFO  [main] root: Get succeed: (1,FIFO-1)
+2021-01-27 22:32:53,651 INFO  [main] root: Send message:	 'PUT qwe qwe qweqweqwe'
+2021-01-27 22:32:53,669 INFO  [main] root: Receive message:	 'PUT_SUCCESS qwe qwe qweqweqwe'
+2021-01-27 22:32:53,669 INFO  [main] root: Put succeed: (qwe,qwe qweqweqwe)
+2021-01-27 22:33:06,526 INFO  [main] root: Send message:	 'PUT 7788 7788'
+2021-01-27 22:33:06,539 INFO  [main] root: Receive message:	 'PUT_SUCCESS 7788 7788'
+2021-01-27 22:33:06,540 INFO  [main] root: Put succeed: (7788,7788)
+2021-01-28 20:57:17,951 INFO  [main] root: Connected to: 127.0.0.1 : 8008
+2021-01-28 20:57:17,953 INFO  [main] root: Connected to server
+2021-01-28 20:57:38,417 INFO  [main] root: Send message:	 'PUT key-1 value space'
+2021-01-28 20:57:38,466 INFO  [main] root: Receive message:	 'PUT_SUCCESS key-1 value space'
+2021-01-28 20:57:38,468 INFO  [main] root: Put succeed: (key-1,value space)
+2021-01-28 20:57:51,075 INFO  [main] root: Socket disconnected.
+2021-01-28 20:57:51,075 INFO  [main] root: Disconnected from server
+2021-01-28 21:10:12,713 INFO  [main] root: Connected to: 127.0.0.1 : 8008
+2021-01-28 21:10:12,713 INFO  [main] root: Connected to server
+2021-01-28 21:10:15,840 INFO  [main] root: Send message:	 'PUT 3 4'
+2021-01-28 21:10:15,879 INFO  [main] root: Receive message:	 'PUT_UPDATE 3 4'
+2021-01-28 21:10:15,879 INFO  [main] root: Update succeed: (3,4)
+2021-01-28 21:10:40,576 INFO  [main] root: Send message:	 'PUT xxxxxxxxx yyyy yyy yyyy yyyy yyyy yyy yyy'
+2021-01-28 21:10:40,588 INFO  [main] root: Receive message:	 'PUT_SUCCESS xxxxxxxxx yyyy yyy yyyy yyyy yyyy yyy yyy'
+2021-01-28 21:10:40,589 INFO  [main] root: Put succeed: (xxxxxxxxx,yyyy yyy yyyy yyyy yyyy yyy yyy)
+2021-01-28 21:11:33,992 INFO  [main] root: Send message:	 'PUT xyxy zzzzzzz'
+2021-01-28 21:11:34,000 INFO  [main] root: Receive message:	 'PUT_SUCCESS xyxy zzzzzzz'
+2021-01-28 21:11:34,000 INFO  [main] root: Put succeed: (xyxy,zzzzzzz)
+2021-01-28 21:11:50,168 INFO  [main] root: Send message:	 'GET 39 null'
+2021-01-28 21:11:50,179 INFO  [main] root: Receive message:	 'GET_SUCCESS 39 2526'
+2021-01-28 21:11:50,180 INFO  [main] root: Get succeed: (39,2526)
+2021-01-28 21:15:04,771 INFO  [main] root: Send message:	 'GET 1414141414141 null'
+2021-01-28 21:15:04,780 INFO  [main] root: Receive message:	 'GET_ERROR 1414141414141'
+2021-01-28 21:15:04,780 WARN  [main] root: Get failed: 1414141414141 was invalid

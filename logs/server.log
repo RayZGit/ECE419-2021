@@ -329,3 +329,264 @@
 2021-01-27 13:48:51,016 INFO  [Thread-1] root: <Server> SEND 	<127.0.0.1:57483>: key: hong| value: xu| status: PUT_UPDATE
 2021-01-27 13:49:02,891 INFO  [Thread-1] root: <Server>  Write cache data to disk!
 2021-01-27 13:49:02,895 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 57483>
+2021-01-27 20:49:15,234 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk.txt
+2021-01-27 20:49:15,239 INFO  [main] root: StoreDisk: File already existed
+2021-01-27 20:49:15,248 INFO  [Thread-0] root: <Server> Initialize server ...
+2021-01-27 20:49:15,278 INFO  [Thread-0] root: <Server> Server listening on port: 8008
+2021-01-27 20:49:39,907 INFO  [Thread-1] root: <Server> Establishing connection
+2021-01-27 20:49:39,922 INFO  [Thread-0] root: <Server> Connected to localhost on port 59733
+2021-01-27 20:49:51,107 INFO  [Thread-1] root: Receive message:	 'PUT 3 33'
+2021-01-27 20:49:51,127 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:59733>: key: 3 | value: 33 | status: PUT
+2021-01-27 20:49:51,186 INFO  [Thread-1] root: <Server> Put succeed3,33)
+2021-01-27 20:49:51,187 INFO  [Thread-1] root: Send message:	 'PUT_SUCCESS 3 33'
+2021-01-27 20:49:51,188 INFO  [Thread-1] root: <Server> SEND 	<127.0.0.1:59733>: key: 3| value: 33| status: PUT_SUCCESS
+2021-01-27 20:50:00,123 INFO  [Thread-1] root: <Server>  Write cache data to disk!
+2021-01-27 20:50:00,127 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 59733>
+2021-01-27 21:30:39,049 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk.txt
+2021-01-27 21:30:39,050 INFO  [main] root: StoreDisk: File already existed
+2021-01-27 21:30:39,052 INFO  [Thread-0] root: <Server> Initialize server ...
+2021-01-27 21:30:39,073 INFO  [Thread-0] root: <Server> Server listening on port: 8008
+2021-01-27 21:31:14,711 INFO  [Thread-1] root: <Server> Establishing connection
+2021-01-27 21:31:14,719 INFO  [Thread-0] root: <Server> Connected to localhost on port 60202
+2021-01-27 21:31:17,704 INFO  [Thread-1] root: Receive message:	 'GET 1 null'
+2021-01-27 21:31:17,708 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:60202>: key: 1 | value: null | status: GET
+2021-01-27 21:31:17,744 INFO  [Thread-1] root: <Server> Get failed: (key,1)
+2021-01-27 21:31:17,745 INFO  [Thread-1] root: Send message:	 'GET_ERROR 1 '
+2021-01-27 21:31:17,747 INFO  [Thread-1] root: <Server> SEND 	<127.0.0.1:60202>: key: 1| value: | status: GET_ERROR
+2021-01-27 21:31:25,399 INFO  [Thread-1] root: Receive message:	 'GET foo2 null'
+2021-01-27 21:31:25,400 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:60202>: key: foo2 | value: null | status: GET
+2021-01-27 21:31:25,401 INFO  [Thread-1] root: <Server> Get succeedfoo2,bar2)
+2021-01-27 21:31:25,401 INFO  [Thread-1] root: Send message:	 'GET_SUCCESS foo2 bar2'
+2021-01-27 21:31:25,401 INFO  [Thread-1] root: <Server> SEND 	<127.0.0.1:60202>: key: foo2| value: bar2| status: GET_SUCCESS
+2021-01-27 21:31:46,854 INFO  [Thread-1] root: Receive message:	 'GET 3 null'
+2021-01-27 21:31:46,855 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:60202>: key: 3 | value: null | status: GET
+2021-01-27 21:31:46,856 INFO  [Thread-1] root: <Server> Get succeed3,33)
+2021-01-27 21:31:46,856 INFO  [Thread-1] root: Send message:	 'GET_SUCCESS 3 33'
+2021-01-27 21:31:46,856 INFO  [Thread-1] root: <Server> SEND 	<127.0.0.1:60202>: key: 3| value: 33| status: GET_SUCCESS
+2021-01-27 21:33:48,395 INFO  [Thread-1] root: Receive message:	 'GET 4 null'
+2021-01-27 21:33:48,396 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:60202>: key: 4 | value: null | status: GET
+2021-01-27 21:33:48,397 INFO  [Thread-1] root: <Server> Get failed: (key,4)
+2021-01-27 21:33:48,398 INFO  [Thread-1] root: Send message:	 'GET_ERROR 4 '
+2021-01-27 21:33:48,398 INFO  [Thread-1] root: <Server> SEND 	<127.0.0.1:60202>: key: 4| value: | status: GET_ERROR
+2021-01-27 21:34:09,754 INFO  [Thread-1] root: Receive message:	 'PUT 1 2'
+2021-01-27 21:34:09,754 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:60202>: key: 1 | value: 2 | status: PUT
+2021-01-27 21:34:09,756 INFO  [Thread-1] root: <Server> Put succeed1,2)
+2021-01-27 21:34:09,756 INFO  [Thread-1] root: Send message:	 'PUT_SUCCESS 1 2'
+2021-01-27 21:34:09,756 INFO  [Thread-1] root: <Server> SEND 	<127.0.0.1:60202>: key: 1| value: 2| status: PUT_SUCCESS
+2021-01-27 21:34:19,914 INFO  [Thread-1] root: Receive message:	 'PUT 2 5'
+2021-01-27 21:34:19,914 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:60202>: key: 2 | value: 5 | status: PUT
+2021-01-27 21:34:19,915 INFO  [Thread-1] root: <Server> Put succeed2,5)
+2021-01-27 21:34:19,916 INFO  [Thread-1] root: Send message:	 'PUT_SUCCESS 2 5'
+2021-01-27 21:34:19,916 INFO  [Thread-1] root: <Server> SEND 	<127.0.0.1:60202>: key: 2| value: 5| status: PUT_SUCCESS
+2021-01-27 21:34:56,076 INFO  [Thread-1] root: <Server>  Write cache data to disk!
+2021-01-27 21:34:56,086 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 60202>
+2021-01-27 21:39:45,021 INFO  [Thread-2] root: <Server> Establishing connection
+2021-01-27 21:39:45,023 INFO  [Thread-0] root: <Server> Connected to localhost on port 60246
+2021-01-27 21:39:55,430 INFO  [Thread-2] root: Receive message:	 'PUT key bbb bbb bbb bbb'
+2021-01-27 21:39:55,431 INFO  [Thread-2] root: <Server> RECEIVE from 	<127.0.0.1:60246>: key: key | value: bbb bbb bbb bbb | status: PUT
+2021-01-27 21:39:55,433 INFO  [Thread-2] root: <Server> Put succeedkey,bbb bbb bbb bbb)
+2021-01-27 21:39:55,433 INFO  [Thread-2] root: Send message:	 'PUT_SUCCESS key bbb bbb bbb bbb'
+2021-01-27 21:39:55,433 INFO  [Thread-2] root: <Server> SEND 	<127.0.0.1:60246>: key: key| value: bbb bbb bbb bbb| status: PUT_SUCCESS
+2021-01-27 21:40:25,489 INFO  [Thread-2] root: Receive message:	 'PUT a b'
+2021-01-27 21:40:25,489 INFO  [Thread-2] root: <Server> RECEIVE from 	<127.0.0.1:60246>: key: a | value: b | status: PUT
+2021-01-27 21:40:25,490 INFO  [Thread-2] root: <Server> Put succeeda,b)
+2021-01-27 21:40:25,490 INFO  [Thread-2] root: Send message:	 'PUT_SUCCESS a b'
+2021-01-27 21:40:25,491 INFO  [Thread-2] root: <Server> SEND 	<127.0.0.1:60246>: key: a| value: b| status: PUT_SUCCESS
+2021-01-27 21:40:28,184 INFO  [Thread-2] root: Receive message:	 'PUT b c'
+2021-01-27 21:40:28,184 INFO  [Thread-2] root: <Server> RECEIVE from 	<127.0.0.1:60246>: key: b | value: c | status: PUT
+2021-01-27 21:40:28,185 INFO  [Thread-2] root: <Server> Put succeedb,c)
+2021-01-27 21:40:28,186 INFO  [Thread-2] root: Send message:	 'PUT_SUCCESS b c'
+2021-01-27 21:40:28,186 INFO  [Thread-2] root: <Server> SEND 	<127.0.0.1:60246>: key: b| value: c| status: PUT_SUCCESS
+2021-01-27 21:40:31,449 INFO  [Thread-2] root: Receive message:	 'PUT c d'
+2021-01-27 21:40:31,450 INFO  [Thread-2] root: <Server> RECEIVE from 	<127.0.0.1:60246>: key: c | value: d | status: PUT
+2021-01-27 21:40:31,451 INFO  [Thread-2] root: <Server> Put succeedc,d)
+2021-01-27 21:40:31,451 INFO  [Thread-2] root: Send message:	 'PUT_SUCCESS c d'
+2021-01-27 21:40:31,451 INFO  [Thread-2] root: <Server> SEND 	<127.0.0.1:60246>: key: c| value: d| status: PUT_SUCCESS
+2021-01-27 21:40:32,851 INFO  [Thread-2] root: Receive message:	 'PUT d e'
+2021-01-27 21:40:32,852 INFO  [Thread-2] root: <Server> RECEIVE from 	<127.0.0.1:60246>: key: d | value: e | status: PUT
+2021-01-27 21:40:32,853 INFO  [Thread-2] root: <Server> Put succeedd,e)
+2021-01-27 21:40:32,853 INFO  [Thread-2] root: Send message:	 'PUT_SUCCESS d e'
+2021-01-27 21:40:32,853 INFO  [Thread-2] root: <Server> SEND 	<127.0.0.1:60246>: key: d| value: e| status: PUT_SUCCESS
+2021-01-27 21:40:35,085 INFO  [Thread-2] root: Receive message:	 'PUT e f'
+2021-01-27 21:40:35,086 INFO  [Thread-2] root: <Server> RECEIVE from 	<127.0.0.1:60246>: key: e | value: f | status: PUT
+2021-01-27 21:40:35,087 INFO  [Thread-2] root: <Server> Put succeede,f)
+2021-01-27 21:40:35,087 INFO  [Thread-2] root: Send message:	 'PUT_SUCCESS e f'
+2021-01-27 21:40:35,087 INFO  [Thread-2] root: <Server> SEND 	<127.0.0.1:60246>: key: e| value: f| status: PUT_SUCCESS
+2021-01-27 21:40:36,775 INFO  [Thread-2] root: Receive message:	 'PUT f g'
+2021-01-27 21:40:36,775 INFO  [Thread-2] root: <Server> RECEIVE from 	<127.0.0.1:60246>: key: f | value: g | status: PUT
+2021-01-27 21:40:36,778 INFO  [Thread-2] root: <LRU> (foo2bar2) move eldest KV to disk
+2021-01-27 21:40:36,778 INFO  [Thread-2] root: <Server> Put succeedf,g)
+2021-01-27 21:40:36,779 INFO  [Thread-2] root: Send message:	 'PUT_SUCCESS f g'
+2021-01-27 21:40:36,779 INFO  [Thread-2] root: <Server> SEND 	<127.0.0.1:60246>: key: f| value: g| status: PUT_SUCCESS
+2021-01-27 21:40:55,476 INFO  [Thread-2] root: Receive message:	 'PUT g h'
+2021-01-27 21:40:55,476 INFO  [Thread-2] root: <Server> RECEIVE from 	<127.0.0.1:60246>: key: g | value: h | status: PUT
+2021-01-27 21:40:55,479 INFO  [Thread-2] root: <LRU> (333) move eldest KV to disk
+2021-01-27 21:40:55,479 INFO  [Thread-2] root: <Server> Put succeedg,h)
+2021-01-27 21:40:55,479 INFO  [Thread-2] root: Send message:	 'PUT_SUCCESS g h'
+2021-01-27 21:40:55,480 INFO  [Thread-2] root: <Server> SEND 	<127.0.0.1:60246>: key: g| value: h| status: PUT_SUCCESS
+2021-01-27 21:41:08,782 INFO  [Thread-2] root: Receive message:	 'PUT h i i i i i i i i i i i i'
+2021-01-27 21:41:08,782 INFO  [Thread-2] root: <Server> RECEIVE from 	<127.0.0.1:60246>: key: h | value: i i i i i i i i i i i i | status: PUT
+2021-01-27 21:41:08,786 INFO  [Thread-2] root: <LRU> (12) move eldest KV to disk
+2021-01-27 21:41:08,786 INFO  [Thread-2] root: <Server> Put succeedh,i i i i i i i i i i i i)
+2021-01-27 21:41:08,786 INFO  [Thread-2] root: Send message:	 'PUT_SUCCESS h i i i i i i i i i i i i'
+2021-01-27 21:41:08,786 INFO  [Thread-2] root: <Server> SEND 	<127.0.0.1:60246>: key: h| value: i i i i i i i i i i i i| status: PUT_SUCCESS
+2021-01-27 21:41:25,152 INFO  [Thread-2] root: Receive message:	 'GET 2 null'
+2021-01-27 21:41:25,152 INFO  [Thread-2] root: <Server> RECEIVE from 	<127.0.0.1:60246>: key: 2 | value: null | status: GET
+2021-01-27 21:41:25,153 INFO  [Thread-2] root: <Server> Get succeed2,5)
+2021-01-27 21:41:25,153 INFO  [Thread-2] root: Send message:	 'GET_SUCCESS 2 5'
+2021-01-27 21:41:25,153 INFO  [Thread-2] root: <Server> SEND 	<127.0.0.1:60246>: key: 2| value: 5| status: GET_SUCCESS
+2021-01-27 21:42:04,272 INFO  [Thread-2] root: Receive message:	 'PUT aa bb'
+2021-01-27 21:42:04,272 INFO  [Thread-2] root: <Server> RECEIVE from 	<127.0.0.1:60246>: key: aa | value: bb | status: PUT
+2021-01-27 21:42:04,274 INFO  [Thread-2] root: <LRU> (keybbb bbb bbb bbb) move eldest KV to disk
+2021-01-27 21:42:04,275 INFO  [Thread-2] root: <Server> Put succeedaa,bb)
+2021-01-27 21:42:04,275 INFO  [Thread-2] root: Send message:	 'PUT_SUCCESS aa bb'
+2021-01-27 21:42:04,275 INFO  [Thread-2] root: <Server> SEND 	<127.0.0.1:60246>: key: aa| value: bb| status: PUT_SUCCESS
+2021-01-27 22:06:10,964 INFO  [Thread-3] root: <Server> Establishing connection
+2021-01-27 22:06:10,965 INFO  [Thread-3] root: Receive message:	 'PUT 0 FIFO-0'
+2021-01-27 22:06:10,966 INFO  [Thread-3] root: <Server> RECEIVE from 	<127.0.0.1:60429>: key: 0 | value: FIFO-0 | status: PUT
+2021-01-27 22:06:10,967 INFO  [Thread-0] root: <Server> Connected to localhost on port 60429
+2021-01-27 22:06:10,969 INFO  [Thread-3] root: <LRU> (ab) move eldest KV to disk
+2021-01-27 22:06:10,969 INFO  [Thread-3] root: <Server> Put succeed0,FIFO-0)
+2021-01-27 22:06:10,970 INFO  [Thread-3] root: Send message:	 'PUT_SUCCESS 0 FIFO-0'
+2021-01-27 22:06:10,970 INFO  [Thread-3] root: <Server> SEND 	<127.0.0.1:60429>: key: 0| value: FIFO-0| status: PUT_SUCCESS
+2021-01-27 22:06:10,974 INFO  [Thread-3] root: Receive message:	 'PUT 1 FIFO-1'
+2021-01-27 22:06:10,980 INFO  [Thread-3] root: <Server> RECEIVE from 	<127.0.0.1:60429>: key: 1 | value: FIFO-1 | status: PUT
+2021-01-27 22:06:10,984 INFO  [Thread-3] root: <LRU> (bc) move eldest KV to disk
+2021-01-27 22:06:10,984 INFO  [Thread-3] root: <Server> Put succeed1,FIFO-1)
+2021-01-27 22:06:10,984 INFO  [Thread-3] root: Send message:	 'PUT_SUCCESS 1 FIFO-1'
+2021-01-27 22:06:10,984 INFO  [Thread-3] root: <Server> SEND 	<127.0.0.1:60429>: key: 1| value: FIFO-1| status: PUT_SUCCESS
+2021-01-27 22:06:10,985 INFO  [Thread-3] root: Receive message:	 'PUT 2 FIFO-2'
+2021-01-27 22:06:10,986 INFO  [Thread-3] root: <Server> RECEIVE from 	<127.0.0.1:60429>: key: 2 | value: FIFO-2 | status: PUT
+2021-01-27 22:06:10,986 INFO  [Thread-3] root: <Server> Update succeed2,FIFO-2)
+2021-01-27 22:06:10,986 INFO  [Thread-3] root: Send message:	 'PUT_UPDATE 2 FIFO-2'
+2021-01-27 22:06:10,986 INFO  [Thread-3] root: <Server> SEND 	<127.0.0.1:60429>: key: 2| value: FIFO-2| status: PUT_UPDATE
+2021-01-27 22:06:10,997 INFO  [Thread-3] root: <Server>  Write cache data to disk!
+2021-01-27 22:06:11,014 ERROR [Thread-3] root: <Server> Error! Connection lost <localhost: 60429>
+2021-01-27 22:06:40,714 INFO  [Thread-4] root: <Server> Establishing connection
+2021-01-27 22:06:40,715 INFO  [Thread-0] root: <Server> Connected to localhost on port 60450
+2021-01-27 22:06:40,722 INFO  [Thread-4] root: Receive message:	 'PUT 0 FIFO-0'
+2021-01-27 22:06:40,723 INFO  [Thread-4] root: <Server> RECEIVE from 	<127.0.0.1:60450>: key: 0 | value: FIFO-0 | status: PUT
+2021-01-27 22:06:40,723 INFO  [Thread-4] root: <Server> Update succeed0,FIFO-0)
+2021-01-27 22:06:40,724 INFO  [Thread-4] root: Send message:	 'PUT_UPDATE 0 FIFO-0'
+2021-01-27 22:06:40,724 INFO  [Thread-4] root: <Server> SEND 	<127.0.0.1:60450>: key: 0| value: FIFO-0| status: PUT_UPDATE
+2021-01-27 22:06:40,744 INFO  [Thread-4] root: <Server>  Write cache data to disk!
+2021-01-27 22:06:40,783 ERROR [Thread-4] root: <Server> Error! Connection lost <localhost: 60450>
+2021-01-27 22:06:53,521 INFO  [Thread-5] root: <Server> Establishing connection
+2021-01-27 22:06:53,524 INFO  [Thread-0] root: <Server> Connected to localhost on port 60467
+2021-01-27 22:06:53,526 INFO  [Thread-5] root: Receive message:	 'PUT 0 FIFO-0'
+2021-01-27 22:06:53,527 INFO  [Thread-5] root: <Server> RECEIVE from 	<127.0.0.1:60467>: key: 0 | value: FIFO-0 | status: PUT
+2021-01-27 22:06:53,527 INFO  [Thread-5] root: <Server> Update succeed0,FIFO-0)
+2021-01-27 22:06:53,528 INFO  [Thread-5] root: Send message:	 'PUT_UPDATE 0 FIFO-0'
+2021-01-27 22:06:53,528 INFO  [Thread-5] root: <Server> SEND 	<127.0.0.1:60467>: key: 0| value: FIFO-0| status: PUT_UPDATE
+2021-01-27 22:06:53,575 INFO  [Thread-5] root: <Server>  Write cache data to disk!
+2021-01-27 22:06:53,594 ERROR [Thread-5] root: <Server> Error! Connection lost <localhost: 60467>
+2021-01-27 22:07:40,408 INFO  [Thread-6] root: <Server> Establishing connection
+2021-01-27 22:07:40,411 INFO  [Thread-0] root: <Server> Connected to localhost on port 60489
+2021-01-27 22:07:40,419 INFO  [Thread-6] root: Receive message:	 'PUT 0 FIFO-0'
+2021-01-27 22:07:40,420 INFO  [Thread-6] root: <Server> RECEIVE from 	<127.0.0.1:60489>: key: 0 | value: FIFO-0 | status: PUT
+2021-01-27 22:07:40,420 INFO  [Thread-6] root: <Server> Update succeed0,FIFO-0)
+2021-01-27 22:07:40,421 INFO  [Thread-6] root: Send message:	 'PUT_UPDATE 0 FIFO-0'
+2021-01-27 22:07:40,421 INFO  [Thread-6] root: <Server> SEND 	<127.0.0.1:60489>: key: 0| value: FIFO-0| status: PUT_UPDATE
+2021-01-27 22:07:40,434 INFO  [Thread-6] root: <Server>  Write cache data to disk!
+2021-01-27 22:07:40,435 INFO  [Thread-6] root: StoreDisk: Invalid found of the line
+2021-01-27 22:07:40,436 INFO  [Thread-6] root: StoreDisk: Invalid found of the line
+2021-01-27 22:07:40,437 INFO  [Thread-6] root: StoreDisk: Invalid found of the line
+2021-01-27 22:07:40,438 INFO  [Thread-6] root: StoreDisk: Invalid found of the line
+2021-01-27 22:07:40,440 INFO  [Thread-6] root: StoreDisk: Invalid found of the line
+2021-01-27 22:07:40,442 INFO  [Thread-6] root: StoreDisk: Invalid found of the line
+2021-01-27 22:07:40,444 INFO  [Thread-6] root: StoreDisk: Invalid found of the line
+2021-01-27 22:07:40,446 INFO  [Thread-6] root: StoreDisk: Invalid found of the line
+2021-01-27 22:07:40,448 INFO  [Thread-6] root: StoreDisk: Invalid found of the line
+2021-01-27 22:07:40,451 INFO  [Thread-6] root: StoreDisk: Invalid found of the line
+2021-01-27 22:07:40,451 ERROR [Thread-6] root: <Server> Error! Connection lost <localhost: 60489>
+2021-01-27 22:25:20,633 INFO  [Thread-2] root: <Server>  Write cache data to disk!
+2021-01-27 22:25:20,660 ERROR [Thread-2] root: <Server> Error! Connection lost <localhost: 60246>
+2021-01-27 22:25:38,990 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk.txt
+2021-01-27 22:25:38,991 INFO  [main] root: StoreDisk: File already existed
+2021-01-27 22:25:38,992 INFO  [Thread-0] root: <Server> Initialize server ...
+2021-01-27 22:25:39,011 INFO  [Thread-0] root: <Server> Server listening on port: 8008
+2021-01-27 22:25:49,977 INFO  [Thread-1] root: <Server> Establishing connection
+2021-01-27 22:25:49,986 INFO  [Thread-0] root: <Server> Connected to localhost on port 60762
+2021-01-27 22:27:07,532 INFO  [Thread-1] root: Receive message:	 'PUT xxxxxxx yyyyyy'
+2021-01-27 22:27:07,536 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:60762>: key: xxxxxxx | value: yyyyyy | status: PUT
+2021-01-27 22:27:07,577 INFO  [Thread-1] root: <Server> Put succeedxxxxxxx,yyyyyy)
+2021-01-27 22:27:07,577 INFO  [Thread-1] root: <Server>  Write cache data to disk!
+2021-01-27 22:28:10,772 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk.txt
+2021-01-27 22:28:10,773 INFO  [main] root: StoreDisk: File already existed
+2021-01-27 22:28:10,773 INFO  [Thread-0] root: <Server> Initialize server ...
+2021-01-27 22:28:10,790 INFO  [Thread-0] root: <Server> Server listening on port: 8008
+2021-01-27 22:28:23,906 INFO  [Thread-1] root: <Server> Establishing connection
+2021-01-27 22:28:23,914 INFO  [Thread-0] root: <Server> Connected to localhost on port 60782
+2021-01-27 22:28:28,653 INFO  [Thread-1] root: Receive message:	 'PUT xxxxxxx yyyyyy'
+2021-01-27 22:28:28,657 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:60782>: key: xxxxxxx | value: yyyyyy | status: PUT
+2021-01-27 22:28:28,703 INFO  [Thread-1] root: <Server> Update succeedxxxxxxx,yyyyyy)
+2021-01-27 22:28:28,703 INFO  [Thread-1] root: <Server>  Write cache data to disk!
+2021-01-27 22:28:28,703 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 60782>
+2021-01-27 22:32:27,731 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk.txt
+2021-01-27 22:32:27,733 INFO  [main] root: StoreDisk: File already existed
+2021-01-27 22:32:27,734 INFO  [Thread-0] root: <Server> Initialize server ...
+2021-01-27 22:32:27,751 INFO  [Thread-0] root: <Server> Server listening on port: 8008
+2021-01-27 22:32:37,073 INFO  [Thread-1] root: <Server> Establishing connection
+2021-01-27 22:32:37,082 INFO  [Thread-0] root: <Server> Connected to localhost on port 60806
+2021-01-27 22:32:42,664 INFO  [Thread-1] root: Receive message:	 'GET 1 null'
+2021-01-27 22:32:42,668 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:60806>: key: 1 | value: null | status: GET
+2021-01-27 22:32:42,700 INFO  [Thread-1] root: <Server> Get succeed1,FIFO-1)
+2021-01-27 22:32:42,701 INFO  [Thread-1] root: Send message:	 'GET_SUCCESS 1 FIFO-1'
+2021-01-27 22:32:42,701 INFO  [Thread-1] root: <Server> SEND 	<127.0.0.1:60806>: key: 1| value: FIFO-1| status: GET_SUCCESS
+2021-01-27 22:32:53,652 INFO  [Thread-1] root: Receive message:	 'PUT qwe qwe qweqweqwe'
+2021-01-27 22:32:53,653 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:60806>: key: qwe | value: qwe qweqweqwe | status: PUT
+2021-01-27 22:32:53,667 INFO  [Thread-1] root: <Server> Put succeedqwe,qwe qweqweqwe)
+2021-01-27 22:32:53,668 INFO  [Thread-1] root: Send message:	 'PUT_SUCCESS qwe qwe qweqweqwe'
+2021-01-27 22:32:53,668 INFO  [Thread-1] root: <Server> SEND 	<127.0.0.1:60806>: key: qwe| value: qwe qweqweqwe| status: PUT_SUCCESS
+2021-01-27 22:33:06,527 INFO  [Thread-1] root: Receive message:	 'PUT 7788 7788'
+2021-01-27 22:33:06,527 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:60806>: key: 7788 | value: 7788 | status: PUT
+2021-01-27 22:33:06,538 INFO  [Thread-1] root: <Server> Put succeed7788,7788)
+2021-01-27 22:33:06,538 INFO  [Thread-1] root: Send message:	 'PUT_SUCCESS 7788 7788'
+2021-01-27 22:33:06,539 INFO  [Thread-1] root: <Server> SEND 	<127.0.0.1:60806>: key: 7788| value: 7788| status: PUT_SUCCESS
+2021-01-27 23:09:55,278 INFO  [Thread-1] root: <Server>  Write cache data to disk!
+2021-01-27 23:09:55,280 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 60806>
+2021-01-28 20:56:56,868 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk.txt
+2021-01-28 20:56:56,870 INFO  [main] root: StoreDisk: File already existed
+2021-01-28 20:56:56,871 INFO  [Thread-0] root: <Server> Initialize server ...
+2021-01-28 20:56:56,886 INFO  [Thread-0] root: <Server> Server listening on port: 8008
+2021-01-28 20:57:17,953 INFO  [Thread-1] root: <Server> Establishing connection
+2021-01-28 20:57:17,960 INFO  [Thread-0] root: <Server> Connected to localhost on port 53361
+2021-01-28 20:57:38,422 INFO  [Thread-1] root: Receive message:	 'PUT key-1 value space'
+2021-01-28 20:57:38,429 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:53361>: key: key-1 | value: value space | status: PUT
+2021-01-28 20:57:38,460 INFO  [Thread-1] root: <Server> Put succeedkey-1,value space)
+2021-01-28 20:57:38,461 INFO  [Thread-1] root: Send message:	 'PUT_SUCCESS key-1 value space'
+2021-01-28 20:57:38,461 INFO  [Thread-1] root: <Server> SEND 	<127.0.0.1:53361>: key: key-1| value: value space| status: PUT_SUCCESS
+2021-01-28 20:57:51,085 INFO  [Thread-1] root: <Server>  Write cache data to disk!
+2021-01-28 20:57:51,086 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 53361>
+2021-01-28 21:10:05,675 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk.txt
+2021-01-28 21:10:05,676 INFO  [main] root: StoreDisk: File already existed
+2021-01-28 21:10:05,677 INFO  [Thread-0] root: <Server> Initialize server ...
+2021-01-28 21:10:05,689 INFO  [Thread-0] root: <Server> Server listening on port: 8008
+2021-01-28 21:10:12,715 INFO  [Thread-1] root: <Server> Establishing connection
+2021-01-28 21:10:12,720 INFO  [Thread-0] root: <Server> Connected to localhost on port 53533
+2021-01-28 21:10:15,845 INFO  [Thread-1] root: Receive message:	 'PUT 3 4'
+2021-01-28 21:10:15,848 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:53533>: key: 3 | value: 4 | status: PUT
+2021-01-28 21:10:15,878 INFO  [Thread-1] root: <Server> Update succeed3,4)
+2021-01-28 21:10:15,878 INFO  [Thread-1] root: Send message:	 'PUT_UPDATE 3 4'
+2021-01-28 21:10:15,879 INFO  [Thread-1] root: <Server> SEND 	<127.0.0.1:53533>: key: 3| value: 4| status: PUT_UPDATE
+2021-01-28 21:10:40,577 INFO  [Thread-1] root: Receive message:	 'PUT xxxxxxxxx yyyy yyy yyyy yyyy yyyy yyy yyy'
+2021-01-28 21:10:40,578 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:53533>: key: xxxxxxxxx | value: yyyy yyy yyyy yyyy yyyy yyy yyy | status: PUT
+2021-01-28 21:10:40,587 INFO  [Thread-1] root: <Server> Put succeedxxxxxxxxx,yyyy yyy yyyy yyyy yyyy yyy yyy)
+2021-01-28 21:10:40,588 INFO  [Thread-1] root: Send message:	 'PUT_SUCCESS xxxxxxxxx yyyy yyy yyyy yyyy yyyy yyy yyy'
+2021-01-28 21:10:40,588 INFO  [Thread-1] root: <Server> SEND 	<127.0.0.1:53533>: key: xxxxxxxxx| value: yyyy yyy yyyy yyyy yyyy yyy yyy| status: PUT_SUCCESS
+2021-01-28 21:11:33,992 INFO  [Thread-1] root: Receive message:	 'PUT xyxy zzzzzzz'
+2021-01-28 21:11:33,993 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:53533>: key: xyxy | value: zzzzzzz | status: PUT
+2021-01-28 21:11:33,999 INFO  [Thread-1] root: <Server> Put succeedxyxy,zzzzzzz)
+2021-01-28 21:11:33,999 INFO  [Thread-1] root: Send message:	 'PUT_SUCCESS xyxy zzzzzzz'
+2021-01-28 21:11:33,999 INFO  [Thread-1] root: <Server> SEND 	<127.0.0.1:53533>: key: xyxy| value: zzzzzzz| status: PUT_SUCCESS
+2021-01-28 21:11:50,169 INFO  [Thread-1] root: Receive message:	 'GET 39 null'
+2021-01-28 21:11:50,169 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:53533>: key: 39 | value: null | status: GET
+2021-01-28 21:11:50,178 INFO  [Thread-1] root: <LRU> (34) move eldest KV to disk
+2021-01-28 21:11:50,178 INFO  [Thread-1] root: <Server> Get succeed39,2526)
+2021-01-28 21:11:50,179 INFO  [Thread-1] root: Send message:	 'GET_SUCCESS 39 2526'
+2021-01-28 21:11:50,179 INFO  [Thread-1] root: <Server> SEND 	<127.0.0.1:53533>: key: 39| value: 2526| status: GET_SUCCESS
+2021-01-28 21:15:04,773 INFO  [Thread-1] root: Receive message:	 'GET 1414141414141 null'
+2021-01-28 21:15:04,775 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:53533>: key: 1414141414141 | value: null | status: GET
+2021-01-28 21:15:04,779 INFO  [Thread-1] root: <Server> Get failed: ( key,1414141414141 )
+2021-01-28 21:15:04,779 INFO  [Thread-1] root: Send message:	 'GET_ERROR 1414141414141 '
+2021-01-28 21:15:04,779 INFO  [Thread-1] root: <Server> SEND 	<127.0.0.1:53533>: key: 1414141414141| value: | status: GET_ERROR

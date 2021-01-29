@@ -15,8 +15,8 @@ public class AllTests {
 	static {
 		try {
 			new LogSetup("logs/testing/test.log", Level.ERROR);
-			new Thread(new KVServer(50000, 5, "FIFO")).start();
-//			new Thread(new KVServer(50000, 5, "LRU")).start();
+//			new Thread(new KVServer(50000, 5, "FIFO")).start();
+			new Thread(new KVServer(50000, 5, "LRU")).start();
 //			new Thread(new KVServer(50000, 5, "None")).start();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -30,7 +30,7 @@ public class AllTests {
 		clientSuite.addTestSuite(InteractionTest.class);
 		clientSuite.addTestSuite(AdditionalTest.class);
 		clientSuite.addTestSuite(StorageTest.class);
-//		clientSuite.addTestSuite(FIFOCacheTest.class);
+		clientSuite.addTestSuite(FIFOCacheTest.class);
 //		clientSuite.addTestSuite(ConcurrencyTest.class);
 		return clientSuite;
 	}

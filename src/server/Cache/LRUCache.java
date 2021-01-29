@@ -27,7 +27,7 @@ public class LRUCache extends Cache{
                 if (isMaxCapacity) {
                     try {
                         storage.put(eldest.getKey(), eldest.getValue());
-                        System.out.println("<LRU> (" + eldest.getKey() + eldest.getValue() + ") move eldest KV to disk");
+                        System.out.println("<LRU> (" + eldest.getKey() + "," + eldest.getValue() + ") move eldest KV to disk");
                         logger.info("<LRU> (" + eldest.getKey() + eldest.getValue() + ") move eldest KV to disk");
                     } catch (Exception e) {
                         e.printStackTrace();
