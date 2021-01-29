@@ -215,7 +215,7 @@ public class Performance {
     }
 
     public static void main(String[] args) {
-        int cacheSize = 100;
+        int cacheSize = 0;
         int port = 50010;
 
         String cacheStrategy = "FIFO";
@@ -223,9 +223,10 @@ public class Performance {
         performance.setType(1);
         try {
             FileWriter fw = new FileWriter("performance.txt", true);
+            fw.write("\n-----------------New Test-----------------\n");
             fw.write("Testing with cacheSize: " + cacheSize + "\n");
             fw.write("Testing with caStrategy: " + cacheStrategy + "\n");
-            fw.write("Testing 50% put, 50% get: \n");
+            fw.write("\nTesting 50% put, 50% get: \n");
             fw.close();
 
         } catch (IOException e) {
@@ -236,7 +237,7 @@ public class Performance {
         performance.setType(2);
         try {
             FileWriter fw = new FileWriter("performance.txt", true);
-            fw.write("Testing 20% put, 80% get: \n");
+            fw.write("\nTesting 20% put, 80% get: \n");
             fw.close();
 
         } catch (IOException e) {
@@ -248,7 +249,7 @@ public class Performance {
         performance.setType(3);
         try {
             FileWriter fw = new FileWriter("performance.txt", true);
-            fw.write("Testing 80% put, 20% get: \n");
+            fw.write("\nTesting 80% put, 20% get: \n");
             fw.close();
 
         } catch (IOException e) {
