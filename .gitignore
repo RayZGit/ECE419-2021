@@ -1,3 +1,6 @@
-src/resources/*
-out/
-out/production/ECE419-2021/logs/testing/test.log
+/out
+KVClient.jar
+KVServer.jar
+ecs.jar
+MANIFEST*.MF
+/bin

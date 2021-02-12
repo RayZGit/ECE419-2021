@@ -9190,3 +9190,89 @@ java.lang.Exception: StoreDisk: Error for iterating  file
 2021-01-29 12:01:00,811 ERROR [Thread-15] root: <Server> Error! Connection lost <localhost: 56459>
 2021-01-29 12:01:00,920 ERROR [Thread-16] root: <Server> Error! Connection lost <localhost: 56462>
 2021-01-29 12:01:01,068 ERROR [Thread-17] root: <Server> Error! Connection lost <localhost: 56463>
+2021-02-12 13:39:31,976 ERROR [Thread-2] root: <Server> Error! Connection lost <localhost: 49159>
+2021-02-12 13:39:31,990 ERROR [Thread-4] root: <Server> Error! Connection lost <localhost: 49161>
+2021-02-12 13:39:32,056 ERROR [Thread-5] root: <Server> Error! Connection lost <localhost: 49162>
+2021-02-12 13:39:32,069 ERROR [Thread-7] root: <Server> Error! Connection lost <localhost: 49164>
+2021-02-12 13:39:32,085 ERROR [Thread-6] root: <Server> Error! Connection lost <localhost: 49163>
+2021-02-12 13:39:32,100 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 49158>
+2021-02-12 13:39:32,144 ERROR [Thread-8] root: <Server> Error! Connection lost <localhost: 49165>
+2021-02-12 13:39:32,175 ERROR [Thread-9] root: <Server> Error! Connection lost <localhost: 49166>
+2021-02-12 13:39:32,196 ERROR [Thread-10] root: <Server> Error! Connection lost <localhost: 49167>
+2021-02-12 13:39:32,224 ERROR [Thread-11] root: <Server> Error! Connection lost <localhost: 49168>
+2021-02-12 13:39:32,246 ERROR [Thread-12] root: <Server> Error! Connection lost <localhost: 49169>
+2021-02-12 13:39:32,265 ERROR [Thread-13] root: <Server> Error! Connection lost <localhost: 49171>
+2021-02-12 13:39:32,283 ERROR [Thread-14] root: <Server> Error! Connection lost <localhost: 49172>
+2021-02-12 13:39:32,300 ERROR [Thread-15] root: <Server> Error! Connection lost <localhost: 49173>
+2021-02-12 13:39:32,572 ERROR [Thread-16] root: <Server> Error! Connection lost <localhost: 49174>
+2021-02-12 13:39:32,774 ERROR [Thread-17] root: <Server> Error! Connection lost <localhost: 49176>
+2021-02-12 13:43:14,747 ERROR [Thread-2] root: <Server> Error! Connection lost <localhost: 49215>
+2021-02-12 13:43:14,786 ERROR [Thread-4] root: <Server> Error! Connection lost <localhost: 49217>
+2021-02-12 13:43:14,811 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 49214>
+2021-02-12 13:43:14,823 ERROR [Thread-5] root: <Server> Error! Connection lost <localhost: 49218>
+2021-02-12 13:43:14,839 ERROR [Thread-6] root: <Server> Error! Connection lost <localhost: 49219>
+2021-02-12 13:43:14,863 ERROR [Thread-7] root: <Server> Error! Connection lost <localhost: 49220>
+2021-02-12 13:43:14,914 ERROR [Thread-8] root: <Server> Error! Connection lost <localhost: 49221>
+2021-02-12 13:43:14,935 ERROR [Thread-9] root: <Server> Error! Connection lost <localhost: 49222>
+2021-02-12 13:43:14,959 ERROR [Thread-10] root: <Server> Error! Connection lost <localhost: 49223>
+2021-02-12 13:43:14,977 ERROR [Thread-11] root: <Server> Error! Connection lost <localhost: 49224>
+2021-02-12 13:43:14,994 ERROR [Thread-12] root: <Server> Error! Connection lost <localhost: 49225>
+2021-02-12 13:43:15,013 ERROR [Thread-13] root: <Server> Error! Connection lost <localhost: 49226>
+2021-02-12 13:43:15,040 ERROR [Thread-14] root: <Server> Error! Connection lost <localhost: 49227>
+2021-02-12 13:43:15,058 ERROR [Thread-15] root: <Server> Error! Connection lost <localhost: 49228>
+2021-02-12 13:43:15,283 ERROR [Thread-16] root: <Server> Error! Connection lost <localhost: 49229>
+2021-02-12 13:43:15,451 ERROR [Thread-17] root: <Server> Error! Connection lost <localhost: 49231>
+2021-02-12 13:43:33,127 ERROR [Thread-2] root: <Server> Error! Connection lost <localhost: 49236>
+2021-02-12 13:43:33,140 ERROR [Thread-4] root: <Server> Error! Connection lost <localhost: 49238>
+2021-02-12 13:43:33,152 ERROR [Thread-3] root: <Server> Error! Connection lost <localhost: 49237>
+2021-02-12 13:43:33,169 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 49235>
+2021-02-12 13:43:33,182 ERROR [Thread-5] root: <Server> Error! Connection lost <localhost: 49239>
+2021-02-12 13:43:33,194 ERROR [Thread-6] root: <Server> Error! Connection lost <localhost: 49240>
+2021-02-12 13:43:33,216 ERROR [Thread-7] root: <Server> Error! Connection lost <localhost: 49241>
+2021-02-12 13:43:33,270 ERROR [Thread-8] root: <Server> Error! Connection lost <localhost: 49242>
+2021-02-12 13:43:33,284 ERROR [Thread-10] root: <Server> Error! Connection lost <localhost: 49244>
+2021-02-12 13:43:33,295 ERROR [Thread-9] root: <Server> Error! Connection lost <localhost: 49243>
+2021-02-12 13:43:33,313 ERROR [Thread-11] root: <Server> Error! Connection lost <localhost: 49245>
+2021-02-12 13:43:33,335 ERROR [Thread-12] root: <Server> Error! Connection lost <localhost: 49246>
+2021-02-12 13:43:33,356 ERROR [Thread-13] root: <Server> Error! Connection lost <localhost: 49247>
+2021-02-12 13:43:33,383 ERROR [Thread-14] root: <Server> Error! Connection lost <localhost: 49248>
+2021-02-12 13:43:33,396 ERROR [Thread-15] root: <Server> Error! Connection lost <localhost: 49249>
+2021-02-12 13:43:33,630 ERROR [Thread-16] root: <Server> Error! Connection lost <localhost: 49250>
+2021-02-12 13:43:33,789 ERROR [Thread-17] root: <Server> Error! Connection lost <localhost: 49252>
+2021-02-12 13:43:56,879 ERROR [Thread-3] root: <Server> Error! Connection lost <localhost: 49258>
+2021-02-12 13:43:56,884 ERROR [Thread-2] root: <Server> Error! Connection lost <localhost: 49257>
+2021-02-12 13:43:56,890 ERROR [Thread-4] root: <Server> Error! Connection lost <localhost: 49259>
+2021-02-12 13:43:56,896 ERROR [Thread-5] root: <Server> Error! Connection lost <localhost: 49260>
+2021-02-12 13:43:56,901 ERROR [Thread-6] root: <Server> Error! Connection lost <localhost: 49261>
+2021-02-12 13:43:56,906 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 49256>
+2021-02-12 13:43:56,909 ERROR [Thread-7] root: <Server> Error! Connection lost <localhost: 49262>
+2021-02-12 13:43:56,963 ERROR [Thread-8] root: <Server> Error! Connection lost <localhost: 49263>
+2021-02-12 13:43:56,969 ERROR [Thread-9] root: <Server> Error! Connection lost <localhost: 49264>
+2021-02-12 13:43:56,989 ERROR [Thread-10] root: <Server> Error! Connection lost <localhost: 49265>
+2021-02-12 13:43:56,994 ERROR [Thread-11] root: <Server> Error! Connection lost <localhost: 49266>
+2021-02-12 13:43:57,017 ERROR [Thread-12] root: <Server> Error! Connection lost <localhost: 49267>
+2021-02-12 13:43:57,030 ERROR [Thread-13] root: <Server> Error! Connection lost <localhost: 49268>
+2021-02-12 13:43:57,039 ERROR [Thread-15] root: StoreDisk: Error for iterating  file
+java.io.FileNotFoundException: ./src/resources/DataDisk.txt (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:153)
+	at java.base/java.util.Scanner.<init>(Scanner.java:639)
+	at server.StoreDisk.StoreDisk.get(StoreDisk.java:97)
+	at server.StoreDisk.StoreDisk.contain(StoreDisk.java:128)
+	at app_kvServer.KVServer.inStorage(KVServer.java:108)
+	at app_kvServer.KVServerConnection.handleClientRequest(KVServerConnection.java:157)
+	at app_kvServer.KVServerConnection.run(KVServerConnection.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-02-12 13:43:57,040 ERROR [Thread-15] root: StoreDisk: Error for contain function
+java.lang.Exception: StoreDisk: Error for iterating  file
+	at server.StoreDisk.StoreDisk.get(StoreDisk.java:119)
+	at server.StoreDisk.StoreDisk.contain(StoreDisk.java:128)
+	at app_kvServer.KVServer.inStorage(KVServer.java:108)
+	at app_kvServer.KVServerConnection.handleClientRequest(KVServerConnection.java:157)
+	at app_kvServer.KVServerConnection.run(KVServerConnection.java:39)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-02-12 13:43:57,042 ERROR [Thread-14] root: <Server> Error! Connection lost <localhost: 49269>
+2021-02-12 13:43:57,244 ERROR [Thread-15] root: <Server> Error! Connection lost <localhost: 49270>
+2021-02-12 13:43:57,391 ERROR [Thread-16] root: <Server> Error! Connection lost <localhost: 49272>
+2021-02-12 13:43:57,512 ERROR [Thread-17] root: <Server> Error! Connection lost <localhost: 49273>
