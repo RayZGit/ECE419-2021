@@ -14,7 +14,9 @@ import org.apache.log4j.Logger;
 public class HashRing {
     private static Logger logger = Logger.getRootLogger();
     private static MessageDigest md;
-    public ECSNode first;
+    private ECSNode first;
+    private int size;
+
     static {
         try {
             md = MessageDigest.getInstance("MD5");
@@ -27,10 +29,12 @@ public class HashRing {
 
     public HashRing(){
         first = null;
+        size = 0;
     }
 
     public HashRing(String jsonString) {
         first = null;
+        size = 0;
         Gson gson = new Gson();
         Type ECSNodeList = new TypeToken<ArrayList<ECSNode>>(){}.getType();
         ECSNode[] temp = gson.fromJson(jsonString, ECSNodeList);
@@ -61,11 +65,38 @@ public class HashRing {
 
             next.setPrevious(node);
             node.setPrevious(previous);
+            size++;
+        }
+    }
+
+    public boolean checkNodeExist(String hash) {
+        ECSNode curr = first;
+        for(int i = 0; i < size; i++) {
+            if (getHash(curr).equals(hash)) return true;
+        }
+        return false;
+    }
+
+    public void removeNode(String hash) {
+        if (checkNodeExist(hash)) {
+            ECSNode node = getNodeByKey(hash);
+            removeNode(node);
+        } else {
+            logger.warn("ECSNode does not exist!");
         }
     }
 
     public void removeNode(ECSNode node) {
-
+        if (node.getPrevious() == node) {
+            first = null;
+        } else {
+            BigInteger next = new BigInteger(getHash(node), 16);
+            next = next.add(new BigInteger("1", 16));
+            ECSNode nextNode = getNodeByKey(next.toString());
+            nextNode.setPrevious(node.getPrevious());
+            if(first == node) first = nextNode;
+            size--;
+        }
     }
 
     public ECSNode getNodeByKey(String key) {
@@ -73,8 +104,8 @@ public class HashRing {
         ECSNode curr = first;
         while (curr != null) {
             String[] range = curr.getNodeHashRange();
-            BigInteger lower = new BigInteger(range[0]);
-            BigInteger upper = new BigInteger(range[1]);
+            BigInteger lower = new BigInteger(range[0], 16);
+            BigInteger upper = new BigInteger(range[1], 16);
 
             if (upper.compareTo(lower) <= 0) {
                 if (hash.compareTo(upper) <= 0 || hash.compareTo(lower) >= 0) {

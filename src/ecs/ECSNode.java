@@ -4,6 +4,8 @@ package ecs;
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.Expose;
 
+import java.math.BigInteger;
+
 public class ECSNode implements IECSNode{
     @Expose
     private String name;
@@ -37,7 +39,8 @@ public class ECSNode implements IECSNode{
 
     @Override
     public String[] getNodeHashRange() {
-        if (previous == this) return new String[]{"00000000000000000000000000000000", "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"};
+        if (previous == this)
+            return new String[]{"00000000000000000000000000000000", "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"};
         String start = HashRing.getHash(previous);
         String end = HashRing.getHash(this);
         return new String[]{start, end};
@@ -50,6 +53,20 @@ public class ECSNode implements IECSNode{
 
     public void setPrevious(ECSNode previous) {
         this.previous = previous;
+    }
+
+    public boolean isInRange(String key) {
+        String hash = HashRing.getHash(key);
+        BigInteger temp = new BigInteger(hash, 16);
+        String[] range = this.getNodeHashRange();
+        BigInteger lower = new BigInteger(range[0]);
+        BigInteger upper = new BigInteger(range[1]);
+
+        if (upper.compareTo(lower) <= 0) {
+            return temp.compareTo(upper) <= 0 || temp.compareTo(lower) > 0;
+        } else {
+            return temp.compareTo(upper) >= 0 || temp.compareTo(lower) < 0;
+        }
     }
 
 }
