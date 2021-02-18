@@ -12,6 +12,12 @@ public interface IKVServer {
         FIFO
     };
 
+    public enum ServerStatus {
+        START,       /* server works correctly */
+        STOP,        /* no client requests are processed */
+        LOCK         /* server is currently blocked for write requests */
+    }
+
     /**
      * Get the port number of the server
      * @return  port number

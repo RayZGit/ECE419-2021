@@ -79,6 +79,8 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
      * @return true or false if the action success or failed
      */
     public KVMessage handleClientRequest(KVMessage request){
+        //TODO:
+        //TODO: need check server status, get hashvalue based on the key
         KVMessage response = new KVBasicMessage();
         response.setKey(request.getKey());
         switch (request.getStatus()) {
