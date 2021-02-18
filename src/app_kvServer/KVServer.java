@@ -2,6 +2,9 @@ package app_kvServer;
 
 
 import logger.LogSetup;
+import org.apache.zookeeper.WatchedEvent;
+import org.apache.zookeeper.Watcher;
+import org.apache.zookeeper.ZooKeeper;
 import server.Cache.*;
 import server.StoreDisk.IStoreDisk;
 import server.StoreDisk.StoreDisk;
@@ -21,7 +24,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Map;
 
-public class KVServer implements IKVServer, Runnable {
+public class KVServer implements IKVServer, Runnable, Watcher {
 
 	private static Logger logger = Logger.getRootLogger();
 
@@ -31,6 +34,19 @@ public class KVServer implements IKVServer, Runnable {
 
 	private ServerSocket serverSocket;
 	private boolean running;
+
+	private ServerStatus serverStatus;
+	private boolean distributed;
+	private String serverName;
+
+	/* zookeeper property */
+	private String zooKeeperHostName;
+	private int zooKeeperPort;
+	private ZooKeeper zooKeeper;
+	private String zooKeeperPath;
+
+	/* Metadata property*/
+
 
 	/**
 	 * Start KV Server at given port
@@ -74,6 +90,16 @@ public class KVServer implements IKVServer, Runnable {
 				this.cache = null;
 				break;
 		}
+	}
+
+	public KVServer(int port, String serverName, String zooKeeperHostName, int zooKeeperPort) {
+		this.port = port;
+		this.serverName = serverName;
+		this.zooKeeperHostName = zooKeeperHostName;
+		this.zooKeeperPort = zooKeeperPort;
+		this.distributed = true;
+		this.serverStatus = ServerStatus.STOP;
+		this.zooKeeperPath = "" + "/" + serverName; //TODO: zookeeper root path
 	}
 
 	@Override
@@ -259,14 +285,19 @@ public class KVServer implements IKVServer, Runnable {
 		System.out.println("Start Server");
 		try {
 			new LogSetup("logs/server.log", Level.ALL);
-			if(args.length < 3) {
+			if(args.length < 3 || args.length > 4) {
 				System.out.println("Error! Invalid number of arguments!");
 				System.out.println("Usage: Server <port> <cache size> <strategy>!");
-			} else {
+				System.err.println("Usage: Server <port> <serverName> <kvHost> <kvPort>!");
+			}
+			else if (args.length == 3) {
 				int portNumber = Integer.parseInt(args[0]);
 				int cacheSize = Integer.parseInt(args[1]);
 				String strategy = args[2];
 				new Thread(new KVServer(portNumber, cacheSize, strategy)).start();
+			}
+			else {
+
 			}
 		} catch (IOException e) {
 			System.out.println("Error! Unable to initialize logger!");
@@ -282,5 +313,10 @@ public class KVServer implements IKVServer, Runnable {
 		} catch (Exception e) {
 			System.out.println("Error! Invalid argument number!");
 		}
+	}
+
+	@Override
+	public void process(WatchedEvent watchedEvent) {
+
 	}
 }
