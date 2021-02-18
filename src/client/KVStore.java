@@ -1,5 +1,6 @@
 package client;
 
+import ecs.HashRing;
 import org.apache.log4j.Logger;
 import shared.messages.KVBasicMessage;
 import shared.messages.KVMessage;
@@ -19,12 +20,15 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 	private Socket socket;
 	private final int LEN_KEY = 20;
 	private final int LEN_VALUE = 120 * 1024;
+	private HashRing hashRing;
 
 
 	public KVStore(String address, int port) {
 		// TODO Auto-generated method stub
 		this.address = address;
 		this.port = port;
+		hashRing = new HashRing();
+
 	}
 
 	@Override
@@ -82,7 +86,8 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 		}
 		KVBasicMessage request = new KVBasicMessage(key, null, KVMessage.StatusType.GET);
 		sendMessage(request);
-		return receiveMessage();
+		KVMessage response = receiveMessage();
+		if (response.getStatus() != )
 	}
 
 	@Override
