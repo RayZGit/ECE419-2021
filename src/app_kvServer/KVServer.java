@@ -23,6 +23,7 @@ import java.net.BindException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
 
 public class KVServer implements IKVServer, Runnable, Watcher {
 
@@ -93,13 +94,43 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	}
 
 	public KVServer(int port, String serverName, String zooKeeperHostName, int zooKeeperPort) {
-		this.port = port;
+//		this.port = port;
+		this(port, 100, "LFU");
 		this.serverName = serverName;
 		this.zooKeeperHostName = zooKeeperHostName;
 		this.zooKeeperPort = zooKeeperPort;
 		this.distributed = true;
 		this.serverStatus = ServerStatus.STOP;
 		this.zooKeeperPath = "" + "/" + serverName; //TODO: zookeeper root path
+		String zkConnectionPath = this.zooKeeperHostName + ":" + Integer.toString(this.zooKeeperPort);
+		try {
+			connectZooKeeper(zkConnectionPath);
+		} catch (IOException e) {
+			e.printStackTrace();
+			logger.debug("Server: " + "<" + this.serverName + ">: " + "Unable to connect to zookeeper");
+		}
+
+	}
+
+	public void connectZooKeeper(String connectionPath) throws IOException {
+		CountDownLatch sig = new CountDownLatch(0);
+		this.zooKeeper = new ZooKeeper(connectionPath, 5000, new Watcher() {
+			@Override
+			public void process(WatchedEvent event) {
+				if (event.getState().equals(Event.KeeperState.SyncConnected)) {
+					sig.countDown();
+				}
+			}
+		});
+		try {
+			sig.await();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void createZKNode() {
+
 	}
 
 	@Override
@@ -297,7 +328,11 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 				new Thread(new KVServer(portNumber, cacheSize, strategy)).start();
 			}
 			else {
-
+				int portNumber = Integer.parseInt(args[0]);
+				String serverName = args[1];
+				String zkHostName = args[2];
+				int zkPort = Integer.parseInt(args[3]);
+				new Thread(new KVServer(portNumber, serverName, zkHostName,zkPort)).start();
 			}
 		} catch (IOException e) {
 			System.out.println("Error! Unable to initialize logger!");
