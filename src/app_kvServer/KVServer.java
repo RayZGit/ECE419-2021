@@ -6,6 +6,9 @@ import logger.LogSetup;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.zookeeper.*;
+import org.apache.zookeeper.WatchedEvent;
+import org.apache.zookeeper.Watcher;
+import org.apache.zookeeper.ZooKeeper;
 import server.Cache.FIFOCache;
 import server.Cache.ICache;
 import server.Cache.LFUCache;
@@ -159,7 +162,6 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			byte[] data = zooKeeper.getData(messagePath, false, null);
 			KVAdminMessage message = new Gson().fromJson(new String(data), KVAdminMessage.class);
 			if (message.getFunctionalType().equals(KVAdminMessage.ServerFunctionalType.INIT_KV_SERVER)) {
-				Stat temp =
 				zooKeeper.delete(messagePath, zooKeeper.exists(messagePath, false).getVersion());
 				logger.info("Server: " + "<" + this.serverName + ">: " + "Server initiated at constructor");
 			}
