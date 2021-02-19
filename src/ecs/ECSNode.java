@@ -17,7 +17,7 @@ public class ECSNode implements IECSNode{
 
     @Override
     public String getNodeName() {
-        return null;
+        return name;
     }
 
     public ECSNode(String name, String host, int port) {

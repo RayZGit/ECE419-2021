@@ -182,6 +182,18 @@ public class KVClient implements IKVClient, Runnable {
                 System.out.println("Delete failed: " + response.getKey() + " was invalid");
                 logger.warn("Delete failed: " + response.getKey() + " was invalid");
                 break;
+//            case SERVER_STOPPED:
+//                System.out.println("Server stopped.");
+//                logger.warn("Server stopped.");
+//                break;
+//            case SERVER_WRITE_LOCK:
+//                System.out.println("Server Write Lock.");
+//                logger.warn("Server Write Lock.");
+//                break;
+//            case SERVER_NOT_RESPONSIBLE:
+//                System.out.println("Server Not Responsible.");
+//                logger.warn("Server Not Responsible.");
+//                break;
         }
     }
 

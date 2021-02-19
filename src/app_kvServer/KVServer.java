@@ -2,6 +2,8 @@ package app_kvServer;
 
 
 import com.google.gson.Gson;
+import ecs.ECSNode;
+import ecs.HashRing;
 import logger.LogSetup;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -40,11 +42,14 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	private ServerStatus serverStatus;
 	private boolean distributed;
 	private String serverName;
+	public static final String ZK_SERVER_ROOT = "/ZK_KVServers";
+	public static final String ZK_METADATA_ROOT = "/KVServer_metadata";
 
 	/**
-	 * default cache strategy*/
+	 * default */
 	private static String defaultCacheStrategy = "LRU";
 	private static int defaultCacheSize = 100;
+	private static int SESSION_TIME_OUT = 5000;
 
 	/* zookeeper property */
 	private String zooKeeperHostName;
@@ -53,7 +58,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	private String zooKeeperPath;
 
 	/* Metadata property*/
-
+	private String serverHashRingStr;
 
 	/**
 	 * Start KV Server at given port
@@ -100,14 +105,14 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	}
 
 	public KVServer(int port, String serverName, String zooKeeperHostName, int zooKeeperPort) {
-//		this.port = port;
-		this(port, defaultCacheSize, defaultCacheStrategy);
+		this.port = port;
+//		this(port, defaultCacheSize, defaultCacheStrategy);
 		this.serverName = serverName;
 		this.zooKeeperHostName = zooKeeperHostName;
 		this.zooKeeperPort = zooKeeperPort;
 		this.distributed = true;
 		this.serverStatus = ServerStatus.STOP;
-		this.zooKeeperPath = "" + "/" + serverName; //TODO: zookeeper root path
+		this.zooKeeperPath = ZK_SERVER_ROOT + "/" + serverName; //TODO: zookeeper root path
 		String zkConnectionPath = this.zooKeeperHostName + ":" + Integer.toString(this.zooKeeperPort);
 
 		try {
@@ -127,11 +132,51 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			e.printStackTrace();
 		}
 
+		try {
+			setHashRingInfo();
+		} catch (KeeperException e) {
+			logger.debug("Server: " + "<" + this.serverName + ">: " + "update meta hash ring error!");
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			logger.debug("Server: " + "<" + this.serverName + ">: " + "update meta hash ring error!");
+			e.printStackTrace();
+		}
+
+		try {
+			setChildWatcher(zooKeeperPath);
+		} catch (KeeperException e) {
+			logger.debug("Server: " + "<" + serverName + ">: " + "does not exist, unable to to set child watcher!");
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			logger.debug("Server: " + "<" + serverName + ">: " + "does not exist, unable to to set child watcher!");
+			e.printStackTrace();
+		}
+
+		this.storeDisk = new StoreDisk(serverName+ "DataDisk"+".txt");
+		switch (this.strategy) {
+			case FIFO:
+				System.out.println("Initialize FIFO");
+				this.cache = new FIFOCache(cacheSize, storeDisk);
+				break;
+			case LRU:
+				System.out.println("Initialize LRU");
+				this.cache = new LRUCache(cacheSize, storeDisk);
+				break;
+			case LFU:
+				System.out.println("Initialize LFU");
+				this.cache = new LFUCache(cacheSize, storeDisk);
+				break;
+			case None:
+				System.out.println("Initialize None Cache");
+				this.cache = null;
+				break;
+		}
+
 	}
 
 	public void connectZooKeeper(String connectionPath) throws IOException {
 		CountDownLatch sig = new CountDownLatch(0);
-		this.zooKeeper = new ZooKeeper(connectionPath, 5000, new Watcher() {
+		this.zooKeeper = new ZooKeeper(connectionPath, SESSION_TIME_OUT, new Watcher() {
 			@Override
 			public void process(WatchedEvent event) {
 				if (event.getState().equals(Event.KeeperState.SyncConnected)) {
@@ -147,24 +192,64 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	}
 
 	public void createZKNode(String zkPath) throws KeeperException, InterruptedException {
-		if (zooKeeper.exists(zkPath, false) == null) {
-//			byte[] metadata = new Gson().toJson(new ServerMetaData(100, this.strategy.toString(), this.port, "localhost")).getBytes();
+		if (zooKeeper.exists(zkPath, false) != null) {
+			String cache = new String(zooKeeper.getData(zkPath, false, null));
+			ServerMetaData metaData = new Gson().fromJson(cache, ServerMetaData.class);
+			this.catchSize = metaData.getCacheSize();
+			this.strategy = CacheStrategy.valueOf(metaData.getCacheStrategy());
+			logger.info("Server: " + "<" + this.serverName + ">: " + "server zNode exist, get cache data and set server cache");
+		}
+		else{
 			byte[] metadata = new Gson().toJson(new ServerMetaData(defaultCacheSize, defaultCacheStrategy, this.port, "localhost")).getBytes();
 			zooKeeper.create(zkPath, metadata, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+			this.catchSize = defaultCacheSize;
+			this.strategy = CacheStrategy.valueOf(defaultCacheStrategy);
 			logger.info("Server: " + "<" + this.serverName + ">: " + "server zNode does not exist, create one");
 		}
 	}
 
-	public void checkZKChildren(String zkPath) throws KeeperException, InterruptedException {
-		List<String> children = zooKeeper.getChildren(zkPath, false, null);
-		if (!children.isEmpty()) {
-			String messagePath = zkPath + "/" + children.get(0);
-			byte[] data = zooKeeper.getData(messagePath, false, null);
-			KVAdminMessage message = new Gson().fromJson(new String(data), KVAdminMessage.class);
-			if (message.getFunctionalType().equals(KVAdminMessage.ServerFunctionalType.INIT_KV_SERVER)) {
-				zooKeeper.delete(messagePath, zooKeeper.exists(messagePath, false).getVersion());
-				logger.info("Server: " + "<" + this.serverName + ">: " + "Server initiated at constructor");
+//	public void checkZKChildren(String zkPath) throws KeeperException, InterruptedException {
+//		List<String> children = zooKeeper.getChildren(zkPath, false, null);
+//		if (!children.isEmpty()) {
+//			String messagePath = zkPath + "/" + children.get(0);
+//			byte[] data = zooKeeper.getData(messagePath, false, null);
+//			KVAdminMessage message = new Gson().fromJson(new String(data), KVAdminMessage.class);
+//			if (message.getFunctionalType().equals(KVAdminMessage.ServerFunctionalType.INIT_KV_SERVER)) {
+//				zooKeeper.delete(messagePath, zooKeeper.exists(messagePath, false).getVersion());
+//				logger.info("Server: " + "<" + this.serverName + ">: " + "Server initiated ");
+//			}
+//		}
+//	}
+
+	public void setHashRingInfo() throws KeeperException, InterruptedException {
+		byte[] hashData = zooKeeper.getData(ZK_METADATA_ROOT, new Watcher() {
+			@Override
+			public void process(WatchedEvent event) {
+				if (running == true) {
+					try {
+						serverHashRingStr = new String(zooKeeper.getData(ZK_METADATA_ROOT, this, null));
+						System.out.println("!!!!!!!!!!!!!!!Hash Ring updated!!!!!!!!!!!!!!!!!!!");
+						logger.info("Server: " + "<" + serverName + ">: " + "hash ring updated");
+					} catch (KeeperException e) {
+						e.printStackTrace();
+						logger.debug("Server: " + "<" + serverName + ">: " + "update hash ring error!");
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+						logger.debug("Server: " + "<" + serverName + ">: " + "update hash ring error!");
+					}
+				}
 			}
+		}, null);
+		System.out.println("!!!!!!!!!!!!!!!Get Hash Ring Info Success!!!!!!!!!!!!!!!!!!!");
+		serverHashRingStr = new String(hashData);
+	}
+
+	public void setChildWatcher(String zkPath) throws KeeperException, InterruptedException {
+		if (zooKeeper.exists(zkPath, false) != null) {
+			zooKeeper.getChildren(zkPath, this, null);
+		}
+		else {
+			logger.debug("Server: " + "<" + serverName + ">: " + "does not exist, unable to to set child watcher!");
 		}
 	}
 
@@ -293,6 +378,26 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 
 	private boolean isRunning() {
 		return running;
+	}
+
+	@Override
+	public boolean isDistributed() {
+		return distributed;
+	}
+
+	@Override
+	public String getServerHashRings(){
+		return serverHashRingStr;
+	}
+
+	@Override
+	public ServerStatus getServerStatus(){
+		return serverStatus;
+	}
+
+	@Override
+	public String getServerName() {
+		return serverName;
 	}
 
 	@Override
