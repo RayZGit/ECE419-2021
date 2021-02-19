@@ -1,27 +1,25 @@
 package app_kvServer;
 
 
-import logger.LogSetup;
-import org.apache.zookeeper.WatchedEvent;
-import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.ZooKeeper;
-import server.Cache.*;
-import server.StoreDisk.IStoreDisk;
-import server.StoreDisk.StoreDisk;
-
-import java.io.IOException;
-import java.net.ServerSocket;
-import java.net.Socket;
-
-
+import com.google.gson.Gson;
 import logger.LogSetup;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.apache.zookeeper.*;
+import server.Cache.FIFOCache;
+import server.Cache.ICache;
+import server.Cache.LFUCache;
+import server.Cache.LRUCache;
+import server.ServerMetaData;
+import server.StoreDisk.IStoreDisk;
+import server.StoreDisk.StoreDisk;
+import shared.messages.KVAdminMessage;
 
 import java.io.IOException;
 import java.net.BindException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
@@ -39,6 +37,11 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	private ServerStatus serverStatus;
 	private boolean distributed;
 	private String serverName;
+
+	/**
+	 * default cache strategy*/
+	private static String defaultCacheStrategy = "LRU";
+	private static int defaultCacheSize = 100;
 
 	/* zookeeper property */
 	private String zooKeeperHostName;
@@ -95,7 +98,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 
 	public KVServer(int port, String serverName, String zooKeeperHostName, int zooKeeperPort) {
 //		this.port = port;
-		this(port, 100, "LFU");
+		this(port, defaultCacheSize, defaultCacheStrategy);
 		this.serverName = serverName;
 		this.zooKeeperHostName = zooKeeperHostName;
 		this.zooKeeperPort = zooKeeperPort;
@@ -103,11 +106,22 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		this.serverStatus = ServerStatus.STOP;
 		this.zooKeeperPath = "" + "/" + serverName; //TODO: zookeeper root path
 		String zkConnectionPath = this.zooKeeperHostName + ":" + Integer.toString(this.zooKeeperPort);
+
 		try {
 			connectZooKeeper(zkConnectionPath);
 		} catch (IOException e) {
 			e.printStackTrace();
 			logger.debug("Server: " + "<" + this.serverName + ">: " + "Unable to connect to zookeeper");
+		}
+
+		try{
+			createZKNode(zooKeeperPath);
+		} catch (InterruptedException e) {
+			logger.debug("Server: " + "<" + this.serverName + ">: " + "create server zNode error");
+			e.printStackTrace();
+		} catch (KeeperException e) {
+			logger.debug("Server: " + "<" + this.serverName + ">: " + "create server zNode error");
+			e.printStackTrace();
 		}
 
 	}
@@ -129,8 +143,27 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		}
 	}
 
-	public void createZKNode() {
+	public void createZKNode(String zkPath) throws KeeperException, InterruptedException {
+		if (zooKeeper.exists(zkPath, false) == null) {
+//			byte[] metadata = new Gson().toJson(new ServerMetaData(100, this.strategy.toString(), this.port, "localhost")).getBytes();
+			byte[] metadata = new Gson().toJson(new ServerMetaData(defaultCacheSize, defaultCacheStrategy, this.port, "localhost")).getBytes();
+			zooKeeper.create(zkPath, metadata, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+			logger.info("Server: " + "<" + this.serverName + ">: " + "server zNode does not exist, create one");
+		}
+	}
 
+	public void checkZKChildren(String zkPath) throws KeeperException, InterruptedException {
+		List<String> children = zooKeeper.getChildren(zkPath, false, null);
+		if (!children.isEmpty()) {
+			String messagePath = zkPath + "/" + children.get(0);
+			byte[] data = zooKeeper.getData(messagePath, false, null);
+			KVAdminMessage message = new Gson().fromJson(new String(data), KVAdminMessage.class);
+			if (message.getFunctionalType().equals(KVAdminMessage.ServerFunctionalType.INIT_KV_SERVER)) {
+				Stat temp =
+				zooKeeper.delete(messagePath, zooKeeper.exists(messagePath, false).getVersion());
+				logger.info("Server: " + "<" + this.serverName + ">: " + "Server initiated at constructor");
+			}
+		}
 	}
 
 	@Override
