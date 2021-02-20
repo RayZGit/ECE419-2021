@@ -102,7 +102,7 @@ public class HashRing {
     public ECSNode getNodeByKey(String key) {
         BigInteger hash = new BigInteger(getHash(key), 16);
         ECSNode curr = first;
-        while (curr != null) {
+        for(int i = 0; i < size; i++) {
             String[] range = curr.getNodeHashRange();
             BigInteger lower = new BigInteger(range[0], 16);
             BigInteger upper = new BigInteger(range[1], 16);

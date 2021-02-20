@@ -1,5 +1,6 @@
 package client;
 
+import ecs.ECSNode;
 import ecs.HashRing;
 import org.apache.log4j.Logger;
 import shared.messages.KVBasicMessage;
@@ -15,8 +16,8 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 	 * @param address the address of the KVServer
 	 * @param port the port of the KVServer
 	 */
-	private final String address;
-	private final int port;
+	private String address;
+	private int port;
 	private Socket socket;
 	private final int LEN_KEY = 20;
 	private final int LEN_VALUE = 120 * 1024;
@@ -28,7 +29,8 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 		this.address = address;
 		this.port = port;
 		hashRing = new HashRing();
-
+		ECSNode node = new ECSNode("firstnode", this.address, this.port);
+		hashRing.addNode(node);
 	}
 
 	@Override
@@ -87,7 +89,9 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 		KVBasicMessage request = new KVBasicMessage(key, null, KVMessage.StatusType.GET);
 		sendMessage(request);
 		KVMessage response = receiveMessage();
-		if (response.getStatus() != )
+		if (response.getStatus().equals(KVMessage.StatusType.SERVER_NOT_RESPONSIBLE)) {
+
+		}
 	}
 
 	@Override
@@ -98,6 +102,27 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 		KVBasicMessage request = new KVBasicMessage(key, null, KVMessage.StatusType.DELETE);
 		sendMessage(request);
 		return receiveMessage();
+	}
+
+	public void reconnect(KVMessage req) throws Exception {
+		String hash = HashRing.getHash(req.getKey());
+		ECSNode server = hashRing.getNodeByKey(hash);
+		if (server != null) {
+			String address = server.getNodeHost();
+			int port = server.getNodePort();
+			if (address.equals(this.address) && port == this.port) return;
+			this.address = address;
+			this.port = port;
+			disconnect();
+			connect();
+		} else {
+			logger.fatal("Cound not find any server in hash ring");
+		}
+	}
+
+	public KVMessage handleNotResponsible (KVBasicMessage request, KVMessage response) {
+		hashRing = new HashRing(response.getValue());
+
 	}
 
 }
