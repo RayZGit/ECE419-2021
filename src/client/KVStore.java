@@ -89,9 +89,8 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 		KVBasicMessage request = new KVBasicMessage(key, null, KVMessage.StatusType.GET);
 		sendMessage(request);
 		KVMessage response = receiveMessage();
-		if (response.getStatus().equals(KVMessage.StatusType.SERVER_NOT_RESPONSIBLE)) {
-
-		}
+//		if (response.getStatus() != )
+		return response;
 	}
 
 	@Override

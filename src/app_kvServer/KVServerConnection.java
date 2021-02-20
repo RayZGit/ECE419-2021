@@ -1,5 +1,7 @@
 package app_kvServer;
 
+import ecs.ECSNode;
+import ecs.HashRing;
 import org.apache.log4j.Logger;
 import shared.KVMsgProtocol;
 import shared.messages.KVBasicMessage;
@@ -79,10 +81,32 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
      * @return true or false if the action success or failed
      */
     public KVMessage handleClientRequest(KVMessage request){
-        //TODO:
-        //TODO: need check server status, get hashvalue based on the key
         KVMessage response = new KVBasicMessage();
         response.setKey(request.getKey());
+
+        if (kvServer.isDistributed()) {
+            HashRing hashRing = new HashRing(kvServer.getServerHashRings());
+            if (kvServer.getServerStatus().equals(IKVServer.ServerStatus.STOP) || hashRing == null){
+                response.setValue("");
+                response.setStatus(KVMessage.StatusType.SERVER_STOPPED);
+            }
+
+            ECSNode node = hashRing.getNodeByKey(request.getKey());
+            if (node == null) {
+                System.out.println("Error! Can not find Corresponding Node with hashRing: <" + hashRing + ">");
+                logger.error("Error! Can not find Corresponding Node with hashRing: <" + hashRing + ">");
+            }
+
+            boolean isResponsible = node.getNodeName().equals(kvServer.getServerName());
+            if (isResponsible == false) {
+                response.setValue(kvServer.getServerHashRings());
+                response.setStatus(KVMessage.StatusType.SERVER_NOT_RESPONSIBLE);
+                return response;
+            }
+
+        }
+
+
         switch (request.getStatus()) {
             case GET: {
                 Exception exception = null;
@@ -111,6 +135,11 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
             }
 
             case DELETE: {
+                if (kvServer.getServerStatus().equals(IKVServer.ServerStatus.LOCK)) {
+                    response.setValue(kvServer.getServerHashRings());
+                    response.setStatus(KVMessage.StatusType.SERVER_WRITE_LOCK);
+                    return response;
+                }
                 response.setValue(request.getValue());
                 boolean keyExist = kvServer.inCache(request.getKey()) || kvServer.inStorage(request.getKey());
 //                System.out.println("Delete fk!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -140,6 +169,11 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
 
             case PUT: {
 //                System.out.println("In put 1");
+                if (kvServer.getServerStatus().equals(IKVServer.ServerStatus.LOCK)) {
+                    response.setValue(kvServer.getServerHashRings());
+                    response.setStatus(KVMessage.StatusType.SERVER_WRITE_LOCK);
+                    return response;
+                }
                 response.setValue(request.getValue());
                 String requestKey = request.getKey();
                 String requestValue = request.getValue();

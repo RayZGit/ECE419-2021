@@ -1,5 +1,6 @@
 package app_kvServer;
 
+import ecs.HashRing;
 import server.Cache.ICache;
 
 import java.util.Map;
@@ -108,4 +109,12 @@ public interface IKVServer {
     public void close();
 
     public void delete(String key) throws Exception;
+
+    public boolean isDistributed();
+
+    public String getServerHashRings();
+
+    public ServerStatus getServerStatus();
+
+    public String getServerName();
 }
