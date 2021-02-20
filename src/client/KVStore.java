@@ -76,8 +76,19 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 			throw new Exception("Put failed: Value too long");
 		}
 		KVBasicMessage request = new KVBasicMessage(key, value, KVMessage.StatusType.PUT);
-		sendMessage(request);
-		return receiveMessage();
+		try{
+			updateServer(request);
+			sendMessage(request);
+			KVMessage response = receiveMessage();
+			if (response.getStatus() == KVMessage.StatusType.SERVER_NOT_RESPONSIBLE) {
+				hashRing = new HashRing(response.getValue());
+				return put(key, value);
+			}
+			return response;
+		} catch (IOException e) {
+			handleShutdown(request);
+			return put(key, value);
+		}
 	}
 
 	@Override
@@ -87,10 +98,29 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 			throw new Exception("Get failed: Key too long");
 		}
 		KVBasicMessage request = new KVBasicMessage(key, null, KVMessage.StatusType.GET);
-		sendMessage(request);
-		KVMessage response = receiveMessage();
-//		if (response.getStatus() != )
-		return response;
+		try {
+			updateServer(request);
+			sendMessage(request);
+			KVMessage response = receiveMessage();
+			if (response.getStatus() == KVMessage.StatusType.SERVER_NOT_RESPONSIBLE) {
+				hashRing = new HashRing(response.getValue());
+				return get(key);
+			}
+			return response;
+		} catch (IOException e) {
+			handleShutdown(request);
+			return get(key);
+		}
+	}
+
+	private void handleShutdown(KVBasicMessage request) throws Exception{
+		disconnect();
+		String hash = HashRing.getHash(request.getKey());
+		hashRing.removeNode(hashRing.getNodeByKey(hash));
+		ECSNode node = hashRing.getNodeByKey(request.getKey());
+		if (node == null) {
+			throw new Exception("No Server available.");
+		}
 	}
 
 	@Override
@@ -103,25 +133,15 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 		return receiveMessage();
 	}
 
-	public void reconnect(KVMessage req) throws Exception {
-		String hash = HashRing.getHash(req.getKey());
-		ECSNode server = hashRing.getNodeByKey(hash);
-		if (server != null) {
-			String address = server.getNodeHost();
-			int port = server.getNodePort();
-			if (address.equals(this.address) && port == this.port) return;
-			this.address = address;
-			this.port = port;
+
+	public void updateServer(KVBasicMessage request) throws Exception{
+		ECSNode node = hashRing.getNodeByKey(request.getKey());
+		if (!this.address.equals(node.getNodeHost()) || this.port != node.getNodePort()) {
+			this.address = node.getNodeHost();
+			this.port = node.getNodePort();
 			disconnect();
 			connect();
-		} else {
-			logger.fatal("Cound not find any server in hash ring");
 		}
-	}
-
-	public KVMessage handleNotResponsible (KVBasicMessage request, KVMessage response) {
-		hashRing = new HashRing(response.getValue());
-
 	}
 
 }

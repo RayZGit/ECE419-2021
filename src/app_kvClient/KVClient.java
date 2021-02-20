@@ -100,7 +100,9 @@ public class KVClient implements IKVClient, Runnable {
                         } else {
                             message = KVClientServer.delete(tokens[1]);
                         }
-                        handleServerResponse(message);
+                        if (message != null) {
+                            handleServerResponse(message);
+                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -112,7 +114,9 @@ public class KVClient implements IKVClient, Runnable {
                 } else {
                     try {
                         KVMessage message = KVClientServer.get(tokens[1]);
-                        handleServerResponse(message);
+                        if (message != null) {
+                            handleServerResponse(message);
+                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

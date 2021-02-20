@@ -1,7 +1,5 @@
 package ecs;
 
-
-import com.google.gson.JsonObject;
 import com.google.gson.annotations.Expose;
 
 import java.math.BigInteger;
