@@ -117,19 +117,23 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 
 		try {
 			connectZooKeeper(zkConnectionPath);
+
+			try{
+				if (this.zooKeeper != null) {
+					createZKNode(zooKeeperPath);
+					logger.info("zooKeeper connection established ...");
+				}
+			} catch (InterruptedException e) {
+				logger.debug("Server: " + "<" + this.serverName + ">: " + "create server zNode error");
+				e.printStackTrace();
+			} catch (KeeperException e) {
+				logger.debug("Server: " + "<" + this.serverName + ">: " + "create server zNode error");
+				e.printStackTrace();
+			}
+
 		} catch (IOException e) {
 			e.printStackTrace();
 			logger.debug("Server: " + "<" + this.serverName + ">: " + "Unable to connect to zookeeper");
-		}
-
-		try{
-			createZKNode(zooKeeperPath);
-		} catch (InterruptedException e) {
-			logger.debug("Server: " + "<" + this.serverName + ">: " + "create server zNode error");
-			e.printStackTrace();
-		} catch (KeeperException e) {
-			logger.debug("Server: " + "<" + this.serverName + ">: " + "create server zNode error");
-			e.printStackTrace();
 		}
 
 		try {
@@ -175,22 +179,23 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	}
 
 	public void connectZooKeeper(String connectionPath) throws IOException {
-		CountDownLatch sig = new CountDownLatch(0);
-		this.zooKeeper = new ZooKeeper(connectionPath, SESSION_TIME_OUT, new Watcher() {
+		final CountDownLatch countDownSign = new CountDownLatch(0);
+		zooKeeper = new ZooKeeper(connectionPath, SESSION_TIME_OUT, new Watcher() {
 			@Override
 			public void process(WatchedEvent event) {
 				if (event.getState().equals(Event.KeeperState.SyncConnected)) {
-					sig.countDown();
+					countDownSign.countDown();
 				}
 			}
 		});
 		try {
-			sig.await();
+			countDownSign.await();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
 
+	// from: https://www.jianshu.com/p/44c3d73dc30d
 	public void createZKNode(String zkPath) throws KeeperException, InterruptedException {
 		if (zooKeeper.exists(zkPath, false) != null) {
 			String cache = new String(zooKeeper.getData(zkPath, false, null));
@@ -204,6 +209,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			zooKeeper.create(zkPath, metadata, ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
 			this.catchSize = defaultCacheSize;
 			this.strategy = CacheStrategy.valueOf(defaultCacheStrategy);
+			System.out.println("Server: " + "<" + this.serverName + ">: " + "server zNode does not exist, create one");
 			logger.info("Server: " + "<" + this.serverName + ">: " + "server zNode does not exist, create one");
 		}
 	}
@@ -448,6 +454,81 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		}
 	}
 
+	@Override
+	public void process(WatchedEvent watchedEvent) {
+		if (running) {
+			//https://juejin.cn/post/6850037265213685768
+			//Type
+			Event.EventType eventType = watchedEvent.getType();
+			//Status
+			Event.KeeperState eventState = watchedEvent.getState();
+			//Path
+			String eventPath = watchedEvent.getPath();
+			System.out.println("Event Type:" + eventType.name());
+			System.out.println("Event Status:" + eventState.name());
+			System.out.println("Event ZNode path:" + eventPath);
+
+			try {
+				List<String> zNodeChild = zooKeeper.getChildren(zooKeeperPath, false);
+				if (zNodeChild == null || zNodeChild.size() == 0) {
+					zooKeeper.getChildren(zooKeeperPath, true);
+				}
+
+				String oneChild = zNodeChild.get(0);
+				byte[] zNodeData = zooKeeper.getData(zooKeeperPath + "/" + oneChild, false, null);
+				String temp = new String(zNodeData);
+				KVAdminMessage request = new Gson().fromJson(temp, KVAdminMessage.class);
+				KVAdminMessage.ServerFunctionalType serverType = request.getFunctionalType();
+				switch (serverType) {
+					case INIT_KV_SERVER:
+						//TODO
+						// Used by awaitNodes, Initialize the KVServer with the metadata and block it for client requests
+						break;
+					case START:
+						//TODO
+						/* Starts the KVServer, all client requests and all ECS requests are processed. */
+						break;
+					case STOP:
+						//TODO
+						/* Stops the KVServer, all client requests are rejected and only ECS requests are processed.*/
+						break;
+					case SHUT_DOWN:
+						//TODO
+						/* Exits the KVServer application. */
+						break;
+					case LOCK_WRITE:
+						//TODO
+						/* Lock the KVServer for write operations.*/
+						break;
+					case UNLOCK_WRITE:
+						//TODO
+						/* Unlock the KVServer for write operations. */
+						break;
+					case RECEIVE:
+						//TODO
+						/* server receive a range of the KVServer's data*/
+
+						break;
+					case MOVE_DATA:
+						//TODO
+						/* transfer a subset (range) of the KVServer’s data to another KVServer */
+
+						break;
+					case UPDATE:
+						//TODO
+						/* Update the metadata repository of this server */
+						break;
+				}
+
+			} catch (KeeperException e) {
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+		}
+	}
+
 	/**
 	 * Main entry point for the echo server application.
 	 * @param args contains the port number at args[0].
@@ -488,10 +569,5 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		} catch (Exception e) {
 			System.out.println("Error! Invalid argument number!");
 		}
-	}
-
-	@Override
-	public void process(WatchedEvent watchedEvent) {
-
 	}
 }
