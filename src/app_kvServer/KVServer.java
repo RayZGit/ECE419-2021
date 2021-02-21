@@ -123,6 +123,14 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		this.zooKeeperPath = ZK_SERVER_ROOT + "/" + serverName; //TODO: zookeeper root path
 		String zkConnectionPath = this.zooKeeperHostName + ":" + Integer.toString(this.zooKeeperPort);
 
+		/*
+			/ZKNode/ServerMetaData/KVAdminMessage
+
+			/ZKNode/server1/KVAdminMessage 1
+			/ZKNode/server2/KVAdminMessage 2
+			/ZKNode/server3/KVAdminMessage 3
+
+		*/
 		try {
 			connectZooKeeper(zkConnectionPath);
 
@@ -494,8 +502,9 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			logger.info("Transfer Data Server listening on port: " + RECIVER_PORT);
 
 			int port = receiverSocket.getLocalPort();
-			new Thread(new KVServerDataTransferConnection(receiverSocket, this)).start();
 			lockWrite();
+			new Thread(new KVServerDataTransferConnection(receiverSocket, this)).start();
+			unlockWrite();
 			return port;
 		} catch (IOException e) {
 			logger.debug("Server: " + "<" + this.serverName + ">: " + "Unable to open a receiver socket!");
@@ -520,6 +529,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	public void moveData(String[] hashRange, String host, int port) {
 		lockWrite();
 		writeCacheToDisk();
+		//TODO: set server status to IN_PROGRESS
 		try{
 			File toMove = storeDisk.filter(hashRange);
 			long fileLen = toMove.length();
@@ -545,6 +555,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			logger.error("fail to move data to new server.");
 		} finally {
 			unlockWrite();
+			//TODO: set server status to IDLE
 		}
 	}
 
@@ -563,13 +574,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			System.out.println("Event ZNode path:" + eventPath);
 
 			try {
-				List<String> zNodeChild = zooKeeper.getChildren(zooKeeperPath, false);
-				if (zNodeChild == null || zNodeChild.size() == 0) {
-					zooKeeper.getChildren(zooKeeperPath, true);
-				}
-
-				String oneChild = zNodeChild.get(0);
-				byte[] zNodeData = zooKeeper.getData(zooKeeperPath + "/" + oneChild, false, null);
+				byte[] zNodeData = zooKeeper.getData(zooKeeperPath , false, null);
 				String temp = new String(zNodeData);
 				KVAdminMessage request = new Gson().fromJson(temp, KVAdminMessage.class);
 				KVAdminMessage.ServerFunctionalType serverType = request.getFunctionalType();

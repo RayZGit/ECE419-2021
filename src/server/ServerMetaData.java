@@ -1,5 +1,10 @@
 package server;
 
+import com.google.gson.Gson;
+import shared.messages.KVAdminMessage;
+
+import java.util.Arrays;
+
 public class ServerMetaData {
     private int cacheSize;
     private String cacheStrategy;
@@ -17,6 +22,29 @@ public class ServerMetaData {
         this.cacheStrategy = cacheStrategy;
         this.port = port;
         this.host = host;
+    }
+
+    @Override
+    public String toString() {
+        return "ServerMetaData{" +
+                "cacheSize='" + cacheSize +
+                ", cacheStrategy=" + cacheStrategy  + '\'' +
+                ", port='" + port + '\'' +
+                ", host='" + host + '\'' +
+                ", status=" + status +
+                '}';
+    }
+
+    public String encode() {
+        return new Gson().toJson(this);
+    }
+
+    public void decode(String input) {
+        ServerMetaData msg = new Gson().fromJson(input, this.getClass());
+        this.cacheSize = msg.cacheSize;
+        this.cacheStrategy = msg.cacheStrategy;
+        this.port = msg.port;
+        this.status = msg.status;
     }
 
     /**

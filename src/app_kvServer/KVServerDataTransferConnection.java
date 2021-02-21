@@ -30,6 +30,7 @@ public class KVServerDataTransferConnection implements Runnable {
             socket = senderServerSocket.accept();
         } catch (IOException ex) {
             System.out.println("Can't accept sender server connection. ");
+            logger.error("<Receive Server " + kvServer.getServerName() + "> Error! " + "Unable to establish connection. \n", ex);
         }
 
         try {

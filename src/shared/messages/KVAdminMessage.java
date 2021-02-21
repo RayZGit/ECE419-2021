@@ -10,7 +10,7 @@ public class KVAdminMessage {
     private String receiveServerName = null;
     private String receiveServerHost = null;
     private int receiveServerPort;
-    private String[] hashRangeValue = null;
+    private String[] receiveHashRangeValue = null;
     private ServerFunctionalType serverFunctionalType;
     private HashRing hashRing;
     private String hashRingStr;
@@ -50,7 +50,7 @@ public class KVAdminMessage {
     }
 
     public String[] getHashRange() {
-        return hashRangeValue;
+        return receiveHashRangeValue;
     }
 
     public String getHashRingStr() { return hashRingStr; }
@@ -70,7 +70,7 @@ public class KVAdminMessage {
     }
 
     public void setHashRange(String[] hashValue) {
-        this.hashRangeValue = hashValue;
+        this.receiveHashRangeValue = hashValue;
     }
 
     public void setHashRingStr(String hashRingData) {this.hashRingStr = hashRingData; }
@@ -84,7 +84,7 @@ public class KVAdminMessage {
                 ", serverFunctionalType=" + serverFunctionalType  + '\'' +
                 ", receiveServerHost='" + receiveServerHost + '\'' +
                 ", receiveServerPort='" + receiveServerPort + '\'' +
-                ", hashRangeValue=" + Arrays.toString(hashRangeValue) +
+                ", hashRangeValue=" + Arrays.toString(receiveHashRangeValue) +
                 '}';
     }
 
@@ -96,7 +96,7 @@ public class KVAdminMessage {
         KVAdminMessage msg = new Gson().fromJson(input, this.getClass());
         this.receiveServerName = msg.receiveServerName;
         this.receiveServerHost = msg.receiveServerHost;
-        this.hashRangeValue = msg.hashRangeValue;
+        this.receiveHashRangeValue = msg.receiveHashRangeValue;
         this.serverFunctionalType = msg.serverFunctionalType;
     }
 }
