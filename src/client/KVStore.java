@@ -151,11 +151,12 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 
 	public void updateServer(KVBasicMessage request) throws Exception{
 		ECSNode node = hashRing.getNodeByKey(request.getKey());
-		if (!this.address.equals(node.getNodeHost()) || this.port != node.getNodePort()) {
-			this.address = node.getNodeHost();
-			this.port = node.getNodePort();
+		if (!address.equals(node.getNodeHost()) || port != node.getNodePort()) {
+			address = node.getNodeHost();
+			port = node.getNodePort();
 			disconnect();
 			connect();
+			logger.info("Connect to the server " + address + ":" + port);
 		}
 	}
 
