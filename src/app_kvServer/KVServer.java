@@ -37,6 +37,8 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	private CacheStrategy strategy;
 
 	private ServerSocket serverSocket;
+	private ServerSocket receiverSocket;
+
 	private boolean running;
 
 	private ServerStatus serverStatus;
@@ -44,6 +46,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	private String serverName;
 	public static final String ZK_SERVER_ROOT = "/ZK_KVServers";
 	public static final String ZK_METADATA_ROOT = "/KVServer_metadata";
+	private static final int RECIVER_PORT = 9999;
 
 	/**
 	 * default */
@@ -75,6 +78,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 
 	private ICache cache;
 	private IStoreDisk storeDisk;
+	private String diskFileName;
 
 	public KVServer(int port, int cacheSize, String strategy) {
 		// TODO Auto-generated method stub
@@ -83,7 +87,8 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		this.port = port;
 		this.catchSize = cacheSize;
 		this.strategy = CacheStrategy.valueOf(strategy);
-		this.storeDisk = new StoreDisk("DataDisk"+".txt");
+		this.diskFileName = "DataDisk" + ".txt";
+		this.storeDisk = new StoreDisk(this.diskFileName);
 		switch (this.strategy) {
 			case FIFO:
 				System.out.println("Initialize FIFO");
@@ -105,6 +110,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	}
 
 	public KVServer(int port, String serverName, String zooKeeperHostName, int zooKeeperPort) {
+		assert(port != RECIVER_PORT);
 		this.port = port;
 //		this(port, defaultCacheSize, defaultCacheStrategy);
 		this.serverName = serverName;
@@ -147,16 +153,27 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		}
 
 		try {
-			setChildWatcher(zooKeeperPath);
+			setServerNodeWatcher(zooKeeperPath);
 		} catch (KeeperException e) {
-			logger.debug("Server: " + "<" + serverName + ">: " + "does not exist, unable to to set child watcher!");
+			logger.debug("Server: " + "<" + serverName + ">: " + "does not exist, unable to set server Znode watcher!");
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			logger.debug("Server: " + "<" + serverName + ">: " + "does not exist, unable to to set child watcher!");
+			logger.debug("Server: " + "<" + serverName + ">: " + "does not exist, unable to set server Znode watcher!");
 			e.printStackTrace();
 		}
 
-		this.storeDisk = new StoreDisk(serverName+ "DataDisk"+".txt");
+		try {
+			setMetaDataWatcher(ZK_METADATA_ROOT);
+		} catch (KeeperException e) {
+			e.printStackTrace();
+			logger.debug("Server: " + "<" + serverName + ">: " + "does not exist, unable to set server meta data watcher!");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+			logger.debug("Server: " + "<" + serverName + ">: " + "does not exist, unable to set server meta data watcher!");
+		}
+
+		this.diskFileName = serverName + "_DataDisk" + ".txt";
+		this.storeDisk = new StoreDisk(this.diskFileName);
 		switch (this.strategy) {
 			case FIFO:
 				System.out.println("Initialize FIFO");
@@ -250,12 +267,21 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		serverHashRingStr = new String(hashData);
 	}
 
-	public void setChildWatcher(String zkPath) throws KeeperException, InterruptedException {
+	public void setServerNodeWatcher(String zkPath) throws KeeperException, InterruptedException {
 		if (zooKeeper.exists(zkPath, false) != null) {
-			zooKeeper.getChildren(zkPath, this, null);
+			zooKeeper.getData(zkPath, this, null);
 		}
 		else {
-			logger.debug("Server: " + "<" + serverName + ">: " + "does not exist, unable to to set child watcher!");
+			logger.debug("Server: " + "<" + serverName + ">: " + "does not exist, unable to to set server zNode watcher!");
+		}
+	}
+
+	public void setMetaDataWatcher(String zkPath) throws KeeperException, InterruptedException {
+		if (zooKeeper.exists(zkPath, false) != null) {
+			zooKeeper.getData(zkPath, this, null);
+		}
+		else {
+			logger.debug("Server: " + "<" + serverName + ">: " + "does not exist, unable to to set metaData watcher!");
 		}
 	}
 
@@ -349,6 +375,11 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			return cache.getMap();
 		}
 		return null;
+	}
+
+	@Override
+	public String getServerDiskFile() {
+		return "./src/resources/" + this.diskFileName;
 	}
 
 	@Override
@@ -454,6 +485,36 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		}
 	}
 
+	public int receiveServerData() {
+		try {
+			receiverSocket = new ServerSocket(RECIVER_PORT);
+			System.out.println("Transfer Data Server listening on port: " + RECIVER_PORT);
+			logger.info("Transfer Data Server listening on port: " + RECIVER_PORT);
+
+			int port = receiverSocket.getLocalPort();
+			new Thread(new KVServerDataTransferConnection(receiverSocket, this)).start();
+			lockWrite();
+			return port;
+		} catch (IOException e) {
+			logger.debug("Server: " + "<" + this.serverName + ">: " + "Unable to open a receiver socket!");
+			e.printStackTrace();
+			return 0; // this exception should be handled by ecs
+		}
+
+	}
+
+	@Override
+	public void lockWrite() {
+		this.serverStatus = serverStatus.LOCK;
+		logger.info("Server: " + "<" + this.serverName + ">: " + "Server status change to WRITE_LOCK");
+	}
+
+	@Override
+	public void unlockWrite() {
+		this.serverStatus = serverStatus.UNLOCK;
+		logger.info("Server: " + "<" + this.serverName + ">: " + "Server status change to WRITE_LOCK");
+	}
+
 	@Override
 	public void process(WatchedEvent watchedEvent) {
 		if (running) {
@@ -481,48 +542,48 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 				KVAdminMessage.ServerFunctionalType serverType = request.getFunctionalType();
 				switch (serverType) {
 					case INIT_KV_SERVER:
-						//TODO
-						// Used by awaitNodes, Initialize the KVServer with the metadata and block it for client requests
+						this.serverStatus = ServerStatus.INITIALIZED;
+						logger.info("Server: " + "<" + serverName + ">: "+ "Server initiated but stop processing requests");
 						break;
 					case START:
-						//TODO
-						/* Starts the KVServer, all client requests and all ECS requests are processed. */
+						this.serverStatus = ServerStatus.START;
+						logger.info("Server: " + "<" + serverName + ">: "+ "Server Started");
 						break;
 					case STOP:
-						//TODO
-						/* Stops the KVServer, all client requests are rejected and only ECS requests are processed.*/
+						this.serverStatus = ServerStatus.STOP;
+						logger.info("Server: " + "<" + serverName + ">: "+ "Server Stopped");
 						break;
 					case SHUT_DOWN:
-						//TODO
-						/* Exits the KVServer application. */
+						this.serverStatus = ServerStatus.SHOT_DOWN;
+						close();
+						logger.info("Server: " + "<" + serverName + ">: "+ "Server ShotDown");
 						break;
 					case LOCK_WRITE:
-						//TODO
-						/* Lock the KVServer for write operations.*/
+						this.serverStatus = ServerStatus.LOCK;
+						logger.info("Server: " + "<" + serverName + ">: "+ "Server Locked");
 						break;
 					case UNLOCK_WRITE:
-						//TODO
-						/* Unlock the KVServer for write operations. */
+						this.serverStatus = ServerStatus.UNLOCK;
+						logger.info("Server: " + "<" + serverName + ">: "+ "Server unLocked");
 						break;
 					case RECEIVE:
-						//TODO
-						/* server receive a range of the KVServer's data*/
-
+						logger.info("Server: " + "<" + serverName + ">: "+ "receiving data initialization....");
+						receiveServerData();
 						break;
 					case MOVE_DATA:
-						//TODO
-						/* transfer a subset (range) of the KVServer’s data to another KVServer */
 
 						break;
 					case UPDATE:
-						//TODO
-						/* Update the metadata repository of this server */
+						this.serverHashRingStr = request.getHashRingStr();
+						logger.info("Server: " + "<" + serverName + ">: " + "Server updated meta data");
 						break;
 				}
 
 			} catch (KeeperException e) {
+				logger.debug("Server: " + "<" + serverName + ">: " + "Unable to process the watcher event");
 				e.printStackTrace();
 			} catch (InterruptedException e) {
+				logger.debug("Server: " + "<" + serverName + ">: " + "Unable to process the watcher event");
 				e.printStackTrace();
 			}
 

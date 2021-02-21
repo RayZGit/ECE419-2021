@@ -14,9 +14,12 @@ public interface IKVServer {
     };
 
     public enum ServerStatus {
+        INITIALIZED,   /*server initialized but can not process any request*/
         START,       /* server works correctly */
         STOP,        /* no client requests are processed */
-        LOCK         /* server is currently blocked for write requests */
+        LOCK,         /* server is currently blocked for write requests */
+        UNLOCK,
+        SHOT_DOWN
     }
 
     /**
@@ -88,6 +91,11 @@ public interface IKVServer {
     public Map<String, String> getCache();
 
     /**
+     * Getter the server disk file
+     */
+    public String getServerDiskFile();
+
+    /**
      * Clear the storage of the server
      */
     public void clearStorage();
@@ -117,4 +125,8 @@ public interface IKVServer {
     public ServerStatus getServerStatus();
 
     public String getServerName();
+
+    public void lockWrite();
+
+    public void unlockWrite();
 }

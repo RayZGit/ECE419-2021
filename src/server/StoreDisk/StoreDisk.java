@@ -11,7 +11,7 @@ public class StoreDisk implements IStoreDisk {
     private static String CLASS_NAME = "StoreDisk: ";
 
     private File storage;
-    private String resourceDir = "./src/resources/";;
+    private String resourceDir = "./src/resources/";
     private String filename;
 
 

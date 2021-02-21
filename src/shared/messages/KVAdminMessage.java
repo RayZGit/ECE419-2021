@@ -1,6 +1,7 @@
 package shared.messages;
 
 import com.google.gson.Gson;
+import ecs.HashRing;
 
 import java.util.Arrays;
 
@@ -11,6 +12,8 @@ public class KVAdminMessage {
     private int receiveServerPort;
     private String[] hashRangeValue = null;
     private ServerFunctionalType serverFunctionalType;
+    private HashRing hashRing;
+    private String hashRingStr;
 
     public enum ServerFunctionalType {
         INIT_KV_SERVER,       /* Used by awaitNodes, Initialize the KVServer with the metadata and block it for client requests */
@@ -50,6 +53,10 @@ public class KVAdminMessage {
         return hashRangeValue;
     }
 
+    public String getHashRingStr() { return hashRingStr; }
+
+    public HashRing getHashRing() { return hashRing; }
+
     public void setReceiverName(String name) {
         this.receiveServerName = name;
     }
@@ -65,6 +72,10 @@ public class KVAdminMessage {
     public void setHashRange(String[] hashValue) {
         this.hashRangeValue = hashValue;
     }
+
+    public void setHashRingStr(String hashRingData) {this.hashRingStr = hashRingData; }
+
+    public void setHashRing(HashRing hashRingData) {this.hashRing = hashRingData; }
 
     @Override
     public String toString() {
