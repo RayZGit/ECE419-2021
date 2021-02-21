@@ -20,16 +20,18 @@ import server.StoreDisk.IStoreDisk;
 import server.StoreDisk.StoreDisk;
 import shared.messages.KVAdminMessage;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.BindException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.concurrent.CountDownLatch;
 
 public class KVServer implements IKVServer, Runnable, Watcher {
 
+	private static final int BUFFER_SIZE = 64;
 	private static Logger logger = Logger.getRootLogger();
 
 	private int port;
@@ -518,8 +520,32 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	public void moveData(String[] hashRange, String host, int port) {
 		lockWrite();
 		writeCacheToDisk();
+		try{
+			File toMove = storeDisk.filter(hashRange);
+			long fileLen = toMove.length();
 
+			Socket socket = new Socket(host, port);
+			BufferedOutputStream outputStream = new BufferedOutputStream(socket.getOutputStream());
+			BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(toMove));
 
+			byte[] buffer = new byte[BUFFER_SIZE];
+			int len = 0;
+			int current = 0;
+			int percentage = 0;
+			while ((len = inputStream.read(buffer)) > 0) {
+				percentage = (int) (current * 100 / fileLen);
+				//TODO: updata progress
+				outputStream.write(buffer, 0, len);
+				current += len;
+			}
+			inputStream.close();
+			outputStream.close();
+			socket.close();
+		} catch (Exception e) {
+			logger.error("fail to move data to new server.");
+		} finally {
+			unlockWrite();
+		}
 	}
 
 	@Override

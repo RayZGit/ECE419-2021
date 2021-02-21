@@ -1,5 +1,7 @@
 package server.StoreDisk;
 
+import java.io.File;
+
 public interface IStoreDisk {
 
     public void put(String key, String value) throws Exception;
@@ -7,5 +9,5 @@ public interface IStoreDisk {
     public boolean contain(String key);
     public void dump();
     public void delete(String key, String value) throws Exception;
-    public String filter(String[] hashRange) throws Exception;
+    public File filter(String[] hashRange) throws Exception;
 }

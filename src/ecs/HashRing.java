@@ -135,6 +135,11 @@ public class HashRing {
         return sb.toString();
     }
 
+    public void removeAll() {
+        size = 0;
+        first = null;
+    }
+
 
     public static boolean isInRange(String[] hashRange, String key) {
         String hash = HashRing.getHash(key);

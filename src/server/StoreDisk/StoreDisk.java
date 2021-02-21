@@ -15,7 +15,7 @@ public class StoreDisk implements IStoreDisk {
     private File toMove;
     private String resourceDir = "./src/resources/";
     private String filename;
-    private String toMoveFileNmae;
+    private String toMoveFileName;
 
 
 
@@ -24,19 +24,14 @@ public class StoreDisk implements IStoreDisk {
         System.out.println(CLASS_NAME+"Initiate the persistent storage for "+filename);
 
         this.filename = filename;
-        this.toMoveFileNmae = filename + "toMove";
+        this.toMoveFileName = filename + "toMove";
         this.storage = new File(resourceDir+this.filename);
-        this.toMove = new File(resourceDir+this.toMoveFileNmae);
+        this.toMove = new File(resourceDir+this.toMoveFileName);
         try {
             if(this.storage.createNewFile()){
                 LOG.info(CLASS_NAME+"File successfully created");
             }else{
                 LOG.info(CLASS_NAME+"File already existed");
-            }
-            if(this.toMove.createNewFile()){
-                LOG.info(CLASS_NAME+"To-move File successfully created");
-            }else{
-                LOG.info(CLASS_NAME+"To-move File already existed");
             }
         } catch (IOException e) {
             LOG.error(CLASS_NAME+"Error for creating file",e);
@@ -74,20 +69,21 @@ public class StoreDisk implements IStoreDisk {
     }
 
     @Override
-    public String filter(String[] hashRange) throws Exception{
-        toMove.delete();
+    public File filter(String[] hashRange) throws Exception{
         try {
+            toMove.delete();
             toMove.createNewFile();
         } catch (IOException e) {
             LOG.error(e);
+            throw new Exception(CLASS_NAME + "fail to create to-move data.");
         }
         try {
             Scanner scanner = new Scanner(this.storage);
+            FileWriter fw = new FileWriter(resourceDir+this.toMoveFileName, true);
             while(scanner.hasNextLine()){
                 String line = scanner.nextLine();
                 line = line.trim();
                 if(line.isEmpty()){
-                    LOG.info(CLASS_NAME+"File already existed");
                     continue;
                 }
                 String[] lineArray = line.split(":");
@@ -95,17 +91,18 @@ public class StoreDisk implements IStoreDisk {
                     LOG.info(CLASS_NAME+"Invalid found of the line");
                     break;
                 }
-//                System.out.println(lineArray[0]);
                 if(HashRing.isInRange(hashRange, lineArray[0])){
-                    value = lineArray[1];
-                    break;
+                    fw.write(lineArray[0]+":"+lineArray[1]+"\n");
+                    delete(lineArray[0], lineArray[1]);
                 }
             }
             scanner.close();
-        } catch (FileNotFoundException e) {
-            LOG.error(CLASS_NAME+"Error for iterating  file",e);
-            throw new Exception(CLASS_NAME+"Error for iterating  file");
+            fw.close();
+        } catch (Exception e) {
+            LOG.error(CLASS_NAME+"Error for move file to to-move file",e);
+            throw new Exception(CLASS_NAME+"Error for move file to to-move file");
         }
+        return toMove;
     }
 
     public void dump(){
