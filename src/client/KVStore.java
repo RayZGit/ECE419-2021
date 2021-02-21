@@ -86,6 +86,7 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 			}
 			return response;
 		} catch (IOException e) {
+			logger.warn("Detect Server down, try to remove the failed server.");
 			handleShutdown(request);
 			return put(key, value);
 		}
@@ -108,6 +109,7 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 			}
 			return response;
 		} catch (IOException e) {
+			logger.warn("Detect Server down, try to remove the failed server.");
 			handleShutdown(request);
 			return get(key);
 		}
@@ -119,6 +121,7 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 		hashRing.removeNode(hashRing.getNodeByKey(hash));
 		ECSNode node = hashRing.getNodeByKey(request.getKey());
 		if (node == null) {
+			logger.error("No Server available.");
 			throw new Exception("No Server available.");
 		}
 	}
@@ -129,8 +132,20 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 			throw new Exception("Put failed: Key too long");
 		}
 		KVBasicMessage request = new KVBasicMessage(key, null, KVMessage.StatusType.DELETE);
-		sendMessage(request);
-		return receiveMessage();
+		try {
+			updateServer(request);
+			sendMessage(request);
+			KVMessage response = receiveMessage();
+			if (response.getStatus() == KVMessage.StatusType.SERVER_NOT_RESPONSIBLE) {
+				hashRing = new HashRing(response.getValue());
+				return delete(key);
+			}
+			return response;
+		} catch (IOException e) {
+			logger.warn("Detect Server down, try to remove the failed server.");
+			handleShutdown(request);
+			return delete(key);
+		}
 	}
 
 

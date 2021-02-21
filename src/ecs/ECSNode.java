@@ -19,6 +19,11 @@ public class ECSNode implements IECSNode{
         START,
     }
 
+    public void setStatus(NodeStatus status) {
+        this.status = status;
+    }
+
+    @Expose
     private NodeStatus status;
 
     public NodeStatus getStatus() {
