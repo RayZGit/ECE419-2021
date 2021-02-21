@@ -7,4 +7,5 @@ public interface IStoreDisk {
     public boolean contain(String key);
     public void dump();
     public void delete(String key, String value) throws Exception;
+    public String filter(String[] hashRange) throws Exception;
 }

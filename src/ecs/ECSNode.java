@@ -13,6 +13,18 @@ public class ECSNode implements IECSNode{
     private int port;
     private ECSNode previous;
 
+    public enum NodeStatus {
+        WAIT,
+        STOP,
+        START,
+    }
+
+    private NodeStatus status;
+
+    public NodeStatus getStatus() {
+        return status;
+    }
+
     @Override
     public String getNodeName() {
         return name;
@@ -53,18 +65,5 @@ public class ECSNode implements IECSNode{
         this.previous = previous;
     }
 
-    public boolean isInRange(String key) {
-        String hash = HashRing.getHash(key);
-        BigInteger temp = new BigInteger(hash, 16);
-        String[] range = this.getNodeHashRange();
-        BigInteger lower = new BigInteger(range[0]);
-        BigInteger upper = new BigInteger(range[1]);
-
-        if (upper.compareTo(lower) <= 0) {
-            return temp.compareTo(upper) <= 0 || temp.compareTo(lower) > 0;
-        } else {
-            return temp.compareTo(upper) >= 0 || temp.compareTo(lower) < 0;
-        }
-    }
 
 }

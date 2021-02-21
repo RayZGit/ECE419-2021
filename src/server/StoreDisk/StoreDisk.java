@@ -1,5 +1,6 @@
 package server.StoreDisk;
 
+import ecs.HashRing;
 import org.apache.log4j.Logger;
 
 import java.io.*;
@@ -11,8 +12,10 @@ public class StoreDisk implements IStoreDisk {
     private static String CLASS_NAME = "StoreDisk: ";
 
     private File storage;
+    private File toMove;
     private String resourceDir = "./src/resources/";
     private String filename;
+    private String toMoveFileNmae;
 
 
 
@@ -20,13 +23,20 @@ public class StoreDisk implements IStoreDisk {
         LOG.info(CLASS_NAME+"Initiate the persistent storage for "+filename);
         System.out.println(CLASS_NAME+"Initiate the persistent storage for "+filename);
 
-         this.filename = filename;
-         this.storage = new File(resourceDir+this.filename);
+        this.filename = filename;
+        this.toMoveFileNmae = filename + "toMove";
+        this.storage = new File(resourceDir+this.filename);
+        this.toMove = new File(resourceDir+this.toMoveFileNmae);
         try {
             if(this.storage.createNewFile()){
                 LOG.info(CLASS_NAME+"File successfully created");
             }else{
                 LOG.info(CLASS_NAME+"File already existed");
+            }
+            if(this.toMove.createNewFile()){
+                LOG.info(CLASS_NAME+"To-move File successfully created");
+            }else{
+                LOG.info(CLASS_NAME+"To-move File already existed");
             }
         } catch (IOException e) {
             LOG.error(CLASS_NAME+"Error for creating file",e);
@@ -62,6 +72,42 @@ public class StoreDisk implements IStoreDisk {
         }
 
     }
+
+    @Override
+    public String filter(String[] hashRange) throws Exception{
+        toMove.delete();
+        try {
+            toMove.createNewFile();
+        } catch (IOException e) {
+            LOG.error(e);
+        }
+        try {
+            Scanner scanner = new Scanner(this.storage);
+            while(scanner.hasNextLine()){
+                String line = scanner.nextLine();
+                line = line.trim();
+                if(line.isEmpty()){
+                    LOG.info(CLASS_NAME+"File already existed");
+                    continue;
+                }
+                String[] lineArray = line.split(":");
+                if (lineArray.length != 2){
+                    LOG.info(CLASS_NAME+"Invalid found of the line");
+                    break;
+                }
+//                System.out.println(lineArray[0]);
+                if(HashRing.isInRange(hashRange, lineArray[0])){
+                    value = lineArray[1];
+                    break;
+                }
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            LOG.error(CLASS_NAME+"Error for iterating  file",e);
+            throw new Exception(CLASS_NAME+"Error for iterating  file");
+        }
+    }
+
     public void dump(){
         storage.delete();
         storage = new File(resourceDir+this.filename);

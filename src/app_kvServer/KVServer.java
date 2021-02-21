@@ -515,6 +515,13 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		logger.info("Server: " + "<" + this.serverName + ">: " + "Server status change to WRITE_LOCK");
 	}
 
+	public void moveData(String[] hashRange, String host, int port) {
+		lockWrite();
+		writeCacheToDisk();
+
+
+	}
+
 	@Override
 	public void process(WatchedEvent watchedEvent) {
 		if (running) {

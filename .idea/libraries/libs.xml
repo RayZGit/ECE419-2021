@@ -5,8 +5,11 @@
       <root url="jar://$PROJECT_DIR$/libs/junit-4.10.jar!/" />
       <root url="jar://$PROJECT_DIR$/libs/gson-2.8.6.jar!/" />
       <root url="jar://$PROJECT_DIR$/apache-zookeeper-3.6.2-bin/lib/zookeeper-3.6.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/zookeeper-3.4.11.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/libs/zookeeper-3.4.11.jar!/" />
+    </SOURCES>
   </library>
 </component>
