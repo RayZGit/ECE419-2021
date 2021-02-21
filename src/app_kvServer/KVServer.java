@@ -11,10 +11,7 @@ import org.apache.zookeeper.*;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
-import server.Cache.FIFOCache;
-import server.Cache.ICache;
-import server.Cache.LFUCache;
-import server.Cache.LRUCache;
+import server.Cache.*;
 import server.ServerMetaData;
 import server.StoreDisk.IStoreDisk;
 import server.StoreDisk.StoreDisk;
@@ -46,9 +43,10 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	private ServerStatus serverStatus;
 	private boolean distributed;
 	private String serverName;
+	private ServerMetaData serverMetaData;
 	public static final String ZK_SERVER_ROOT = "/ZK_KVServers";
 	public static final String ZK_METADATA_ROOT = "/KVServer_metadata";
-	private static final int RECIVER_PORT = 9999;
+	private static final int RECEIVE_DATA_PORT = 9999;
 
 	/**
 	 * default */
@@ -112,7 +110,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	}
 
 	public KVServer(int port, String serverName, String zooKeeperHostName, int zooKeeperPort) {
-		assert(port != RECIVER_PORT);
+		assert(port != RECEIVE_DATA_PORT);
 		this.port = port;
 //		this(port, defaultCacheSize, defaultCacheStrategy);
 		this.serverName = serverName;
@@ -120,6 +118,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		this.zooKeeperPort = zooKeeperPort;
 		this.distributed = true;
 		this.serverStatus = ServerStatus.STOP;
+		this.serverMetaData = new ServerMetaData(0, "None", RECEIVE_DATA_PORT, "127.0.0.1");
 		this.zooKeeperPath = ZK_SERVER_ROOT + "/" + serverName; //TODO: zookeeper root path
 		String zkConnectionPath = this.zooKeeperHostName + ":" + Integer.toString(this.zooKeeperPort);
 
@@ -239,6 +238,8 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			System.out.println("Server: " + "<" + this.serverName + ">: " + "server zNode does not exist, create one");
 			logger.info("Server: " + "<" + this.serverName + ">: " + "server zNode does not exist, create one");
 		}
+		serverMetaData.setCacheSize(this.catchSize);
+		serverMetaData.setCacheStrategy(this.strategy.toString());
 	}
 
 //	public void checkZKChildren(String zkPath) throws KeeperException, InterruptedException {
@@ -495,16 +496,39 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		}
 	}
 
-	public int receiveServerData() {
+	public int receiveServerData(int receivePort) {
 		try {
-			receiverSocket = new ServerSocket(RECIVER_PORT);
-			System.out.println("Transfer Data Server listening on port: " + RECIVER_PORT);
-			logger.info("Transfer Data Server listening on port: " + RECIVER_PORT);
+			receiverSocket = new ServerSocket(receivePort);
+			System.out.println("Transfer Data Server listening on port: " + receivePort);
+			logger.info("Transfer Data Server listening on port: " + receivePort);
 
 			int port = receiverSocket.getLocalPort();
 			lockWrite();
+			this.serverMetaData.setServerTransferProgressStatus(ServerMetaData.ServerDataTransferProgressStatus.IN_PROGRESS);
+			try {
+				zooKeeper.setData(zooKeeperPath, this.serverMetaData.encode().getBytes(), zooKeeper.exists(zooKeeperPath, false).getVersion());
+				logger.info("Server: " + "<" + this.serverName + ">: " + "Receiver Data, update server data transfer progress to IN_PROGRESS");
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+				logger.error("ERROR! Server: " + "<" + this.serverName + ">: " + "Receiver Data, update server data transfer progress to IN_PROGRESS");
+			} catch (KeeperException e) {
+				e.printStackTrace();
+				logger.error("ERROR! Server: " + "<" + this.serverName + ">: " + "Receiver Data,update server data transfer progress to IN_PROGRESS");
+			}
 			new Thread(new KVServerDataTransferConnection(receiverSocket, this)).start();
 			unlockWrite();
+			this.serverMetaData.setServerTransferProgressStatus(ServerMetaData.ServerDataTransferProgressStatus.IDLE);
+			try{
+				zooKeeper.setData(zooKeeperPath , this.serverMetaData.encode().getBytes(), zooKeeper.exists(zooKeeperPath, false).getVersion());
+				logger.info("Server: " + "<" + this.serverName + ">: " + "Receiver Data, update server data transfer progress to IDLE");
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+				logger.error("ERROR! Server: " + "<" + this.serverName + ">: " + "Receiver Data, update server data transfer progress to IDLE");
+			} catch (KeeperException e) {
+				e.printStackTrace();
+				logger.error("ERROR! Server: " + "<" + this.serverName + ">: " + "Receiver Data, update server data transfer progress to IDLE");
+			}
+
 			return port;
 		} catch (IOException e) {
 			logger.debug("Server: " + "<" + this.serverName + ">: " + "Unable to open a receiver socket!");
@@ -527,9 +551,19 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	}
 
 	public void moveData(String[] hashRange, String host, int port) {
+		this.serverMetaData.setServerTransferProgressStatus(ServerMetaData.ServerDataTransferProgressStatus.IN_PROGRESS);
+		try {
+			zooKeeper.setData(zooKeeperPath , this.serverMetaData.encode().getBytes(), zooKeeper.exists(zooKeeperPath, false).getVersion());
+			logger.info("Server: " + "<" + this.serverName + ">: " + "Send Data, update server data transfer progress to IN_PROGRESS");
+		} catch (KeeperException e) {
+			e.printStackTrace();
+			logger.error("ERROR! Server: " + "<" + this.serverName + ">: " + "Send Data, update server data transfer progress to IN_PROGRESS");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+			logger.error("ERROR! Server: " + "<" + this.serverName + ">: " + "Send Data, update server data transfer progress to IN_PROGRESS");
+		}
 		lockWrite();
 		writeCacheToDisk();
-		//TODO: set server status to IN_PROGRESS
 		try{
 			File toMove = storeDisk.filter(hashRange);
 			long fileLen = toMove.length();
@@ -555,6 +589,17 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			logger.error("fail to move data to new server.");
 		} finally {
 			unlockWrite();
+			this.serverMetaData.setServerTransferProgressStatus(ServerMetaData.ServerDataTransferProgressStatus.IDLE);
+			try {
+				zooKeeper.setData(zooKeeperPath , this.serverMetaData.encode().getBytes(), zooKeeper.exists(zooKeeperPath, false).getVersion());
+				logger.info("Server: " + "<" + this.serverName + ">: " + "Send Data, update server data transfer progress to IDLE");
+			} catch (KeeperException e) {
+				e.printStackTrace();
+				logger.error("ERROR! Server: " + "<" + this.serverName + ">: " + "Send Data, update server data transfer progress to IDLE");
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+				logger.info("ERROR! Server: " + "<" + this.serverName + ">: " + "Send Data, update server data transfer progress to IDLE");
+			}
 			//TODO: set server status to IDLE
 		}
 	}
@@ -574,7 +619,8 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			System.out.println("Event ZNode path:" + eventPath);
 
 			try {
-				byte[] zNodeData = zooKeeper.getData(zooKeeperPath , false, null);
+				String path = zooKeeperPath + "/" + "KVAdminMessage";
+				byte[] zNodeData = zooKeeper.getData(path , false, null);
 				String temp = new String(zNodeData);
 				KVAdminMessage request = new Gson().fromJson(temp, KVAdminMessage.class);
 				KVAdminMessage.ServerFunctionalType serverType = request.getFunctionalType();
@@ -606,7 +652,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 						break;
 					case RECEIVE:
 						logger.info("Server: " + "<" + serverName + ">: "+ "receiving data initialization....");
-						receiveServerData();
+						receiveServerData(request.getReceiveServerPort());
 						break;
 					case MOVE_DATA:
 

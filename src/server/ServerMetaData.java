@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class ServerMetaData {
     private int cacheSize;
     private String cacheStrategy;
-    private int port;
+    private int receiveDataPort;
     private String host;
     private ServerDataTransferProgressStatus status;
 
@@ -20,7 +20,7 @@ public class ServerMetaData {
     public ServerMetaData(int cacheSize, String cacheStrategy, int port, String host) {
         this.cacheSize = cacheSize;
         this.cacheStrategy = cacheStrategy;
-        this.port = port;
+        this.receiveDataPort = port;
         this.host = host;
     }
 
@@ -29,7 +29,7 @@ public class ServerMetaData {
         return "ServerMetaData{" +
                 "cacheSize='" + cacheSize +
                 ", cacheStrategy=" + cacheStrategy  + '\'' +
-                ", port='" + port + '\'' +
+                ", receiveDataPort='" + receiveDataPort + '\'' +
                 ", host='" + host + '\'' +
                 ", status=" + status +
                 '}';
@@ -43,14 +43,14 @@ public class ServerMetaData {
         ServerMetaData msg = new Gson().fromJson(input, this.getClass());
         this.cacheSize = msg.cacheSize;
         this.cacheStrategy = msg.cacheStrategy;
-        this.port = msg.port;
+        this.receiveDataPort = msg.receiveDataPort;
         this.status = msg.status;
     }
 
     /**
      * setter
      * */
-    public void setPort(int port) { this.port = port; }
+    public void setPort(int port) { this.receiveDataPort = port; }
 
     /**
      * setter
@@ -85,7 +85,7 @@ public class ServerMetaData {
     /**
      * getter
      * */
-    public int getPort() { return port; }
+    public int getPort() { return receiveDataPort; }
 
     /**
      * getter

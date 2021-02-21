@@ -97,6 +97,7 @@ public class KVAdminMessage {
         this.receiveServerName = msg.receiveServerName;
         this.receiveServerHost = msg.receiveServerHost;
         this.receiveHashRangeValue = msg.receiveHashRangeValue;
+        this.receiveServerPort = msg.receiveServerPort;
         this.serverFunctionalType = msg.serverFunctionalType;
     }
 }
