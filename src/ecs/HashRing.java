@@ -67,6 +67,7 @@ public class HashRing {
             node.setPrevious(previous);
             size++;
         }
+        logger.info("Add ECSNode " + node.getNodeName() + ":" + node.getNodePort());
     }
 
     public boolean checkNodeExist(String hash) {
@@ -97,6 +98,7 @@ public class HashRing {
             if(first == node) first = nextNode;
             size--;
         }
+        logger.info("Remove ECSNode " + node.getNodeName() + ":" + node.getNodePort());
     }
 
     public ECSNode getNodeByKey(String key) {
@@ -116,6 +118,7 @@ public class HashRing {
             }
             curr = curr.getPrevious();
         }
+        logger.warn("Fail to get the node with key "+ key);
         return null;
     }
 
