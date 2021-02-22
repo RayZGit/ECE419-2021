@@ -138,6 +138,7 @@ public class ECSClient implements IECSClient {
         nodeQueue = new ConcurrentLinkedQueue<>();
 
         File cfg = new File(cfgFileName);
+
         Scanner s = new Scanner(new File(cfgFileName));
         ArrayList<String> lines = new ArrayList<String>();
         while (s.hasNextLine()){
@@ -150,6 +151,7 @@ public class ECSClient implements IECSClient {
         for(String line : lines){
             String args[] = line.split("\\s+");
 //            System.out.println(args[1]);
+
             if(args.length != NUMBER_ARGS_ECSCONFIG){
                 logger.fatal(LOGGING+"The ECS object failed ");
             }
