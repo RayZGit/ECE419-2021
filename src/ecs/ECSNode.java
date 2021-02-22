@@ -12,7 +12,7 @@ public class ECSNode implements IECSNode{
     @Expose
     private int port;
     private ECSNode previous;
-    private ECSNode next;
+    private String hash;
 
     public enum NodeStatus {
         WAIT,
@@ -43,6 +43,7 @@ public class ECSNode implements IECSNode{
         this.port = port;
         this.status = NodeStatus.IDLE;
         previous = null;
+        hash = HashRing.getHash(this);
     }
 
     @Override
@@ -73,11 +74,8 @@ public class ECSNode implements IECSNode{
         this.previous = previous;
     }
 
-    public ECSNode getNext() {
-        return next;
+    public String getHashKey() {
+        return host + ":" + port;
     }
 
-    public void setNext(ECSNode next) {
-        this.next = next;
-    }
 }

@@ -66,62 +66,58 @@ public class HashRing {
         return getNodeByKey(next.toString());
     }
 
-    public void addNode(ECSNode node) {
+    public boolean addNode(ECSNode node) {
+        if (checkNodeExist(node)) {
+            return false;
+        }
         if (first == null) {
             first = node;
             node.setPrevious(node);
-            node.setNext(node);
-            size++;
         } else {
-            ECSNode next = getNodeByKey(node.getNodeName() + ":" + node.getNodePort());
+            ECSNode next = getNodeByKey(getHash(node));
             ECSNode previous = next.getPrevious();
-
             next.setPrevious(node);
-            node.setNext(next);
             node.setPrevious(previous);
-            previous.setNext(node);
-            size++;
         }
+        size++;
         logger.info("Add ECSNode " + node.getNodeName() + ":" + node.getNodePort());
+        return true;
     }
 
-    public boolean checkNodeExist(String hash) {
+    public boolean checkNodeExist(ECSNode node) {
+        String hash = getHash(node);
         ECSNode curr = first;
         for(int i = 0; i < size; i++) {
             if (getHash(curr).equals(hash)) return true;
+            curr = curr.getPrevious();
         }
         return false;
     }
 
-    public void removeNode(String hash) {
-        if (checkNodeExist(hash)) {
-            ECSNode node = getNodeByKey(hash);
-            removeNode(node);
-        } else {
-            logger.warn("ECSNode does not exist!");
-        }
-    }
 
-    public void removeNode(ECSNode node) {
+    public boolean removeNode(ECSNode node) {
+        if(!checkNodeExist(node)) {
+            return false;
+        }
+        ECSNode actual = getNodeByKey(getHash(node));
         if (node.getPrevious() == node) {
             first = null;
-            size--;
         } else {
             BigInteger next = new BigInteger(getHash(node), 16);
             next = next.add(new BigInteger("1", 16));
-            ECSNode nextNode = getNodeByKey(next.toString());
-            ECSNode previousNode = node.getPrevious();
+            ECSNode nextNode = getNodeByKey(next.toString(16));
+            ECSNode previousNode = actual.getPrevious();
             nextNode.setPrevious(previousNode);
-            previousNode.setNext(nextNode);
 
             if(first == node) first = nextNode;
-            size--;
         }
+        size--;
         logger.info("Remove ECSNode " + node.getNodeName() + ":" + node.getNodePort());
+        return true;
     }
 
-    public ECSNode getNodeByKey(String key) {
-        BigInteger hash = new BigInteger(getHash(key), 16);
+    public ECSNode getNodeByKey(String hashString) {
+        BigInteger hash = new BigInteger(hashString, 16);
         ECSNode curr = first;
         for(int i = 0; i < size; i++) {
             String[] range = curr.getNodeHashRange();
@@ -129,15 +125,15 @@ public class HashRing {
             BigInteger upper = new BigInteger(range[1], 16);
 
             if (upper.compareTo(lower) <= 0) {
-                if (hash.compareTo(upper) <= 0 || hash.compareTo(lower) >= 0) {
+                if (hash.compareTo(upper) <= 0 || hash.compareTo(lower) > 0) {
                     return curr;
                 }
-            } else if (hash.compareTo(lower) >= 0 && hash.compareTo(upper) <= 0) {
+            } else if (hash.compareTo(lower) > 0 && hash.compareTo(upper) <= 0) {
                 return curr;
             }
             curr = curr.getPrevious();
         }
-        logger.warn("Fail to get the node with key "+ key);
+        logger.warn("Fail to get the node with hash "+ hashString);
         return null;
     }
 
