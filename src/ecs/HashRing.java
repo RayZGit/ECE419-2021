@@ -54,17 +54,21 @@ public class HashRing {
         BigInteger output = new BigInteger(1, md.digest());
         return output.toString(16);
     }
+    
 
     public void addNode(ECSNode node) {
         if (first == null) {
             first = node;
             node.setPrevious(node);
+            node.setNext(node);
         } else {
             ECSNode next = getNodeByKey(node.getNodeName() + ":" + node.getNodePort());
             ECSNode previous = next.getPrevious();
 
             next.setPrevious(node);
+            node.setNext(next);
             node.setPrevious(previous);
+            previous.setNext(node);
             size++;
         }
         logger.info("Add ECSNode " + node.getNodeName() + ":" + node.getNodePort());
@@ -94,7 +98,10 @@ public class HashRing {
             BigInteger next = new BigInteger(getHash(node), 16);
             next = next.add(new BigInteger("1", 16));
             ECSNode nextNode = getNodeByKey(next.toString());
-            nextNode.setPrevious(node.getPrevious());
+            ECSNode previousNode = node.getPrevious();
+            nextNode.setPrevious(previousNode);
+            previousNode.setNext(nextNode);
+
             if(first == node) first = nextNode;
             size--;
         }

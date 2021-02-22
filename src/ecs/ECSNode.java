@@ -12,6 +12,7 @@ public class ECSNode implements IECSNode{
     @Expose
     private int port;
     private ECSNode previous;
+    private ECSNode next;
 
     public enum NodeStatus {
         WAIT,
@@ -70,5 +71,11 @@ public class ECSNode implements IECSNode{
         this.previous = previous;
     }
 
+    public ECSNode getNext() {
+        return next;
+    }
 
+    public void setNext(ECSNode next) {
+        this.next = next;
+    }
 }
