@@ -15,6 +15,11 @@ public class HashRing {
     private static Logger logger = Logger.getRootLogger();
     private static MessageDigest md;
     private ECSNode first;
+
+    public int getSize() {
+        return size;
+    }
+
     private int size;
 
     static {
