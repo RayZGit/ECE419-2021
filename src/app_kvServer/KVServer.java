@@ -90,6 +90,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		this.strategy = CacheStrategy.valueOf(strategy);
 		this.diskFileName = "DataDisk" + ".txt";
 		this.storeDisk = new StoreDisk(this.diskFileName);
+		this.serverStatus = ServerStatus.START;
 		switch (this.strategy) {
 			case FIFO:
 				System.out.println("Initialize FIFO");
