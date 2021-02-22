@@ -30,12 +30,12 @@ public class ECSClient implements IECSClient {
 
     //Standalone Zookeeper Setting Config
     private static final String SERVER_JAR = "KVServer.jar";
+    private static String METADATA_ROOT = "/MD";
     private static final String JAR_PATH = new File(System.getProperty("user.dir"), SERVER_JAR).toString();
     public static String ZK_HOST = "127.0.0.1";
     public static String ZK_PORT = "2181";
-    public static int ZK_TIMEOUTSESSION = 5000;
+    public static int ZK_TIMEOUTSESSION = 500000000;
     private static String ZNODE_ROOT = "/ZNode";
-    private static String METADATA_ROOT = "/MD";
     private static String ZNODE_KVMESSAGE = "/KVAdminMessage";
 
     private Logger logger = Logger.getRootLogger();
@@ -49,16 +49,37 @@ public class ECSClient implements IECSClient {
 
     private class AdminDataHandler
     {
+        int countdownCount = 0;
         public Map<ECSNode,String> brodcast(byte[] msg, List<ECSNode> nodes, boolean KVadmin) throws InterruptedException{
 //            msg.encode().getBytes()
-            final CountDownLatch latch = new CountDownLatch(nodes.size());
-            final HashMap<String, String> errorMap = new HashMap<String, String>();
+            CountDownLatch latch = KVadmin? new CountDownLatch(nodes.size()) : new CountDownLatch(0);
+            HashMap<String, String> errorMap = new HashMap<String, String>();
             Map<ECSNode,String> errorNodeMap = new HashMap<ECSNode,String>();
             for(ECSNode node: nodes)
             {
+                String nodePath_ROOT = ZNODE_ROOT;
                 String nodePath = ZNODE_ROOT+"/"+node.getNodeName(); // /ZNode/ServerName
-                if(KVadmin) nodePath += "/" + ZNODE_KVMESSAGE;// /ZNode/ServerName/KVAdminMessage
                 try {
+                    // check if /ZNode exists
+                    Stat existRoot = zk.exists(nodePath_ROOT,false);
+                    if(existRoot == null){
+                        zk.create(nodePath_ROOT,"".getBytes(),ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+                    }
+                    if(KVadmin){
+                        Stat existServer = zk.exists(nodePath,false);
+                        if(existServer == null){
+                            logger.error(LOGGING+"try to send admin message before setup server node");
+                        }else{
+                            nodePath += ZNODE_KVMESSAGE;// /ZNode/ServerName/KVAdminMessage
+                        }
+                    }
+
+                    //check if /ZNode/server# exists
+                    Stat existServer = zk.exists(nodePath,false);
+                    if(existServer == null){
+                        zk.create(nodePath, msg,ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+                    }
+
                     Stat existNode = zk.exists(nodePath,false);
                     if(existNode == null){
                         zk.create(nodePath, msg,ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
@@ -72,6 +93,7 @@ public class ECSClient implements IECSClient {
                         {
                             String error = null;
                             latch.countDown();
+                            countdownCount++;
                             if (event.getType() == Event.EventType.NodeDataChanged){
                                 // watch handled properly
                                 //expected the server to set back to null
@@ -92,6 +114,7 @@ public class ECSClient implements IECSClient {
                     e.printStackTrace();
                 }
             }
+            int a = 0;
             boolean wait = latch.await(ZK_TIMEOUTSESSION, TimeUnit.MILLISECONDS);
             for(ECSNode node : nodes){
                 String nodePath = ZNODE_ROOT+"/"+node.getNodeName();
@@ -142,18 +165,6 @@ public class ECSClient implements IECSClient {
                 latch.countDown();
             }
         });
-//        zk = new ZooKeeper(ZK_HOST + ":" + ZK_PORT, ZK_TIMEOUTSESSION, new Watcher() {
-//            @Override
-//            public void process(WatchedEvent event) {
-//                if(event.getState() == Event.KeeperState.SyncConnected){
-//                        latch.countDown();
-//                    }
-//                else{
-//                    logger.error(LOGGING+"Zookeeper connected failed");
-//                    latch.countDown();
-//                }
-//            }
-//        });
         latch.await();
         //In the initialization, the metaDataHandler should only creat an node called /MD
         metaDataHandler();
