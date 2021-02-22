@@ -49,7 +49,7 @@ public class KVAdminMessage {
         return receiveServerPort;
     }
 
-    public String[] getHashRange() {
+    public String[] getReceiveHashRangeValue() {
         return receiveHashRangeValue;
     }
 
@@ -69,7 +69,7 @@ public class KVAdminMessage {
         this.receiveServerPort = port;
     }
 
-    public void setHashRange(String[] hashValue) {
+    public void setReceiveHashRangeValue(String[] hashValue) {
         this.receiveHashRangeValue = hashValue;
     }
 

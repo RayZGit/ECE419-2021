@@ -11,10 +11,16 @@ public class ServerMetaData {
     private int receiveDataPort;
     private String host;
     private ServerDataTransferProgressStatus status;
+    private ServerResponseStatus responseStatus;
 
     public enum ServerDataTransferProgressStatus {
         IN_PROGRESS,       /* If data transfer is in progress */
         IDLE               /* Server status is idle */
+    }
+
+    public enum ServerResponseStatus{
+        ACK,
+        ERROR
     }
 
     public ServerMetaData(int cacheSize, String cacheStrategy, int port, String host) {
