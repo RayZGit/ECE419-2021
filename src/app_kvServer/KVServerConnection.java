@@ -83,13 +83,14 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
     public KVMessage handleClientRequest(KVMessage request){
         KVMessage response = new KVBasicMessage();
         response.setKey(request.getKey());
+        response.setValue(request.getValue());
 
         if (kvServer.isDistributed()) {
             HashRing hashRing = new HashRing(kvServer.getServerHashRings());
             if (kvServer.getServerStatus().equals(IKVServer.ServerStatus.STOP) ||
                     kvServer.getServerStatus().equals(IKVServer.ServerStatus.INITIALIZED) ||
                     hashRing == null){
-                response.setValue("");
+//                response.setValue("");
                 response.setStatus(KVMessage.StatusType.SERVER_STOPPED);
             }
 
