@@ -113,11 +113,16 @@ public class ECSClient implements IECSClient {
         nodeMap = new HashMap<>();
 
         File cfg = new File(cfgFileName);
-        String lines[] = cfg.list();
+        Scanner scanner = new Scanner(cfg);
 
         //Get all the nodes from config file into pool
-        for(String line : lines){
-            String args[] = line.split(" ");
+        while(scanner.hasNextLine()){
+            String line = scanner.nextLine();
+            line = line.trim();
+            if(line.isEmpty()){
+                continue;
+            }
+            String[] args = line.split(":");
             if(args.length != NUMBER_ARGS_ECSCONFIG){
                 logger.fatal(LOGGING+"The ECS object failed ");
             }
