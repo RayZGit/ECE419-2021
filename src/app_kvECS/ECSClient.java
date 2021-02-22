@@ -383,7 +383,9 @@ public class ECSClient implements IECSClient {
         //TODO: CHECK LATER FOLLOW KVSERVER
         String hostname = node.getNodeHost();
         String portnumber = String.valueOf(node.getNodePort());
-        String cmd = String.format("ssh -n %s nohup java -jar %s %s ERROR &", hostname, JAR_PATH, portnumber);
+        String cmd = String.format("ssh -n %s nohup java -jar %s %s %s %s ERROR &",
+                hostname, JAR_PATH, portnumber,
+                node.getNodeName(), ZK_HOST,ZK_PORT);
         try {
             Process proc = Runtime.getRuntime().exec(cmd);
             int exitCode = proc.waitFor();
@@ -431,6 +433,7 @@ public class ECSClient implements IECSClient {
         while(true){
             count ++;
             //TODO: IMPORTANT GET NEXT NODE ON HASHRING
+            rec = hashRing.getNext(node);
             if(!reference.contains(rec)){
                 return rec;
             }
