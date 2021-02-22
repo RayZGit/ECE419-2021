@@ -9427,3 +9427,59 @@ java.lang.Exception: StoreDisk: Error for iterating  file
 2021-02-22 11:49:37,445 ERROR [Thread-15] root: <Server> Error! Connection lost <localhost: 62258>
 2021-02-22 11:49:37,465 ERROR [Thread-16] root: <Server> Error! Connection lost <localhost: 62259>
 2021-02-22 11:49:37,491 ERROR [Thread-17] root: <Server> Error! Connection lost <localhost: 62260>
+2021-02-22 11:54:06,344 ERROR [main] root: No Server available.
+2021-02-22 11:54:06,424 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 60049>
+2021-02-22 11:54:06,436 ERROR [Thread-4] root: <Server> Error! Connection lost <localhost: 60052>
+2021-02-22 11:54:06,448 ERROR [Thread-2] root: <Server> Error! Connection lost <localhost: 60050>
+2021-02-22 11:54:06,457 ERROR [Thread-5] root: <Server> Error! Connection lost <localhost: 60053>
+2021-02-22 11:54:06,466 ERROR [Thread-3] root: <Server> Error! Connection lost <localhost: 60051>
+2021-02-22 11:54:06,516 ERROR [Thread-6] root: <Server> Error! Connection lost <localhost: 60054>
+2021-02-22 11:54:06,529 ERROR [Thread-7] root: <Server> Error! Connection lost <localhost: 60055>
+2021-02-22 11:54:06,647 ERROR [Thread-8] root: <Server> Error! Connection lost <localhost: 60056>
+2021-02-22 11:54:06,655 ERROR [Thread-9] root: <Server> Error! Connection lost <localhost: 60057>
+2021-02-22 11:54:06,665 ERROR [Thread-10] root: <Server> Error! Connection lost <localhost: 60058>
+2021-02-22 11:54:06,711 ERROR [Thread-11] root: <Server> Error! Connection lost <localhost: 60059>
+2021-02-22 11:54:06,760 ERROR [Thread-12] root: <Server> Error! Connection lost <localhost: 60060>
+2021-02-22 11:54:06,817 ERROR [Thread-13] root: <Server> Error! Connection lost <localhost: 60061>
+2021-02-22 11:54:06,878 ERROR [Thread-14] root: <Server> Error! Connection lost <localhost: 60062>
+2021-02-22 11:54:07,567 ERROR [Thread-16] root: StoreDisk: Error for iterating  file
+java.io.FileNotFoundException: ./src/resources/DataDisk.txt (No such file or directory)
+	at java.base/java.io.FileInputStream.open0(Native Method)
+	at java.base/java.io.FileInputStream.open(FileInputStream.java:211)
+	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:153)
+	at java.base/java.util.Scanner.<init>(Scanner.java:639)
+	at server.StoreDisk.StoreDisk.get(StoreDisk.java:140)
+	at server.StoreDisk.StoreDisk.contain(StoreDisk.java:171)
+	at app_kvServer.KVServer.inStorage(KVServer.java:330)
+	at app_kvServer.KVServerConnection.handleClientRequest(KVServerConnection.java:195)
+	at app_kvServer.KVServerConnection.run(KVServerConnection.java:41)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-02-22 11:54:07,570 ERROR [Thread-16] root: StoreDisk: Error for contain function
+java.lang.Exception: StoreDisk: Error for iterating  file
+	at server.StoreDisk.StoreDisk.get(StoreDisk.java:162)
+	at server.StoreDisk.StoreDisk.contain(StoreDisk.java:171)
+	at app_kvServer.KVServer.inStorage(KVServer.java:330)
+	at app_kvServer.KVServerConnection.handleClientRequest(KVServerConnection.java:195)
+	at app_kvServer.KVServerConnection.run(KVServerConnection.java:41)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-02-22 11:54:07,575 ERROR [Thread-15] root: <Server> Error! Connection lost <localhost: 60063>
+2021-02-22 11:54:07,614 ERROR [Thread-16] root: <Server> Error! Connection lost <localhost: 60065>
+2021-02-22 11:54:08,042 ERROR [Thread-17] root: <Server> Error! Connection lost <localhost: 60067>
+2021-02-22 11:54:19,177 ERROR [main] root: No Server available.
+2021-02-22 11:54:19,305 ERROR [Thread-2] root: <Server> Error! Connection lost <localhost: 60073>
+2021-02-22 11:54:19,340 ERROR [Thread-3] root: <Server> Error! Connection lost <localhost: 60074>
+2021-02-22 11:54:19,417 ERROR [Thread-4] root: <Server> Error! Connection lost <localhost: 60075>
+2021-02-22 11:54:19,433 ERROR [Thread-5] root: <Server> Error! Connection lost <localhost: 60076>
+2021-02-22 11:54:19,449 ERROR [Thread-6] root: <Server> Error! Connection lost <localhost: 60077>
+2021-02-22 11:54:19,456 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 60072>
+2021-02-22 11:54:19,464 ERROR [Thread-7] root: <Server> Error! Connection lost <localhost: 60078>
+2021-02-22 11:54:19,500 ERROR [Thread-8] root: <Server> Error! Connection lost <localhost: 60079>
+2021-02-22 11:54:19,518 ERROR [Thread-10] root: <Server> Error! Connection lost <localhost: 60081>
+2021-02-22 11:54:19,529 ERROR [Thread-9] root: <Server> Error! Connection lost <localhost: 60080>
+2021-02-22 11:54:19,560 ERROR [Thread-11] root: <Server> Error! Connection lost <localhost: 60082>
+2021-02-22 11:54:19,580 ERROR [Thread-12] root: <Server> Error! Connection lost <localhost: 60083>
+2021-02-22 11:54:19,646 ERROR [Thread-13] root: <Server> Error! Connection lost <localhost: 60084>
+2021-02-22 11:54:19,691 ERROR [Thread-14] root: <Server> Error! Connection lost <localhost: 60085>
+2021-02-22 11:54:20,109 ERROR [Thread-15] root: <Server> Error! Connection lost <localhost: 60086>
+2021-02-22 11:54:20,479 ERROR [Thread-16] root: <Server> Error! Connection lost <localhost: 60088>
+2021-02-22 11:54:20,838 ERROR [Thread-17] root: <Server> Error! Connection lost <localhost: 60089>
