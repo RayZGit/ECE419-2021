@@ -184,6 +184,14 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			logger.debug("Server: " + "<" + serverName + ">: " + "does not exist, unable to set server meta data watcher!");
 		}
 
+		try {
+			zooKeeper.getChildren(this.zooKeeperPath, this, null);
+			logger.debug("Server: " + "<" + serverName + ">: " + "Set up watcher on " + this.zooKeeperPath);
+		} catch (InterruptedException | KeeperException e) {
+			logger.error("Server: " + "<" + serverName + ">: " + "Unable to get set watcher on children");
+			e.printStackTrace();
+		}
+
 		this.diskFileName = serverName + "_DataDisk" + ".txt";
 		this.storeDisk = new StoreDisk(this.diskFileName);
 		switch (this.strategy) {
