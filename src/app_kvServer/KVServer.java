@@ -626,7 +626,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			System.out.println("Event ZNode path:" + eventPath);
 
 			try {
-				String path = zooKeeperPath + "/" + ZNODE_KVMESSAGE;
+				String path = zooKeeperPath + ZNODE_KVMESSAGE;
 				byte[] zNodeData = zooKeeper.getData(path , false, null);
 				String temp = new String(zNodeData);
 				KVAdminMessage request = new Gson().fromJson(temp, KVAdminMessage.class);
