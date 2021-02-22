@@ -122,7 +122,7 @@ public class ECSClient implements IECSClient {
             if(line.isEmpty()){
                 continue;
             }
-            String[] args = line.split(":");
+            String[] args = line.split(" ");
             if(args.length != NUMBER_ARGS_ECSCONFIG){
                 logger.fatal(LOGGING+"The ECS object failed ");
             }
