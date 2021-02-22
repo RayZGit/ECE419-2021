@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.util.*;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
@@ -30,9 +31,9 @@ public class ECSClient implements IECSClient {
     //Standalone Zookeeper Setting Config
     private static final String SERVER_JAR = "KVServer.jar";
     private static final String JAR_PATH = new File(System.getProperty("user.dir"), SERVER_JAR).toString();
-    private static String ZK_HOST = "127.0.0.1";
-    private static String ZK_PORT = "2181";
-    private static int ZK_TIMEOUTSESSION = 3000;
+    public static String ZK_HOST = "127.0.0.1";
+    public static String ZK_PORT = "2181";
+    public static int ZK_TIMEOUTSESSION = 5000;
     private static String ZNODE_ROOT = "/ZNode";
     private static String METADATA_ROOT = "/MD";
     private static String ZNODE_KVMESSAGE = "/KVAdminMessage";
@@ -111,13 +112,21 @@ public class ECSClient implements IECSClient {
         adminDataHandler = new AdminDataHandler();
         hashRing = new HashRing();
         nodeMap = new HashMap<>();
+        nodeQueue = new ConcurrentLinkedQueue<>();
 
         File cfg = new File(cfgFileName);
-        String lines[] = cfg.list();
+        Scanner s = new Scanner(new File(cfgFileName));
+        ArrayList<String> lines = new ArrayList<String>();
+        while (s.hasNextLine()){
+            lines.add(s.nextLine());
+        }
+        s.close();
+//        System.out.println(lines);
 
         //Get all the nodes from config file into pool
         for(String line : lines){
-            String args[] = line.split(" ");
+            String args[] = line.split("\\s+");
+//            System.out.println(args[1]);
             if(args.length != NUMBER_ARGS_ECSCONFIG){
                 logger.fatal(LOGGING+"The ECS object failed ");
             }
@@ -127,18 +136,24 @@ public class ECSClient implements IECSClient {
 
         //Setup the zk (ZooKeeper)
         final CountDownLatch latch = new CountDownLatch(1);
-        zk = new ZooKeeper(ZK_HOST + ":" + ZK_PORT, ZK_TIMEOUTSESSION, new Watcher() {
-            @Override
-            public void process(WatchedEvent event) {
-                if(event.getState() == Event.KeeperState.SyncConnected){
-                        latch.countDown();
-                    }
-                else{
-                    logger.error(LOGGING+"Zookeeper connected failed");
-                    latch.countDown();
-                }
+        zk = new ZooKeeper(ZK_HOST + ":" + ZK_PORT, ZK_TIMEOUTSESSION, event -> {
+            if (event.getState().equals(Watcher.Event.KeeperState.SyncConnected)) {
+                // connection fully established can proceed
+                latch.countDown();
             }
         });
+//        zk = new ZooKeeper(ZK_HOST + ":" + ZK_PORT, ZK_TIMEOUTSESSION, new Watcher() {
+//            @Override
+//            public void process(WatchedEvent event) {
+//                if(event.getState() == Event.KeeperState.SyncConnected){
+//                        latch.countDown();
+//                    }
+//                else{
+//                    logger.error(LOGGING+"Zookeeper connected failed");
+//                    latch.countDown();
+//                }
+//            }
+//        });
         latch.await();
         //In the initialization, the metaDataHandler should only creat an node called /MD
         metaDataHandler();
@@ -253,9 +268,10 @@ public class ECSClient implements IECSClient {
             return null;
         }
         List<IECSNode> nodes = new ArrayList<>();
-        while(!nodeQueue.isEmpty() && count > 0){
+        int count_ = count;
+        while(!nodeQueue.isEmpty() && count_ > 0){
             nodes.add((IECSNode) nodeQueue.poll());
-            count--;
+            count_--;
         }
         for(IECSNode node: nodes){
             byte[] metadata = new Gson().toJson(new ServerMetaData(cacheSize,cacheStrategy,

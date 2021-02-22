@@ -2,6 +2,7 @@ package testing;
 
 import java.io.IOException;
 
+import app_kvECS.ECSClient;
 import org.apache.log4j.Level;
 
 import app_kvServer.KVServer;
@@ -26,12 +27,13 @@ public class AllTests {
 	
 	public static Test suite() {
 		TestSuite clientSuite = new TestSuite("Basic Storage ServerTest-Suite");
-		clientSuite.addTestSuite(ConnectionTest.class);
-		clientSuite.addTestSuite(InteractionTest.class);
-		clientSuite.addTestSuite(AdditionalTest.class);
-		clientSuite.addTestSuite(StorageTest.class);
-		clientSuite.addTestSuite(FIFOCacheTest.class);
+//		clientSuite.addTestSuite(ConnectionTest.class);
+//		clientSuite.addTestSuite(InteractionTest.class);
+//		clientSuite.addTestSuite(AdditionalTest.class);
+//		clientSuite.addTestSuite(StorageTest.class);
+//		clientSuite.addTestSuite(FIFOCacheTest.class);
 //		clientSuite.addTestSuite(ConcurrencyTest.class);
+		clientSuite.addTestSuite(ECSInitialTest.class);
 		return clientSuite;
 	}
 	
