@@ -17,7 +17,8 @@ public class ECSNode implements IECSNode{
     public enum NodeStatus {
         WAIT,
         STOP,
-        START,
+        IDLE,
+        START
     }
 
     public void setStatus(NodeStatus status) {
@@ -40,6 +41,7 @@ public class ECSNode implements IECSNode{
         this.name = name;
         this.host = host;
         this.port = port;
+        this.status = NodeStatus.IDLE;
         previous = null;
     }
 
