@@ -636,47 +636,56 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 					case INIT_KV_SERVER:
 						this.serverStatus = ServerStatus.INITIALIZED;
 						zooKeeper.setData(path , null, zooKeeper.exists(path, false).getVersion());
+						zooKeeper.exists(path, false);
 						logger.info("Server: " + "<" + serverName + ">: "+ "Server initiated but stop processing requests");
 						break;
 					case START:
 						this.serverStatus = ServerStatus.START;
 						zooKeeper.setData(path , null, zooKeeper.exists(path, false).getVersion());
+						zooKeeper.exists(path, false);
 						logger.info("Server: " + "<" + serverName + ">: "+ "Server Started");
 						break;
 					case STOP:
 						this.serverStatus = ServerStatus.STOP;
 						zooKeeper.setData(path , null, zooKeeper.exists(path, false).getVersion());
+						zooKeeper.exists(path, false);
 						logger.info("Server: " + "<" + serverName + ">: "+ "Server Stopped");
 						break;
 					case SHUT_DOWN:
 						this.serverStatus = ServerStatus.SHOT_DOWN;
 						close();
 						zooKeeper.setData(path , null, zooKeeper.exists(path, false).getVersion());
+						zooKeeper.exists(path, false);
 						logger.info("Server: " + "<" + serverName + ">: "+ "Server ShotDown");
 						break;
 					case LOCK_WRITE:
 						this.serverStatus = ServerStatus.LOCK;
 						zooKeeper.setData(path , null, zooKeeper.exists(path, false).getVersion());
+						zooKeeper.exists(path, false);
 						logger.info("Server: " + "<" + serverName + ">: "+ "Server Locked");
 						break;
 					case UNLOCK_WRITE:
 						this.serverStatus = ServerStatus.UNLOCK;
 						zooKeeper.setData(path , null, zooKeeper.exists(path, false).getVersion());
+						zooKeeper.exists(path, false);
 						logger.info("Server: " + "<" + serverName + ">: "+ "Server unLocked");
 						break;
 					case RECEIVE:
 						logger.info("Server: " + "<" + serverName + ">: "+ "receiving data initialization....");
 						receiveServerData(request.getReceiveServerPort());
 						zooKeeper.setData(path , null, zooKeeper.exists(path, false).getVersion());
+						zooKeeper.exists(path, false);
 						break;
 					case MOVE_DATA:
 						logger.info("Server: " + "<" + serverName + ">: "+ "moving data initialization....");
 						moveData(request.getReceiveHashRangeValue(), request.getReceiverHost(), request.getReceiveServerPort());
 						zooKeeper.setData(path , null, zooKeeper.exists(path, false).getVersion());
+						zooKeeper.exists(path, false);
 						break;
 					case UPDATE:
 						this.serverHashRingStr = request.getHashRingStr();
 						zooKeeper.setData(path , null, zooKeeper.exists(path, false).getVersion());
+						zooKeeper.exists(path, false);
 						logger.info("Server: " + "<" + serverName + ">: " + "Server updated meta data");
 						break;
 				}
