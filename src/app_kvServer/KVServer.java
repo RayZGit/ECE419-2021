@@ -42,7 +42,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	private boolean running;
 
 	private ServerStatus serverStatus;
-	private boolean distributed;
+	private boolean distributed = false;
 	private String serverName;
 	private ServerMetaData serverMetaData;
 	public static final String ZK_SERVER_ROOT = "/ZK_KVServers";
@@ -90,6 +90,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		this.strategy = CacheStrategy.valueOf(strategy);
 		this.diskFileName = "DataDisk" + ".txt";
 		this.storeDisk = new StoreDisk(this.diskFileName);
+		this.serverStatus = ServerStatus.START;
 		switch (this.strategy) {
 			case FIFO:
 				System.out.println("Initialize FIFO");
