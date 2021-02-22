@@ -74,3 +74,109 @@
 2021-02-22 15:10:40,586 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
 2021-02-22 15:10:40,817 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
 2021-02-22 15:10:40,817 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:25:52,929 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 15:25:53,148 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 15:25:53,148 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:27:31,054 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 15:27:31,267 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 15:27:31,268 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:28:09,340 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 15:28:19,147 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 15:28:19,148 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:28:33,453 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 15:28:33,679 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 15:28:33,679 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:29:05,748 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 15:29:05,961 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 15:29:05,961 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:29:18,237 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 15:29:18,481 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 15:29:18,481 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:33:53,747 ERROR [main] root: ECSClient: Unexpected ErrorNone
+2021-02-22 15:33:53,756 ERROR [main] root: ECSClient: locateNode error
+2021-02-22 15:34:11,447 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 15:34:11,686 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 15:34:11,686 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:34:18,314 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 15:34:18,524 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 15:34:18,524 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:36:38,179 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 15:36:38,425 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 15:36:38,425 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:37:09,637 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 15:37:09,882 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 15:37:09,882 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:37:41,505 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 15:37:41,763 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 15:37:41,763 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:38:01,946 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 15:38:02,191 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 15:38:02,192 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:38:55,863 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 15:38:56,081 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 15:38:56,081 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:39:49,740 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 15:39:49,951 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 15:39:49,951 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:40:47,503 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 15:40:47,729 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 15:40:47,729 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:41:55,946 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 15:41:56,150 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 15:41:56,151 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:42:01,385 ERROR [main] root: ECSClient: locateNode error
+2021-02-22 15:42:16,749 ERROR [Thread-3] root: <Server> Error! Unable to establish connection. 
+
+java.net.SocketException: Socket closed
+	at java.base/sun.nio.ch.NioSocketImpl.endAccept(NioSocketImpl.java:689)
+	at java.base/sun.nio.ch.NioSocketImpl.accept(NioSocketImpl.java:762)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:684)
+	at java.base/java.net.ServerSocket.platformImplAccept(ServerSocket.java:650)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:626)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:583)
+	at java.base/java.net.ServerSocket.accept(ServerSocket.java:540)
+	at app_kvServer.KVServer.run(KVServer.java:412)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-02-22 15:42:57,193 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 15:42:57,428 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 15:42:57,428 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:43:02,675 ERROR [main] root: ECSClient: locateNode error
+2021-02-22 15:43:53,145 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 15:43:53,350 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 15:43:53,351 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:43:57,954 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 15:43:58,166 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 15:43:58,166 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:44:03,408 ERROR [main] root: ECSClient: locateNode error
+2021-02-22 15:54:00,999 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 15:54:02,919 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 15:54:02,919 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 15:54:16,134 ERROR [main] root: ECSClient: locateNode error
+2021-02-22 16:00:23,853 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 16:00:25,898 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 16:00:25,898 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 16:01:12,333 ERROR [main] root: ECSClient: locateNode error
+2021-02-22 16:01:38,682 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 16:01:40,327 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 16:01:40,327 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 16:02:45,481 ERROR [main] root: ECSClient: locateNode error
+2021-02-22 16:02:58,105 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 16:02:58,318 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 16:02:58,318 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 16:03:03,568 ERROR [main] root: ECSClient: locateNode error
+2021-02-22 16:03:18,908 ERROR [Thread-3] root: <Server> Error! Unable to establish connection. 
+
+java.net.SocketException: Socket closed
+	at java.base/sun.nio.ch.NioSocketImpl.endAccept(NioSocketImpl.java:689)
+	at java.base/sun.nio.ch.NioSocketImpl.accept(NioSocketImpl.java:762)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:684)
+	at java.base/java.net.ServerSocket.platformImplAccept(ServerSocket.java:650)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:626)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:583)
+	at java.base/java.net.ServerSocket.accept(ServerSocket.java:540)
+	at app_kvServer.KVServer.run(KVServer.java:412)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-02-22 16:04:45,117 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-22 16:04:45,336 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-22 16:04:45,336 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-22 16:05:03,524 ERROR [main] root: ECSClient: locateNode error

@@ -34,7 +34,7 @@ public class ECSClient implements IECSClient {
     private static final String JAR_PATH = new File(System.getProperty("user.dir"), SERVER_JAR).toString();
     public static String ZK_HOST = "127.0.0.1";
     public static String ZK_PORT = "2181";
-    public static int ZK_TIMEOUTSESSION = 500000000;
+    public static int ZK_TIMEOUTSESSION = 5000;
     private static String ZNODE_ROOT = "/ZNode";
     private static String ZNODE_KVMESSAGE = "/KVAdminMessage";
 
