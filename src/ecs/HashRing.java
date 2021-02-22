@@ -125,7 +125,6 @@ public class HashRing {
         ECSNode curr = first;
         for(int i = 0; i < size; i++) {
             String[] range = curr.getNodeHashRange();
-            System.out.println(range[0] + range[1]);
             BigInteger lower = new BigInteger(range[0], 16);
             BigInteger upper = new BigInteger(range[1], 16);
 
