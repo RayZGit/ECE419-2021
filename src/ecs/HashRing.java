@@ -54,7 +54,12 @@ public class HashRing {
         BigInteger output = new BigInteger(1, md.digest());
         return output.toString(16);
     }
-    
+
+    public ECSNode getNext(ECSNode node) {
+        BigInteger next = new BigInteger(getHash(node), 16);
+        next = next.add(new BigInteger("1", 16));
+        return getNodeByKey(next.toString());
+    }
 
     public void addNode(ECSNode node) {
         if (first == null) {
