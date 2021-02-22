@@ -45,8 +45,9 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	private boolean distributed = false;
 	private String serverName;
 	private ServerMetaData serverMetaData;
-	public static final String ZK_SERVER_ROOT = "/ZK_KVServers";
-	public static final String ZK_METADATA_ROOT = "/KVServer_metadata";
+	public static final String ZK_SERVER_ROOT = "/ZNode";
+	public static final String ZK_METADATA_ROOT = "/MD";
+	private static final String ZNODE_KVMESSAGE = "/KVAdminMessage";
 	private static final int RECEIVE_DATA_PORT = 9999;
 
 	/**
@@ -625,7 +626,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			System.out.println("Event ZNode path:" + eventPath);
 
 			try {
-				String path = zooKeeperPath + "/" + "KVAdminMessage";
+				String path = zooKeeperPath + "/" + ZNODE_KVMESSAGE;
 				byte[] zNodeData = zooKeeper.getData(path , false, null);
 				String temp = new String(zNodeData);
 				KVAdminMessage request = new Gson().fromJson(temp, KVAdminMessage.class);
