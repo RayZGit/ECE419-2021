@@ -29,14 +29,17 @@ public abstract class KVMsgProtocol {
         /* read first char from stream */
         byte read = (byte) inputStream.read();
 
-        while(read != 13) {/* carriage return */
+        int i = 0;
+        while(read != 13 && i < BUFFER_SIZE) {/* carriage return */
             bufferBytes[index] = read;
             index++;
             /* read next char from stream */
             read = (byte) inputStream.read();
+            i++;
         }
         /* build final String */
         TextMessage textMessage = new TextMessage(bufferBytes);
+        String temp = textMessage.getMsg().trim();
         logger.info("Receive message:\t '" + textMessage.getMsg().trim() + "'");
         return KVMsgProtocol.decode(textMessage);
     }

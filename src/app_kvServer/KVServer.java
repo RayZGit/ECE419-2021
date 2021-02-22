@@ -42,7 +42,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	private boolean running;
 
 	private ServerStatus serverStatus;
-	private boolean distributed;
+	private boolean distributed = false;
 	private String serverName;
 	private ServerMetaData serverMetaData;
 	public static final String ZK_SERVER_ROOT = "/ZK_KVServers";

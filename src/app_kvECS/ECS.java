@@ -116,7 +116,7 @@ public class ECS {
             logger.info(LOGGING+"New Node added: "+args[0]);
         }
 
-        CountDownLatch latch = new CountDownLatch(1);
+        final CountDownLatch latch = new CountDownLatch(1);
         zk = new ZooKeeper(ZK_HOST + ":" + ZK_PORT, ZK_TIMEOUTSESSION, new Watcher() {
             @Override
             public void process(WatchedEvent event) {

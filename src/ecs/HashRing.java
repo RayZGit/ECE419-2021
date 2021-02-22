@@ -71,6 +71,7 @@ public class HashRing {
             first = node;
             node.setPrevious(node);
             node.setNext(node);
+            size++;
         } else {
             ECSNode next = getNodeByKey(node.getNodeName() + ":" + node.getNodePort());
             ECSNode previous = next.getPrevious();
@@ -104,6 +105,7 @@ public class HashRing {
     public void removeNode(ECSNode node) {
         if (node.getPrevious() == node) {
             first = null;
+            size--;
         } else {
             BigInteger next = new BigInteger(getHash(node), 16);
             next = next.add(new BigInteger("1", 16));
@@ -123,6 +125,7 @@ public class HashRing {
         ECSNode curr = first;
         for(int i = 0; i < size; i++) {
             String[] range = curr.getNodeHashRange();
+            System.out.println(range[0] + range[1]);
             BigInteger lower = new BigInteger(range[0], 16);
             BigInteger upper = new BigInteger(range[1], 16);
 
@@ -130,7 +133,7 @@ public class HashRing {
                 if (hash.compareTo(upper) <= 0 || hash.compareTo(lower) >= 0) {
                     return curr;
                 }
-            } else if (hash.compareTo(upper) >= 0 || hash.compareTo(lower) <= 0) {
+            } else if (hash.compareTo(lower) >= 0 && hash.compareTo(upper) <= 0) {
                 return curr;
             }
             curr = curr.getPrevious();

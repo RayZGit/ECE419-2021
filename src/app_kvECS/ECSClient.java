@@ -50,8 +50,8 @@ public class ECSClient implements IECSClient {
     {
         public Map<ECSNode,String> brodcast(byte[] msg, List<ECSNode> nodes, boolean KVadmin) throws InterruptedException{
 //            msg.encode().getBytes()
-            CountDownLatch latch = new CountDownLatch(nodes.size());
-            HashMap<String, String> errorMap = new HashMap<String, String>();
+            final CountDownLatch latch = new CountDownLatch(nodes.size());
+            final HashMap<String, String> errorMap = new HashMap<String, String>();
             Map<ECSNode,String> errorNodeMap = new HashMap<ECSNode,String>();
             for(ECSNode node: nodes)
             {
@@ -126,7 +126,7 @@ public class ECSClient implements IECSClient {
         }
 
         //Setup the zk (ZooKeeper)
-        CountDownLatch latch = new CountDownLatch(1);
+        final CountDownLatch latch = new CountDownLatch(1);
         zk = new ZooKeeper(ZK_HOST + ":" + ZK_PORT, ZK_TIMEOUTSESSION, new Watcher() {
             @Override
             public void process(WatchedEvent event) {

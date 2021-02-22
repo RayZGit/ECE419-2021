@@ -590,3 +590,87 @@
 2021-01-28 21:15:04,779 INFO  [Thread-1] root: <Server> Get failed: ( key,1414141414141 )
 2021-01-28 21:15:04,779 INFO  [Thread-1] root: Send message:	 'GET_ERROR 1414141414141 '
 2021-01-28 21:15:04,779 INFO  [Thread-1] root: <Server> SEND 	<127.0.0.1:53533>: key: 1414141414141| value: | status: GET_ERROR
+2021-02-22 11:03:20,405 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk.txt
+2021-02-22 11:03:20,406 INFO  [main] root: StoreDisk: File already existed
+2021-02-22 11:03:20,407 INFO  [Thread-0] root: <Server> Initialize server ...
+2021-02-22 11:03:20,431 INFO  [Thread-0] root: <Server> Server listening on port: 100
+2021-02-22 11:03:44,678 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk.txt
+2021-02-22 11:03:44,678 INFO  [main] root: StoreDisk: File already existed
+2021-02-22 11:03:44,679 INFO  [Thread-0] root: <Server> Initialize server ...
+2021-02-22 11:03:44,697 INFO  [Thread-0] root: <Server> Server listening on port: 10000
+2021-02-22 11:04:18,298 INFO  [Thread-1] root: <Server> Establishing connection
+2021-02-22 11:04:18,305 INFO  [Thread-0] root: <Server> Connected to localhost on port 61623
+2021-02-22 11:08:25,780 INFO  [Thread-1] root: <Server>  Write cache data to disk!
+2021-02-22 11:08:25,781 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 61623>
+2021-02-22 11:08:44,650 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk.txt
+2021-02-22 11:08:44,651 INFO  [main] root: StoreDisk: File already existed
+2021-02-22 11:08:44,652 INFO  [Thread-0] root: <Server> Initialize server ...
+2021-02-22 11:08:44,673 INFO  [Thread-0] root: <Server> Server listening on port: 10000
+2021-02-22 11:09:01,886 INFO  [Thread-1] root: <Server> Establishing connection
+2021-02-22 11:09:01,892 INFO  [Thread-0] root: <Server> Connected to localhost on port 61671
+2021-02-22 11:09:38,944 INFO  [Thread-1] root: <Server>  Write cache data to disk!
+2021-02-22 11:09:38,944 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 61671>
+2021-02-22 11:11:06,000 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk.txt
+2021-02-22 11:11:06,000 INFO  [main] root: StoreDisk: File already existed
+2021-02-22 11:11:06,001 INFO  [Thread-0] root: <Server> Initialize server ...
+2021-02-22 11:11:06,017 INFO  [Thread-0] root: <Server> Server listening on port: 10000
+2021-02-22 11:11:13,753 INFO  [Thread-1] root: <Server> Establishing connection
+2021-02-22 11:11:13,758 INFO  [Thread-0] root: <Server> Connected to localhost on port 61709
+2021-02-22 11:12:15,344 INFO  [Thread-1] root: <Server>  Write cache data to disk!
+2021-02-22 11:12:15,345 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 61709>
+2021-02-22 11:12:25,674 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk.txt
+2021-02-22 11:12:25,675 INFO  [main] root: StoreDisk: File already existed
+2021-02-22 11:12:25,677 INFO  [Thread-0] root: <Server> Initialize server ...
+2021-02-22 11:12:25,700 INFO  [Thread-0] root: <Server> Server listening on port: 10000
+2021-02-22 11:12:34,432 INFO  [Thread-1] root: <Server> Establishing connection
+2021-02-22 11:12:34,438 INFO  [Thread-0] root: <Server> Connected to localhost on port 61724
+2021-02-22 11:13:35,367 INFO  [Thread-1] root: <Server>  Write cache data to disk!
+2021-02-22 11:13:35,368 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 61724>
+2021-02-22 11:13:44,082 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk.txt
+2021-02-22 11:13:44,082 INFO  [main] root: StoreDisk: File already existed
+2021-02-22 11:13:44,083 INFO  [Thread-0] root: <Server> Initialize server ...
+2021-02-22 11:13:44,102 INFO  [Thread-0] root: <Server> Server listening on port: 10000
+2021-02-22 11:13:52,611 INFO  [Thread-1] root: <Server> Establishing connection
+2021-02-22 11:13:52,616 INFO  [Thread-0] root: <Server> Connected to localhost on port 61733
+2021-02-22 11:17:45,650 INFO  [Thread-1] root: <Server>  Write cache data to disk!
+2021-02-22 11:17:45,651 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 61733>
+2021-02-22 11:17:52,709 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk.txt
+2021-02-22 11:17:52,709 INFO  [main] root: StoreDisk: File already existed
+2021-02-22 11:17:52,710 INFO  [Thread-0] root: <Server> Initialize server ...
+2021-02-22 11:17:52,735 INFO  [Thread-0] root: <Server> Server listening on port: 10000
+2021-02-22 11:18:03,431 INFO  [Thread-1] root: <Server> Establishing connection
+2021-02-22 11:18:03,436 INFO  [Thread-0] root: <Server> Connected to localhost on port 61800
+2021-02-22 11:18:06,401 INFO  [Thread-1] root: Receive message:	 'PUT a b'
+2021-02-22 11:18:06,404 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:61800>: key: a | value: b | status: PUT
+2021-02-22 11:18:06,405 INFO  [Thread-1] root: <Server>  Write cache data to disk!
+2021-02-22 11:18:06,405 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 61800>
+2021-02-22 11:22:57,774 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk.txt
+2021-02-22 11:22:57,774 INFO  [main] root: StoreDisk: File already existed
+2021-02-22 11:22:57,775 INFO  [Thread-0] root: <Server> Initialize server ...
+2021-02-22 11:22:57,797 INFO  [Thread-0] root: <Server> Server listening on port: 10000
+2021-02-22 11:24:34,984 INFO  [Thread-1] root: <Server> Establishing connection
+2021-02-22 11:24:34,989 INFO  [Thread-0] root: <Server> Connected to localhost on port 61880
+2021-02-22 11:24:40,905 INFO  [Thread-1] root: Receive message:	 'PUT a b'
+2021-02-22 11:24:40,908 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:61880>: key: a | value: b | status: PUT
+2021-02-22 11:24:40,909 INFO  [Thread-1] root: <Server>  Write cache data to disk!
+2021-02-22 11:24:40,909 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 61880>
+2021-02-22 11:40:24,789 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk.txt
+2021-02-22 11:40:24,790 INFO  [main] root: StoreDisk: File already existed
+2021-02-22 11:40:24,791 INFO  [Thread-0] root: <Server> Initialize server ...
+2021-02-22 11:40:24,813 INFO  [Thread-0] root: <Server> Server listening on port: 10000
+2021-02-22 11:40:35,111 INFO  [Thread-1] root: <Server> Establishing connection
+2021-02-22 11:40:35,116 INFO  [Thread-0] root: <Server> Connected to localhost on port 62140
+2021-02-22 11:40:38,209 INFO  [Thread-1] root: Receive message:	 'PUT a b'
+2021-02-22 11:40:38,212 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:62140>: key: a | value: b | status: PUT
+2021-02-22 11:40:38,212 INFO  [Thread-1] root: <Server>  Write cache data to disk!
+2021-02-22 11:40:38,212 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 62140>
+2021-02-22 11:44:18,094 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk.txt
+2021-02-22 11:44:18,095 INFO  [main] root: StoreDisk: File already existed
+2021-02-22 11:44:18,096 INFO  [Thread-0] root: <Server> Initialize server ...
+2021-02-22 11:44:18,116 INFO  [Thread-0] root: <Server> Server listening on port: 10000
+2021-02-22 11:44:27,479 INFO  [Thread-1] root: <Server> Establishing connection
+2021-02-22 11:44:27,485 INFO  [Thread-0] root: <Server> Connected to localhost on port 62183
+2021-02-22 11:44:30,885 INFO  [Thread-1] root: Receive message:	 'PUT a b'
+2021-02-22 11:44:30,887 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:62183>: key: a | value: b | status: PUT
+2021-02-22 11:44:30,888 INFO  [Thread-1] root: <Server>  Write cache data to disk!
+2021-02-22 11:44:30,888 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 62183>
