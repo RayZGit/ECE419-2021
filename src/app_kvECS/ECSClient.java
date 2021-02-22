@@ -262,11 +262,20 @@ public class ECSClient implements IECSClient {
                     node.getNodePort(), node.getNodeHost() )).getBytes();
             try {
                 adminDataHandler.brodcast(metadata,new ArrayList<ECSNode>(Arrays. asList((ECSNode) node)), false);
+                // delete all the sub node;
+                String path = ZNODE_ROOT+"/"+node.getNodeName();
+                List<String> children = zk.getChildren(path, false);
+                for (String zn : children) {
+                    String subPath = path + "/" + zn;
+                    Stat ex = zk.exists(subPath, false);
+                    zk.delete(subPath, ex.getVersion());
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 logger.error(LOGGING+"setupNodes error");
+            } catch (KeeperException e) {
+                e.printStackTrace();
             }
-            // TODO: remove all the children node
 
 
         }
@@ -422,7 +431,6 @@ public class ECSClient implements IECSClient {
         while(true){
             count ++;
             //TODO: IMPORTANT GET NEXT NODE ON HASHRING
-            rec = node;
             if(!reference.contains(rec)){
                 return rec;
             }
