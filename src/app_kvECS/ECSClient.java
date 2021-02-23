@@ -531,8 +531,11 @@ public class ECSClient implements IECSClient {
         }
         private void checkFrom(){
             try {
-                byte[] serverData = zk.getData(fromPath,false, null);
-                ServerMetaData data = new Gson().fromJson(serverData.toString(), ServerMetaData.class);
+                String serverData = new String(zk.getData(fromPath,false, null));
+                ServerMetaData data = new Gson().fromJson(serverData, ServerMetaData.class);
+                zk.setData(fromPath, null, zk.exists(fromPath, false).getVersion());
+//                String cache = new String(zooKeeper.getData(zkPath, false, null));
+//                ServerMetaData metaData = new Gson().fromJson(cache, ServerMetaData.class);
                 if(data.equals(ServerMetaData.ServerDataTransferProgressStatus.IDLE)){
                     this.fromDone = true;
                     latch.countDown();
@@ -568,10 +571,10 @@ public class ECSClient implements IECSClient {
 
         }
         public boolean check(){
-            this.latch = new CountDownLatch(2);
+            this.latch = new CountDownLatch(1);
             try {
                 checkFrom();
-                checkTo();
+//                checkTo();
                 boolean wait = latch.await(ZK_TIMEOUTSESSION, TimeUnit.MILLISECONDS);
             } catch (InterruptedException e) {
                 e.printStackTrace();
