@@ -11,6 +11,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import ecs.ECSNode;
 import ecs.HashRing;
 import ecs.IECSNode;
@@ -382,17 +383,35 @@ public class ECSClient implements IECSClient {
 
     //==============================================Helper Functions====================================================
 
+    class metaDataNode {
+        public String name;
+        public String host;
+        public int port;
+        public metaDataNode(String name, String host, int port){
+            this.name = name;
+            this.host = host;
+            this.port = port;
+        }
+    }
+
     private void metaDataHandler(){
         // Extract the Metadata from Hashring (it contains all the nodes in active)
         List<ECSNode> activeNods = new ArrayList<>();
+        List<metaDataNode> metaDataNodes = new ArrayList<>();
+
         for(String nodeName: nodeMap.keySet()){
             ECSNode node = (ECSNode)nodeMap.get(nodeName);
             if(node.getStatus().equals(ECSNode.NodeStatus.START)) {
                 activeNods.add(node);
+                metaDataNodes.add(new metaDataNode(node.getNodeName(),node.getNodeHost(),node.getNodePort()));
             }
         }
 
-        byte[] dataForHashPosition = new Gson().toJson(activeNods).getBytes();
+        Gson gson = new GsonBuilder().create();
+        String json = gson.toJson(metaDataNodes);
+
+//        byte[] dataForHashPosition = new Gson().toJson(activeNods).getBytes();
+        byte[] dataForHashPosition = json.getBytes();
         try {
             Stat existMD = zk.exists(METADATA_ROOT, false);
             if (existMD == null){
