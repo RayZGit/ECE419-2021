@@ -37,15 +37,30 @@ public class HashRing {
         size = 0;
     }
 
+    class MetaDataNode {
+        public String name;
+        public String host;
+        public int port;
+        public MetaDataNode(String name, String host, int port){
+            this.name = name;
+            this.host = host;
+            this.port = port;
+        }
+    }
+
     public HashRing(String jsonString) {
         first = null;
         size = 0;
         Gson gson = new Gson();
-        Type ECSNodeList = new TypeToken<ArrayList<ECSNode>>(){}.getType();
-        ECSNode[] temp = gson.fromJson(jsonString, ECSNodeList);
+//        Type ECSNodeList = new TypeToken<ArrayList<ECSNode>>(){}.getType();
+        Type MetaDataList = new TypeToken<ArrayList<MetaDataNode>>(){}.getType();
+        MetaDataNode[] temp = gson.fromJson(jsonString, MetaDataList);
 
-        for (ECSNode ecsnode: temp) {
-            addNode(ecsnode);
+//        for (ECSNode ecsnode: temp) {
+//            addNode(ecsnode);
+//        }
+        for (MetaDataNode ecsnode: temp) {
+            addNode(new ECSNode(ecsnode.name, ecsnode.host, ecsnode.port));
         }
     }
 
