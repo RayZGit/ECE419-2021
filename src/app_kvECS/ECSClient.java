@@ -98,6 +98,7 @@ public class ECSClient implements IECSClient {
                             if (event.getType() == Event.EventType.NodeDataChanged){
                                 // watch handled properly
                                 //expected the server to set back to null
+                                System.out.print("data changed in node!!!!!!!!!!!!!!!!!!!!");
                             }
                             else{
                                 error = "Unexpected Error" + event.getType();

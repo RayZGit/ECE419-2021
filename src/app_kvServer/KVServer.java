@@ -663,10 +663,10 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 						break;
 					case SHUT_DOWN:
 						this.serverStatus = ServerStatus.SHOT_DOWN;
-						close();
 						zooKeeper.setData(path , null, zooKeeper.exists(path, false).getVersion());
 						zooKeeper.exists(path, false);
 						logger.info("Server: " + "<" + serverName + ">: "+ "Server ShotDown");
+						close();
 						break;
 					case LOCK_WRITE:
 						this.serverStatus = ServerStatus.LOCK;
