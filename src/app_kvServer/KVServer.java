@@ -749,7 +749,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			System.out.println("Error! Invalid argument <strategy>! Should be one of [None | LRU | LFU | FIFO] ");
 			System.exit(1);
 		} catch (Exception e) {
-			System.out.println("Error! Invalid argument number!");
+			e.printStackTrace();
 		}
 	}
 }
