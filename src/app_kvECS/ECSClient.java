@@ -30,7 +30,7 @@ public class ECSClient implements IECSClient {
     private static String LOGGING = "ECSClient: ";
 
     //Standalone Zookeeper Setting Config
-    private static final String SERVER_JAR = "KVServer.jar";
+    private static final String SERVER_JAR = "/Users/shuoer/Desktop/419/ECE419-2021/m2-server.jar";
     private static String METADATA_ROOT = "/MD";
     private static final String JAR_PATH = new File(System.getProperty("user.dir"), SERVER_JAR).toString();
     public static String ZK_HOST = "127.0.0.1";
@@ -432,7 +432,7 @@ public class ECSClient implements IECSClient {
         //TODO: CHECK LATER FOLLOW KVSERVER
         String hostname = node.getNodeHost();
         String portnumber = String.valueOf(node.getNodePort());
-        String cmd = String.format("ssh -n %s nohup java -jar %s %s %s %s ERROR &",
+        String cmd = String.format("ssh -n %s nohup java -jar %s %s %s %s %s ERROR &",
                 hostname, JAR_PATH, portnumber,
                 node.getNodeName(), ZK_HOST,ZK_PORT);
         try {
