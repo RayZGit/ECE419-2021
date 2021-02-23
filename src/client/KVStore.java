@@ -119,7 +119,7 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 		disconnect();
 		String hash = HashRing.getHash(request.getKey());
 		hashRing.removeNode(hashRing.getNodeByKey(hash));
-		ECSNode node = hashRing.getNodeByKey(request.getKey());
+		ECSNode node = hashRing.getNodeByKey(hash);
 		if (node == null) {
 			logger.error("No Server available.");
 			throw new Exception("No Server available.");
@@ -150,7 +150,7 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 
 
 	public void updateServer(KVBasicMessage request) throws Exception{
-		ECSNode node = hashRing.getNodeByKey(request.getKey());
+		ECSNode node = hashRing.getNodeByKey(HashRing.getHash(request.getKey()));
 		if (!address.equals(node.getNodeHost()) || port != node.getNodePort()) {
 			address = node.getNodeHost();
 			port = node.getNodePort();
