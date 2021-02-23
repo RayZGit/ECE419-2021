@@ -44,7 +44,8 @@ public class KVClient implements IKVClient, Runnable {
     public void newConnection(String hostname, int port) throws Exception{
         // TODO Auto-generated method stub
         if (connected){
-            throw new IOException();
+            System.out.println("Connection already established!");
+            return;
         }
         KVClientServer = new KVStore(hostname, port);
         KVClientServer.connect();
@@ -73,6 +74,7 @@ public class KVClient implements IKVClient, Runnable {
                     } catch (Exception e) {
                         System.out.println("Establish connection failed");
                         logger.warn("Establish connection failed");
+                        connected = false;
                     }
                 }
                 break;
