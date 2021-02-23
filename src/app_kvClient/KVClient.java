@@ -21,11 +21,13 @@ public class KVClient implements IKVClient, Runnable {
 
     private KVStore KVClientServer;
     private boolean running;
+    private boolean connected;
 
     @Override
     public void run(){
         // TODO Auto-generated method stub
         running = true;
+        connected = false;
         while (running) {
             input = new BufferedReader(new InputStreamReader(System.in));
             System.out.print(PROMPT);
@@ -41,11 +43,12 @@ public class KVClient implements IKVClient, Runnable {
     @Override
     public void newConnection(String hostname, int port) throws Exception{
         // TODO Auto-generated method stub
-        if (KVClientServer != null){
+        if (connected){
             throw new IOException();
         }
         KVClientServer = new KVStore(hostname, port);
         KVClientServer.connect();
+        connected = true;
     }
 
     @Override
