@@ -239,6 +239,8 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			ServerMetaData metaData = new Gson().fromJson(cache, ServerMetaData.class);
 			this.catchSize = metaData.getCacheSize();
 			this.strategy = CacheStrategy.valueOf(metaData.getCacheStrategy());
+			zooKeeper.setData(zkPath , null, zooKeeper.exists(zkPath, false).getVersion());
+			zooKeeper.exists(zkPath, false);
 			logger.info("Server: " + "<" + this.serverName + ">: " + "server zNode exist, get cache data and set server cache");
 		}
 		else{

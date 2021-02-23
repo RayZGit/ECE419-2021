@@ -108,17 +108,17 @@ public class ECSInitialTest extends TestCase {
     /**
      * Stop all active nodes
      */
-    public void test05Stop() throws Exception {
-        boolean ret = ecs.stop();
-        assertTrue(ret);
-    }
-
-    /**
-     * Shut down all nodes
-     */
-    public void test06Shutdown() throws Exception {
-        boolean ret = ecs.shutdown();
-        assertTrue(ret);
-    }
+//    public void test05Stop() throws Exception {
+//        boolean ret = ecs.stop();
+//        assertTrue(ret);
+//    }
+//
+//    /**
+//     * Shut down all nodes
+//     */
+//    public void test06Shutdown() throws Exception {
+//        boolean ret = ecs.shutdown();
+//        assertTrue(ret);
+//    }
 
 }
