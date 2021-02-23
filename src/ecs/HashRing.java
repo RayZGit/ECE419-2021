@@ -78,7 +78,7 @@ public class HashRing {
     public ECSNode getNext(ECSNode node) {
         BigInteger next = new BigInteger(getHash(node), 16);
         next = next.add(new BigInteger("1", 16));
-        return getNodeByKey(next.toString());
+        return getNodeByKey(next.toString(16));
     }
 
     public boolean addNode(ECSNode node) {
