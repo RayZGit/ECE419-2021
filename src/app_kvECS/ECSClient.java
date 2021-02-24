@@ -34,6 +34,7 @@ public class ECSClient implements IECSClient {
 
     private static final String JAR_PATH = new File(System.getProperty("user.dir"), SERVER_JAR).toString();
     private static final String TEST_OUTPUT_PATH = new File(System.getProperty("user.dir")).toString();
+    private static int server_file_NUMBER = 1;
     public static String ZK_HOST = "127.0.0.1";
     public static String ZK_PORT = "2181";
     public static int ZK_TIMEOUTSESSION = 5000;
@@ -421,13 +422,12 @@ public class ECSClient implements IECSClient {
 
         Gson gson = new GsonBuilder().create();
         String json = gson.toJson(metaDataNodes);
-        HashRing temp = new HashRing(json);
-        System.out.println("JSON is: " + json);
+//        HashRing temp = new HashRing(json);
+//        System.out.println("JSON is: " + json);
 
 //        byte[] dataForHashPosition = new Gson().toJson(activeNods).getBytes();
-        System.out.println(json);
         byte[] dataForHashPosition = json.getBytes();
-        HashRing testRing = new HashRing(json);
+//        HashRing testRing = new HashRing(json);
         try {
             Stat existMD = zk.exists(METADATA_ROOT, false);
             if (existMD == null){
@@ -449,17 +449,20 @@ public class ECSClient implements IECSClient {
         String portnumber = String.valueOf(node.getNodePort());
 
 //        String cmd = String.format("ssh -o StrictHostKeyChecking=no -n %s nohup java -jar %s %s %s %s %s &",
-        String cmd = String.format("ssh -n %s nohup java -jar %s %s %s %s %s >  %s/logs/nohup.log  2>&1 &",
+        String cmd = String.format("ssh -n %s nohup java -jar %s %s %s %s %s >  %s/logs/nohup_server%s.log  2>&1 &",
                 hostname, JAR_PATH, portnumber,
-                node.getNodeName(), ZK_HOST,ZK_PORT, TEST_OUTPUT_PATH);
+                node.getNodeName(), ZK_HOST,ZK_PORT, TEST_OUTPUT_PATH, server_file_NUMBER++);
         System.out.println(cmd);
         try {
             Process proc = Runtime.getRuntime().exec(cmd);
+            Thread.sleep(100);
 //            int exitCode = proc.waitFor();
 //            assert exitCode == 0;
         } catch (IOException e) {
             e.printStackTrace();
             logger.error(LOGGING+"sshSever error");
+            return false;
+        } catch (InterruptedException e) {
             return false;
         }
         return true;
@@ -615,6 +618,7 @@ public class ECSClient implements IECSClient {
             msgFrom.setReceiveHashRangeValue(range);
             msgFrom.setReceiveServerPort(9999);
             msgTo.setReceiveServerPort(9999);
+            System.out.println(" \n !!!!!!!Send request to receiver server!!!!!!!!!!!!!");
             Map<ECSNode,String> nodeErrorMapRec = adminDataHandler.
                     brodcast(msgTo.encode().getBytes(),new ArrayList<ECSNode>(Arrays.asList(to)),true);
             if(!nodeErrorMapRec.isEmpty()){
@@ -622,6 +626,7 @@ public class ECSClient implements IECSClient {
                 return false;
             }
 
+            System.out.println(" \n !!!!!!!Send request to mover server!!!!!!!!!!!!!");
             Map<ECSNode,String> nodeErrorMapMov = adminDataHandler.
                     brodcast(msgFrom.encode().getBytes(),new ArrayList<ECSNode>(Arrays.asList(from)), true);
 

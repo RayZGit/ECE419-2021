@@ -197,6 +197,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		this.storeDisk = new StoreDisk(this.diskFileName);
 
 		System.out.println("Cache strategy: " + this.strategy);
+		System.out.println("Cache Size: " + this.catchSize);
 		switch (this.strategy) {
 			case FIFO:
 				System.out.println("Initialize FIFO");
@@ -517,20 +518,27 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	public int receiveServerData(int receivePort) {
 		try {
 			receiverSocket = new ServerSocket(receivePort);
-			System.out.println("Transfer Data Server listening on port: " + receivePort);
+			System.out.println("Transfer Data Server listening on port: " + receiverSocket.getLocalPort());
+			System.out.println("Receiver Data 1" );
 			logger.info("Transfer Data Server listening on port: " + receivePort);
 
 			int port = receiverSocket.getLocalPort();
+			System.out.println("Receiver Data 2" );
 			lockWrite();
 			this.serverMetaData.setServerTransferProgressStatus(ServerMetaData.ServerDataTransferProgressStatus.IN_PROGRESS);
+			System.out.println("Receiver Data 3" );
 			try {
 				zooKeeper.setData(zooKeeperPath, this.serverMetaData.encode().getBytes(), zooKeeper.exists(zooKeeperPath, false).getVersion());
+				zooKeeper.exists(zooKeeperPath, this);
+				System.out.println("Receiver Data 4" );
 				logger.info("Server: " + "<" + this.serverName + ">: " + "Receiver Data, update server data transfer progress to IN_PROGRESS");
 			} catch (InterruptedException e) {
 				e.printStackTrace();
+				System.out.println("Receiver Data 5" );
 				logger.error("ERROR! Server: " + "<" + this.serverName + ">: " + "Receiver Data, update server data transfer progress to IN_PROGRESS");
 			} catch (KeeperException e) {
 				e.printStackTrace();
+				System.out.println("Receiver Data 6" );
 				logger.error("ERROR! Server: " + "<" + this.serverName + ">: " + "Receiver Data,update server data transfer progress to IN_PROGRESS");
 			}
 			new Thread(new KVServerDataTransferConnection(receiverSocket, this)).start();
@@ -538,6 +546,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			this.serverMetaData.setServerTransferProgressStatus(ServerMetaData.ServerDataTransferProgressStatus.IDLE);
 			try{
 				zooKeeper.setData(zooKeeperPath , this.serverMetaData.encode().getBytes(), zooKeeper.exists(zooKeeperPath, false).getVersion());
+				zooKeeper.exists(zooKeeperPath, this);
 				logger.info("Server: " + "<" + this.serverName + ">: " + "Receiver Data, update server data transfer progress to IDLE");
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -565,7 +574,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	@Override
 	public void unlockWrite() {
 		this.serverStatus = serverStatus.UNLOCK;
-		logger.info("Server: " + "<" + this.serverName + ">: " + "Server status change to WRITE_LOCK");
+		logger.info("Server: " + "<" + this.serverName + ">: " + "Server status change to UnLOCK");
 	}
 
 	public void moveData(String[] hashRange, String host, int port) {
@@ -577,6 +586,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 //			ServerMetaData data = new Gson().fromJson(serverData.toString(), ServerMetaData.class);
 
 			zooKeeper.setData(zooKeeperPath , this.serverMetaData.encode().getBytes(), zooKeeper.exists(zooKeeperPath, false).getVersion());
+			zooKeeper.exists(zooKeeperPath, this);
 			logger.info("Server: " + "<" + this.serverName + ">: " + "Send Data, update server data transfer progress to IN_PROGRESS");
 		} catch (KeeperException e) {
 			e.printStackTrace();
@@ -611,6 +621,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 				outputStream.write(buffer, 0, len);
 				current += len;
 			}
+			System.out.println("------------In move data 6----------------");
 			inputStream.close();
 			outputStream.close();
 			socket.close();
@@ -621,6 +632,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			this.serverMetaData.setServerTransferProgressStatus(ServerMetaData.ServerDataTransferProgressStatus.IDLE);
 			try {
 				zooKeeper.setData(zooKeeperPath , this.serverMetaData.encode().getBytes(), zooKeeper.exists(zooKeeperPath, false).getVersion());
+				zooKeeper.exists(zooKeeperPath, this);
 				logger.info("Server: " + "<" + this.serverName + ">: " + "Send Data, update server data transfer progress to IDLE");
 			} catch (KeeperException e) {
 				e.printStackTrace();
@@ -654,59 +666,63 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 				KVAdminMessage request = new Gson().fromJson(temp, KVAdminMessage.class);
 				KVAdminMessage.ServerFunctionalType serverType = request.getFunctionalType();
 				//TODO: set data to null, let ECS know process is done
+				System.out.println(" \n !!!!!!!! In KVServer Process, Type is " + serverType);
+				System.out.println("Server ZNode path is: " + path);
 				switch (serverType) {
 					case INIT_KV_SERVER:
 						this.serverStatus = ServerStatus.INITIALIZED;
-						zooKeeper.setData(path , null, zooKeeper.exists(path, false).getVersion());
+						zooKeeper.setData(path , null, zooKeeper.exists(path, this).getVersion());
 						zooKeeper.exists(path, this);
 						logger.info("Server: " + "<" + serverName + ">: "+ "Server initiated but stop processing requests");
 						break;
 					case START:
 						this.serverStatus = ServerStatus.START;
-						zooKeeper.setData(path , null, zooKeeper.exists(path, false).getVersion());
+						zooKeeper.setData(path , null, zooKeeper.exists(path, this).getVersion());
 						zooKeeper.exists(path, this);
 						logger.info("Server: " + "<" + serverName + ">: "+ "Server Started");
 						break;
 					case STOP:
 						this.serverStatus = ServerStatus.STOP;
-						zooKeeper.setData(path , null, zooKeeper.exists(path, false).getVersion());
+						zooKeeper.setData(path , null, zooKeeper.exists(path, this).getVersion());
 						zooKeeper.exists(path, this);
 						logger.info("Server: " + "<" + serverName + ">: "+ "Server Stopped");
 						break;
 					case SHUT_DOWN:
 						this.serverStatus = ServerStatus.SHOT_DOWN;
-						zooKeeper.setData(path , null, zooKeeper.exists(path, false).getVersion());
+						zooKeeper.setData(path , null, zooKeeper.exists(path, this).getVersion());
 						zooKeeper.exists(path, this);
 						logger.info("Server: " + "<" + serverName + ">: "+ "Server ShotDown");
 						close();
 						break;
 					case LOCK_WRITE:
 						this.serverStatus = ServerStatus.LOCK;
-						zooKeeper.setData(path , null, zooKeeper.exists(path, false).getVersion());
+						zooKeeper.setData(path , null, zooKeeper.exists(path, this).getVersion());
 						zooKeeper.exists(path, this);
 						logger.info("Server: " + "<" + serverName + ">: "+ "Server Locked");
 						break;
 					case UNLOCK_WRITE:
 						this.serverStatus = ServerStatus.UNLOCK;
-						zooKeeper.setData(path , null, zooKeeper.exists(path, false).getVersion());
+						zooKeeper.setData(path , null, zooKeeper.exists(path, this).getVersion());
 						zooKeeper.exists(path, this);
 						logger.info("Server: " + "<" + serverName + ">: "+ "Server unLocked");
 						break;
 					case RECEIVE:
+						System.out.println(" \n !!!!!!!! RECEIVE RECEIVE RECEIVE !!!!!");
 						logger.info("Server: " + "<" + serverName + ">: "+ "receiving data initialization....");
 						receiveServerData(request.getReceiveServerPort());
-						zooKeeper.setData(path , null, zooKeeper.exists(path, false).getVersion());
+						zooKeeper.setData(path , null, zooKeeper.exists(path, this).getVersion());
 						zooKeeper.exists(path, this);
 						break;
 					case MOVE_DATA:
+						System.out.println(" \n !!!!!!!! MOVE_DATA MOVE_DATA MOVE_DATA !!!!!");
 						logger.info("Server: " + "<" + serverName + ">: "+ "moving data initialization....");
 						moveData(request.getReceiveHashRangeValue(), request.getReceiverHost(), request.getReceiveServerPort());
-						zooKeeper.setData(path , null, zooKeeper.exists(path, false).getVersion());
+						zooKeeper.setData(path , null, zooKeeper.exists(path, this).getVersion());
 						zooKeeper.exists(path, this);
 						break;
 					case UPDATE:
 						this.serverHashRingStr = request.getHashRingStr();
-						zooKeeper.setData(path , null, zooKeeper.exists(path, false).getVersion());
+						zooKeeper.setData(path , null, zooKeeper.exists(path, this).getVersion());
 						zooKeeper.exists(path, this);
 						logger.info("Server: " + "<" + serverName + ">: " + "Server updated meta data");
 						break;

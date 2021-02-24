@@ -22,12 +22,15 @@ public class KVServerDataTransferConnection implements Runnable {
         this.senderServerSocket = senderServer;
         this.kvServer = kvServer;
         this.isOpen = true;
+        System.out.println("Receiver Data 8" );
     }
 
     @Override
     public synchronized void run() {
+        System.out.println("Receiver Data 9" );
         try {
             socket = senderServerSocket.accept();
+            System.out.println("Receiver Data 10" );
         } catch (IOException ex) {
             System.out.println("Can't accept sender server connection. ");
             logger.error("<Receive Server " + kvServer.getServerName() + "> Error! " + "Unable to establish connection. \n", ex);
@@ -35,6 +38,7 @@ public class KVServerDataTransferConnection implements Runnable {
 
         try {
             inputStream = socket.getInputStream();
+            System.out.println("Receiver Data 11" );
             System.out.println("Server Data Transfer Establishing connection !\n");
         } catch (IOException ex) {
             System.out.println("Can't get sender socket input stream. ");
@@ -42,6 +46,7 @@ public class KVServerDataTransferConnection implements Runnable {
 
         try {
             outputStream = new FileOutputStream(kvServer.getServerDiskFile(), true);
+            System.out.println("Receiver Data 12" );
         } catch (FileNotFoundException ex) {
             System.out.println("File not found. ");
         }
