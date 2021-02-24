@@ -13,7 +13,7 @@ public class StoreDisk implements IStoreDisk {
 
     private File storage;
     private File toMove;
-    private String resourceDir = System.getProperty("user.dir") + "/Documents/ECE419/ECE419-2021Winter-Project" + "/ECE419-2021/src/resources/";
+    private String resourceDir = System.getProperty("user.dir") + "/Desktop/419/ECE419-2021/src/resources/";
     private String filename;
     private String toMoveFileName;
 
@@ -27,7 +27,7 @@ public class StoreDisk implements IStoreDisk {
         this.filename = filename + ".txt";
         this.toMoveFileName = filename + "_toMove" + ".txt";
         this.storage = new File(resourceDir + this.filename);
-//        this.toMove = new File(resourceDir + this.toMoveFileName);
+        this.toMove = new File(resourceDir + this.toMoveFileName);
         try {
             System.out.println("-------------------File path is: " + this.storage.getPath());
 //            System.out.println("-------------------Move path name is: " + this.toMove.getParent());
