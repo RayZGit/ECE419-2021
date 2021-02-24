@@ -31,7 +31,7 @@ public class ECSClient implements IECSClient {
 
     //Standalone Zookeeper Setting Config
     private static final String SERVER_JAR = "m2-server.jar";
-    private static String METADATA_ROOT = "/MD";
+
     private static final String JAR_PATH = new File(System.getProperty("user.dir"), SERVER_JAR).toString();
     private static final String TEST_OUTPUT_PATH = new File(System.getProperty("user.dir")).toString();
     public static String ZK_HOST = "127.0.0.1";
@@ -39,6 +39,7 @@ public class ECSClient implements IECSClient {
     public static int ZK_TIMEOUTSESSION = 5000;
     private static String ZNODE_ROOT = "/ZNode";
     private static String ZNODE_KVMESSAGE = "/KVAdminMessage";
+    private static String METADATA_ROOT = "/MD";
 
     private Logger logger = Logger.getRootLogger();
     private String script = "script.sh";
@@ -424,7 +425,9 @@ public class ECSClient implements IECSClient {
         System.out.println("JSON is: " + json);
 
 //        byte[] dataForHashPosition = new Gson().toJson(activeNods).getBytes();
+        System.out.println(json);
         byte[] dataForHashPosition = json.getBytes();
+        HashRing testRing = new HashRing(json);
         try {
             Stat existMD = zk.exists(METADATA_ROOT, false);
             if (existMD == null){
