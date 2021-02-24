@@ -97,7 +97,6 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
             }
 
             System.out.println("In handleClientRequest 4");
-//            ECSNode node = hashRing.getNodeByKey(request.getKey());
             ECSNode node = hashRing.getNodeByKey(HashRing.getHash(request.getKey()));
             if (node == null) {
                 System.out.println("In handleClientRequest 5");
