@@ -108,6 +108,8 @@ public class KVClient implements IKVClient, Runnable {
                         if (message != null) {
                             handleServerResponse(message);
                         }
+                    } catch (NullPointerException e) {
+                        System.out.println("Put failed: haven't connected to server");
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

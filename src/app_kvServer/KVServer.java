@@ -411,7 +411,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 
 	@Override
 	public String getServerDiskFile() {
-		return "./src/resources/" + this.diskFileName;
+		return storeDisk.getResourceDir() + this.diskFileName;
 	}
 
 	@Override

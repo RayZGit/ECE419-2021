@@ -10,4 +10,5 @@ public interface IStoreDisk {
     public void dump();
     public void delete(String key, String value) throws Exception;
     public File filter(String[] hashRange) throws Exception;
+    public String getResourceDir();
 }
