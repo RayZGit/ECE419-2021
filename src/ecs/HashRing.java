@@ -186,8 +186,8 @@ public class HashRing {
     public static boolean isInRange(String[] hashRange, String key) {
         String hash = HashRing.getHash(key);
         BigInteger temp = new BigInteger(hash, 16);
-        BigInteger lower = new BigInteger(hashRange[0]);
-        BigInteger upper = new BigInteger(hashRange[1]);
+        BigInteger lower = new BigInteger(hashRange[0], 16);
+        BigInteger upper = new BigInteger(hashRange[1], 16);
 
         if (upper.compareTo(lower) <= 0) {
             return temp.compareTo(upper) <= 0 || temp.compareTo(lower) > 0;

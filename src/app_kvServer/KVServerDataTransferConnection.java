@@ -6,12 +6,12 @@ import shared.messages.KVMessage;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.SortedMap;
 
 public class KVServerDataTransferConnection implements Runnable {
     private static Logger logger = Logger.getRootLogger();
     private IKVServer kvServer;
     private boolean isOpen;
-    private ServerSocket senderServerSocket;
     private static final int MAX_VALUE = 120 * 1024;
 //    int length;
 
@@ -19,8 +19,8 @@ public class KVServerDataTransferConnection implements Runnable {
     public FileOutputStream outputStream;
     public Socket socket;
 
-    public KVServerDataTransferConnection(ServerSocket senderServer, IKVServer kvServer) {
-        this.senderServerSocket = senderServer;
+    public KVServerDataTransferConnection(Socket socket, IKVServer kvServer) {
+        this.socket = socket;
         this.kvServer = kvServer;
         this.isOpen = true;
         System.out.println("KVServerDataTransferConnection 1" );
@@ -33,11 +33,10 @@ public class KVServerDataTransferConnection implements Runnable {
         try {
             inputStream = socket.getInputStream();
             System.out.println("KVServerDataTransferConnection 3" );
-            outputStream = new FileOutputStream(kvServer.getServerDiskFile(), true);
+            outputStream = new FileOutputStream(kvServer.getServerDiskFile() + ".txt", true);
             System.out.println("Establishing connection !\n");
             logger.info("<Server> Establishing connection");
 
-            while(isOpen) {
                 try {
                     System.out.println("KVServerDataTransferConnection 4" );
                     byte[] data = new byte[MAX_VALUE];
@@ -47,9 +46,10 @@ public class KVServerDataTransferConnection implements Runnable {
 
                     System.out.println("Transfer Data Start.");
                     while ((bytesRead = inputStream.read()) != -1){
-                        System.out.println("");
-                        outputStream.write( data, 0, bytesRead );
-
+                        if (bytesRead == 13) {
+                            break;
+                        }
+                        outputStream.write( data, 0, (byte)bytesRead );
                     }
                 } catch (Exception e) {
 
@@ -61,7 +61,7 @@ public class KVServerDataTransferConnection implements Runnable {
 
                 }
 
-            }
+
 
         } catch (IOException ioe) {
             logger.error("Error! Connection could not be established!", ioe);

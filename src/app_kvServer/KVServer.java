@@ -427,7 +427,6 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		if(serverSocket != null) {
 			while(isRunning()){
 				try {
-					System.out.println("Waiting for connection");
 					Socket client = serverSocket.accept();
 					KVServerConnection connection =
 							new KVServerConnection(client, this);
@@ -524,12 +523,12 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		System.out.println("Initialize receiver server----------------------------------------");
 		logger.info("<Receiver Server> Initialize server ...");
 		try {
-			receiverSocket = new ServerSocket(9999);
-			receiverPortNumber = receiverSocket.getLocalPort();
+			receiverSocket = new ServerSocket(RECEIVE_DATA_PORT);
+			receiverPortNumber = serverSocket.getLocalPort();
 			System.out.println("Receiver Server listening on port: "
-					+ receiverSocket.getLocalPort());
+					+ serverSocket.getLocalPort());
 			logger.info("<Receiver Server> Server listening on port: "
-					+ receiverSocket.getLocalPort());
+					+ serverSocket.getLocalPort());
 			System.out.println("Initialize receiver server DONE!!!!!!!!!!!!!!!!!!!!!!!!----------------------------------------");
 			return true;
 
@@ -552,7 +551,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		System.out.println("Receiver Data 1.1" );
 		if(receiverSocket != null) {
 			System.out.println("Receiver Data 1.2" );
-			while(isReceiverRunning()){
+
 				System.out.println("Receiver Data 1.3" );
 				try {
 					Socket client = receiverSocket.accept();
@@ -574,7 +573,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 						logger.error("ERROR! Server: " + "<" + this.serverName + ">: " + "Receiver Data,update server data transfer progress to IN_PROGRESS");
 					}
 
-					new Thread(new KVServerDataTransferConnection(receiverSocket, this)).start();
+					new Thread(new KVServerDataTransferConnection(client, this)).start();
 
 					logger.info("<Receiver Server> Connected to "
 							+ client.getInetAddress().getHostName()
@@ -584,7 +583,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 							"Unable to establish connection. \n", e);
 				}
 			}
-		}
+
 		logger.info("Receiver Server stopped.");
 
 		this.serverMetaData.setServerTransferProgressStatus(ServerMetaData.ServerDataTransferProgressStatus.IDLE);
@@ -689,7 +688,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			File toMove = storeDisk.filter(hashRange);
 			System.out.println("------------In move data 2----------------");
 			long fileLen = toMove.length();
-
+			System.out.println(host + port);
 			Socket socket = new Socket(host, port);
 			System.out.println("------------In move data 3----------------");
 			BufferedOutputStream outputStream = new BufferedOutputStream(socket.getOutputStream());

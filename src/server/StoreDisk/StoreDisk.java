@@ -75,6 +75,7 @@ public class StoreDisk implements IStoreDisk {
 
     @Override
     public File filter(String[] hashRange) throws Exception{
+        System.out.println("--------In filter---------");
         try {
             toMove.delete();
             toMove.createNewFile();
@@ -101,9 +102,12 @@ public class StoreDisk implements IStoreDisk {
                     delete(lineArray[0], lineArray[1]);
                 }
             }
+            fw.write("\r");
+            System.out.println("--------In filter 4---------");
             scanner.close();
             fw.close();
         } catch (Exception e) {
+            e.printStackTrace();
             LOG.error(CLASS_NAME+"Error for move file to to-move file",e);
             throw new Exception(CLASS_NAME+"Error for move file to to-move file");
         }
