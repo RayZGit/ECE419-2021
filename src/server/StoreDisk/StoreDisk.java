@@ -14,6 +14,8 @@ public class StoreDisk implements IStoreDisk {
     private File storage;
     private File toMove;
     private String resourceDir = System.getProperty("user.dir") + "/Desktop/419/ECE419-2021/src/resources/";
+//    private String resourceDir = System.getProperty("user.dir") + "/Documents/ECE419/ECE419-2021Winter-Project" + "/ECE419-2021/src/resources/";
+//    private String resourceDir = "./src/resources/";
     private String filename;
     private String toMoveFileName;
 

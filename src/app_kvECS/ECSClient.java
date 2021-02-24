@@ -527,12 +527,15 @@ public class ECSClient implements IECSClient {
 
         public Transfer(ECSNode from, ECSNode to){
             this.fromPath = ZNODE_ROOT + "/" + from.getNodeName();
+            System.out.println("In Transfer, from path: " + this.fromPath);
             this.toPath = ZNODE_ROOT + "/" + to.getNodeName();
+            System.out.println("In Transfer, to path: " + this.toPath);
             this.fromDone = false;
             this.toDone = false;
             this.watchFrom = new Watcher() {
                 @Override
                 public void process(WatchedEvent event) {
+                    System.out.println("In Transfer, check from");
                     if (event.getType() == Event.EventType.NodeDataChanged){
                         checkFrom();
                     }
@@ -542,6 +545,7 @@ public class ECSClient implements IECSClient {
             watchTo = new Watcher() {
                 @Override
                 public void process(WatchedEvent event) {
+                    System.out.println("In Transfer, check to");
                     if (event.getType() == Event.EventType.NodeDataChanged){
                         checkTo();
                     }
@@ -551,6 +555,7 @@ public class ECSClient implements IECSClient {
         }
         private void checkFrom(){
             try {
+                System.out.println("In check!!!!!!!!!!!!!!!!!");
                 String serverData = new String(zk.getData(fromPath,false, null));
                 ServerMetaData data = new Gson().fromJson(serverData, ServerMetaData.class);
                 zk.setData(fromPath, null, zk.exists(fromPath, false).getVersion());
@@ -573,8 +578,11 @@ public class ECSClient implements IECSClient {
         }
         private void checkTo(){
             try {
-                byte[] serverData = zk.getData(toPath,false, null);
-                ServerMetaData data = new Gson().fromJson(serverData.toString(), ServerMetaData.class);
+//                byte[] serverData = zk.getData(toPath,false, null);
+//                ServerMetaData data = new Gson().fromJson(serverData.toString(), ServerMetaData.class);
+                String cache = new String(zk.getData(toPath, false, null));
+                ServerMetaData data = new Gson().fromJson(cache, ServerMetaData.class);
+
                 if(data.equals(ServerMetaData.ServerDataTransferProgressStatus.IDLE)){
                     this.toDone = true;
                     latch.countDown();
@@ -593,7 +601,7 @@ public class ECSClient implements IECSClient {
         public boolean check(){
             this.latch = new CountDownLatch(1);
             try {
-                checkFrom();
+//                checkFrom();
 //                checkTo();
                 boolean wait = latch.await(ZK_TIMEOUTSESSION, TimeUnit.MILLISECONDS);
             } catch (InterruptedException e) {
@@ -611,6 +619,8 @@ public class ECSClient implements IECSClient {
 
     private boolean dataTransition(ECSNode from, ECSNode to, String[] range){
         try {
+            System.out.println("From node: " + from.getNodeName());
+            System.out.println("To node: " + to.getNodeName());
             KVAdminMessage msgTo = new KVAdminMessage(KVAdminMessage.ServerFunctionalType.RECEIVE);
             KVAdminMessage msgFrom = new KVAdminMessage(KVAdminMessage.ServerFunctionalType.MOVE_DATA);
             msgFrom.setReceiverHost(to.getNodeHost());
@@ -640,8 +650,14 @@ public class ECSClient implements IECSClient {
             return false;
         }
 
+        /**
+         *
+         * TODO, change in testing
+         *
+         * */
         Transfer ack = new Transfer(from, to);
         return ack.check();
+//        return true;
 
     }
 
