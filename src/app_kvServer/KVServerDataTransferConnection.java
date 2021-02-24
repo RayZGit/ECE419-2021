@@ -46,10 +46,10 @@ public class KVServerDataTransferConnection implements Runnable {
 
                     System.out.println("Transfer Data Start.");
                     while ((bytesRead = inputStream.read()) != -1){
-                        if (bytesRead == 13) {
+                        if ((byte)bytesRead == 13) {
                             break;
                         }
-                        outputStream.write( data, 0, (byte)bytesRead );
+                        outputStream.write((byte)bytesRead);
                     }
                 } catch (Exception e) {
 
