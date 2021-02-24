@@ -33,6 +33,7 @@ public class ECSClient implements IECSClient {
     private static final String SERVER_JAR = "m2-server.jar";
     private static String METADATA_ROOT = "/MD";
     private static final String JAR_PATH = new File(System.getProperty("user.dir"), SERVER_JAR).toString();
+    private static final String TEST_OUTPUT_PATH = new File(System.getProperty("user.dir")).toString();
     public static String ZK_HOST = "127.0.0.1";
     public static String ZK_PORT = "2181";
     public static int ZK_TIMEOUTSESSION = 5000;
@@ -95,10 +96,19 @@ public class ECSClient implements IECSClient {
                             String error = null;
                             latch.countDown();
                             countdownCount++;
+
                             if (event.getType() == Event.EventType.NodeDataChanged){
                                 // watch handled properly
                                 //expected the server to set back to null
                                 System.out.print("data changed in node!!!!!!!!!!!!!!!!!!!!");
+                                Event.EventType eventType = event.getType();
+                                //Status
+                                Event.KeeperState eventState = event.getState();
+                                //Path
+                                String eventPath = event.getPath();
+                                System.out.println("Event Type:" + eventType.name());
+                                System.out.println("Event Status:" + eventState.name());
+                                System.out.println("Event ZNode path:" + eventPath);
                             }
                             else{
                                 error = "Unexpected Error" + event.getType();
@@ -432,15 +442,16 @@ public class ECSClient implements IECSClient {
         //TODO: CHECK LATER FOLLOW KVSERVER
         String hostname = node.getNodeHost();
         String portnumber = String.valueOf(node.getNodePort());
-        String cmd = String.format("ssh -o StrictHostKeyChecking=no -n %s nohup java -jar %s %s %s %s %s &",
+//        String cmd = String.format("ssh -o StrictHostKeyChecking=no -n %s nohup java -jar %s %s %s %s %s &",
+        String cmd = String.format("ssh -n %s nohup java -jar %s %s %s %s %s >  %s/logs/nohup.log  2>&1 &",
                 hostname, JAR_PATH, portnumber,
-                node.getNodeName(), ZK_HOST,ZK_PORT);
+                node.getNodeName(), ZK_HOST,ZK_PORT, TEST_OUTPUT_PATH);
         System.out.println(cmd);
         try {
             Process proc = Runtime.getRuntime().exec(cmd);
-            int exitCode = proc.waitFor();
-            assert exitCode == 0;
-        } catch (IOException | InterruptedException e) {
+//            int exitCode = proc.waitFor();
+//            assert exitCode == 0;
+        } catch (IOException e) {
             e.printStackTrace();
             logger.error(LOGGING+"sshSever error");
             return false;

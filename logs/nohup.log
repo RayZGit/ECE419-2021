@@ -1,0 +1,25 @@
+Start Server
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2021-02-23 20:24:55,966 INFO  [main] root: Server: <server1>: server zNode exist, get cache data and set server cache
+2021-02-23 20:24:55,967 INFO  [main] root: zooKeeper connection established ...
+!!!!!!!!!!!!!!!Get Hash Ring Info Success!!!!!!!!!!!!!!!!!!!
+2021-02-23 20:24:55,972 DEBUG [main] root: Server: <server1>: Set up watcher on /ZNode/server1
+2021-02-23 20:24:55,973 INFO  [main] root: StoreDisk: Initiate the persistent storage for server1_DataDisk.txt
+StoreDisk: Initiate the persistent storage for server1_DataDisk.txt
+2021-02-23 20:24:55,973 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:31)
+	at app_kvServer.KVServer.<init>(KVServer.java:196)
+	at app_kvServer.KVServer.main(KVServer.java:738)
+Initialize None Cache
+Initialize server
+2021-02-23 20:24:55,976 INFO  [Thread-0] root: <Server> Initialize server ...
+Error! Cannot open server socket:
+2021-02-23 20:24:55,978 ERROR [Thread-0] root: <Server> Error! Cannot open server socket:
+Port 50000 is already bound!
+2021-02-23 20:24:55,978 ERROR [Thread-0] root: <Server> Port 50000 is already bound!
+2021-02-23 20:24:55,978 INFO  [Thread-0] root: Server stopped.

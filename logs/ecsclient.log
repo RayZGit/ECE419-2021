@@ -1,0 +1,194 @@
+2021-02-23 15:53:53,748 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 15:53:53,749 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 15:53:53,749 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 15:53:53,749 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 15:53:53,749 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 15:53:53,750 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 15:53:53,750 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 15:53:53,750 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-23 15:56:03,055 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 15:56:03,055 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 15:56:03,056 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 15:56:03,056 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 15:56:03,056 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 15:56:03,056 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 15:56:03,056 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 15:56:03,057 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-23 15:57:35,251 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 15:57:35,251 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 15:57:35,251 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 15:57:35,252 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 15:57:35,252 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 15:57:35,252 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 15:57:35,252 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 15:57:35,252 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-23 15:58:58,482 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 15:58:58,483 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 15:58:58,483 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 15:58:58,483 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 15:58:58,483 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 15:58:58,483 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 15:58:58,484 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 15:58:58,484 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-23 17:22:13,581 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 17:22:13,582 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 17:22:13,583 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 17:22:13,583 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 17:22:13,583 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 17:22:13,583 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 17:22:13,583 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 17:22:13,584 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-23 17:46:17,002 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 17:46:17,003 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 17:46:17,004 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 17:46:17,004 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 17:46:17,004 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 17:46:17,004 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 17:46:17,004 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 17:46:17,005 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-23 17:46:45,327 INFO  [main] root: Add ECSNode server1:50000
+2021-02-23 17:46:45,327 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-23 17:50:18,798 INFO  [main] root: Add ECSNode server2:50001
+2021-02-23 17:50:18,798 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-23 17:53:23,437 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 17:53:23,438 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 17:53:23,438 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 17:53:23,439 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 17:53:23,439 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 17:53:23,439 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 17:53:23,439 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 17:53:23,440 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-23 17:53:47,808 INFO  [main] root: Add ECSNode server1:50000
+2021-02-23 17:53:47,808 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-23 18:07:52,536 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 18:07:52,537 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 18:07:52,537 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 18:07:52,537 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 18:07:52,537 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 18:07:52,537 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 18:07:52,538 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 18:07:52,538 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-23 18:18:04,634 INFO  [main] root: Add ECSNode server1:50000
+2021-02-23 18:18:04,635 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-23 18:19:47,997 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 18:19:47,998 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 18:19:47,998 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 18:19:47,998 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 18:19:47,998 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 18:19:47,998 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 18:19:47,999 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 18:19:47,999 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-23 18:22:30,628 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 18:22:30,628 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 18:22:30,629 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 18:22:30,629 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 18:22:30,629 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 18:22:30,629 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 18:22:30,629 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 18:22:30,629 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-23 18:23:28,087 INFO  [main] root: Add ECSNode server1:50000
+2021-02-23 18:23:28,088 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-23 18:29:11,215 INFO  [main] root: Add ECSNode server2:50001
+2021-02-23 18:29:11,215 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-23 18:47:50,715 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 18:47:50,716 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 18:47:50,716 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 18:47:50,716 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 18:47:50,716 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 18:47:50,717 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 18:47:50,717 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 18:47:50,717 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-23 18:48:13,514 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 18:48:13,515 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 18:48:13,515 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 18:48:13,515 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 18:48:13,515 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 18:48:13,515 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 18:48:13,515 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 18:48:13,516 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-23 18:48:50,921 INFO  [main] root: Add ECSNode server1:50000
+2021-02-23 18:48:50,921 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-23 18:50:56,146 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 18:50:56,147 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 18:50:56,147 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 18:50:56,147 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 18:50:56,147 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 18:50:56,148 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 18:50:56,148 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 18:50:56,148 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-23 18:51:16,306 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 18:51:16,306 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 18:51:16,306 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 18:51:16,307 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 18:51:16,307 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 18:51:16,307 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 18:51:16,307 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 18:51:16,307 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-23 18:51:34,207 INFO  [main] root: Add ECSNode server1:50000
+2021-02-23 18:51:34,208 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-23 20:07:41,414 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 20:07:41,414 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 20:07:41,415 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 20:07:41,415 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 20:07:41,415 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 20:07:41,415 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 20:07:41,415 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 20:07:41,415 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-23 20:07:54,127 INFO  [main] root: Add ECSNode server1:50000
+2021-02-23 20:07:54,127 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-23 20:09:48,481 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 20:09:48,482 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 20:09:48,482 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 20:09:48,482 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 20:09:48,482 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 20:09:48,482 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 20:09:48,482 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 20:09:48,482 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-23 20:10:02,505 INFO  [main] root: Add ECSNode server1:50000
+2021-02-23 20:10:02,506 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-23 20:12:35,888 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 20:12:35,889 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 20:12:35,889 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 20:12:35,889 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 20:12:35,889 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 20:12:35,889 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 20:12:35,889 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 20:12:35,890 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-23 20:12:55,342 INFO  [main] root: Add ECSNode server1:50000
+2021-02-23 20:12:55,342 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-23 20:15:52,618 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 20:15:52,619 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 20:15:52,619 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 20:15:52,619 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 20:15:52,619 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 20:15:52,619 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 20:15:52,620 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 20:15:52,620 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-23 20:16:13,643 INFO  [main] root: Add ECSNode server1:50000
+2021-02-23 20:16:13,643 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-23 20:19:59,426 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 20:19:59,426 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 20:19:59,426 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 20:19:59,426 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 20:19:59,427 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 20:19:59,427 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 20:19:59,427 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 20:19:59,427 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-23 20:20:42,139 INFO  [main] root: Add ECSNode server1:50000
+2021-02-23 20:20:42,140 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-23 20:22:36,579 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 20:22:36,580 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 20:22:36,580 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 20:22:36,580 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 20:22:36,580 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 20:22:36,581 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 20:22:36,581 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 20:22:36,581 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-23 20:24:50,668 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-23 20:24:50,669 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-23 20:24:50,669 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-23 20:24:50,669 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-23 20:24:50,669 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-23 20:24:50,670 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-23 20:24:50,670 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-23 20:24:50,670 INFO  [main] root: ECSClient: New Node added: server8
