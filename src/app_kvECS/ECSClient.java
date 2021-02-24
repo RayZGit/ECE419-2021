@@ -613,6 +613,8 @@ public class ECSClient implements IECSClient {
             msgFrom.setReceiverHost(to.getNodeHost());
             msgFrom.setReceiverName(to.getNodeName());
             msgFrom.setReceiveHashRangeValue(range);
+            msgFrom.setReceiveServerPort(9999);
+            msgTo.setReceiveServerPort(9999);
             Map<ECSNode,String> nodeErrorMapRec = adminDataHandler.
                     brodcast(msgTo.encode().getBytes(),new ArrayList<ECSNode>(Arrays.asList(to)),true);
             if(!nodeErrorMapRec.isEmpty()){
