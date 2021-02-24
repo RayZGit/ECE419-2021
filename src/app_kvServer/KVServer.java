@@ -89,7 +89,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		this.port = port;
 		this.catchSize = cacheSize;
 		this.strategy = CacheStrategy.valueOf(strategy);
-		this.diskFileName = "DataDisk" + ".txt";
+		this.diskFileName = "DataDisk";
 		this.storeDisk = new StoreDisk(this.diskFileName);
 		this.serverStatus = ServerStatus.START;
 		switch (this.strategy) {
@@ -113,6 +113,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	}
 
 	public KVServer(int port, String serverName, String zooKeeperHostName, int zooKeeperPort) {
+		System.out.println("In KVServer distributed constructor!!!!!!!!!!!!!!");
 		assert(port != RECEIVE_DATA_PORT);
 		this.port = port;
 //		this(port, defaultCacheSize, defaultCacheStrategy);
@@ -192,8 +193,10 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			e.printStackTrace();
 		}
 
-		this.diskFileName = serverName + "_DataDisk" + ".txt";
+		this.diskFileName =  "DataDisk_" + serverName;
 		this.storeDisk = new StoreDisk(this.diskFileName);
+
+		System.out.println("Cache strategy: " + this.strategy);
 		switch (this.strategy) {
 			case FIFO:
 				System.out.println("Initialize FIFO");
@@ -275,7 +278,8 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 				if (running == true) {
 					try {
 						serverHashRingStr = new String(zooKeeper.getData(ZK_METADATA_ROOT, this, null));
-						System.out.println("!!!!!!!!!!!!!!!Hash Ring updated!!!!!!!!!!!!!!!!!!!");
+						zooKeeper.exists(ZK_METADATA_ROOT, this);
+						System.out.println("!!!!!!!!!!!!!!! In Process, Hash Ring updated, hashring is: " + serverHashRingStr);
 						logger.info("Server: " + "<" + serverName + ">: " + "hash ring updated");
 					} catch (KeeperException e) {
 						e.printStackTrace();
@@ -289,6 +293,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		}, null);
 		System.out.println("!!!!!!!!!!!!!!!Get Hash Ring Info Success!!!!!!!!!!!!!!!!!!!");
 		serverHashRingStr = new String(hashData);
+		System.out.println("!!!!!!!!!!!!!!!  Hash Ring updated, hashring is: " + serverHashRingStr);
 	}
 
 	public void setServerNodeWatcher(String zkPath) throws KeeperException, InterruptedException {
@@ -564,6 +569,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	}
 
 	public void moveData(String[] hashRange, String host, int port) {
+		System.out.println("------------In move data, host is " + host + " ||||| port is: " + port);
 		this.serverMetaData.setServerTransferProgressStatus(ServerMetaData.ServerDataTransferProgressStatus.IN_PROGRESS);
 		try {
 			String zooKeeperPath = ZK_SERVER_ROOT + "/" + serverName;
@@ -582,12 +588,17 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		lockWrite();
 		writeCacheToDisk();
 		try{
+			System.out.println("------------In move data 1----------------");
 			File toMove = storeDisk.filter(hashRange);
+			System.out.println("------------In move data 2----------------");
 			long fileLen = toMove.length();
 
 			Socket socket = new Socket(host, port);
+			System.out.println("------------In move data 3----------------");
 			BufferedOutputStream outputStream = new BufferedOutputStream(socket.getOutputStream());
+			System.out.println("------------In move data 4----------------");
 			BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(toMove));
+			System.out.println("------------In move data 5----------------");
 
 			byte[] buffer = new byte[BUFFER_SIZE];
 			int len = 0;
@@ -595,6 +606,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			int percentage = 0;
 			while ((len = inputStream.read(buffer)) > 0) {
 				percentage = (int) (current * 100 / fileLen);
+				System.out.println("Transfer progress: " + percentage);
 				//TODO: updata progress
 				outputStream.write(buffer, 0, len);
 				current += len;

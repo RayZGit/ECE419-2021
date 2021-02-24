@@ -78,7 +78,9 @@ public class KVStore extends KVMsgProtocol implements KVCommInterface {
 		KVBasicMessage request = new KVBasicMessage(key, value, KVMessage.StatusType.PUT);
 		try{
 			updateServer(request);
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!before send message In put !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			sendMessage(request);
+			System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!get message In put !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 			KVMessage response = receiveMessage();
 			if (response.getStatus() == KVMessage.StatusType.SERVER_NOT_RESPONSIBLE) {
 				hashRing = new HashRing(response.getValue());

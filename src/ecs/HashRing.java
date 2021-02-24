@@ -9,6 +9,8 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 
 public class HashRing {
@@ -49,12 +51,13 @@ public class HashRing {
     }
 
     public HashRing(String jsonString) {
+        System.out.print("------------In Hashing: " + jsonString);
         first = null;
         size = 0;
         Gson gson = new Gson();
 //        Type ECSNodeList = new TypeToken<ArrayList<ECSNode>>(){}.getType();
-        Type MetaDataList = new TypeToken<ArrayList<MetaDataNode>>(){}.getType();
-        MetaDataNode[] temp = gson.fromJson(jsonString, MetaDataList);
+        Type MetaDataList = new TypeToken<List<MetaDataNode>>(){}.getType();
+        List<MetaDataNode> temp = gson.fromJson(jsonString, MetaDataList);
 
 //        for (ECSNode ecsnode: temp) {
 //            addNode(ecsnode);
@@ -132,18 +135,24 @@ public class HashRing {
     }
 
     public ECSNode getNodeByKey(String hashString) {
+        System.out.print("------------In getNodeByKey 1: " + hashString);
         BigInteger hash = new BigInteger(hashString, 16);
+        System.out.print("------------In getNodeByKey 2");
         ECSNode curr = first;
         for(int i = 0; i < size; i++) {
+            System.out.print("------------In getNodeByKey 3");
             String[] range = curr.getNodeHashRange();
             BigInteger lower = new BigInteger(range[0], 16);
             BigInteger upper = new BigInteger(range[1], 16);
 
             if (upper.compareTo(lower) <= 0) {
+                System.out.print("------------In getNodeByKey 4");
                 if (hash.compareTo(upper) <= 0 || hash.compareTo(lower) > 0) {
+                    System.out.print("------------In getNodeByKey 5");
                     return curr;
                 }
             } else if (hash.compareTo(lower) > 0 && hash.compareTo(upper) <= 0) {
+                System.out.print("------------In getNodeByKey 6");
                 return curr;
             }
             curr = curr.getPrevious();

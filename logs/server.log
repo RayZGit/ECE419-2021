@@ -775,3 +775,9 @@
 2021-02-23 17:08:46,356 INFO  [Thread-2] root: <Server> Get failed: ( key,1010101 )
 2021-02-23 17:08:46,357 INFO  [Thread-2] root: Send message:	 'GET_ERROR 1010101 '
 2021-02-23 17:08:46,357 INFO  [Thread-2] root: <Server> SEND 	<127.0.0.1:53426>: key: 1010101| value: | status: GET_ERROR
+2021-02-23 20:48:11,975 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk
+2021-02-23 20:48:11,975 INFO  [main] root: StoreDisk: File already existed
+2021-02-23 20:48:11,976 INFO  [Thread-0] root: <Server> Initialize server ...
+2021-02-23 20:48:11,987 ERROR [Thread-0] root: <Server> Error! Cannot open server socket:
+2021-02-23 20:48:11,987 ERROR [Thread-0] root: <Server> Port 50000 is already bound!
+2021-02-23 20:48:11,988 INFO  [Thread-0] root: Server stopped.
