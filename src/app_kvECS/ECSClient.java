@@ -442,6 +442,7 @@ public class ECSClient implements IECSClient {
         //TODO: CHECK LATER FOLLOW KVSERVER
         String hostname = node.getNodeHost();
         String portnumber = String.valueOf(node.getNodePort());
+
 //        String cmd = String.format("ssh -o StrictHostKeyChecking=no -n %s nohup java -jar %s %s %s %s %s &",
         String cmd = String.format("ssh -n %s nohup java -jar %s %s %s %s %s >  %s/logs/nohup.log  2>&1 &",
                 hostname, JAR_PATH, portnumber,
@@ -459,7 +460,6 @@ public class ECSClient implements IECSClient {
         return true;
 
     }
-
     private void removeNodeHandler(List<ECSNode> nodes){
         for (ECSNode node : nodes) {
             ECSNode dest = locateNode(node, nodes);
