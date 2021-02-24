@@ -17870,3 +17870,9 @@
 2021-02-24 12:00:12,256 INFO  [main] root: Put succeed: (5,6)
 2021-02-24 12:00:21,398 INFO  [main] root: Socket disconnected.
 2021-02-24 12:00:21,398 INFO  [main] root: Disconnected from server
+2021-02-24 13:48:36,775 INFO  [main] root: Add ECSNode firstnode:9999
+2021-02-24 13:48:36,793 INFO  [main] root: Connected to: localhost : 9999
+2021-02-24 13:48:36,793 INFO  [main] root: Connected to server
+2021-02-24 13:50:10,797 INFO  [main] root: Add ECSNode firstnode:9999
+2021-02-24 13:50:10,817 INFO  [main] root: Connected to: localhost : 9999
+2021-02-24 13:50:10,819 INFO  [main] root: Connected to server

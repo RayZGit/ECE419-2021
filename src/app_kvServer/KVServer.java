@@ -427,6 +427,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		if(serverSocket != null) {
 			while(isRunning()){
 				try {
+					System.out.println("Waiting for connection");
 					Socket client = serverSocket.accept();
 					KVServerConnection connection =
 							new KVServerConnection(client, this);
@@ -523,12 +524,12 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		System.out.println("Initialize receiver server----------------------------------------");
 		logger.info("<Receiver Server> Initialize server ...");
 		try {
-			receiverSocket = new ServerSocket(0);
-			receiverPortNumber = serverSocket.getLocalPort();
+			receiverSocket = new ServerSocket(9999);
+			receiverPortNumber = receiverSocket.getLocalPort();
 			System.out.println("Receiver Server listening on port: "
-					+ serverSocket.getLocalPort());
+					+ receiverSocket.getLocalPort());
 			logger.info("<Receiver Server> Server listening on port: "
-					+ serverSocket.getLocalPort());
+					+ receiverSocket.getLocalPort());
 			System.out.println("Initialize receiver server DONE!!!!!!!!!!!!!!!!!!!!!!!!----------------------------------------");
 			return true;
 
@@ -796,14 +797,14 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 					case RECEIVE:
 						System.out.println(" \n !!!!!!!! RECEIVE RECEIVE RECEIVE !!!!!");
 						logger.info("Server: " + "<" + serverName + ">: "+ "receiving data initialization....");
-//						int port = receiveServerData();
+						int port = receiveServerData();
 						zooKeeper.setData(path , "RECEIVE_ACK".getBytes(), zooKeeper.exists(path, false).getVersion());
 						zooKeeper.exists(path, this);
 						break;
 					case MOVE_DATA:
 						System.out.println(" \n !!!!!!!! MOVE_DATA MOVE_DATA MOVE_DATA !!!!!");
 						logger.info("Server: " + "<" + serverName + ">: "+ "moving data initialization....");
-//						moveData(request.getReceiveHashRangeValue(), request.getReceiverHost(), request.getReceiveServerPort());
+						moveData(request.getReceiveHashRangeValue(), request.getReceiverHost(), request.getReceiveServerPort());
 						zooKeeper.setData(path , "MOVE_DATA_ ACK".getBytes(), zooKeeper.exists(path, false).getVersion());
 						zooKeeper.exists(path, this);
 						break;
