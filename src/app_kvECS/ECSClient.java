@@ -420,6 +420,8 @@ public class ECSClient implements IECSClient {
 
         Gson gson = new GsonBuilder().create();
         String json = gson.toJson(metaDataNodes);
+        HashRing temp = new HashRing(json);
+        System.out.println("JSON is: " + json);
 
 //        byte[] dataForHashPosition = new Gson().toJson(activeNods).getBytes();
         byte[] dataForHashPosition = json.getBytes();

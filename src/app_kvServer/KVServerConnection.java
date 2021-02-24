@@ -37,7 +37,7 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
             while(isOpen) {
                 try {
                     KVMessage request = receiveMsg();
-//                    System.out.println("!!!!!!!!!!!!Received before handle client request!!!!!!!!!!!!!!");
+                    System.out.println("!!!!!!!!!!!!Received before handle client request!!!!!!!!!!!!!!");
                     KVMessage response = handleClientRequest(request);
                     sendMsg(response);
                     /* connection either terminated by the client or lost due to
@@ -84,9 +84,11 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
         KVMessage response = new KVBasicMessage();
         response.setKey(request.getKey());
         response.setValue(request.getValue());
-
+        System.out.println("In handleClientRequest 1");
         if (kvServer.isDistributed()) {
+            System.out.println("In handleClientRequest 2");
             HashRing hashRing = new HashRing(kvServer.getServerHashRings());
+            System.out.println("In handleClientRequest 3");
             if (kvServer.getServerStatus().equals(IKVServer.ServerStatus.STOP) ||
                     kvServer.getServerStatus().equals(IKVServer.ServerStatus.INITIALIZED) ||
                     hashRing == null){
@@ -94,18 +96,24 @@ public class KVServerConnection extends KVMsgProtocol implements Runnable {
                 response.setStatus(KVMessage.StatusType.SERVER_STOPPED);
             }
 
+            System.out.println("In handleClientRequest 4");
             ECSNode node = hashRing.getNodeByKey(request.getKey());
             if (node == null) {
+                System.out.println("In handleClientRequest 5");
                 System.out.println("Error! Can not find Corresponding Node with hashRing: <" + hashRing + ">");
                 logger.error("Error! Can not find Corresponding Node with hashRing: <" + hashRing + ">");
             }
 
+            System.out.println("In handleClientRequest 6");
             boolean isResponsible = node.getNodeName().equals(kvServer.getServerName());
             if (isResponsible == false) {
+                System.out.println("In handleClientRequest 6");
                 response.setValue(kvServer.getServerHashRings());
                 response.setStatus(KVMessage.StatusType.SERVER_NOT_RESPONSIBLE);
                 return response;
             }
+
+            System.out.println("In handleClientRequest 8");
 
         }
 

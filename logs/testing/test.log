@@ -727,3 +727,28 @@ java.net.SocketException: Socket closed
 	at java.base/java.net.ServerSocket.accept(ServerSocket.java:540)
 	at app_kvServer.KVServer.run(KVServer.java:422)
 	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-02-23 20:46:20,430 ERROR [Thread-0] root: <Server> Error! Cannot open server socket:
+2021-02-23 20:46:20,431 ERROR [Thread-0] root: <Server> Port 50000 is already bound!
+2021-02-23 20:46:20,691 ERROR [main] root: No Server available.
+2021-02-23 20:46:47,228 ERROR [Thread-0] root: <Server> Error! Cannot open server socket:
+2021-02-23 20:46:47,228 ERROR [Thread-0] root: <Server> Port 50000 is already bound!
+2021-02-23 20:46:47,346 ERROR [main] root: No Server available.
+2021-02-23 20:50:16,790 ERROR [main] root: No Server available.
+2021-02-23 20:50:16,987 ERROR [Thread-3] root: <Server> Error! Connection lost <localhost: 57054>
+2021-02-23 20:50:17,002 ERROR [Thread-4] root: <Server> Error! Connection lost <localhost: 57055>
+2021-02-23 20:50:17,016 ERROR [Thread-1] root: <Server> Error! Connection lost <localhost: 57052>
+2021-02-23 20:50:17,036 ERROR [Thread-7] root: <Server> Error! Connection lost <localhost: 57058>
+2021-02-23 20:50:17,054 ERROR [Thread-6] root: <Server> Error! Connection lost <localhost: 57057>
+2021-02-23 20:50:17,068 ERROR [Thread-10] root: <Server> Error! Connection lost <localhost: 57061>
+2021-02-23 20:50:17,085 ERROR [Thread-2] root: <Server> Error! Connection lost <localhost: 57053>
+2021-02-23 20:50:17,097 ERROR [Thread-9] root: <Server> Error! Connection lost <localhost: 57060>
+2021-02-23 20:50:17,109 ERROR [Thread-5] root: <Server> Error! Connection lost <localhost: 57056>
+2021-02-23 20:50:17,122 ERROR [Thread-8] root: <Server> Error! Connection lost <localhost: 57059>
+2021-02-23 20:50:17,133 ERROR [Thread-11] root: <Server> Error! Connection lost <localhost: 57062>
+2021-02-23 20:50:17,170 ERROR [Thread-12] root: <Server> Error! Connection lost <localhost: 57063>
+2021-02-23 20:50:17,208 ERROR [Thread-13] root: <Server> Error! Connection lost <localhost: 57064>
+2021-02-23 20:50:17,252 ERROR [Thread-14] root: <Server> Error! Connection lost <localhost: 57065>
+2021-02-23 20:50:17,266 ERROR [Thread-15] root: <Server> Error! Connection lost <localhost: 57066>
+2021-02-23 20:50:17,558 ERROR [Thread-16] root: <Server> Error! Connection lost <localhost: 57067>
+2021-02-23 20:50:17,795 ERROR [Thread-17] root: <Server> Error! Connection lost <localhost: 57069>
+2021-02-23 20:50:18,018 ERROR [Thread-18] root: <Server> Error! Connection lost <localhost: 57071>

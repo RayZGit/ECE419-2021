@@ -13,21 +13,24 @@ public class StoreDisk implements IStoreDisk {
 
     private File storage;
     private File toMove;
-    private String resourceDir = "./src/resources/";
+    private String resourceDir = System.getProperty("user.dir") + "/Documents/ECE419/ECE419-2021Winter-Project" + "/ECE419-2021/src/resources/";
     private String filename;
     private String toMoveFileName;
 
 
 
     public StoreDisk(String filename){
+        System.out.println("!!!!!!!!!!!!!!!!!!Path: " + resourceDir);
         LOG.info(CLASS_NAME+"Initiate the persistent storage for "+filename);
         System.out.println(CLASS_NAME+"Initiate the persistent storage for "+filename);
 
-        this.filename = filename;
-        this.toMoveFileName = filename + "toMove";
-        this.storage = new File(resourceDir+this.filename);
-        this.toMove = new File(resourceDir+this.toMoveFileName);
+        this.filename = filename + ".txt";
+        this.toMoveFileName = filename + "_toMove" + ".txt";
+        this.storage = new File(resourceDir + this.filename);
+//        this.toMove = new File(resourceDir + this.toMoveFileName);
         try {
+            System.out.println("-------------------File path is: " + this.storage.getPath());
+//            System.out.println("-------------------Move path name is: " + this.toMove.getParent());
             if(this.storage.createNewFile()){
                 LOG.info(CLASS_NAME+"File successfully created");
             }else{
