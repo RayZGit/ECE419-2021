@@ -627,8 +627,7 @@ public class ECSClient implements IECSClient {
             msgFrom.setReceiverHost(to.getNodeHost());
             msgFrom.setReceiverName(to.getNodeName());
             msgFrom.setReceiveHashRangeValue(range);
-            msgFrom.setReceiveServerPort(9999);
-            msgTo.setReceiveServerPort(9999);
+
             System.out.println(" \n !!!!!!!Send request to receiver server!!!!!!!!!!!!!");
             Map<ECSNode,String> nodeErrorMapRec = adminDataHandler.
                     brodcast(msgTo.encode().getBytes(),new ArrayList<ECSNode>(Arrays.asList(to)),true);
@@ -637,11 +636,20 @@ public class ECSClient implements IECSClient {
                 return false;
             }
 
+            // Getting the dynamic allocated port from the receiver and set it into the message sent to Sender
+            String nodePath = ZNODE_ROOT+"/"+to.getNodeName()+"/"+ZNODE_KVMESSAGE;
+            byte[] KVportInfo = zk.getData(nodePath,false,null);
+            String temp = new String(KVportInfo);
+            KVAdminMessage portInfo = new Gson().fromJson(temp, KVAdminMessage.class);
+            msgFrom.setReceiveServerPort(portInfo.getReceiveServerPort());
+
+
+
             System.out.println(" \n !!!!!!!Send request to mover server!!!!!!!!!!!!!");
             Map<ECSNode,String> nodeErrorMapMov = adminDataHandler.
                     brodcast(msgFrom.encode().getBytes(),new ArrayList<ECSNode>(Arrays.asList(from)), true);
 
-            if(!nodeErrorMapRec.isEmpty()){
+            if(!nodeErrorMapMov.isEmpty()){
                 logger.error(LOGGING+"dataTransition in Send");
                 return false;
             }
@@ -649,7 +657,10 @@ public class ECSClient implements IECSClient {
         } catch (InterruptedException e) {
             e.printStackTrace();
             return false;
+        } catch (KeeperException e) {
+            e.printStackTrace();
         }
+
 
         /**
          *
