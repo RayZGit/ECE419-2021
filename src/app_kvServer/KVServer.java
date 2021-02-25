@@ -39,7 +39,6 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 
 	private ServerSocket serverSocket;
 	private ServerSocket receiverSocket;
-	private int receiverPortNumber;
 
 	private boolean running;
 	private boolean isReceiverRunning;
@@ -51,7 +50,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 	public static final String ZK_SERVER_ROOT = "/ZNode";
 	public static final String ZK_METADATA_ROOT = "/MD";
 	private static final String ZNODE_KVMESSAGE = "/KVAdminMessage";
-	private static final int RECEIVE_DATA_PORT = 9999;
+	private static final int RECEIVE_DATA_PORT = 0;
 
 	/**
 	 * default */
@@ -129,14 +128,6 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		this.zooKeeperPath = ZK_SERVER_ROOT + "/" + serverName; //TODO: zookeeper root path
 		String zkConnectionPath = this.zooKeeperHostName + ":" + Integer.toString(this.zooKeeperPort);
 
-		/*
-			/ZKNode/ServerMetaData/KVAdminMessage
-
-			/ZKNode/server1/KVAdminMessage 1
-			/ZKNode/server2/KVAdminMessage 2
-			/ZKNode/server3/KVAdminMessage 3
-
-		*/
 		try {
 			connectZooKeeper(zkConnectionPath);
 
@@ -261,19 +252,6 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		serverMetaData.setCacheSize(this.catchSize);
 		serverMetaData.setCacheStrategy(this.strategy.toString());
 	}
-
-//	public void checkZKChildren(String zkPath) throws KeeperException, InterruptedException {
-//		List<String> children = zooKeeper.getChildren(zkPath, false, null);
-//		if (!children.isEmpty()) {
-//			String messagePath = zkPath + "/" + children.get(0);
-//			byte[] data = zooKeeper.getData(messagePath, false, null);
-//			KVAdminMessage message = new Gson().fromJson(new String(data), KVAdminMessage.class);
-//			if (message.getFunctionalType().equals(KVAdminMessage.ServerFunctionalType.INIT_KV_SERVER)) {
-//				zooKeeper.delete(messagePath, zooKeeper.exists(messagePath, false).getVersion());
-//				logger.info("Server: " + "<" + this.serverName + ">: " + "Server initiated ");
-//			}
-//		}
-//	}
 
 	public void setHashRingInfo() throws KeeperException, InterruptedException {
 		byte[] hashData = zooKeeper.getData(ZK_METADATA_ROOT, new Watcher() {
@@ -525,11 +503,11 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		logger.info("<Receiver Server> Initialize server ...");
 		try {
 			receiverSocket = new ServerSocket(RECEIVE_DATA_PORT);
-			receiverPortNumber = serverSocket.getLocalPort();
+			serverMetaData.setPort(receiverSocket.getLocalPort());
 			System.out.println("Receiver Server listening on port: "
-					+ serverSocket.getLocalPort());
+					+ receiverSocket.getLocalPort() + receiverSocket.getLocalPort() + receiverSocket.getLocalPort() + receiverSocket.getLocalPort());
 			logger.info("<Receiver Server> Server listening on port: "
-					+ serverSocket.getLocalPort());
+					+ receiverSocket.getLocalPort());
 			System.out.println("Initialize receiver server DONE!!!!!!!!!!!!!!!!!!!!!!!!----------------------------------------");
 			return true;
 
@@ -544,10 +522,21 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		}
 	}
 
-	public int receiveServerData() {
+	public int receiveServerData(KVAdminMessage request, String path) {
 
 		System.out.println("Receiver Data 1" );
 		isReceiverRunning = initializeReceiverServer();
+		System.out.println("---------------------------------------I am receiving on port: " + port);
+		request.setReceiveServerPort(receiverSocket.getLocalPort());
+		try{
+			zooKeeper.setData(path , request.encode().getBytes(), zooKeeper.exists(path, false).getVersion());
+			zooKeeper.exists(path, this);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} catch (KeeperException e) {
+			e.printStackTrace();
+		}
+
 
 		System.out.println("Receiver Data 1.1" );
 		if(receiverSocket != null) {
@@ -599,8 +588,8 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			e.printStackTrace();
 			logger.error("ERROR! Server: " + "<" + this.serverName + ">: " + "Receiver Data, update server data transfer progress to IDLE");
 		}
-
-		return receiverPortNumber;
+		System.out.println("Receiver Server port: " + receiverSocket.getLocalPort());
+		return receiverSocket.getLocalPort();
 
 
 //			receiverSocket = new ServerSocket(0);
@@ -806,7 +795,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 					case RECEIVE:
 						System.out.println(" \n !!!!!!!! RECEIVE RECEIVE RECEIVE !!!!!");
 						logger.info("Server: " + "<" + serverName + ">: "+ "receiving data initialization....");
-						int port = receiveServerData();
+						receiveServerData(request, path);
 						zooKeeper.setData(path , "RECEIVE_ACK".getBytes(), zooKeeper.exists(path, false).getVersion());
 						zooKeeper.exists(path, this);
 						break;

@@ -637,11 +637,16 @@ public class ECSClient implements IECSClient {
             }
 
             // Getting the dynamic allocated port from the receiver and set it into the message sent to Sender
-            String nodePath = ZNODE_ROOT+"/"+to.getNodeName()+"/"+ZNODE_KVMESSAGE;
+            String nodePath = ZNODE_ROOT + "/" + to.getNodeName() + ZNODE_KVMESSAGE;
             byte[] KVportInfo = zk.getData(nodePath,false,null);
             String temp = new String(KVportInfo);
             KVAdminMessage portInfo = new Gson().fromJson(temp, KVAdminMessage.class);
+//            msgFrom.setReceiveServerPort(9999);
             msgFrom.setReceiveServerPort(portInfo.getReceiveServerPort());
+            System.out.println("String is !!!!!!!!!!!!!!!!!!!!!! " + temp);
+            System.out.println("------------------------------------------- " +
+                            nodePath +
+                    "       Port Port Port is: " + portInfo.getReceiveServerPort());
 
 
 

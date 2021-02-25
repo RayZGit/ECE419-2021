@@ -57,67 +57,67 @@ public class ECSInitialTest extends TestCase {
      * server instances is high un-debug-able
      */
 
-//    public void test02AddNodes() throws Exception {
-//        Collection<IECSNode> nodes =
-//                ecs.setupNodes(BIG_SERVER_NUM, CACHE_STRATEGY, CACHE_SIZE);
-//        assertNull(nodes);
-//
-//        Integer count = 3;
-//        nodes = ecs.setupNodes(count, CACHE_STRATEGY, CACHE_SIZE);
-//        assertNotNull(nodes);
-//        assertEquals(count, new Integer(nodes.size()));
-//
-//        // Start the servers internally
-//        for (IECSNode node : nodes) {
-//            new Thread(
-//                    new KVServer(node.getNodePort(), node.getNodeName(),
-//                            ECSClient.ZK_HOST, Integer.parseInt(ECSClient.ZK_PORT)))
-//                    .start();
-//        }
-//
-//        boolean ret = ecs.awaitNodes(count, ECSClient.ZK_TIMEOUTSESSION);
-//        assertTrue(ret);
-//    }
-//
-//    /**
-//     * Start the nodes just added
-//     */
-//    public void test03StartNodes() throws Exception {
-//        assertNotNull(ecs);
-//        boolean ret = ecs.start();
-//        assertTrue(ret);
-//
-//        Collection<IECSNode> nodes = ecs.getNodes().values();
-//        for (IECSNode node : nodes) {
-//            assertEquals(ECSNode.NodeStatus.START,
-//                    ((ECSNode) node).getStatus());
-//        }
-//    }
-
-
-    public void testAddNodes() throws Exception {
+    public void test02AddNodes() throws Exception {
         Collection<IECSNode> nodes =
                 ecs.setupNodes(BIG_SERVER_NUM, CACHE_STRATEGY, CACHE_SIZE);
         assertNull(nodes);
 
         Integer count = 3;
-        ecs.addNode(CACHE_STRATEGY,CACHE_SIZE);
-        boolean ret = ecs.start();
-        if(!ret){
-            System.out.println("First failed");
+        nodes = ecs.setupNodes(count, CACHE_STRATEGY, CACHE_SIZE);
+        assertNotNull(nodes);
+        assertEquals(count, new Integer(nodes.size()));
+
+        // Start the servers internally
+        for (IECSNode node : nodes) {
+            new Thread(
+                    new KVServer(node.getNodePort(), node.getNodeName(),
+                            ECSClient.ZK_HOST, Integer.parseInt(ECSClient.ZK_PORT)))
+                    .start();
         }
-        ecs.addNode(CACHE_STRATEGY,CACHE_SIZE);
-        ret = ecs.start();
-        if(!ret){
-            System.out.println("Second failed");
-        }
-        ecs.addNode(CACHE_STRATEGY,CACHE_SIZE);
-        ret = ecs.start();
-        if(!ret){
-            System.out.println("Third failed");
-        }
-//
+
+        boolean ret = ecs.awaitNodes(count, ECSClient.ZK_TIMEOUTSESSION);
+        assertTrue(ret);
     }
+
+    /**
+     * Start the nodes just added
+     */
+    public void test03StartNodes() throws Exception {
+        assertNotNull(ecs);
+        boolean ret = ecs.start();
+        assertTrue(ret);
+
+        Collection<IECSNode> nodes = ecs.getNodes().values();
+        for (IECSNode node : nodes) {
+            assertEquals(ECSNode.NodeStatus.START,
+                    ((ECSNode) node).getStatus());
+        }
+    }
+
+
+//    public void testAddNodes() throws Exception {
+//        Collection<IECSNode> nodes =
+//                ecs.setupNodes(BIG_SERVER_NUM, CACHE_STRATEGY, CACHE_SIZE);
+//        assertNull(nodes);
+//
+//        Integer count = 3;
+//        ecs.addNode(CACHE_STRATEGY,CACHE_SIZE);
+//        boolean ret = ecs.start();
+//        if(!ret){
+//            System.out.println("First failed");
+//        }
+//        ecs.addNode(CACHE_STRATEGY,CACHE_SIZE);
+//        ret = ecs.start();
+//        if(!ret){
+//            System.out.println("Second failed");
+//        }
+//        ecs.addNode(CACHE_STRATEGY,CACHE_SIZE);
+//        ret = ecs.start();
+//        if(!ret){
+//            System.out.println("Third failed");
+//        }
+////
+//    }
 
     /**
      * Remove one active node from whole service
@@ -130,18 +130,18 @@ public class ECSInitialTest extends TestCase {
         assertTrue(ret);
     }
 
-    public void test05addNodesAndMove() throws Exception{
-        Collection<IECSNode> nodes = ecs.setupNodes(1,"None", 300);
-
-        for (IECSNode node : nodes) {
-            new Thread(
-                    new KVServer(node.getNodePort(), node.getNodeName(),
-                            ECSClient.ZK_HOST, Integer.parseInt(ECSClient.ZK_PORT)))
-                    .start();
-        }
-        boolean ret = ecs.start();
-        assertTrue(ret);
-    }
+//    public void test05addNodesAndMove() throws Exception{
+//        Collection<IECSNode> nodes = ecs.setupNodes(1,"None", 300);
+//
+//        for (IECSNode node : nodes) {
+//            new Thread(
+//                    new KVServer(node.getNodePort(), node.getNodeName(),
+//                            ECSClient.ZK_HOST, Integer.parseInt(ECSClient.ZK_PORT)))
+//                    .start();
+//        }
+//        boolean ret = ecs.start();
+//        assertTrue(ret);
+//    }
 
     /**
      * Stop all active nodes

@@ -13,10 +13,16 @@ public class StoreDisk implements IStoreDisk {
 
     private File storage;
     private File toMove;
-    private String resourceDir = System.getProperty("user.dir") + "/Desktop/419/ECE419-2021/src/resources/";
+//    private String resourceDir = System.getProperty("user.dir") + "/Desktop/419/ECE419-2021/src/resources/";
 //    private String resourceDir_Ray = System.getProperty("user.dir") + "/Users/zhourui/Documents/Spring2021ECE419/M2/ECE419-2021/src/resources/";
 //    private String resourceDir = System.getProperty("user.dir") + "/Documents/ECE419/ECE419-2021Winter-Project" + "/ECE419-2021/src/resources/";
-// private String resourceDir = "./src/resources/";
+//    private String resourceDir = System.getProperty("user.dir") + "/Desktop/419/ECE419-2021/src/resources/";
+
+    //TODO: ECS SSH test path
+    private String resourceDir = System.getProperty("user.dir") + "/Documents/ECE419/ECE419-2021Winter-Project" + "/ECE419-2021/src/resources/";
+    //TODO: Unit test path
+//    private String resourceDir = System.getProperty("user.dir") + "/ECE419-2021/src/resources/";
+//    private String resourceDir = "./src/resources/";
     private String filename;
     private String toMoveFileName;
 
@@ -34,7 +40,7 @@ public class StoreDisk implements IStoreDisk {
         this.storage = new File(resourceDir + this.filename);
         this.toMove = new File(resourceDir + this.toMoveFileName);
         try {
-            System.out.println("-------------------File path is: " + this.storage.getPath());
+//            System.out.println("-------------------File path is: " + this.storage.getPath());
 //            System.out.println("-------------------Move path name is: " + this.toMove.getParent());
             if(this.storage.createNewFile()){
                 LOG.info(CLASS_NAME+"File successfully created");
@@ -79,6 +85,8 @@ public class StoreDisk implements IStoreDisk {
     @Override
     public File filter(String[] hashRange) throws Exception{
         System.out.println("--------In filter---------");
+        System.out.println("-------------------File path is: " + this.storage.getPath());
+        System.out.println("-------------------Move path name is: " + this.toMove.getPath());
         try {
             toMove.delete();
             toMove.createNewFile();

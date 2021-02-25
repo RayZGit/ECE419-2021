@@ -17876,3 +17876,29 @@
 2021-02-24 13:50:10,797 INFO  [main] root: Add ECSNode firstnode:9999
 2021-02-24 13:50:10,817 INFO  [main] root: Connected to: localhost : 9999
 2021-02-24 13:50:10,819 INFO  [main] root: Connected to server
+2021-02-24 23:22:17,840 INFO  [main] root: Add ECSNode firstnode:51896
+2021-02-24 23:22:17,869 INFO  [main] root: Connected to: localhost : 51896
+2021-02-24 23:22:17,872 INFO  [main] root: Connected to server
+2021-02-24 23:22:41,258 INFO  [main] root: Send message:	 'PUT 1 2'
+2021-02-24 23:22:41,311 INFO  [main] root: Receive message:	 'PUT_SUCCESS 1 2'
+2021-02-24 23:22:41,313 INFO  [main] root: Put succeed: (1,2)
+2021-02-24 23:22:46,118 INFO  [main] root: Send message:	 'PUT 3 4'
+2021-02-24 23:22:46,124 INFO  [main] root: Receive message:	 'PUT_UPDATE 3 4'
+2021-02-24 23:22:46,124 INFO  [main] root: Update succeed: (3,4)
+2021-02-24 23:22:48,721 INFO  [main] root: Send message:	 'PUT 3 5'
+2021-02-24 23:22:48,726 INFO  [main] root: Receive message:	 'PUT_UPDATE 3 5'
+2021-02-24 23:22:48,726 INFO  [main] root: Update succeed: (3,5)
+2021-02-24 23:22:52,791 INFO  [main] root: Send message:	 'PUT 4 5'
+2021-02-24 23:22:52,795 INFO  [main] root: Receive message:	 'PUT_SUCCESS 4 5'
+2021-02-24 23:22:52,795 INFO  [main] root: Put succeed: (4,5)
+2021-02-24 23:22:57,640 INFO  [main] root: Socket disconnected.
+2021-02-24 23:22:57,640 INFO  [main] root: Disconnected from server
+2021-02-25 00:09:56,377 INFO  [main] root: Add ECSNode firstnode:50000
+2021-02-25 00:09:56,406 INFO  [main] root: Connected to: localhost : 50000
+2021-02-25 00:09:56,407 INFO  [main] root: Connected to server
+2021-02-25 00:10:01,365 INFO  [main] root: Send message:	 'PUT kkk yyy'
+2021-02-25 00:10:01,433 INFO  [main] root: Receive message:	 'PUT_SUCCESS kkk yyy'
+2021-02-25 00:10:01,435 INFO  [main] root: Put succeed: (kkk,yyy)
+2021-02-25 00:10:14,393 INFO  [main] root: Send message:	 'PUT 11111 222222 2 2 2'
+2021-02-25 00:10:14,400 INFO  [main] root: Receive message:	 'PUT_SUCCESS 11111 222222 2 2 2'
+2021-02-25 00:10:14,401 INFO  [main] root: Put succeed: (11111,222222 2 2 2)

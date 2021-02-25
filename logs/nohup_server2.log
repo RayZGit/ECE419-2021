@@ -3,78 +3,38 @@ Start Server
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-2021-02-24 13:24:44,917 INFO  [main] root: Server: <server2>: server zNode exist, get cache data and set server cache
-2021-02-24 13:24:44,917 INFO  [main] root: zooKeeper connection established ...
+2021-02-25 00:10:26,559 INFO  [main] root: Server: <server2>: server zNode exist, get cache data and set server cache
+2021-02-25 00:10:26,560 INFO  [main] root: zooKeeper connection established ...
 !!!!!!!!!!!!!!!Get Hash Ring Info Success!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!  Hash Ring updated, hashring is: []
-2021-02-24 13:24:44,925 DEBUG [main] root: Server: <server2>: Set up watcher on /ZNode/server2
+!!!!!!!!!!!!!!!  Hash Ring updated, hashring is: [{"name":"server1","host":"127.0.0.1","port":50000}]
+2021-02-25 00:10:26,591 DEBUG [main] root: Server: <server2>: Set up watcher on /ZNode/server2
 !!!!!!!!!!!!!!!!!!Path: /Users/hongxu/Documents/ECE419/ECE419-2021Winter-Project/ECE419-2021/src/resources/
-2021-02-24 13:24:44,926 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk_server2
+2021-02-25 00:10:26,593 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk_server2
 StoreDisk: Initiate the persistent storage for DataDisk_server2
--------------------File path is: /Users/hongxu/Documents/ECE419/ECE419-2021Winter-Project/ECE419-2021/src/resources/DataDisk_server2.txt
-2021-02-24 13:24:44,926 INFO  [main] root: StoreDisk: File already existed
+2021-02-25 00:10:26,597 INFO  [main] root: StoreDisk: File already existed
 Cache strategy: None
 Cache Size: 2
 Initialize None Cache
 Initialize server
-2021-02-24 13:24:44,928 INFO  [Thread-0] root: <Server> Initialize server ...
+2021-02-25 00:10:26,601 INFO  [Thread-0] root: <Server> Initialize server ...
 Server listening on port: 50001
-2021-02-24 13:24:44,931 INFO  [Thread-0] root: <Server> Server listening on port: 50001
+2021-02-25 00:10:26,605 INFO  [Thread-0] root: <Server> Server listening on port: 50001
 Event Type:NodeDataChanged
 Event Status:SyncConnected
 Event ZNode path:/MD
  
- !!!!!!!! In KVServer Process, Type is START
+ !!!!!!!! In KVServer Process, Type is RECEIVE
 Server ZNode path is: /ZNode/server2/KVAdminMessage
-2021-02-24 13:25:03,626 INFO  [main-EventThread] root: Server: <server2>: Server Started
-!!!!!!!!!!!!!!! In Process, Hash Ring updated, hashring is: [{"name":"server3","host":"127.0.0.1","port":50002},{"name":"server2","host":"127.0.0.1","port":50001},{"name":"server1","host":"127.0.0.1","port":50000}]
-2021-02-24 13:25:03,627 INFO  [main-EventThread] root: Server: <server2>: hash ring updated
-!!!!!!!!!!!!!!! In Process, Hash Ring updated, hashring is: [{"name":"server3","host":"127.0.0.1","port":50002},{"name":"server2","host":"127.0.0.1","port":50001}]
-2021-02-24 13:25:39,086 INFO  [main-EventThread] root: Server: <server2>: hash ring updated
-!!!!!!!!!!!!!!! In Process, Hash Ring updated, hashring is: []
-2021-02-24 13:27:44,731 INFO  [main-EventThread] root: Server: <server2>: hash ring updated
-Event Type:NodeDataChanged
-Event Status:SyncConnected
-Event ZNode path:/ZNode/server2
-Event Type:NodeDeleted
-Event Status:SyncConnected
-Event ZNode path:/ZNode/server2/KVAdminMessage
-2021-02-24 13:27:44,816 DEBUG [main-EventThread] root: Server: <server2>: Unable to process the watcher event
-org.apache.zookeeper.KeeperException$NoNodeException: KeeperErrorCode = NoNode for /ZNode/server2/KVAdminMessage
-	at org.apache.zookeeper.KeeperException.create(KeeperException.java:114)
-	at org.apache.zookeeper.KeeperException.create(KeeperException.java:54)
-	at org.apache.zookeeper.ZooKeeper.getData(ZooKeeper.java:1215)
-	at org.apache.zookeeper.ZooKeeper.getData(ZooKeeper.java:1244)
-	at app_kvServer.KVServer.process(KVServer.java:748)
-	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:531)
-	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:506)
-Event Type:NodeChildrenChanged
-Event Status:SyncConnected
-Event ZNode path:/ZNode/server2
-2021-02-24 13:27:44,819 DEBUG [main-EventThread] root: Server: <server2>: Unable to process the watcher event
-org.apache.zookeeper.KeeperException$NoNodeException: KeeperErrorCode = NoNode for /ZNode/server2/KVAdminMessage
-	at org.apache.zookeeper.KeeperException.create(KeeperException.java:114)
-	at org.apache.zookeeper.KeeperException.create(KeeperException.java:54)
-	at org.apache.zookeeper.ZooKeeper.getData(ZooKeeper.java:1215)
-	at org.apache.zookeeper.ZooKeeper.getData(ZooKeeper.java:1244)
-	at app_kvServer.KVServer.process(KVServer.java:748)
-	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:531)
-	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:506)
-!!!!!!!!!!!!!!! In Process, Hash Ring updated, hashring is: [{"name":"server3","host":"127.0.0.1","port":50002},{"name":"server2","host":"127.0.0.1","port":50001},{"name":"server1","host":"127.0.0.1","port":50000}]
-2021-02-24 13:27:55,135 INFO  [main-EventThread] root: Server: <server2>: hash ring updated
-!!!!!!!!!!!!!!! In Process, Hash Ring updated, hashring is: [{"name":"server2","host":"127.0.0.1","port":50001},{"name":"server1","host":"127.0.0.1","port":50000}]
-2021-02-24 13:28:10,224 INFO  [main-EventThread] root: Server: <server2>: hash ring updated
-!!!!!!!!!!!!!!! In Process, Hash Ring updated, hashring is: []
-2021-02-24 13:30:09,034 INFO  [main-EventThread] root: Server: <server2>: hash ring updated
-!!!!!!!!!!!!!!! In Process, Hash Ring updated, hashring is: []
-2021-02-24 13:30:28,947 INFO  [main-EventThread] root: Server: <server2>: hash ring updated
-!!!!!!!!!!!!!!! In Process, Hash Ring updated, hashring is: [{"name":"server3","host":"127.0.0.1","port":50002},{"name":"server2","host":"127.0.0.1","port":50001},{"name":"server1","host":"127.0.0.1","port":50000}]
-2021-02-24 13:30:39,306 INFO  [main-EventThread] root: Server: <server2>: hash ring updated
-!!!!!!!!!!!!!!! In Process, Hash Ring updated, hashring is: [{"name":"server2","host":"127.0.0.1","port":50001},{"name":"server1","host":"127.0.0.1","port":50000}]
-2021-02-24 13:30:59,392 INFO  [main-EventThread] root: Server: <server2>: hash ring updated
-!!!!!!!!!!!!!!! In Process, Hash Ring updated, hashring is: []
-2021-02-24 13:31:52,701 INFO  [main-EventThread] root: Server: <server2>: hash ring updated
-!!!!!!!!!!!!!!! In Process, Hash Ring updated, hashring is: [{"name":"server3","host":"127.0.0.1","port":50002},{"name":"server2","host":"127.0.0.1","port":50001},{"name":"server1","host":"127.0.0.1","port":50000}]
-2021-02-24 13:32:03,057 INFO  [main-EventThread] root: Server: <server2>: hash ring updated
-!!!!!!!!!!!!!!! In Process, Hash Ring updated, hashring is: [{"name":"server2","host":"127.0.0.1","port":50001},{"name":"server1","host":"127.0.0.1","port":50000}]
-2021-02-24 13:32:23,134 INFO  [main-EventThread] root: Server: <server2>: hash ring updated
+ 
+ !!!!!!!! RECEIVE RECEIVE RECEIVE !!!!!
+2021-02-25 00:10:48,499 INFO  [main-EventThread] root: Server: <server2>: receiving data initialization....
+Receiver Data 1
+Initialize receiver server----------------------------------------
+2021-02-25 00:10:48,499 INFO  [main-EventThread] root: <Receiver Server> Initialize server ...
+Receiver Server listening on port: 49352493524935249352
+2021-02-25 00:10:48,499 INFO  [main-EventThread] root: <Receiver Server> Server listening on port: 49352
+Initialize receiver server DONE!!!!!!!!!!!!!!!!!!!!!!!!----------------------------------------
+---------------------------------------I am receiving on port: 50001
+Receiver Data 1.1
+Receiver Data 1.2
+Receiver Data 1.3

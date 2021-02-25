@@ -3,32 +3,71 @@ Start Server
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-2021-02-24 13:24:36,291 INFO  [main] root: Server: <server1>: server zNode exist, get cache data and set server cache
-2021-02-24 13:24:36,292 INFO  [main] root: zooKeeper connection established ...
+2021-02-25 00:09:34,438 INFO  [main] root: Server: <server1>: server zNode exist, get cache data and set server cache
+2021-02-25 00:09:34,439 INFO  [main] root: zooKeeper connection established ...
 !!!!!!!!!!!!!!!Get Hash Ring Info Success!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!  Hash Ring updated, hashring is: []
-2021-02-24 13:24:36,299 DEBUG [main] root: Server: <server1>: Set up watcher on /ZNode/server1
+2021-02-25 00:09:34,445 DEBUG [main] root: Server: <server1>: Set up watcher on /ZNode/server1
 !!!!!!!!!!!!!!!!!!Path: /Users/hongxu/Documents/ECE419/ECE419-2021Winter-Project/ECE419-2021/src/resources/
-2021-02-24 13:24:36,300 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk_server1
+2021-02-25 00:09:34,446 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk_server1
 StoreDisk: Initiate the persistent storage for DataDisk_server1
--------------------File path is: /Users/hongxu/Documents/ECE419/ECE419-2021Winter-Project/ECE419-2021/src/resources/DataDisk_server1.txt
-2021-02-24 13:24:36,300 INFO  [main] root: StoreDisk: File already existed
+2021-02-25 00:09:34,446 INFO  [main] root: StoreDisk: File already existed
 Cache strategy: None
 Cache Size: 1
 Initialize None Cache
 Initialize server
-2021-02-24 13:24:36,301 INFO  [Thread-0] root: <Server> Initialize server ...
+2021-02-25 00:09:34,449 INFO  [Thread-0] root: <Server> Initialize server ...
 Server listening on port: 50000
-2021-02-24 13:24:36,304 INFO  [Thread-0] root: <Server> Server listening on port: 50000
+2021-02-25 00:09:34,452 INFO  [Thread-0] root: <Server> Server listening on port: 50000
 Event Type:NodeDataChanged
 Event Status:SyncConnected
 Event ZNode path:/MD
  
  !!!!!!!! In KVServer Process, Type is START
 Server ZNode path is: /ZNode/server1/KVAdminMessage
-2021-02-24 13:25:03,627 INFO  [main-EventThread] root: Server: <server1>: Server Started
-!!!!!!!!!!!!!!! In Process, Hash Ring updated, hashring is: [{"name":"server3","host":"127.0.0.1","port":50002},{"name":"server2","host":"127.0.0.1","port":50001},{"name":"server1","host":"127.0.0.1","port":50000}]
-2021-02-24 13:25:03,628 INFO  [main-EventThread] root: Server: <server1>: hash ring updated
+2021-02-25 00:09:45,380 INFO  [main-EventThread] root: Server: <server1>: Server Started
+!!!!!!!!!!!!!!! In Process, Hash Ring updated, hashring is: [{"name":"server1","host":"127.0.0.1","port":50000}]
+2021-02-25 00:09:45,381 INFO  [main-EventThread] root: Server: <server1>: hash ring updated
+Establishing connection !
+
+2021-02-25 00:09:56,409 INFO  [Thread-1] root: <Server> Establishing connection
+2021-02-25 00:09:56,409 INFO  [Thread-0] root: <Server> Connected to localhost on port 49343
+2021-02-25 00:10:01,370 INFO  [Thread-1] root: Receive message:	 'PUT kkk yyy'
+2021-02-25 00:10:01,373 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:49343>: key: kkk | value: yyy | status: PUT
+<Server> RECEIVE from 	<127.0.0.1:49343>: key: kkk | value: yyy | status: PUT
+!!!!!!!!!!!!Received before handle client request!!!!!!!!!!!!!!
+In handleClientRequest 1
+In handleClientRequest 2
+------------In Hashing: [{"name":"server1","host":"127.0.0.1","port":50000}]2021-02-25 00:10:01,394 INFO  [Thread-1] root: Add ECSNode server1:50000
+In handleClientRequest 3
+In handleClientRequest 4
+In handleClientRequest 6
+In handleClientRequest 8
+2021-02-25 00:10:01,422 INFO  [Thread-1] root: StoreDisk: File already existed
+2021-02-25 00:10:01,422 INFO  [Thread-1] root: StoreDisk: File already existed
+2021-02-25 00:10:01,423 INFO  [Thread-1] root: StoreDisk: File already existed
+2021-02-25 00:10:01,424 INFO  [Thread-1] root: StoreDisk: File already existed
+Put succeed
+2021-02-25 00:10:01,425 INFO  [Thread-1] root: <Server> Put succeedkkk,yyy)
+2021-02-25 00:10:01,425 INFO  [Thread-1] root: Send message:	 'PUT_SUCCESS kkk yyy'
+2021-02-25 00:10:01,425 INFO  [Thread-1] root: <Server> SEND 	<127.0.0.1:49343>: key: kkk| value: yyy| status: PUT_SUCCESS
+<Server> SEND 	<127.0.0.1:49343>: key: kkk| value: yyy| status: PUT_SUCCESS
+2021-02-25 00:10:14,394 INFO  [Thread-1] root: Receive message:	 'PUT 11111 222222 2 2 2'
+2021-02-25 00:10:14,394 INFO  [Thread-1] root: <Server> RECEIVE from 	<127.0.0.1:49343>: key: 11111 | value: 222222 2 2 2 | status: PUT
+<Server> RECEIVE from 	<127.0.0.1:49343>: key: 11111 | value: 222222 2 2 2 | status: PUT
+!!!!!!!!!!!!Received before handle client request!!!!!!!!!!!!!!
+In handleClientRequest 1
+In handleClientRequest 2
+------------In Hashing: [{"name":"server1","host":"127.0.0.1","port":50000}]2021-02-25 00:10:14,396 INFO  [Thread-1] root: Add ECSNode server1:50000
+In handleClientRequest 3
+In handleClientRequest 4
+In handleClientRequest 6
+In handleClientRequest 8
+Put succeed
+2021-02-25 00:10:14,399 INFO  [Thread-1] root: <Server> Put succeed11111,222222 2 2 2)
+2021-02-25 00:10:14,399 INFO  [Thread-1] root: Send message:	 'PUT_SUCCESS 11111 222222 2 2 2'
+2021-02-25 00:10:14,399 INFO  [Thread-1] root: <Server> SEND 	<127.0.0.1:49343>: key: 11111| value: 222222 2 2 2| status: PUT_SUCCESS
+<Server> SEND 	<127.0.0.1:49343>: key: 11111| value: 222222 2 2 2| status: PUT_SUCCESS
 Event Type:NodeDataChanged
 Event Status:SyncConnected
 Event ZNode path:/ZNode/server1/KVAdminMessage
@@ -37,36 +76,38 @@ Event ZNode path:/ZNode/server1/KVAdminMessage
 Server ZNode path is: /ZNode/server1/KVAdminMessage
  
  !!!!!!!! MOVE_DATA MOVE_DATA MOVE_DATA !!!!!
-2021-02-24 13:25:38,971 INFO  [main-EventThread] root: Server: <server1>: moving data initialization....
-------------In move data, host is 127.0.0.1 ||||| port is: 9999
+2021-02-25 00:10:43,380 INFO  [main-EventThread] root: Server: <server1>: moving data initialization....
+------------In move data, host is 127.0.0.1 ||||| port is: 0
 In move data 1, zNode path: /ZNode/server1
-2021-02-24 13:25:39,013 INFO  [main-EventThread] root: Server: <server1>: Send Data, update server data transfer progress to IN_PROGRESS
-2021-02-24 13:25:39,013 INFO  [main-EventThread] root: Server: <server1>: Server status change to WRITE_LOCK
+2021-02-25 00:10:43,397 INFO  [main-EventThread] root: Server: <server1>: Send Data, update server data transfer progress to IN_PROGRESS
+2021-02-25 00:10:43,397 INFO  [main-EventThread] root: Server: <server1>: Server status change to WRITE_LOCK
 ------------In move data 1----------------
-2021-02-24 13:25:39,013 ERROR [main-EventThread] root: fail to move data to new server.
-2021-02-24 13:25:39,013 INFO  [main-EventThread] root: Server: <server1>: Server status change to UnLOCK
+--------In filter---------
+-------------------File path is: /Users/hongxu/Documents/ECE419/ECE419-2021Winter-Project/ECE419-2021/src/resources/DataDisk_server1.txt
+-------------------Move path name is: /Users/hongxu/Documents/ECE419/ECE419-2021Winter-Project/ECE419-2021/src/resources/DataDisk_server1_toMove.txt
+--------In filter 4---------
+------------In move data 2----------------
+127.0.0.10
+java.net.BindException: Can't assign requested address
+	at java.base/sun.nio.ch.Net.connect0(Native Method)
+	at java.base/sun.nio.ch.Net.connect(Net.java:574)
+	at java.base/sun.nio.ch.Net.connect(Net.java:563)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:588)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:333)
+	at java.base/java.net.Socket.connect(Socket.java:648)
+	at java.base/java.net.Socket.connect(Socket.java:597)
+	at java.base/java.net.Socket.<init>(Socket.java:520)
+	at java.base/java.net.Socket.<init>(Socket.java:294)
+	at app_kvServer.KVServer.moveData(KVServer.java:685)
+	at app_kvServer.KVServer.process(KVServer.java:805)
+	at org.apache.zookeeper.ClientCnxn$EventThread.processEvent(ClientCnxn.java:531)
+	at org.apache.zookeeper.ClientCnxn$EventThread.run(ClientCnxn.java:506)
+2021-02-25 00:10:43,409 ERROR [main-EventThread] root: fail to move data to new server.
+2021-02-25 00:10:43,410 INFO  [main-EventThread] root: Server: <server1>: Server status change to UnLOCK
 In move data 2 , zNode path: /ZNode/server1
-2021-02-24 13:25:39,023 INFO  [main-EventThread] root: Server: <server1>: Send Data, update server data transfer progress to IDLE
+2021-02-25 00:10:43,420 INFO  [main-EventThread] root: Server: <server1>: Send Data, update server data transfer progress to IDLE
 Event Type:NodeDataChanged
 Event Status:SyncConnected
 Event ZNode path:/ZNode/server1
-Event Type:NodeDataChanged
-Event Status:SyncConnected
-Event ZNode path:/ZNode/server1/KVAdminMessage
- 
- !!!!!!!! In KVServer Process, Type is SHUT_DOWN
-Server ZNode path is: /ZNode/server1/KVAdminMessage
-2021-02-24 13:25:39,076 INFO  [main-EventThread] root: Server: <server1>: Server ShotDown
-2021-02-24 13:25:39,077 ERROR [Thread-0] root: <Server> Error! Unable to establish connection. 
-
-java.net.SocketException: Socket closed
-	at java.base/sun.nio.ch.NioSocketImpl.endAccept(NioSocketImpl.java:689)
-	at java.base/sun.nio.ch.NioSocketImpl.accept(NioSocketImpl.java:762)
-	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:684)
-	at java.base/java.net.ServerSocket.platformImplAccept(ServerSocket.java:650)
-	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:626)
-	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:583)
-	at java.base/java.net.ServerSocket.accept(ServerSocket.java:540)
-	at app_kvServer.KVServer.run(KVServer.java:430)
-	at java.base/java.lang.Thread.run(Thread.java:832)
-2021-02-24 13:25:39,079 INFO  [Thread-0] root: Server stopped.
+!!!!!!!!!!!!!!! In Process, Hash Ring updated, hashring is: [{"name":"server2","host":"127.0.0.1","port":50001},{"name":"server1","host":"127.0.0.1","port":50000}]
+2021-02-25 00:10:48,488 INFO  [main-EventThread] root: Server: <server1>: hash ring updated

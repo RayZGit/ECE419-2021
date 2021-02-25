@@ -3,44 +3,22 @@ Start Server
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-2021-02-24 13:24:53,060 INFO  [main] root: Server: <server3>: server zNode exist, get cache data and set server cache
-2021-02-24 13:24:53,060 INFO  [main] root: zooKeeper connection established ...
+2021-02-24 22:53:41,774 INFO  [main] root: Server: <server3>: server zNode exist, get cache data and set server cache
+2021-02-24 22:53:41,774 INFO  [main] root: zooKeeper connection established ...
 !!!!!!!!!!!!!!!Get Hash Ring Info Success!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!  Hash Ring updated, hashring is: []
-2021-02-24 13:24:53,065 DEBUG [main] root: Server: <server3>: Set up watcher on /ZNode/server3
+!!!!!!!!!!!!!!!  Hash Ring updated, hashring is: [{"name":"server2","host":"127.0.0.1","port":50001},{"name":"server1","host":"127.0.0.1","port":50000}]
+2021-02-24 22:53:41,791 DEBUG [main] root: Server: <server3>: Set up watcher on /ZNode/server3
 !!!!!!!!!!!!!!!!!!Path: /Users/hongxu/Documents/ECE419/ECE419-2021Winter-Project/ECE419-2021/src/resources/
-2021-02-24 13:24:53,067 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk_server3
+2021-02-24 22:53:41,798 INFO  [main] root: StoreDisk: Initiate the persistent storage for DataDisk_server3
 StoreDisk: Initiate the persistent storage for DataDisk_server3
--------------------File path is: /Users/hongxu/Documents/ECE419/ECE419-2021Winter-Project/ECE419-2021/src/resources/DataDisk_server3.txt
-2021-02-24 13:24:53,067 INFO  [main] root: StoreDisk: File already existed
-Cache strategy: None
-Cache Size: 3
-Initialize None Cache
+2021-02-24 22:53:41,799 INFO  [main] root: StoreDisk: File already existed
+Cache strategy: FIFO
+Cache Size: 1024
+Initialize FIFO
 Initialize server
-2021-02-24 13:24:53,068 INFO  [Thread-0] root: <Server> Initialize server ...
-Server listening on port: 50002
-2021-02-24 13:24:53,070 INFO  [Thread-0] root: <Server> Server listening on port: 50002
-Event Type:NodeDataChanged
-Event Status:SyncConnected
-Event ZNode path:/MD
- 
- !!!!!!!! In KVServer Process, Type is START
-Server ZNode path is: /ZNode/server3/KVAdminMessage
-2021-02-24 13:25:03,626 INFO  [main-EventThread] root: Server: <server3>: Server Started
-!!!!!!!!!!!!!!! In Process, Hash Ring updated, hashring is: [{"name":"server3","host":"127.0.0.1","port":50002},{"name":"server2","host":"127.0.0.1","port":50001},{"name":"server1","host":"127.0.0.1","port":50000}]
-2021-02-24 13:25:03,627 INFO  [main-EventThread] root: Server: <server3>: hash ring updated
-Event Type:NodeDataChanged
-Event Status:SyncConnected
-Event ZNode path:/ZNode/server3/KVAdminMessage
- 
- !!!!!!!! In KVServer Process, Type is RECEIVE
-Server ZNode path is: /ZNode/server3/KVAdminMessage
- 
- !!!!!!!! RECEIVE RECEIVE RECEIVE !!!!!
-2021-02-24 13:25:33,953 INFO  [main-EventThread] root: Server: <server3>: receiving data initialization....
-Receiver Data 1
-Initialize receiver server
-2021-02-24 13:25:33,953 INFO  [main-EventThread] root: <Receiver Server> Initialize server ...
-Receiver Server listening on port: 50002
-2021-02-24 13:25:33,953 INFO  [main-EventThread] root: <Receiver Server> Server listening on port: 50002
-Receiver Data 1.1
+2021-02-24 22:53:41,804 INFO  [Thread-0] root: <Server> Initialize server ...
+Error! Cannot open server socket:
+2021-02-24 22:53:41,810 ERROR [Thread-0] root: <Server> Error! Cannot open server socket:
+Port 50002 is already bound!
+2021-02-24 22:53:41,811 ERROR [Thread-0] root: <Server> Port 50002 is already bound!
+2021-02-24 22:53:41,811 INFO  [Thread-0] root: Server stopped.
