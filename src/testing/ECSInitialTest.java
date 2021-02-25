@@ -105,6 +105,19 @@ public class ECSInitialTest extends TestCase {
         assertTrue(ret);
     }
 
+    public void test05addNodesAndMove() throws Exception{
+        Collection<IECSNode> nodes = ecs.setupNodes(1,"None", 300);
+
+        for (IECSNode node : nodes) {
+            new Thread(
+                    new KVServer(node.getNodePort(), node.getNodeName(),
+                            ECSClient.ZK_HOST, Integer.parseInt(ECSClient.ZK_PORT)))
+                    .start();
+        }
+        boolean ret = ecs.start();
+        assertTrue(ret);
+    }
+
     /**
      * Stop all active nodes
      */

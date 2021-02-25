@@ -20,6 +20,7 @@ import shared.messages.KVAdminMessage;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.net.BindException;
+import java.net.ConnectException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.List;
@@ -689,7 +690,15 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			System.out.println("------------In move data 2----------------");
 			long fileLen = toMove.length();
 			System.out.println(host + port);
-			Socket socket = new Socket(host, port);
+			Socket socket;
+			while (true) {
+				try {
+					socket = new Socket(host, port);
+					break;
+				} catch (ConnectException e) {
+					continue;
+				}
+			}
 			System.out.println("------------In move data 3----------------");
 			BufferedOutputStream outputStream = new BufferedOutputStream(socket.getOutputStream());
 			System.out.println("------------In move data 4----------------");
@@ -712,6 +721,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 			outputStream.close();
 			socket.close();
 		} catch (Exception e) {
+			e.printStackTrace();
 			logger.error("fail to move data to new server.");
 		} finally {
 			unlockWrite();

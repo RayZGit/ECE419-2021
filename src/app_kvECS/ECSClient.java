@@ -193,13 +193,12 @@ public class ECSClient implements IECSClient {
         for(String serverName : nodeMap.keySet())
         {
             ECSNode node = (ECSNode)nodeMap.get(serverName);
+            //TODO: CHECK
             if(node.getStatus().equals(ECSNode.NodeStatus.STOP)){
                 startNode.add(node);
                 hashRing.addNode(node);
             }
         }
-
-        addNodeHandler(startNode);
 
         KVAdminMessage msg = new KVAdminMessage(KVAdminMessage.ServerFunctionalType.START);
         Map<ECSNode,String> nodeErrorMap  = adminDataHandler.brodcast(msg.encode().getBytes(),startNode, true);
@@ -210,6 +209,8 @@ public class ECSClient implements IECSClient {
             }
             node.setStatus(ECSNode.NodeStatus.START);
         }
+
+        addNodeHandler(startNode);
         metaDataHandler();
         return nodeErrorMap.isEmpty();
     }
