@@ -530,6 +530,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 		request.setReceiveServerPort(receiverSocket.getLocalPort());
 		try{
 			zooKeeper.setData(path , request.encode().getBytes(), zooKeeper.exists(path, false).getVersion());
+			logger.info("$$$$$$$$$$$$"+request.toString()+"RAY WOULD LIKE TO SEE");
 			zooKeeper.exists(path, this);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -802,7 +803,7 @@ public class KVServer implements IKVServer, Runnable, Watcher {
 					case MOVE_DATA:
 						System.out.println(" \n !!!!!!!! MOVE_DATA MOVE_DATA MOVE_DATA !!!!!");
 						logger.info("Server: " + "<" + serverName + ">: "+ "moving data initialization....");
-						moveData(request.getReceiveHashRangeValue(), request.getReceiverHost(), request.getReceiveServerPort());
+//						moveData(request.getReceiveHashRangeValue(), request.getReceiverHost(), request.getReceiveServerPort());
 						zooKeeper.setData(path , "MOVE_DATA_ ACK".getBytes(), zooKeeper.exists(path, false).getVersion());
 						zooKeeper.exists(path, this);
 						break;

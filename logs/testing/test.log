@@ -7261,3 +7261,2062 @@ java.io.IOException: No such file or directory
 	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
 	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
 	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:23:49,601 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:23:49,931 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-25 00:23:50,089 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:23:50,092 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-25 00:23:50,092 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-25 00:23:50,124 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:23:50,162 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:24:00,518 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 00:24:00,521 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 00:24:00,523 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 00:24:00,711 ERROR [main-EventThread] root: java.io.IOException: No such file or directory
+2021-02-25 00:24:00,711 ERROR [main-EventThread] root: fail to move data to new server.
+2021-02-25 00:24:05,853 ERROR [Thread-3] root: <Server> Error! Unable to establish connection. 
+
+java.net.SocketException: Socket closed
+	at java.base/sun.nio.ch.NioSocketImpl.endAccept(NioSocketImpl.java:689)
+	at java.base/sun.nio.ch.NioSocketImpl.accept(NioSocketImpl.java:762)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:684)
+	at java.base/java.net.ServerSocket.platformImplAccept(ServerSocket.java:650)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:626)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:583)
+	at java.base/java.net.ServerSocket.accept(ServerSocket.java:540)
+	at app_kvServer.KVServer.run(KVServer.java:409)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-02-25 00:45:10,188 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:45:10,665 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-25 00:45:10,985 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:45:10,988 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-25 00:45:10,988 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-25 00:45:11,129 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:45:11,193 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:45:21,681 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 00:45:21,683 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 00:45:21,684 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 00:45:21,874 ERROR [main-EventThread] root: java.io.IOException: No such file or directory
+2021-02-25 00:45:21,875 ERROR [main-EventThread] root: fail to move data to new server.
+2021-02-25 00:45:27,005 ERROR [Thread-3] root: <Server> Error! Unable to establish connection. 
+
+java.net.SocketException: Socket closed
+	at java.base/sun.nio.ch.NioSocketImpl.endAccept(NioSocketImpl.java:689)
+	at java.base/sun.nio.ch.NioSocketImpl.accept(NioSocketImpl.java:762)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:684)
+	at java.base/java.net.ServerSocket.platformImplAccept(ServerSocket.java:650)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:626)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:583)
+	at java.base/java.net.ServerSocket.accept(ServerSocket.java:540)
+	at app_kvServer.KVServer.run(KVServer.java:409)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-02-25 00:46:30,541 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:46:30,785 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-25 00:46:31,003 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:46:31,005 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-25 00:46:31,005 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-25 00:46:31,049 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:46:31,096 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:46:41,423 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 00:46:41,425 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 00:46:41,427 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 00:46:41,600 ERROR [main-EventThread] root: java.io.IOException: No such file or directory
+2021-02-25 00:46:41,601 ERROR [main-EventThread] root: fail to move data to new server.
+2021-02-25 00:46:46,723 ERROR [Thread-3] root: <Server> Error! Unable to establish connection. 
+
+java.net.SocketException: Socket closed
+	at java.base/sun.nio.ch.NioSocketImpl.endAccept(NioSocketImpl.java:689)
+	at java.base/sun.nio.ch.NioSocketImpl.accept(NioSocketImpl.java:762)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:684)
+	at java.base/java.net.ServerSocket.platformImplAccept(ServerSocket.java:650)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:626)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:583)
+	at java.base/java.net.ServerSocket.accept(ServerSocket.java:540)
+	at app_kvServer.KVServer.run(KVServer.java:409)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-02-25 00:50:38,488 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:50:38,915 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-25 00:50:39,117 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:50:39,120 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-25 00:50:39,120 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-25 00:50:39,155 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:50:39,197 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:50:49,432 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 00:50:49,443 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 00:50:49,445 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 00:52:13,241 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:52:13,510 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-25 00:52:13,765 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:52:13,769 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-25 00:52:13,769 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-25 00:52:13,826 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:52:13,927 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:52:24,335 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 00:52:24,338 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 00:52:24,340 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 00:52:28,209 ERROR [main] root: ECSClient: Unexpected ErrorNone
+2021-02-25 00:52:29,834 ERROR [main-EventThread] root: java.io.IOException: No such file or directory
+2021-02-25 00:52:29,835 ERROR [main-EventThread] root: fail to move data to new server.
+2021-02-25 00:52:34,966 ERROR [Thread-3] root: <Server> Error! Unable to establish connection. 
+
+java.net.SocketException: Socket closed
+	at java.base/sun.nio.ch.NioSocketImpl.endAccept(NioSocketImpl.java:689)
+	at java.base/sun.nio.ch.NioSocketImpl.accept(NioSocketImpl.java:762)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:684)
+	at java.base/java.net.ServerSocket.platformImplAccept(ServerSocket.java:650)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:626)
+	at java.base/java.net.ServerSocket.implAccept(ServerSocket.java:583)
+	at java.base/java.net.ServerSocket.accept(ServerSocket.java:540)
+	at app_kvServer.KVServer.run(KVServer.java:409)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+2021-02-25 00:52:45,701 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:52:46,059 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-25 00:52:46,346 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:52:46,349 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-25 00:52:46,349 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-25 00:52:46,410 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:52:46,481 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 00:52:56,913 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 00:52:56,915 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 00:52:56,916 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 01:45:38,677 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 01:45:39,107 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-25 01:45:39,423 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 01:45:39,426 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-25 01:45:39,426 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-25 01:45:39,472 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 01:45:39,524 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 01:45:55,230 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 01:45:55,233 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 01:45:55,235 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 01:45:55,237 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 01:48:23,163 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 01:48:23,403 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-25 01:48:23,668 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 01:48:23,671 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-25 01:48:23,671 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-25 01:48:23,707 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 01:48:23,751 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 01:48:39,368 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 01:48:39,372 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 01:48:39,374 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 01:48:39,376 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 01:48:54,800 ERROR [main-EventThread] root: java.io.IOException: No such file or directory
+2021-02-25 01:48:54,801 ERROR [main-EventThread] root: fail to move data to new server.
+2021-02-25 01:52:42,692 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 01:52:43,002 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-25 01:52:43,216 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 01:52:43,220 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-25 01:52:43,220 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-25 01:52:43,280 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 01:52:43,376 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 01:53:19,458 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 01:53:19,462 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 01:53:19,463 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 01:53:19,464 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 02:00:16,955 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 02:00:17,296 ERROR [main] root: ECSClient: The error happened during the SetupNodes and count is greater than available nodes
+2021-02-25 02:00:17,513 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 02:00:17,517 ERROR [Thread-1] root: <Server> Error! Cannot open server socket:
+2021-02-25 02:00:17,517 ERROR [Thread-1] root: <Server> Port 50000 is already bound!
+2021-02-25 02:00:17,556 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 02:00:17,591 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:191)
+	at testing.ECSInitialTest.test02AddNodes(ECSInitialTest.java:75)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:69)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 02:00:42,377 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 02:00:42,380 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 02:00:42,382 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 02:00:42,384 ERROR [main] root: ECSClient: locateNode error
+2021-02-25 02:02:49,203 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 02:04:36,345 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 02:09:00,406 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 02:09:00,473 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 02:09:00,474 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 02:09:00,474 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 02:09:00,474 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 02:09:00,475 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 02:09:00,475 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 02:09:00,475 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 02:09:00,476 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 02:09:05,920 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 02:09:10,967 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 02:09:16,243 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 02:09:21,277 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 02:09:21,278 INFO  [main] root: ECSClient: RECEIVE DATA SENT -----------------------
+2021-02-25 02:09:26,316 INFO  [main] root: ECSClient: MOVE_DATA -------------------------
+2021-02-25 02:09:36,414 INFO  [main] root: Removing server2 node
+2021-02-25 02:09:36,415 INFO  [main] root: next node found-------starting transfering data fromserver2 to server1
+2021-02-25 02:09:36,416 INFO  [main] root: ECSClient: RECEIVE DATA SENT -----------------------
+2021-02-25 02:09:41,452 INFO  [main] root: ECSClient: MOVE_DATA -------------------------
+2021-02-25 02:09:56,545 INFO  [main] root: Remove ECSNode server2:50001
+2021-02-25 02:15:12,162 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 02:15:12,229 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 02:15:12,230 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 02:15:12,230 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 02:15:12,230 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 02:15:12,231 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 02:15:12,231 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 02:15:12,232 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 02:15:12,232 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 02:15:17,821 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 02:15:22,860 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 02:15:28,116 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 02:15:33,151 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 02:15:33,152 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 02:15:38,265 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 02:15:38,265 INFO  [main] root: ------------------------------------------- /ZNode/server2/KVAdminMessage       Port Port Port is: 0
+2021-02-25 02:15:38,266 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 02:15:48,377 INFO  [main] root: Removing server2 node
+2021-02-25 02:15:48,379 INFO  [main] root: next node found-------starting transfering data fromserver2 to server1
+2021-02-25 02:15:48,381 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 02:15:53,422 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 02:15:53,423 INFO  [main] root: ------------------------------------------- /ZNode/server1/KVAdminMessage       Port Port Port is: 0
+2021-02-25 02:15:53,423 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 02:16:08,498 INFO  [main] root: Remove ECSNode server2:50001
+2021-02-25 02:17:13,829 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 02:17:13,925 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 02:17:13,925 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 02:17:13,926 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 02:17:13,926 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 02:17:13,927 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 02:17:13,927 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 02:17:13,927 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 02:17:13,928 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 02:17:22,619 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 02:17:30,674 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 02:17:39,018 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 02:17:47,088 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 02:17:47,091 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 02:17:55,163 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 02:17:55,163 INFO  [main] root: ------------------------------------------- /ZNode/server2/KVAdminMessage       Port Port Port is: 0
+2021-02-25 02:17:55,163 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 02:18:11,294 INFO  [main] root: Removing server2 node
+2021-02-25 02:18:11,295 INFO  [main] root: next node found-------starting transfering data fromserver2 to server1
+2021-02-25 02:18:11,296 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 02:18:19,335 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 02:18:19,336 INFO  [main] root: ------------------------------------------- /ZNode/server1/KVAdminMessage       Port Port Port is: 0
+2021-02-25 02:18:19,336 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 02:18:43,462 INFO  [main] root: Remove ECSNode server2:50001
+2021-02-25 02:24:07,172 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 02:24:07,247 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 02:24:07,248 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 02:24:07,248 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 02:24:07,248 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 02:24:07,249 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 02:24:07,249 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 02:24:07,249 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 02:24:07,249 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 02:24:15,906 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 02:24:23,966 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 02:24:32,298 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 02:24:40,361 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 02:24:40,371 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 02:24:48,472 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 02:24:48,473 INFO  [main] root: ------------------------------------------- /ZNode/server2/KVAdminMessage       Port Port Port is: 0
+2021-02-25 02:24:48,473 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 02:25:04,608 INFO  [main] root: Removing server2 node
+2021-02-25 02:25:04,609 INFO  [main] root: next node found-------starting transfering data fromserver2 to server1
+2021-02-25 02:25:04,610 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 02:25:12,655 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 02:25:12,655 INFO  [main] root: ------------------------------------------- /ZNode/server1/KVAdminMessage       Port Port Port is: 0
+2021-02-25 02:25:12,655 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 02:25:36,740 INFO  [main] root: Remove ECSNode server2:50001
+2021-02-25 02:32:45,116 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 02:32:45,181 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 02:32:45,182 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 02:32:45,182 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 02:32:45,183 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 02:32:45,183 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 02:32:45,183 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 02:32:45,184 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 02:32:45,184 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 02:32:53,913 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 02:33:01,959 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 02:33:10,227 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 02:33:18,318 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 02:33:18,320 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 02:33:26,377 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 02:33:26,377 INFO  [main] root: ------------------------------------------- /ZNode/server2/KVAdminMessage       Port Port Port is: 0
+2021-02-25 02:33:26,378 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 02:33:42,497 INFO  [main] root: Removing server2 node
+2021-02-25 02:33:42,498 INFO  [main] root: next node found-------starting transfering data fromserver2 to server1
+2021-02-25 02:33:42,498 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 02:33:50,535 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 02:33:50,536 INFO  [main] root: ------------------------------------------- /ZNode/server1/KVAdminMessage       Port Port Port is: 0
+2021-02-25 02:33:50,536 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 02:34:14,628 INFO  [main] root: Remove ECSNode server2:50001
+2021-02-25 02:41:09,840 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 02:41:09,924 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 02:41:09,926 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 02:41:09,926 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 02:41:09,927 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 02:41:09,927 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 02:41:09,928 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 02:41:09,928 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 02:41:09,928 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 02:41:18,743 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 02:41:26,788 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 02:41:35,068 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 02:41:43,267 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 02:41:43,279 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 02:41:51,351 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 02:41:51,351 INFO  [main] root: ------------------------------------------- /ZNode/server2/KVAdminMessage       Port Port Port is: 0
+2021-02-25 02:41:51,351 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 02:42:09,521 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 02:42:09,584 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 02:42:09,585 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 02:42:09,585 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 02:42:09,585 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 02:42:09,586 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 02:42:09,586 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 02:42:09,586 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 02:42:09,586 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 02:42:18,060 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 02:42:26,103 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 02:42:34,369 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 02:42:42,408 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 02:42:42,409 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 02:42:50,444 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 02:42:50,445 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 02:43:06,550 INFO  [main] root: Removing server2 node
+2021-02-25 02:43:06,552 INFO  [main] root: next node found-------starting transfering data fromserver2 to server1
+2021-02-25 02:43:06,553 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 02:43:14,591 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 02:43:14,595 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 02:43:38,673 INFO  [main] root: Remove ECSNode server2:50001
+2021-02-25 02:55:35,112 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 02:55:35,199 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 02:55:35,199 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 02:55:35,200 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 02:55:35,201 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 02:55:35,201 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 02:55:35,202 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 02:55:35,202 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 02:55:35,202 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 02:55:43,788 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 02:55:51,833 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 02:56:00,113 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 02:56:08,183 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 02:56:08,184 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 02:56:16,269 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 02:56:16,270 INFO  [main] root: ------------------------------------------- /ZNode/server2/KVAdminMessage       Port Port Port is: 0
+2021-02-25 02:56:16,270 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 02:56:32,382 INFO  [main] root: Removing server2 node
+2021-02-25 02:56:32,385 INFO  [main] root: next node found-------starting transfering data fromserver2 to server1
+2021-02-25 02:56:32,386 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 02:56:40,425 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 02:56:40,426 INFO  [main] root: ------------------------------------------- /ZNode/server1/KVAdminMessage       Port Port Port is: 0
+2021-02-25 02:56:40,426 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 02:57:04,504 INFO  [main] root: Remove ECSNode server2:50001
+2021-02-25 03:02:05,439 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 03:02:05,497 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 03:02:05,497 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 03:02:05,497 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 03:02:05,498 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 03:02:05,498 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 03:02:05,499 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 03:02:05,499 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 03:02:05,499 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 03:02:14,169 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 03:02:22,216 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 03:02:30,515 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 03:02:38,562 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 03:02:38,564 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 03:02:46,630 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 03:02:46,631 INFO  [main] root: ------------------------------------------- /ZNode/server2/KVAdminMessage       Port Port Port is: 0
+2021-02-25 03:02:46,631 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 11:11:17,532 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 11:11:17,741 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 11:11:17,743 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 11:11:17,743 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 11:11:17,744 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 11:11:17,744 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 11:11:17,745 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 11:11:17,746 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 11:11:17,746 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 11:11:26,755 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 11:11:34,835 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 11:11:43,202 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 11:11:51,260 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 11:11:51,260 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 11:11:59,305 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 11:11:59,305 INFO  [main] root: ------------------------------------------- /ZNode/server2/KVAdminMessage       Port Port Port is: 0
+2021-02-25 11:11:59,306 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 11:41:28,615 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 11:41:28,754 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 11:41:28,756 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 11:41:28,757 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 11:41:28,758 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 11:41:28,759 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 11:41:28,759 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 11:41:28,761 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 11:41:28,761 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 11:41:37,368 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 11:41:45,428 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 11:41:53,694 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 11:42:01,731 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 11:42:01,732 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 11:42:09,803 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 11:42:09,803 INFO  [main] root: ------------------------------------------- /ZNode/server2/KVAdminMessage       Port Port Port is: 0
+2021-02-25 11:42:09,803 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 11:46:34,758 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 11:46:34,849 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 11:46:34,849 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 11:46:34,851 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 11:46:34,851 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 11:46:34,852 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 11:46:34,852 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 11:46:34,853 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 11:46:34,853 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 11:46:43,368 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 11:46:51,401 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 11:46:59,662 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 11:47:07,897 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 11:47:07,898 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 11:47:15,966 INFO  [main] root: String is $$$$$$$$$$$ SB
+2021-02-25 11:47:15,966 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 11:48:04,448 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 11:48:04,585 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 11:48:04,587 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 11:48:04,587 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 11:48:04,588 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 11:48:04,588 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 11:48:04,589 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 11:48:04,589 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 11:48:04,589 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 11:48:13,241 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 11:48:21,288 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 11:48:29,533 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 11:48:37,572 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 11:48:37,573 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 11:48:45,641 INFO  [main] root: String is $$$$$$$$$$$ SB
+2021-02-25 11:48:45,642 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 13:04:02,488 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 13:04:02,701 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 13:04:02,702 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 13:04:02,703 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 13:04:02,704 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 13:04:02,705 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 13:04:02,705 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 13:04:02,706 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 13:04:02,706 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 13:04:11,875 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 13:04:19,929 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 13:04:28,248 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 13:04:36,307 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 13:04:36,307 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 13:04:44,361 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 13:04:44,362 INFO  [main] root: ------------------------------------------- /ZNode/server2/KVAdminMessage       Port Port Port is: 0
+2021-02-25 13:04:44,362 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 13:05:01,595 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 13:05:01,735 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 13:05:01,737 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 13:05:01,738 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 13:05:01,738 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 13:05:01,739 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 13:05:01,740 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 13:05:01,740 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 13:05:01,741 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 13:05:11,691 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 13:05:19,803 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 13:05:28,086 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 13:05:36,146 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 13:05:36,150 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 13:05:44,249 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 13:05:44,250 INFO  [main] root: ------------------------------------------- /ZNode/server2/KVAdminMessage       Port Port Port is: 0
+2021-02-25 13:05:44,250 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 13:08:12,442 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 13:08:12,574 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 13:08:12,575 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 13:08:12,579 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 13:08:12,580 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 13:08:12,580 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 13:08:12,581 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 13:08:12,582 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 13:08:12,582 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 13:08:21,647 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 13:08:29,768 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 13:08:38,355 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 13:08:46,422 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 13:08:46,423 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 13:08:54,491 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 13:08:54,491 INFO  [main] root: ------------------------------------------- /ZNode/server2/KVAdminMessage       Port Port Port is: 0
+2021-02-25 13:08:54,491 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 13:31:34,088 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 13:31:34,157 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 13:31:34,158 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 13:31:34,158 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 13:31:34,158 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 13:31:34,159 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 13:31:34,159 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 13:31:34,159 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 13:31:34,160 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 13:31:42,862 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 13:31:50,939 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 13:31:59,213 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 13:32:07,290 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 13:32:07,304 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 13:32:15,516 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 13:32:15,520 INFO  [main] root: ------------------------------------------- /ZNode/server2/KVAdminMessage       Port Port Port is: 0
+2021-02-25 13:32:15,520 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------
+2021-02-25 13:47:44,946 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 13:47:45,044 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 13:47:45,045 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 13:47:45,045 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 13:47:45,046 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 13:47:45,046 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 13:47:45,047 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 13:47:45,047 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 13:47:45,047 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 13:47:53,807 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 13:48:01,855 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 13:48:10,293 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 13:48:18,337 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 13:48:18,337 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 13:50:56,454 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 13:50:56,531 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 13:50:56,532 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 13:50:56,532 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 13:50:56,532 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 13:50:56,533 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 13:50:56,533 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 13:50:56,533 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 13:50:56,534 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 13:51:05,124 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 13:51:13,167 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 13:51:21,449 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 13:51:29,496 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 13:51:29,497 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 13:53:25,223 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 13:53:25,291 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 13:53:25,292 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 13:53:25,292 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 13:53:25,293 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 13:53:25,293 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 13:53:25,294 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 13:53:25,294 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 13:53:25,294 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 13:53:33,755 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 13:53:41,797 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 13:53:50,067 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 13:53:58,110 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 13:53:58,111 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 13:54:25,133 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 13:54:25,200 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 13:54:25,201 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 13:54:25,201 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 13:54:25,202 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 13:54:25,202 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 13:54:25,202 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 13:54:25,203 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 13:54:25,203 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 13:54:33,638 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 13:54:41,678 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 13:54:49,951 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 13:54:57,989 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 13:54:57,990 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 13:56:56,633 ERROR [main] root: StoreDisk: Error for creating file
+java.io.IOException: No such file or directory
+	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
+	at java.base/java.io.File.createNewFile(File.java:1026)
+	at server.StoreDisk.StoreDisk.<init>(StoreDisk.java:45)
+	at app_kvServer.KVServer.<init>(KVServer.java:95)
+	at testing.AllTests.<clinit>(AllTests.java:19)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
+	at org.junit.internal.runners.SuiteMethod.<init>(SuiteMethod.java:23)
+	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:50)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:33)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:220)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:53)
+2021-02-25 13:56:56,720 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 13:56:56,721 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 13:56:56,721 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 13:56:56,722 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 13:56:56,722 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 13:56:56,722 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 13:56:56,722 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 13:56:56,723 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 13:57:05,208 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 13:57:13,241 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 13:57:21,537 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 13:57:29,576 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 13:57:29,577 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------

@@ -14,12 +14,12 @@ public class StoreDisk implements IStoreDisk {
     private File storage;
     private File toMove;
 //    private String resourceDir = System.getProperty("user.dir") + "/Desktop/419/ECE419-2021/src/resources/";
-//    private String resourceDir_Ray = System.getProperty("user.dir") + "/Users/zhourui/Documents/Spring2021ECE419/M2/ECE419-2021/src/resources/";
+    private String resourceDir = System.getProperty("user.dir") + "/Users/zhourui/Documents/Spring2021ECE419/M2/ECE419-2021/src/resources/";
 //    private String resourceDir = System.getProperty("user.dir") + "/Documents/ECE419/ECE419-2021Winter-Project" + "/ECE419-2021/src/resources/";
 //    private String resourceDir = System.getProperty("user.dir") + "/Desktop/419/ECE419-2021/src/resources/";
 
     //TODO: ECS SSH test path
-    private String resourceDir = System.getProperty("user.dir") + "/Documents/ECE419/ECE419-2021Winter-Project" + "/ECE419-2021/src/resources/";
+//    private String resourceDir = System.getProperty("user.dir") + "/Documents/ECE419/ECE419-2021Winter-Project" + "/ECE419-2021/src/resources/";
     //TODO: Unit test path
 //    private String resourceDir = System.getProperty("user.dir") + "/ECE419-2021/src/resources/";
 //    private String resourceDir = "./src/resources/";

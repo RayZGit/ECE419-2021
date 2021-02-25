@@ -37,7 +37,7 @@ public class ECSClient implements IECSClient {
     private static int server_file_NUMBER = 1;
     public static String ZK_HOST = "127.0.0.1";
     public static String ZK_PORT = "2181";
-    public static int ZK_TIMEOUTSESSION = 5000;
+    public static int ZK_TIMEOUTSESSION = 8000;
     private static String ZNODE_ROOT = "/ZNode";
     private static String ZNODE_KVMESSAGE = "/KVAdminMessage";
     private static String METADATA_ROOT = "/MD";
@@ -82,15 +82,23 @@ public class ECSClient implements IECSClient {
                     Stat existServer = zk.exists(nodePath,false);
                     if(existServer == null){
                         zk.create(nodePath, msg,ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+                        zk.create(nodePath+"_KVAdminMessage", null,ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
                     }
+
+
 
                     Stat existNode = zk.exists(nodePath,false);
                     if(existNode == null){
                         zk.create(nodePath, msg,ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
                     } else{
-                        zk.setData(nodePath,msg, existNode.getVersion());
+                        zk.setData(nodePath,msg, zk.exists(nodePath,false).getVersion());
+
                     }
-                    existNode = zk.exists(nodePath, new Watcher()
+//                    if(KVadmin){
+//                        nodePath-=
+//                    }
+
+                    zk.exists(nodePath, new Watcher()
                     {
                         @Override
                         public void process(WatchedEvent event)
@@ -111,6 +119,16 @@ public class ECSClient implements IECSClient {
                                 System.out.println("Event Type:" + eventType.name());
                                 System.out.println("Event Status:" + eventState.name());
                                 System.out.println("Event ZNode path:" + eventPath);
+                                try {
+                                    byte[] data = zk.getData(eventPath,false,null);
+                                    System.out.println("我要看的"+new String(data));
+                                } catch (KeeperException e) {
+                                    e.printStackTrace();
+                                    System.out.println("打错了" + eventType.name());
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                    System.out.println("打错了" + eventType.name());
+                                }
                             }
                             else{
                                 error = "Unexpected Error" + event.getType();
@@ -629,6 +647,7 @@ public class ECSClient implements IECSClient {
             msgFrom.setReceiveHashRangeValue(range);
 
             System.out.println(" \n !!!!!!!Send request to receiver server!!!!!!!!!!!!!");
+            logger.info(LOGGING+"$$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------");
             Map<ECSNode,String> nodeErrorMapRec = adminDataHandler.
                     brodcast(msgTo.encode().getBytes(),new ArrayList<ECSNode>(Arrays.asList(to)),true);
             if(!nodeErrorMapRec.isEmpty()){
@@ -638,18 +657,21 @@ public class ECSClient implements IECSClient {
 
             // Getting the dynamic allocated port from the receiver and set it into the message sent to Sender
             String nodePath = ZNODE_ROOT + "/" + to.getNodeName() + ZNODE_KVMESSAGE;
+
+
             byte[] KVportInfo = zk.getData(nodePath,false,null);
             String temp = new String(KVportInfo);
             KVAdminMessage portInfo = new Gson().fromJson(temp, KVAdminMessage.class);
 //            msgFrom.setReceiveServerPort(9999);
-            msgFrom.setReceiveServerPort(portInfo.getReceiveServerPort());
-            System.out.println("String is !!!!!!!!!!!!!!!!!!!!!! " + temp);
-            System.out.println("------------------------------------------- " +
+//            msgFrom.setReceiveServerPort(portInfo.getReceiveServerPort());
+            logger.info("String is !!!!!!!!!!!!!!!!!!!!!! " + temp);
+            logger.info("------------------------------------------- " +
                             nodePath +
                     "       Port Port Port is: " + portInfo.getReceiveServerPort());
 
 
 
+            logger.info(LOGGING+"$$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------");
             System.out.println(" \n !!!!!!!Send request to mover server!!!!!!!!!!!!!");
             Map<ECSNode,String> nodeErrorMapMov = adminDataHandler.
                     brodcast(msgFrom.encode().getBytes(),new ArrayList<ECSNode>(Arrays.asList(from)), true);

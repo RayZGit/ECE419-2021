@@ -883,3 +883,19 @@
 2021-02-25 00:09:45,321 WARN  [main] root: No server exist yet. No data to transfer to node server1
 2021-02-25 00:10:33,259 INFO  [main] root: Add ECSNode server2:50001
 2021-02-25 00:10:38,301 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 12:44:41,694 INFO  [main] root: ECSClient: New Node added: server1
+2021-02-25 12:44:41,695 INFO  [main] root: ECSClient: New Node added: server2
+2021-02-25 12:44:41,696 INFO  [main] root: ECSClient: New Node added: server3
+2021-02-25 12:44:41,696 INFO  [main] root: ECSClient: New Node added: server4
+2021-02-25 12:44:41,696 INFO  [main] root: ECSClient: New Node added: server5
+2021-02-25 12:44:41,696 INFO  [main] root: ECSClient: New Node added: server6
+2021-02-25 12:44:41,696 INFO  [main] root: ECSClient: New Node added: server7
+2021-02-25 12:44:41,697 INFO  [main] root: ECSClient: New Node added: server8
+2021-02-25 12:45:19,095 INFO  [main] root: Add ECSNode server1:50000
+2021-02-25 12:45:27,144 WARN  [main] root: No server exist yet. No data to transfer to node server1
+2021-02-25 12:46:17,307 INFO  [main] root: Add ECSNode server2:50001
+2021-02-25 12:46:25,350 INFO  [main] root: next node found-------starting transfering data fromserver1 to server2
+2021-02-25 12:46:25,351 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$$RECEIVE DATA SENT -----------------------
+2021-02-25 12:46:33,418 INFO  [main] root: String is !!!!!!!!!!!!!!!!!!!!!! {"receiveServerPort":0,"serverFunctionalType":"RECEIVE"}
+2021-02-25 12:46:33,418 INFO  [main] root: ------------------------------------------- /ZNode/server2/KVAdminMessage       Port Port Port is: 0
+2021-02-25 12:46:33,419 INFO  [main] root: ECSClient: $$$$$$$$$$$$$$$$$$MOVE_DATA -------------------------

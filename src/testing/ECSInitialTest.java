@@ -26,12 +26,12 @@ public class ECSInitialTest extends TestCase {
     private static final String CACHE_STRATEGY = "FIFO";
     private static final Integer CACHE_SIZE = 1024;
 
-//    public void setUp() throws Exception {
-//        super.setUp();
-//
-//        new LogSetup("./logs/test_ecs.log", Level.ALL);
-//
-//    }
+    public void setUp() throws Exception {
+        super.setUp();
+
+        new LogSetup("./logs/test_ecs.log", Level.ALL);
+
+    }
 
     private static ECSClient ecs = null;
     private Exception ex = null;
@@ -57,42 +57,52 @@ public class ECSInitialTest extends TestCase {
      * server instances is high un-debug-able
      */
 
-    public void test02AddNodes() throws Exception {
-        Collection<IECSNode> nodes =
-                ecs.setupNodes(BIG_SERVER_NUM, CACHE_STRATEGY, CACHE_SIZE);
-        assertNull(nodes);
+//    public void test02AddNodes() throws Exception {
+//
+//        Collection<IECSNode> nodes =
+//                ecs.setupNodes(BIG_SERVER_NUM, CACHE_STRATEGY, CACHE_SIZE);
+//        assertNull(nodes);
+//
+//        Integer count = 3;
+//        nodes = ecs.setupNodes(count, CACHE_STRATEGY, CACHE_SIZE);
+//        assertNotNull(nodes);
+//        assertEquals(count, new Integer(nodes.size()));
+//
+//        // Start the servers internally
+//        for (IECSNode node : nodes) {
+//            new Thread(
+//                    new KVServer(node.getNodePort(), node.getNodeName(),
+//                            ECSClient.ZK_HOST, Integer.parseInt(ECSClient.ZK_PORT)))
+//                    .start();
+//        }
+//
+//        boolean ret = ecs.awaitNodes(count, ECSClient.ZK_TIMEOUTSESSION);
+//        assertTrue(ret);
+//    }
 
-        Integer count = 3;
-        nodes = ecs.setupNodes(count, CACHE_STRATEGY, CACHE_SIZE);
-        assertNotNull(nodes);
-        assertEquals(count, new Integer(nodes.size()));
+    public void testAddNodesandStart() throws Exception {
 
-        // Start the servers internally
-        for (IECSNode node : nodes) {
-            new Thread(
-                    new KVServer(node.getNodePort(), node.getNodeName(),
-                            ECSClient.ZK_HOST, Integer.parseInt(ECSClient.ZK_PORT)))
-                    .start();
-        }
+        ecs.addNode("None", 10);
+        ecs.start();
+        ecs.addNode("None", 10);
+        ecs.start();
 
-        boolean ret = ecs.awaitNodes(count, ECSClient.ZK_TIMEOUTSESSION);
-        assertTrue(ret);
     }
 
     /**
      * Start the nodes just added
      */
-    public void test03StartNodes() throws Exception {
-        assertNotNull(ecs);
-        boolean ret = ecs.start();
-        assertTrue(ret);
-
-        Collection<IECSNode> nodes = ecs.getNodes().values();
-        for (IECSNode node : nodes) {
-            assertEquals(ECSNode.NodeStatus.START,
-                    ((ECSNode) node).getStatus());
-        }
-    }
+//    public void test03StartNodes() throws Exception {
+//        assertNotNull(ecs);
+//        boolean ret = ecs.start();
+//        assertTrue(ret);
+//
+//        Collection<IECSNode> nodes = ecs.getNodes().values();
+//        for (IECSNode node : nodes) {
+//            assertEquals(ECSNode.NodeStatus.START,
+//                    ((ECSNode) node).getStatus());
+//        }
+//    }
 
 
 //    public void testAddNodes() throws Exception {
@@ -122,13 +132,13 @@ public class ECSInitialTest extends TestCase {
     /**
      * Remove one active node from whole service
      */
-    public void test04RemoveNodes() {
-        List<String> names = new ArrayList<>(ecs.getNodes().keySet());
-        assertTrue(names.size() > 0);
-        logger.info("Removing " + names.get(0) + " node");
-        boolean ret = ecs.removeNodes(Collections.singletonList(names.get(0)));
-        assertTrue(ret);
-    }
+//    public void test5RemoveNodes() {
+//        List<String> names = new ArrayList<>(ecs.getNodes().keySet());
+//        logger.info("Removing " + names.get(0) + " node");
+//        boolean ret = ecs.removeNodes(Collections.singletonList(names.get(0)));
+//        assertTrue(ret);
+//    }
+
 
 //    public void test05addNodesAndMove() throws Exception{
 //        Collection<IECSNode> nodes = ecs.setupNodes(1,"None", 300);
@@ -143,10 +153,11 @@ public class ECSInitialTest extends TestCase {
 //        assertTrue(ret);
 //    }
 
+
     /**
      * Stop all active nodes
      */
-//    public void test05Stop() throws Exception {
+//    public void test7Stop() throws Exception {
 //        boolean ret = ecs.stop();
 //        assertTrue(ret);
 //    }
@@ -154,7 +165,7 @@ public class ECSInitialTest extends TestCase {
 //    /**
 //     * Shut down all nodes
 //     */
-//    public void test06Shutdown() throws Exception {
+//    public void test8Shutdown() throws Exception {
 //        boolean ret = ecs.shutdown();
 //        assertTrue(ret);
 //    }
