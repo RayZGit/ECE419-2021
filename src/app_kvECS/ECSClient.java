@@ -641,7 +641,7 @@ public class ECSClient implements IECSClient {
             Map<ECSNode,String> nodeErrorMapMov = adminDataHandler.
                     brodcast(msgFrom.encode().getBytes(),new ArrayList<ECSNode>(Arrays.asList(from)), true);
 
-            if(!nodeErrorMapRec.isEmpty()){
+            if(!nodeErrorMapMov.isEmpty()){
                 logger.error(LOGGING+"dataTransition in Send");
                 return false;
             }
